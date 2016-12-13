@@ -27,7 +27,7 @@ class CreateDonationsTable extends Migration
             $table->text('shipping_notes');
             $table->boolean('recoverable')->default(false);
             $table->string('uuid');
-            $table->json('availability');
+            $table->text('availability');
 
             /*
                 pending: caricata sulla piattaforma
