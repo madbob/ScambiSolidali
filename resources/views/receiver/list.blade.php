@@ -19,11 +19,11 @@
 
 				{!! BootForm::horizontal(['action' => 'ReceiverController@store']) !!}
 					<div class="modal-body">
-						{!! BootForm::text('name', 'Nome') !!}
-						{!! BootForm::text('surname', 'Cognome') !!}
-                        {!! BootForm::text('address', 'Indirizzo') !!}
-						{!! BootForm::text('phone', 'Telefono') !!}
-						{!! BootForm::email() !!}
+						{!! BootForm::text('name', 'Nome', '', ['required' => 'required']) !!}
+						{!! BootForm::text('surname', 'Cognome', '', ['required' => 'required']) !!}
+                        {!! BootForm::text('address', 'Indirizzo', '', ['required' => 'required']) !!}
+						{!! BootForm::text('phone', 'Telefono', '', ['required' => 'required']) !!}
+						{!! BootForm::email('email', 'E-Mail', '', ['required' => 'required']) !!}
                         {!! BootForm::textarea('notes', 'Note') !!}
 					</div>
 					<div class="modal-footer">

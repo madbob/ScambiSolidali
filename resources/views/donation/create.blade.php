@@ -24,9 +24,9 @@
 				</div>
 			</div>
 
-			{!! BootForm::text('title', 'Oggetto') !!}
-			{!! BootForm::file('photo', 'Foto') !!}
-			{!! BootForm::textarea('description', 'Descrizione') !!}
+			{!! BootForm::text('title', 'Oggetto', '', ['required' => 'required']) !!}
+			{!! BootForm::file('photo', 'Foto', ['required' => 'required']) !!}
+			{!! BootForm::textarea('description', 'Descrizione', '', ['required' => 'required']) !!}
 
 			<div class="page-header">
 				<h4>Informazioni per il Ritiro</h4>
@@ -34,8 +34,8 @@
 
 			<?php $last = Auth::user()->lastDonation() ?>
 
-			{!! BootForm::text('name', 'Nome', $last ? $last->name : $user->name) !!}
-			{!! BootForm::text('surname', 'Cognome', $last ? $last->surname : $user->surname) !!}
+			{!! BootForm::text('name', 'Nome', $last ? $last->name : $user->name, ['required' => 'required']) !!}
+			{!! BootForm::text('surname', 'Cognome', $last ? $last->surname : $user->surname, ['required' => 'required']) !!}
 
             <div class="form-group">
 				<label for="category_id" class="col-sm-2 col-md-3 control-label">Indirizzo</label>
@@ -46,8 +46,8 @@
 				</div>
 			</div>
 
-			{!! BootForm::text('phone', 'Telefono', $last ? $last->phone : $user->phone) !!}
-			{!! BootForm::email('email', 'E-Mail', $last ? $last->email : $user->email) !!}
+			{!! BootForm::text('phone', 'Telefono', $last ? $last->phone : $user->phone, ['required' => 'required']) !!}
+			{!! BootForm::email('email', 'E-Mail', $last ? $last->email : $user->email, ['required' => 'required']) !!}
 			{!! BootForm::textarea('shipping_notes', 'Note') !!}
 			{!! BootForm::checkbox('recoverable', 'Recupera Oggetto', 'recoverable', false, ['help_text' => 'Bla Bla Bla Cooperativa Triciclo Bla Bla Bla']) !!}
 
