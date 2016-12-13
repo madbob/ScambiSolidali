@@ -19,6 +19,7 @@ Route::get('/home', 'CommonController@home');
 Route::get('/donazione/image/{id}', 'DonationController@getImage');
 Route::post('/donazione/assegna/{id}', 'DonationController@postAssign');
 Route::post('/donazione/prenota/{id}', 'DonationController@postBook');
+Route::get('/register/activate/{token}', 'Auth\RegisterController@activate');
 
 Route::resource('/donazione', 'DonationController');
 Route::resource('/utente', 'UserController');
