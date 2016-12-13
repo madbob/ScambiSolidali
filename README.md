@@ -38,3 +38,7 @@ dall'Agenzia per lo Sviluppo Locale di San Salvario.
 **Scambi Solidali** è distribuito in licenza AGPLv3.
 
 Copyright (C) 2016 Roberto Guido <info@madbob.org>.
+
+La traduzione in italiano dei messaggi di sistema è distribuita in licenza MIT.
+
+Copyright (C) 2016 Caouecs caouecs@caouecs.net
