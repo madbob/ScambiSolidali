@@ -14,7 +14,7 @@
                         <form class="form-horizontal">
                             @include('donation.info', ['donation' => $donation])
 
-                            @if($donation->receivers()->count() != 0)
+                            @if($donation->receivers->isEmpty() == false)
                                 <hr/>
                                 @include('donation.minilist', ['list' => $donation->receivers, 'print_receiver' => true, 'print_object' => false])
                             @endif
