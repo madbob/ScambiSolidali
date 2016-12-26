@@ -6,7 +6,6 @@
                 <h4 class="modal-title">Utente</h4>
             </div>
 
-
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-12">
@@ -15,14 +14,28 @@
                             {!! BootForm::text('surname', 'Cognome') !!}
                             {!! BootForm::text('phone', 'Telefono') !!}
                             {!! BootForm::email() !!}
-                            {!! BootForm::radios('role', 'Ruolo', ['admin' => 'Amministratore', 'operator' => 'Operatore', 'user' => 'Donatore'], 'user') !!}
                             {!! BootForm::password('password', 'Password', ['help_text' => 'Lascia vuoto per non modificare la password']) !!}
+                            {!! BootForm::checkbox('role', 'Amministratore', 'admin', $user->role == 'admin') !!}
+
+                            <?php
+                                $institutes = [];
+                                foreach(App\Institute::orderBy('name', 'asc')->get() as $institute)
+                                $institutes[$institute->id] = $institute->name;
+                            ?>
+
+                            @if(!empty($institutes))
+                                {!! BootForm::checkboxes('institutes', 'Affiliazioni', $institutes, $user->institutes->map(function($item, $key) {
+                                    return $item->id;
+                                })) !!}
+                            @endif
+
                             {!! BootForm::submit('Salva') !!}
                         {!! BootForm::close() !!}
                     </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Chiudi</button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Chiudi</button>
+                </div>
             </div>
         </div>
     </div>

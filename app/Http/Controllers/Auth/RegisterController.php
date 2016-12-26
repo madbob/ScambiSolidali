@@ -7,6 +7,7 @@ use Mail;
 use Session;
 
 use App\User;
+use App\Institute;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -62,6 +63,7 @@ class RegisterController extends Controller
 
     public function register(Request $request) {
         $input = $request->all();
+        $input['role'] = 'user';
         $validator = $this->validator($input);
 
         if ($validator->passes()){
@@ -71,6 +73,42 @@ class RegisterController extends Controller
                 $message->to($user->email);
                 $message->subject(env('APP_NAME') . ': attivazione account');
             });
+
+            Session::flash('message', 'Ti abbiamo inviato una mail per la conferma della registrazione');
+            return redirect()->to('register/operator');
+        }
+
+        return back()->with('errors', $validator->errors());
+    }
+
+    public function registerOp(Request $request) {
+        return view('auth.registerop');
+    }
+
+    public function postRegisterOp(Request $request) {
+        $code = $request->input('code');
+        $institute = Institute::where('code', $code)->first();
+        if ($institute == null) {
+            Session::flash('message', 'Il codice indicato non è valido');
+            return redirect()->to('register/operator');
+        }
+
+        $input = $request->all();
+        $input['role'] = 'operator';
+        $validator = $this->validator($input);
+
+        if ($validator->passes()){
+            $user = (object) $this->create($input)->toArray();
+
+            Mail::send('mails.activation', ['user' => $user], function($message) use ($user){
+                $message->to($user->email);
+                $message->subject(env('APP_NAME') . ': attivazione account');
+            });
+
+            $user->role = 'operator';
+            $user->save();
+
+            $institute->users()->attach($user->id);
 
             Session::flash('message', 'Ti abbiamo inviato una mail per la conferma della registrazione');
             return redirect()->to('login');
@@ -93,7 +131,8 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'phone' => $data['phone'],
             'password' => bcrypt($data['password']),
-            'verification_code' => str_random(15)
+            'verification_code' => str_random(15),
+            'role' => $data['role']
         ]);
     }
 

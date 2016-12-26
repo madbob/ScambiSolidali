@@ -20,10 +20,13 @@ Route::get('/donazione/image/{id}', 'DonationController@getImage');
 Route::post('/donazione/assegna/{id}', 'DonationController@postAssign');
 Route::post('/donazione/prenota/{id}', 'DonationController@postBook');
 Route::get('/register/activate/{token}', 'Auth\RegisterController@activate');
+Route::get('/register/operator', 'Auth\RegisterController@registerOp');
+Route::post('/register/operator', 'Auth\RegisterController@postRegisterOp');
 
 Route::resource('/donazione', 'DonationController');
 Route::resource('/utente', 'UserController');
 Route::resource('/fruitore', 'ReceiverController');
 Route::resource('/archivio', 'ArchiveController');
+Route::resource('/ente', 'InstituteController');
 
 Auth::routes();

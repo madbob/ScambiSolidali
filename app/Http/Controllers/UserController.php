@@ -10,6 +10,7 @@ use Mail;
 
 use App\Mail\NewUserCreated;
 use App\User;
+use App\Institute;
 
 class UserController extends Controller
 {
@@ -25,9 +26,11 @@ class UserController extends Controller
             return redirect(url('/'));
         }
 
-        $users = User::orderBy('created_at', 'desc')->paginate(50);
+        $institutes = Institute::orderBy('name', 'asc')->get();
+        $operators = User::whereHas('institutes')->orderBy('surname', 'asc')->get();
+        $users = User::whereDoesntHave('institutes')->orderBy('surname', 'asc')->get();
 
-        return view('user.list', ['users' => $users]);
+        return view('user.list', ['institutes' => $institutes, 'operators' => $operators, 'users' => $users]);
     }
 
     public function store(Request $request)
@@ -44,7 +47,7 @@ class UserController extends Controller
         $user->surname = $request->input('surname');
         $user->phone = $request->input('phone');
         $user->email = $request->input('email');
-        $user->role = $request->input('role');
+        $user->role = $request->has('admin') ? 'admin' : 'user';
 
         $password = str_random(10);
         $user->password = bcrypt($password);
@@ -68,11 +71,6 @@ class UserController extends Controller
         return view('user.modal', ['user' => $user]);
     }
 
-    public function edit($id)
-    {
-        //
-    }
-
     public function update(Request $request, $id)
     {
         $user = Auth::user();
@@ -92,7 +90,7 @@ class UserController extends Controller
         $user->surname = $request->input('surname');
         $user->phone = $request->input('phone');
         $user->email = $request->input('email');
-        $user->role = $request->input('role');
+        $user->role = $request->has('admin') ? 'admin' : 'user';
 
         $password = $request->input('password');
         if ($password != '')

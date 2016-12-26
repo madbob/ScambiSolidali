@@ -24,6 +24,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Donation');
     }
 
+    public function institutes()
+    {
+        return $this->belongsToMany('App\Institute');
+    }
+
     public function lastDonation()
     {
         return $this->donations()->orderBy('created_at', 'desc')->first();
