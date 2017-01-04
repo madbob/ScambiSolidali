@@ -10,9 +10,19 @@
 		</p>
 	</div>
 </div>
+
 <div class="row">
 	<div class="col-md-12 new-donation-form">
 		{!! BootForm::horizontal(['action' => 'DonationController@store', 'enctype' => 'multipart/form-data']) !!}
+            @if($call != null)
+                <br/>
+                <div class="alert alert-info">
+                    <input type="hidden" name="call_id" value="{{ $call->id }}">
+                    <p>Stai rispondendo all'appello "{{ $call->title }}" di {{ $call->printableDate() }}</p>
+                </div>
+                <br/>
+            @endif
+
 			<div class="page-header">
 				<h4>Informazioni sull'Oggetto</h4>
 			</div>

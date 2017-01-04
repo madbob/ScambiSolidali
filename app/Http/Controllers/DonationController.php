@@ -11,6 +11,7 @@ use Mail;
 use App\Mail\DonationAssigned;
 use App\Donation;
 use App\Receiver;
+use App\Call;
 
 class DonationController extends Controller
 {
@@ -31,10 +32,16 @@ class DonationController extends Controller
         return view('donation.list', ['donations' => $donations]);
     }
 
-    public function create()
+    public function create(Request $request)
     {
         $user = Auth::user();
-        return view('donation.create', ['user' => $user]);
+
+        if($request->has('call'))
+            $call = Call::find($request->input('call'));
+        else
+            $call = null;
+
+        return view('donation.create', ['user' => $user, 'call' => $call]);
     }
 
     public function store(Request $request)
@@ -60,6 +67,7 @@ class DonationController extends Controller
         $donation->name = $request->input('name');
         $donation->surname = $request->input('surname');
         $donation->address = $request->input('address');
+        $donation->call_id = $request->input('call_id', null);
         $donation->availability = '[]';
 
         $coordinates = $request->input('coordinates');

@@ -23,6 +23,11 @@ class Donation extends Model
         return $this->belongsToMany('App\Receiver')->orderBy('donation_receiver.updated_at', 'desc')->withPivot(['receiver_id', 'donation_id', 'operator_id', 'updated_at', 'notes', 'status']);
     }
 
+    public function call()
+    {
+        return $this->belongsTo('App\Call');
+    }
+
     public function getPhotoUrlAttribute()
     {
         return Donation::photosPath() . $this->id;

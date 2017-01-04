@@ -29,6 +29,11 @@ class ReceiverController extends Controller
 
     public function store(Request $request)
     {
+        $user = Auth::user();
+        if ($user->role != 'admin' && $user->role != 'operator') {
+            return redirect(url('/'));
+        }
+
         $this->validate($request, [
             'name' => 'required|max:255',
             'surname' => 'required|max:255',
@@ -61,11 +66,6 @@ class ReceiverController extends Controller
         return view('receiver.modal', ['receiver' => $receiver]);
     }
 
-    public function edit($id)
-    {
-        //
-    }
-
     public function update(Request $request, $id)
     {
         $user = Auth::user();
@@ -92,10 +92,5 @@ class ReceiverController extends Controller
 
         Session::flash('message', 'Fruitore salvato');
         return redirect(url('fruitore'));
-    }
-
-    public function destroy($id)
-    {
-        //
     }
 }

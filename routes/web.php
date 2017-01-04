@@ -28,5 +28,6 @@ Route::resource('/utente', 'UserController');
 Route::resource('/fruitore', 'ReceiverController');
 Route::resource('/archivio', 'ArchiveController');
 Route::resource('/ente', 'InstituteController');
+Route::resource('/appello', 'CallController');
 
 Auth::routes();
