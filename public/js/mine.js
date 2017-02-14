@@ -85,6 +85,12 @@ $(document).ready(function() {
         });
         map.addControl(geocoder);
 
+        /*
+            Questo è per forzare l'attributo "required" nel campo di testo dove
+            mettere l'indirizzo
+        */
+        $('.mapboxgl-ctrl-geocoder input:text').attr('required', 'required');
+
         geocoder.on('result', function(ev) {
             $('input[name=address]').val(ev.result.place_name);
             $('input[name=coordinates]').val(ev.result.geometry.coordinates[1] + ',' + ev.result.geometry.coordinates[0]);

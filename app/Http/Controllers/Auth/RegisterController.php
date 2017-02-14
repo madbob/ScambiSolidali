@@ -75,7 +75,7 @@ class RegisterController extends Controller
             });
 
             Session::flash('message', 'Ti abbiamo inviato una mail per la conferma della registrazione');
-            return redirect()->to('register/operator');
+            return redirect()->to('login');
         }
 
         return back()->with('errors', $validator->errors());
