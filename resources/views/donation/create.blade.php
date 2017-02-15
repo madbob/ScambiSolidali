@@ -35,8 +35,17 @@
 			</div>
 
 			{!! BootForm::text('title', 'Oggetto', '', ['required' => 'required']) !!}
-			{!! BootForm::file('photo', 'Foto', ['required' => 'required']) !!}
 			{!! BootForm::textarea('description', 'Descrizione', '', ['required' => 'required']) !!}
+
+            <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2 col-md-9 col-md-offset-3">
+                    È richiesta almeno una foto, opzionalmente puoi caricarne altre.
+                </div>
+            </div>
+
+            {!! BootForm::file('photo', 'Foto', ['required' => 'required']) !!}
+            {!! BootForm::file('opt_photo[]', 'Foto') !!}
+            {!! BootForm::file('opt_photo[]', 'Foto') !!}
 
 			<div class="page-header">
 				<h4>Informazioni per il Ritiro</h4>

@@ -82,7 +82,17 @@ class DonationController extends Controller
         $donation->save();
 
         if ($request->hasFile('photo')) {
-            $request->file('photo')->move(Donation::photosPath(), $donation->id);
+            $request->file('photo')->move(Donation::photosPath(), $donation->id . '_1');
+        }
+
+        if ($request->hasFile('opt_photo')) {
+            $opt_photos = $request->file('opt_photo');
+            $index = 2;
+
+            foreach ($opt_photos as $op) {
+                $op->move(Donation::photosPath(), $donation->id . '_' . $index);
+                $index++;
+            }
         }
 
         return view('donation.thanks');
@@ -173,9 +183,9 @@ class DonationController extends Controller
         return redirect(url('donazione'));
     }
 
-    public function getImage(Request $request, $id)
+    public function getImage(Request $request, $id, $index)
     {
-        return response()->download(Donation::photosPath() . '/' . $id);
+        return response()->download(Donation::photosPath() . '/' . $id . '_' . $index);
     }
 
     public function postBook(Request $request, $id)

@@ -28,9 +28,16 @@ class Donation extends Model
         return $this->belongsTo('App\Call');
     }
 
-    public function getPhotoUrlAttribute()
+    /*
+        Il numero di immagini relative alla donazioni.
+        Possono essere accedute all'URL /donazione/image/$id_donazione/$indice
+        (dove $indice va da 1 a N)
+    */
+    public function imagesNum()
     {
-        return Donation::photosPath() . $this->id;
+        $path = Donation::photosPath();
+        $files = glob($path . $this->id . '_*');
+        return count($files);
     }
 
     static public function photosPath()

@@ -8,7 +8,9 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-6">
-                        <img src="{{ url('donazione/image/' . $donation->id) }}" class="img-responsive">
+                        @for($i = 1; $i <= $donation->imagesNum(); $i++)
+                            <img src="{{ url('donazione/image/' . $donation->id . '/' . $i) }}" class="img-responsive">
+                        @endfor
                     </div>
                     <div class="col-md-6">
                         <form class="form-horizontal">
