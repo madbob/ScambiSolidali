@@ -20,8 +20,6 @@ class CreateDonationsTable extends Migration
             $table->string('name');
             $table->string('surname');
             $table->string('address');
-            $table->float('lat');
-            $table->float('lng');
             $table->string('phone')->default('');
             $table->string('email')->default('');
             $table->text('shipping_notes');

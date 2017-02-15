@@ -69,11 +69,6 @@ class DonationController extends Controller
         $donation->address = $request->input('address');
         $donation->call_id = $request->input('call_id', null);
         $donation->availability = '[]';
-
-        $coordinates = $request->input('coordinates');
-        if (!empty($coordinates))
-            list($donation->lat, $donation->lng) = explode(',', $coordinates);
-
         $donation->phone = $request->input('phone');
         $donation->email = $request->input('email');
         $donation->shipping_notes = $request->input('shipping_notes');

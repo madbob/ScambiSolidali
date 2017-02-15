@@ -55,16 +55,7 @@
 
 			{!! BootForm::text('name', 'Nome', $last ? $last->name : $user->name, ['required' => 'required']) !!}
 			{!! BootForm::text('surname', 'Cognome', $last ? $last->surname : $user->surname, ['required' => 'required']) !!}
-
-            <div class="form-group">
-				<label for="category_id" class="col-sm-2 col-md-3 control-label">Indirizzo</label>
-				<div class="col-sm-10 col-md-9">
-                    <input type="hidden" name="address" value="{{ $last ? $last->address : '' }}">
-                    <input type="hidden" name="coordinates" value="{{ $last ? ($last->lat + ',' + $last->lng) : '' }}">
-					<div id="map-select"></div>
-				</div>
-			</div>
-
+            {!! BootForm::text('address', 'Indirizzo', $last ? $last->address : '', ['required' => 'required']) !!}
 			{!! BootForm::text('phone', 'Telefono', $last ? $last->phone : $user->phone, ['required' => 'required']) !!}
 			{!! BootForm::email('email', 'E-Mail', $last ? $last->email : $user->email, ['required' => 'required']) !!}
 			{!! BootForm::textarea('shipping_notes', 'Note') !!}
