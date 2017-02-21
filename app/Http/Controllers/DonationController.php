@@ -61,8 +61,7 @@ class DonationController extends Controller
             'surname' => 'required|max:255',
             'address' => 'required|max:255',
             'phone' => 'required|max:255',
-            'email' => 'required|max:255',
-            'photo' => 'required|file',
+            'email' => 'required|max:255'
         ]);
 
         $donation = new Donation();
@@ -76,23 +75,17 @@ class DonationController extends Controller
         $donation->call_id = $request->input('call_id', null);
         $donation->phone = $request->input('phone');
         $donation->email = $request->input('email');
+        $donation->floor = $request->input('floor');
+        $donation->elevator = $request->has('elevator');
         $donation->shipping_notes = $request->input('shipping_notes');
         $donation->status = 'pending';
         $donation->recoverable = $request->has('recoverable');
         $donation->save();
 
-        if ($request->hasFile('photo')) {
-            $request->file('photo')->move(Donation::photosPath(), $donation->id . '_1');
-        }
-
-        if ($request->hasFile('opt_photo')) {
-            $opt_photos = $request->file('opt_photo');
-            $index = 2;
-
-            foreach ($opt_photos as $op) {
-                $op->move(Donation::photosPath(), $donation->id . '_' . $index);
-                $index++;
-            }
+        $index = 1;
+        foreach ($request->file('photo') as $op) {
+            $op->move(Donation::photosPath(), $donation->id . '_' . $index);
+            $index++;
         }
 
         if ($donation->call_id != null) {

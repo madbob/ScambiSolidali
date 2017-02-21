@@ -12,6 +12,18 @@ $(document).ready(function() {
         });
     }
 
+    function manyRowsAddDeleteButtons(node) {
+        if (node.find('.delete-many-rows').length == 0) {
+            var fields = node.find('.single-row');
+            if (fields.length > 1) {
+                fields.each(function() {
+                    var button = '<button class="btn btn-danger delete-many-rows"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>';
+                    $(this).append(button);
+                });
+            }
+        }
+    }
+
     $('input.date').datepicker({
         format: 'DD dd MM yyyy',
         autoclose: true,
@@ -37,6 +49,24 @@ $(document).ready(function() {
                 notice.empty().append('<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>').fadeOut(2000);
             }
         });
+
+    }).on('click', '.many-rows .delete-many-rows', function(e) {
+        e.preventDefault();
+        var container = $(this).closest('.many-rows');
+        $(this).closest('.single-row').remove();
+        if (container.find('.single-row').length <= 1)
+            container.find('.delete-many-rows').remove();
+        return false;
+
+    }).on('click', '.many-rows .add-many-rows', function(e) {
+        e.preventDefault();
+        var container = $(this).parents('.many-rows');
+        var row = container.find('.single-row').first().clone();
+        row.find('input').val('');
+        row.find('select option').removeAttr('selected');
+        container.find('.add-many-rows').before(row);
+        manyRowsAddDeleteButtons(container);
+        return false;
     });
 
     $('.new-donation-form form input').keydown(function(event) {

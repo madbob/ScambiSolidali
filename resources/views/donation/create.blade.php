@@ -43,9 +43,18 @@
                 </div>
             </div>
 
-            {!! BootForm::file('photo', 'Foto', ['required' => 'required']) !!}
-            {!! BootForm::file('opt_photo[]', 'Foto') !!}
-            {!! BootForm::file('opt_photo[]', 'Foto') !!}
+            <div class="form-group ">
+                <label for="photo" class="control-label col-sm-2 col-md-3">Foto</label>
+                <div class="col-sm-10 col-md-9 many-rows">
+                    <div class="single-row">
+                        <div class="col-sm-8">
+                            <input class="form-control filestyle" name="photo[]" type="file" required="required">
+                        </div>
+                    </div>
+
+                    <button class="btn btn-info add-many-rows"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Aggiungi</button>
+                </div>
+            </div>
 
 			<div class="page-header">
 				<h4>Informazioni per il Ritiro</h4>
@@ -58,6 +67,8 @@
             {!! BootForm::text('address', 'Indirizzo', $last ? $last->address : '', ['required' => 'required']) !!}
 			{!! BootForm::text('phone', 'Telefono', $last ? $last->phone : $user->phone, ['required' => 'required']) !!}
 			{!! BootForm::email('email', 'E-Mail', $last ? $last->email : $user->email, ['required' => 'required']) !!}
+            {!! BootForm::text('floor', 'Piano', $last ? $last->floor : '') !!}
+            {!! BootForm::checkbox('elevator', 'Ascensore', $last ? $last->elevator : false) !!}
 			{!! BootForm::textarea('shipping_notes', 'Note') !!}
 			{!! BootForm::checkbox('recoverable', 'Recupera Oggetto', 'recoverable', false, ['help_text' => 'Bla Bla Bla Cooperativa Triciclo Bla Bla Bla']) !!}
 
