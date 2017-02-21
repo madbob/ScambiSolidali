@@ -16,6 +16,15 @@ class UsersTableSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
+            'name' => 'Amministratore',
+            'surname' => 'Trasporti',
+            'email' => 'info@carrier.it',
+            'phone' => '348123456789',
+            'password' => bcrypt('cippalippa'),
+            'role' => 'carrier'
+        ]);
+
+        DB::table('users')->insert([
             'name' => 'Mario',
             'surname' => 'Rossi',
             'email' => 'mario@rossi.it',

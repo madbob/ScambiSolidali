@@ -24,6 +24,7 @@ class CreateDonationsTable extends Migration
             $table->string('email')->default('');
             $table->text('shipping_notes');
             $table->boolean('recoverable')->default(false);
+            $table->boolean('really_recoverable')->default(false);
             $table->integer('call_id')->nullable()->default(null);
 
             /*

@@ -27,7 +27,7 @@ class UserController extends Controller
         }
 
         $institutes = Institute::orderBy('name', 'asc')->get();
-        $operators = User::whereHas('institutes')->orderBy('surname', 'asc')->get();
+        $operators = User::where('role', 'operator')->orderBy('surname', 'asc')->get();
         $users = User::whereDoesntHave('institutes')->orderBy('surname', 'asc')->get();
 
         return view('user.list', ['institutes' => $institutes, 'operators' => $operators, 'users' => $users]);
@@ -47,7 +47,7 @@ class UserController extends Controller
         $user->surname = $request->input('surname');
         $user->phone = $request->input('phone');
         $user->email = $request->input('email');
-        $user->role = $request->has('admin') ? 'admin' : 'user';
+        $user->role = $request->input('role');
 
         $password = str_random(10);
         $user->password = bcrypt($password);
@@ -90,13 +90,15 @@ class UserController extends Controller
         $user->surname = $request->input('surname');
         $user->phone = $request->input('phone');
         $user->email = $request->input('email');
-        $user->role = $request->has('admin') ? 'admin' : 'user';
+        $user->role = $request->input('role');
 
         $password = $request->input('password');
         if ($password != '')
             $user->password = bcrypt($password);
 
         $user->save();
+
+        $user->institutes()->sync($request->input('institutes'));
 
         Session::flash('message', 'Utente salvato');
         return redirect(url('utente'));

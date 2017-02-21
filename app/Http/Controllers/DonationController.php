@@ -22,11 +22,14 @@ class DonationController extends Controller
     public function index(Request $request)
     {
         $user = Auth::user();
-        if ($user->role != 'admin' && $user->role != 'operator') {
+        if ($user->role != 'admin' && $user->role != 'operator' && $user->role != 'carrier') {
             return redirect(url('/'));
         }
 
-        $data['donations'] = Donation::whereIn('status', ['pending'])->orderBy('created_at', 'desc')->paginate(50);
+        $query = Donation::whereIn('status', ['pending'])->orderBy('created_at', 'desc');
+        if ($user->role == 'carrier')
+            $query->where('recoverable', true);
+        $data['donations'] = $query->paginate(50);
 
         if ($request->has('show'))
             $data['current_show'] = $request->input('show');
@@ -103,7 +106,7 @@ class DonationController extends Controller
     public function show($id)
     {
         $user = Auth::user();
-        if ($user->role != 'admin' && $user->role != 'operator') {
+        if ($user->role != 'admin' && $user->role != 'operator' && $user->role != 'carrier') {
             return redirect(url('/'));
         }
 
@@ -196,5 +199,19 @@ class DonationController extends Controller
         }
 
         return redirect(url('donazione'));
+    }
+
+    public function postRecoverable(Request $request, $id)
+    {
+        $user = Auth::user();
+        if ($user->role != 'carrier') {
+            return redirect(url('/'));
+        }
+
+        $status = ($request->input('status') == 'true');
+        $donation = Donation::find($id);
+        $donation->really_recoverable = $status;
+        $donation->save();
+        return 'ok';
     }
 }

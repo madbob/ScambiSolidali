@@ -52,7 +52,7 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
-                                    @if(Auth::user()->role == 'admin' || Auth::user()->role == 'operator')
+                                    @if(Auth::user()->role == 'admin' || Auth::user()->role == 'operator' || Auth::user()->role == 'carrier')
                                         <li><a href="{{ url('/donazione') }}">Amministrazione</a></li>
                                     @endif
                                     <li>

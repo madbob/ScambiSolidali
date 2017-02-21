@@ -15,7 +15,12 @@
                             {!! BootForm::text('phone', 'Telefono') !!}
                             {!! BootForm::email() !!}
                             {!! BootForm::password('password', 'Password', ['help_text' => 'Lascia vuoto per non modificare la password']) !!}
-                            {!! BootForm::checkbox('role', 'Amministratore', 'admin', $user->role == 'admin') !!}
+                            {!! BootForm::radios('role', 'Ruolo', [
+                                'admin' => 'Amministratore',
+                                'operator' => 'Operatore',
+                                'carrier' => 'Trasporto',
+                                'user' => 'Utente'
+                            ]) !!}
 
                             <?php
                                 $institutes = [];
@@ -24,9 +29,10 @@
                             ?>
 
                             @if(!empty($institutes))
-                                {!! BootForm::checkboxes('institutes', 'Affiliazioni', $institutes, $user->institutes->map(function($item, $key) {
-                                    return $item->id;
-                                })) !!}
+                                {!! BootForm::checkboxes('institutes[]', 'Affiliazioni', $institutes, $user->institutes->reduce(function($carry, $item) {
+                                    $carry[] = $item->id;
+                                    return $carry;
+                                }, [])) !!}
                             @endif
 
                             {!! BootForm::submit('Salva') !!}

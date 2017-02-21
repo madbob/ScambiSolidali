@@ -25,7 +25,12 @@
 						{!! BootForm::text('phone', 'Telefono', '', ['required' => 'required']) !!}
 						{!! BootForm::email('email', 'E-Mail', '', ['required' => 'required']) !!}
 						{!! BootForm::textarea('notes', 'Note') !!}
-                        {!! BootForm::checkbox('role', 'Amministratore', 'admin', false) !!}
+                        {!! BootForm::radios('role', 'Ruolo', [
+                            'admin' => 'Amministratore',
+                            'operator' => 'Operatore',
+                            'carrier' => 'Trasporto',
+                            'user' => 'Utente'
+                        ], 'user') !!}
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Annulla</button>

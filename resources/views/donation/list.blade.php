@@ -23,8 +23,7 @@
                         <th>Categoria</th>
                         <th>Oggetto</th>
                         <th>Utente</th>
-                        <th>Ritiro</th>
-
+                        <th>Recuperabile</th>
                         <th>Azioni</th>
                     </tr>
                 </thead>
@@ -37,9 +36,21 @@
 								{{ $donation->user->printableName() }}
 								@include('user.rating', ['user' => $donation->user])
                             </td>
-                            <td>{{ $donation->printableAddress() }}</td>
                             <td>
-                                <button class="btn btn-default show-details" data-endpoint="donazione" data-item-id="{{ $donation->id }}"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                @if($donation->recoverable)
+                                    @if($donation->really_recoverable)
+                                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                    @else
+                                        <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+                                    @endif
+                                @else
+                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                @endif
+                            </td>
+                            <td>
+                                <button class="btn btn-default show-details" data-endpoint="donazione" data-item-id="{{ $donation->id }}">
+                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                </button>
                             </td>
                         </tr>
 					@endforeach
