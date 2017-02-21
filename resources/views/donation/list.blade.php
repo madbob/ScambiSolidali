@@ -4,6 +4,10 @@
 
 @section('acontent')
 
+@if($current_show != -1)
+    <input type="hidden" name="trigger-show-details" data-endpoint="donazione" data-item-id="{{ $current_show }}">
+@endif
+
 <div class="row">
     <div class="col-md-12">
         @if($donations->isEmpty())

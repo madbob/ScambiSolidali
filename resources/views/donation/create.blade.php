@@ -18,7 +18,7 @@
                 <br/>
                 <div class="alert alert-info">
                     <input type="hidden" name="call_id" value="{{ $call->id }}">
-                    <p>Stai rispondendo all'appello "{{ $call->title }}" di {{ $call->printableDate() }}</p>
+                    <p>Stai rispondendo all'appello "{{ $call->title }}" di {{ printableDate($call->created_at) }}</p>
                 </div>
                 <br/>
             @endif

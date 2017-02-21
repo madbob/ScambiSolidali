@@ -54,7 +54,6 @@ class ArchiveController extends Controller
             case 'pending':
                 $donation->status = 'pending';
                 $donation->rating = 0;
-                $donation->availability = '[]';
                 $donation->save();
                 $donation->receivers()->updateExistingPivot($current_receiver->id, ['status' => 'voided']);
                 break;

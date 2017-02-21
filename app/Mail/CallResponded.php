@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class DonationAssigned extends Mailable
+class CallReponsed extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -20,6 +20,6 @@ class DonationAssigned extends Mailable
 
     public function build()
     {
-        return $this->view('mails.donationassigned')->with(['donation' => $this->donation]);
+        return $this->view('mails.callresponded')->with(['donation' => $this->donation]);
     }
 }

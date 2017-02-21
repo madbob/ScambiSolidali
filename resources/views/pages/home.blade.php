@@ -20,7 +20,7 @@
             <ul class="list-group">
                 @foreach($calls as $call)
                     <li class="list-group-item">
-                        <span class="badge">{{ $call->printableDate() }}</span>
+                        <span class="badge">{{ printableDate($call->created_at) }}</span>
                         <h4 class="list-group-item-heading">{{ $call->title }}</h4>
                         <p>{!! nl2br($call->body) !!}</p>
                         <a class="btn btn-default pull-right" href="{{ url('donazione/create?call=' . $call->id) }}">Rispondi all'appello!</a>

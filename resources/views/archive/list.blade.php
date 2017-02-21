@@ -14,24 +14,6 @@
                             @include('donation.info', ['donation' => $donation])
                         </form>
                     </div>
-                    <div class="col-md-4">
-                        <?php $availabilities = json_decode($donation->availability) ?>
-                        @if(empty($availabilities))
-                            <div class="alert alert-warning">
-                                <p>Non sono ancora state fornite disponibilità</p>
-                            </div>
-                        @else
-                            <p>Disponibilità per il ritiro:</p>
-                            <ul>
-                                @foreach($availabilities as $a)
-                                    <li>{{ sprintf('%d/%d alle %s', $a->day, $a->month, join(' o alle ', $a->hours)) }}</li>
-                                @endforeach
-                            </ul>
-                            <p>
-                                Si raccomanda di contattare il donatore per fissare un appuntamento.
-                            </p>
-                        @endif
-                    </div>
                     <div class="col-md-4 text-right">
                         <form method="POST" action="{{ url('archivio/' . $donation->id) }}">
                             {!! csrf_field() !!}

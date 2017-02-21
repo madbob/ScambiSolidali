@@ -36,14 +36,19 @@ class CallController extends Controller
 
         $this->validate($request, [
             'title' => 'required|max:255',
-            'body' => 'required',
+            'who' => 'required',
+            'what' => 'required',
+            'whom' => 'required',
             'status' => 'required',
         ]);
 
         $call = new Call();
         $call->user_id = $user->id;
         $call->title = $request->input('title');
-        $call->body = $request->input('body');
+        $call->who = $request->input('who');
+        $call->what = $request->input('what');
+        $call->whom = $request->input('whom');
+        $call->when = decodeDate($request->input('when'));
         $call->status = $request->input('status');
         $call->save();
 
@@ -71,13 +76,18 @@ class CallController extends Controller
 
         $this->validate($request, [
             'title' => 'required|max:255',
-            'body' => 'required',
+            'who' => 'required',
+            'what' => 'required',
+            'whom' => 'required',
             'status' => 'required',
         ]);
 
         $call = Call::find($id);
         $call->title = $request->input('title');
-        $call->body = $request->input('body');
+        $call->who = $request->input('who');
+        $call->what = $request->input('what');
+        $call->whom = $request->input('whom');
+        $call->when = decodeDate($request->input('when'));
         $call->status = $request->input('status');
         $call->save();
 

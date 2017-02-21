@@ -11,7 +11,10 @@
                     <div class="col-md-12">
                         {!! BootForm::horizontal(['model' => $call, 'store' => 'appello.store', 'update' => 'appello.update']) !!}
                             {!! BootForm::text('title', 'Titolo') !!}
-                            {!! BootForm::textarea('body', 'Testo') !!}
+                            {!! BootForm::textarea('who', 'Chi siamo?') !!}
+                            {!! BootForm::textarea('what', 'Cosa vogliamo?') !!}
+                            {!! BootForm::textarea('whom', 'Per chi?') !!}
+                            {!! BootForm::text('when', 'Per quando?', printableDate($call->when), ['class' => 'date']) !!}
                             {!! BootForm::radios('status', 'Stato', [
                                 'draft' => 'Bozza (non visibile pubblicamente)',
                                 'open' => 'Pubblicato',

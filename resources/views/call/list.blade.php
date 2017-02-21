@@ -10,7 +10,7 @@
 	</div>
 
 	<div class="modal fade" id="new-call" tabindex="-1" role="dialog">
-		<div class="modal-dialog" role="document">
+		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -20,7 +20,10 @@
 				{!! BootForm::horizontal(['action' => 'CallController@store']) !!}
 					<div class="modal-body">
 						{!! BootForm::text('title', 'Titolo', '', ['required' => 'required']) !!}
-						{!! BootForm::textarea('body', 'Testo', '', ['required' => 'required']) !!}
+                        {!! BootForm::textarea('who', 'Chi siamo?') !!}
+                        {!! BootForm::textarea('what', 'Cosa vogliamo?') !!}
+                        {!! BootForm::textarea('whom', 'Per chi?') !!}
+                        {!! BootForm::text('when', 'Per quando?', '', ['class' => 'date']) !!}
                         {!! BootForm::radios('status', 'Stato', [
                             'draft' => 'Bozza (non visibile pubblicamente)',
                             'open' => 'Pubblicato',
@@ -45,6 +48,7 @@
 					<tr>
 						<th>Titolo</th>
 						<th>Data Creazione</th>
+                        <th>Data Chiusura</th>
 						<th>Stato</th>
                         <th>Azioni</th>
 					</tr>
@@ -53,7 +57,8 @@
 					@foreach($calls as $call)
 						<tr>
 							<td>{{ $call->title }}</td>
-							<td>{{ $call->printableDate() }}</td>
+							<td>{{ printableDate($call->created_at) }}</td>
+                            <td>{{ printableDate($call->when) }}</td>
 							<td>
                                 @if($call->status == 'draft')
                                     <span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span>

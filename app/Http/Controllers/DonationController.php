@@ -5,10 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use Session;
-use Uuid;
 use Mail;
 
-use App\Mail\DonationAssigned;
+use App\Mail\CallReponsed;
 use App\Donation;
 use App\Receiver;
 use App\Call;
@@ -20,16 +19,21 @@ class DonationController extends Controller
         $this->middleware('auth', ['except' => ['edit', 'update']]);
     }
 
-    public function index()
+    public function index(Request $request)
     {
         $user = Auth::user();
         if ($user->role != 'admin' && $user->role != 'operator') {
             return redirect(url('/'));
         }
 
-        $donations = Donation::whereIn('status', ['pending'])->orderBy('created_at', 'desc')->paginate(50);
+        $data['donations'] = Donation::whereIn('status', ['pending'])->orderBy('created_at', 'desc')->paginate(50);
 
-        return view('donation.list', ['donations' => $donations]);
+        if ($request->has('show'))
+            $data['current_show'] = $request->input('show');
+        else
+            $data['current_show'] = -1;
+
+        return view('donation.list', $data);
     }
 
     public function create(Request $request)
@@ -60,7 +64,6 @@ class DonationController extends Controller
 
         $donation = new Donation();
         $donation->user_id = Auth::user()->id;
-        $donation->uuid = Uuid::generate();
         $donation->title = $request->input('title');
         $donation->category_id = $request->input('category_id');
         $donation->description = $request->input('description');
@@ -68,7 +71,6 @@ class DonationController extends Controller
         $donation->surname = $request->input('surname');
         $donation->address = $request->input('address');
         $donation->call_id = $request->input('call_id', null);
-        $donation->availability = '[]';
         $donation->phone = $request->input('phone');
         $donation->email = $request->input('email');
         $donation->shipping_notes = $request->input('shipping_notes');
@@ -90,6 +92,11 @@ class DonationController extends Controller
             }
         }
 
+        if ($donation->call_id != null) {
+            $call = Call::find($donation->call_id);
+            Mail::to($call->user->email)->send(new CallReponsed($donation));
+        }
+
         return view('donation.thanks');
     }
 
@@ -102,58 +109,6 @@ class DonationController extends Controller
 
         $donation = Donation::find($id);
         return view('donation.modal', ['donation' => $donation]);
-    }
-
-    public function edit(Request $request, $id)
-    {
-        $donation = Donation::where('uuid', $id)->first();
-        if ($donation == null || $donation->status != 'assigned')
-            return redirect(url('/'));
-
-        return view('donation.doodle', ['donation' => $donation]);
-    }
-
-    public function update(Request $request, $id)
-    {
-        $donation = Donation::find($id);
-        $array = [];
-
-        $availabilities = $request->input('availability');
-        if (!is_array($availabilities)) {
-            Session::flash('message', 'Devi selezionare almeno una data ed un orario.');
-            return view('donation.doodle', ['donation' => $donation]);
-        }
-
-        /*
-            TODO: ordinare le disponibilità per data
-        */
-
-        foreach($availabilities as $a) {
-            list($day, $month, $hour) = explode(' ', $a);
-            $key = sprintf('%s.%s', $day, $month);
-            if (isset($key, $array) == false)
-                $array[$key] = [];
-            $array[$key][] = $hour;
-        }
-
-        $final = [];
-        foreach($array as $date => $hours) {
-            list($day, $month) = explode('.', $date);
-            $final[] = (object)[
-                'day' => $day,
-                'month' => $month,
-                'hours' => $hours
-            ];
-        }
-
-        $donation->availability = json_encode($final);
-        $donation->save();
-
-        /*
-            TODO: mandare mail a operatore che ha assegnato la donazione
-        */
-
-        return view('donation.availability_thanks');
     }
 
     public function destroy(Request $request, $id)
@@ -236,8 +191,6 @@ class DonationController extends Controller
             $donation->status = 'assigned';
             $donation->rating = 5;
             $donation->save();
-
-            Mail::to($donation->user)->send(new DonationAssigned($donation));
 
             Session::flash('message', 'Donazione assegnata. È stata inviata una mail al donatore per avere informazioni sul ritiro, trovi i dettagli nella pagina "Archivio"');
         }
