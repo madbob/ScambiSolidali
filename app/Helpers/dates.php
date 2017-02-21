@@ -1,7 +1,5 @@
 <?php
 
-use Date;
-
 function decodeDate($date)
 {
     if ($date == '') {

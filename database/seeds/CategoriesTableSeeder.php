@@ -13,6 +13,11 @@ class CategoriesTableSeeder extends Seeder
 		$master->parent_id = 0;
 		$master->save();
 
+        $cat = new Category();
+		$cat->name = 'Arredamento';
+		$cat->parent_id = $master->id;
+		$cat->save();
+
 		$cat = new Category();
 		$cat->name = 'Elettrodomestici';
 		$cat->parent_id = $master->id;
@@ -45,11 +50,6 @@ class CategoriesTableSeeder extends Seeder
 
 		$cat = new Category();
 		$cat->name = 'Biciclette';
-		$cat->parent_id = $master->id;
-		$cat->save();
-
-		$cat = new Category();
-		$cat->name = 'Animali';
 		$cat->parent_id = $master->id;
 		$cat->save();
 

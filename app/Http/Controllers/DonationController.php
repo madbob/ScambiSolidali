@@ -78,6 +78,7 @@ class DonationController extends Controller
         $donation->floor = $request->input('floor');
         $donation->elevator = $request->has('elevator');
         $donation->shipping_notes = $request->input('shipping_notes');
+        $donation->autoship = $request->has('autoship');
         $donation->status = 'pending';
         $donation->recoverable = $request->has('recoverable');
         $donation->save();

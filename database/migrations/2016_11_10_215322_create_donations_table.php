@@ -25,6 +25,7 @@ class CreateDonationsTable extends Migration
             $table->string('floor')->default('');
             $table->boolean('elevator')->default(false);
             $table->text('shipping_notes');
+            $table->boolean('autoship')->default(false);
             $table->boolean('recoverable')->default(false);
             $table->boolean('really_recoverable')->default(false);
             $table->integer('call_id')->nullable()->default(null);

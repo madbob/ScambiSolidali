@@ -37,12 +37,6 @@
 			{!! BootForm::text('title', 'Oggetto', '', ['required' => 'required']) !!}
 			{!! BootForm::textarea('description', 'Descrizione', '', ['required' => 'required']) !!}
 
-            <div class="form-group">
-                <div class="col-sm-10 col-sm-offset-2 col-md-9 col-md-offset-3">
-                    È richiesta almeno una foto, opzionalmente puoi caricarne altre.
-                </div>
-            </div>
-
             <div class="form-group ">
                 <label for="photo" class="control-label col-sm-2 col-md-3">Foto</label>
                 <div class="col-sm-10 col-md-9 many-rows">
@@ -53,6 +47,9 @@
                     </div>
 
                     <button class="btn btn-info add-many-rows"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Aggiungi</button>
+                    <span class="help-block">
+                        È richiesta almeno una foto, opzionalmente puoi caricarne altre.
+                    </span>
                 </div>
             </div>
 
@@ -70,6 +67,7 @@
             {!! BootForm::text('floor', 'Piano', $last ? $last->floor : '') !!}
             {!! BootForm::checkbox('elevator', 'Ascensore', $last ? $last->elevator : false) !!}
 			{!! BootForm::textarea('shipping_notes', 'Note') !!}
+            {!! BootForm::checkbox('autoship', 'Lo posso trasportare io', 'autoship', false, ['help_text' => 'Bla Bla Bla se puoi consegnarlo tu Bla Bla Bla']) !!}
 			{!! BootForm::checkbox('recoverable', 'Recupera Oggetto', 'recoverable', false, ['help_text' => 'Bla Bla Bla Cooperativa Triciclo Bla Bla Bla']) !!}
 
 			{!! BootForm::submit('Invia Segnalazione') !!}

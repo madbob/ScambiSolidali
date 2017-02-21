@@ -13,6 +13,12 @@
 
 <hr/>
 
+@if($donation->autoship)
+    <div class="alert alert-info">
+        Il donatore è disponibile ad effettuare la consegna.
+    </div>
+@endif
+
 @if(!empty($donation->shipping_notes))
     <p class="form-control-static">{!! nl2br($donation->shipping_notes) !!}</p>
 @endif
