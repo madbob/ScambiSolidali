@@ -21,8 +21,20 @@
                 @foreach($calls as $call)
                     <li class="list-group-item">
                         <span class="badge">{{ printableDate($call->created_at) }}</span>
-                        <h4 class="list-group-item-heading">{{ $call->title }}</h4>
-                        <p>{!! nl2br($call->body) !!}</p>
+                        <h3 class="list-group-item-heading">{{ $call->title }}</h3>
+
+                        <h4>Chi siamo?</h4>
+                        <p>{!! nl2br($call->who) !!}</p>
+
+                        <h4>Cosa cerchiamo?</h4>
+                        <p>{!! nl2br($call->what) !!}</p>
+
+                        <h4>Per chi è?</h4>
+                        <p>{!! nl2br($call->whom) !!}</p>
+
+                        <h4>Entro quando?</h4>
+                        <p>{!! nl2br(printableDate($call->when)) !!}</p>
+
                         <a class="btn btn-default pull-right" href="{{ url('donazione/create?call=' . $call->id) }}">Rispondi all'appello!</a>
                         <div class="clearfix"></div>
                     </li>

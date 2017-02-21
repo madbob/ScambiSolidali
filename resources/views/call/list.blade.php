@@ -43,38 +43,46 @@
 
 	<div class="row">
 		<div class="col-md-12">
-			<table class="table">
-				<thead>
-					<tr>
-						<th>Titolo</th>
-						<th>Data Creazione</th>
-                        <th>Data Chiusura</th>
-						<th>Stato</th>
-                        <th>Azioni</th>
-					</tr>
-				</thead>
-				<tbody>
-					@foreach($calls as $call)
-						<tr>
-							<td>{{ $call->title }}</td>
-							<td>{{ printableDate($call->created_at) }}</td>
-                            <td>{{ printableDate($call->when) }}</td>
-							<td>
-                                @if($call->status == 'draft')
-                                    <span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span>
-                                @elseif($call->status == 'open')
-                                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                                @elseif($call->status == 'archived')
-                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                                @endif
-                            </td>
-                            <td><button class="btn btn-default show-details" data-endpoint="appello" data-item-id="{{ $call->id }}"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button></td>
-						</tr>
-					@endforeach
-				</tbody>
-			</table>
+            @if($calls->isEmpty())
+                <div class="alert alert-info">
+                    <p>
+                        Non ci sono appelli.
+                    </p>
+                </div>
+            @else
+    			<table class="table">
+    				<thead>
+    					<tr>
+    						<th>Titolo</th>
+    						<th>Data Creazione</th>
+                            <th>Data Chiusura</th>
+    						<th>Stato</th>
+                            <th>Azioni</th>
+    					</tr>
+    				</thead>
+    				<tbody>
+    					@foreach($calls as $call)
+    						<tr>
+    							<td>{{ $call->title }}</td>
+    							<td>{{ printableDate($call->created_at) }}</td>
+                                <td>{{ printableDate($call->when) }}</td>
+    							<td>
+                                    @if($call->status == 'draft')
+                                        <span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span>
+                                    @elseif($call->status == 'open')
+                                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                    @elseif($call->status == 'archived')
+                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                    @endif
+                                </td>
+                                <td><button class="btn btn-default show-details" data-endpoint="appello" data-item-id="{{ $call->id }}"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button></td>
+    						</tr>
+    					@endforeach
+    				</tbody>
+    			</table>
 
-			{{ $calls->links() }}
+    			{{ $calls->links() }}
+            @endif
 		</div>
 	</div>
 @endsection

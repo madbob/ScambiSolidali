@@ -39,30 +39,38 @@
 
 	<div class="row">
 		<div class="col-md-12">
-			<table class="table">
-				<thead>
-					<tr>
-						<th>Nome</th>
-						<th>Cognome</th>
-						<th>Telefono</th>
-						<th>E-Mail</th>
-                        <th>Azioni</th>
-					</tr>
-				</thead>
-				<tbody>
-					@foreach($users as $user)
-						<tr>
-							<td>{{ $user->name }}</td>
-							<td>{{ $user->surname }}</td>
-							<td>{{ $user->phone }}</td>
-							<td>{{ $user->email }}</td>
-                            <td><button class="btn btn-default show-details" data-endpoint="fruitore" data-item-id="{{ $user->id }}"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button></td>
-						</tr>
-					@endforeach
-				</tbody>
-			</table>
+            @if($users->isEmpty())
+                <div class="alert alert-info">
+                    <p>
+                        Non ci sono fruitori registrati.
+                    </p>
+                </div>
+            @else
+    			<table class="table">
+    				<thead>
+    					<tr>
+    						<th>Nome</th>
+    						<th>Cognome</th>
+    						<th>Telefono</th>
+    						<th>E-Mail</th>
+                            <th>Azioni</th>
+    					</tr>
+    				</thead>
+    				<tbody>
+    					@foreach($users as $user)
+    						<tr>
+    							<td>{{ $user->name }}</td>
+    							<td>{{ $user->surname }}</td>
+    							<td>{{ $user->phone }}</td>
+    							<td>{{ $user->email }}</td>
+                                <td><button class="btn btn-default show-details" data-endpoint="fruitore" data-item-id="{{ $user->id }}"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button></td>
+    						</tr>
+    					@endforeach
+    				</tbody>
+    			</table>
 
-			{{ $users->links() }}
+    			{{ $users->links() }}
+            @endif
 		</div>
 	</div>
 @endsection
