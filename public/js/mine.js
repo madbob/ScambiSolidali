@@ -63,11 +63,37 @@ $(document).ready(function() {
         var container = $(this).parents('.many-rows');
         var row = container.find('.single-row').first().clone();
         row.find('input').val('');
+        row.find('img').attr('src', '#').hide();
         row.find('select option').removeAttr('selected');
-        container.find('.add-many-rows').before(row);
+        container.find('.add-many-rows').closest('div').before(row);
         manyRowsAddDeleteButtons(container);
         return false;
+
+    }).on('change', '.filestyle', function() {
+        var input = this;
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var img = new Image();
+                img.onload = function() {
+                    var ratio = 200 / img.width;
+                    var canvas = $("<canvas>")[0];
+                    canvas.width = img.width * ratio;
+                    canvas.height = img.height * ratio;
+                    var ctx = canvas.getContext("2d");
+                    ctx.drawImage(img, 0,0,canvas.width, canvas.height);
+                    $(input).siblings('img').show().attr('src', canvas.toDataURL());
+                }
+
+                img.src = e.target.result;
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
     });
+
+    $('.many-rows img').hide();
 
     $('.new-donation-form form input').keydown(function(event) {
         if(event.keyCode == 13) {

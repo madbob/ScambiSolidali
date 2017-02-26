@@ -6,3 +6,15 @@
     width: 100%;
     height: 300px;
 }
+
+.single-row {
+    float: left;
+    width: 100%;
+    display: block;
+    clear: both;
+    margin-bottom: 10px;
+}
+
+.single-row .btn-danger {
+    float: left;
+}
