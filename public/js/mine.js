@@ -1,20 +1,34 @@
 $(document).ready(function() {
+    function commonInit() {
+        $('.many-rows').each(function() {
+            manyRowsAddDeleteButtons($(this));
+            $('img[src="#"]', this).hide();
+        });
+
+        $('.chosen-select', d).chosen({width: "100%"});
+    }
+
     function dynamicModal(endpoint, id) {
-        $.ajax('/' + endpoint + '/' + id, {
+        if (endpoint.indexOf('{id}') != -1)
+            endpoint = '/' + endpoint.replace('{id}', id);
+        else
+            endpoint = '/' + endpoint + '/' + id;
+
+        $.ajax(endpoint, {
             method: 'GET',
             dataType: 'HTML',
             success: function(data) {
                 var d = $(data);
                 $('body').append(d);
                 d.modal('show');
-                $('.chosen-select', d).chosen({width: "100%"});
+                commonInit();
             }
         });
     }
 
     function manyRowsAddDeleteButtons(node) {
-        if (node.find('.delete-many-rows').length == 0) {
-            var fields = node.find('.single-row');
+        if (node.find('.single-row:not(.static-row) .delete-many-rows').length == 0) {
+            var fields = node.find('.single-row:not(.static-row)');
             if (fields.length > 1) {
                 fields.each(function() {
                     var button = '<button class="btn btn-danger delete-many-rows"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>';
@@ -54,14 +68,14 @@ $(document).ready(function() {
         e.preventDefault();
         var container = $(this).closest('.many-rows');
         $(this).closest('.single-row').remove();
-        if (container.find('.single-row').length <= 1)
-            container.find('.delete-many-rows').remove();
+        if (container.find('.single-row:not(.static-row)').length <= 1)
+            container.find('.single-row:not(.static-row) .delete-many-rows').remove();
         return false;
 
     }).on('click', '.many-rows .add-many-rows', function(e) {
         e.preventDefault();
         var container = $(this).parents('.many-rows');
-        var row = container.find('.single-row').first().clone();
+        var row = container.find('.single-row:not(.static-row)').first().clone();
         row.find('input').val('');
         row.find('img').attr('src', '#').hide();
         row.find('select option').removeAttr('selected');
@@ -93,8 +107,6 @@ $(document).ready(function() {
         }
     });
 
-    $('.many-rows img').hide();
-
     $('.new-donation-form form input').keydown(function(event) {
         if(event.keyCode == 13) {
             event.preventDefault();
@@ -116,4 +128,6 @@ $(document).ready(function() {
             dynamicModal(endpoint, id);
         });
     }
+
+    commonInit();
 });

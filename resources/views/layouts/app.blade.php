@@ -52,9 +52,12 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+                                    <li><a href="{{ url('/donazione/mie') }}">Mie Donazioni</a></li>
+
                                     @if(Auth::user()->role == 'admin' || Auth::user()->role == 'operator' || Auth::user()->role == 'carrier')
                                         <li><a href="{{ url('/donazione') }}">Amministrazione</a></li>
                                     @endif
+
                                     <li>
                                         <a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                             Logout

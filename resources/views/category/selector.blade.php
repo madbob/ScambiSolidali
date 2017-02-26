@@ -12,7 +12,7 @@
 	@foreach($cat->children as $sub)
 		<div class="radio">
 			<label>
-				<input type="radio" name="category_id" value="{{ $sub->id }}">
+				<input type="radio" name="category_id" value="{{ $sub->id }}" {{ (isset($donation) && $donation->category_id == $sub->id) ? 'checked' : '' }}>
 				{{ $sub->name }}
 			</label>
 		</div>

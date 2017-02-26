@@ -11,6 +11,7 @@
 
             <p>
                 <a class="btn btn-default" href="{{ url('/') }}">Torna alla homepage</a>
+                <a class="btn btn-default" href="{{ url('donazione/mie') }}">Consulta le tue Donazioni</a>
             </p>
         </div>
     </div>

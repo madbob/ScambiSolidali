@@ -45,6 +45,11 @@ class Donation extends Model
         return storage_path() . '/app/';
     }
 
+    public function imageUrl($index)
+    {
+        return url('donazione/image/' . $this->id . '/' . $index . '?d=' . $this->updated_at);
+    }
+
 	public function printableAddress()
 	{
 		return sprintf('%s %s, %s', $this->name, $this->surname, $this->address);

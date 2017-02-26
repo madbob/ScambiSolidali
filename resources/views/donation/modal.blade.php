@@ -11,7 +11,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         @for($i = 1; $i <= $donation->imagesNum(); $i++)
-                            <img src="{{ url('donazione/image/' . $donation->id . '/' . $i) }}" class="img-responsive">
+                            <img src="{{ $donation->imageUrl($i) }}" class="img-responsive">
                         @endfor
                     </div>
                     <div class="col-md-6">

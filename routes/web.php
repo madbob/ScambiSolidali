@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Route::get('/home', 'CommonController@home');
 Route::get('/donazione/image/{id}/{index}', 'DonationController@getImage');
+Route::get('/donazione/mie', 'DonationController@myIndex');
 Route::post('/donazione/assegna/{id}', 'DonationController@postAssign');
 Route::post('/donazione/prenota/{id}', 'DonationController@postBook');
 Route::post('/donazione/recuperabile/{id}', 'DonationController@postRecoverable');

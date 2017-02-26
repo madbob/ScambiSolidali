@@ -39,6 +39,20 @@ class DonationController extends Controller
         return view('donation.list', $data);
     }
 
+    public function myIndex(Request $request)
+    {
+        $user = Auth::user();
+
+        $data['donations'] = Donation::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
+
+        if ($request->has('show'))
+            $data['current_show'] = $request->input('show');
+        else
+            $data['current_show'] = -1;
+
+        return view('donation.mylist', $data);
+    }
+
     public function create(Request $request)
     {
         $user = Auth::user();
@@ -95,6 +109,75 @@ class DonationController extends Controller
         }
 
         return view('donation.thanks');
+    }
+
+    public function edit(Request $request, $id)
+    {
+        $user = Auth::user();
+        $donation = Donation::find($id);
+
+        if ($donation->user_id != $user->id)
+            return redirect(url('/'));
+
+        if ($donation->status != 'pending')
+            return redirect(url('/'));
+
+        return view('donation.editmodal', ['donation' => $donation]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $user = Auth::user();
+        $donation = Donation::find($id);
+
+        if ($donation->user_id != $user->id)
+            return redirect(url('/'));
+
+        if ($donation->status != 'pending')
+            return redirect(url('/'));
+
+        $donation->title = $request->input('title');
+        $donation->category_id = $request->input('category_id');
+        $donation->description = $request->input('description');
+        $donation->name = $request->input('name');
+        $donation->surname = $request->input('surname');
+        $donation->address = $request->input('address');
+        $donation->phone = $request->input('phone');
+        $donation->email = $request->input('email');
+        $donation->floor = $request->input('floor');
+        $donation->elevator = $request->has('elevator');
+        $donation->shipping_notes = $request->input('shipping_notes');
+        $donation->autoship = $request->has('autoship');
+        $donation->recoverable = $request->has('recoverable');
+        $donation->save();
+
+        $kept_photos = [];
+        $keep = $request->input('keep_photo');
+        $tot = $donation->imagesNum();
+
+        for($i = 1, $index = 1; $i <= $tot; $i++) {
+            $path = sprintf("%s%s", Donation::photosPath(), $donation->id . '_' . $i);
+
+            if (array_search($i, $keep) === false)
+                unlink($path);
+            else
+                $kept_photos[$index++] = $path;
+        }
+
+        foreach($kept_photos as $index => $path) {
+            $new_path = sprintf("%s%s", Donation::photosPath(), $donation->id . '_' . $index);
+            rename($path, $new_path);
+        }
+
+        if (!empty($request->file('photo', null))) {
+            $index = $donation->imagesNum() + 1;
+            foreach ($request->file('photo') as $op) {
+                $op->move(Donation::photosPath(), $donation->id . '_' . $index);
+                $index++;
+            }
+        }
+
+        return redirect(url('donazione/mie'));
     }
 
     public function show($id)
