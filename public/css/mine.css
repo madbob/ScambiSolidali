@@ -1,3 +1,7 @@
+.navbar-brand {
+    float: none;
+}
+
 #mapid {
     width: 100%;
 }

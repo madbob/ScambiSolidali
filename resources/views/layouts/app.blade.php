@@ -33,7 +33,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        <img src="{{ url('images/logo.png') }}" alt="{{ config('app.name', 'Laravel') }}" class="img-responsive">
                     </a>
                 </div>
 
