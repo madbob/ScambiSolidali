@@ -1,4 +1,4 @@
-<div class="modal fade" id="call-{{ $call->id }}" tabindex="-1" role="dialog">
+<div class="modal fade" id="{{ $call ? 'call-' . $call->id : 'new-call' }}" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -8,24 +8,32 @@
 
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-md-12">
-                        {!! BootForm::horizontal(['model' => $call, 'store' => 'appello.store', 'update' => 'appello.update']) !!}
+                    <div class="col-md-12 primary-1">
+                        {!! BootForm::vertical(['model' => $call, 'store' => 'manca.store', 'update' => 'manca.update']) !!}
                             {!! BootForm::text('title', 'Titolo') !!}
                             {!! BootForm::textarea('who', 'Chi siamo?') !!}
                             {!! BootForm::textarea('what', 'Cosa vogliamo?') !!}
                             {!! BootForm::textarea('whom', 'Per chi?') !!}
-                            {!! BootForm::text('when', 'Per quando?', printableDate($call->when), ['class' => 'date']) !!}
+                            {!! BootForm::text('when', 'Per quando?', $call ? printableDate($call->when) : '', ['class' => 'date']) !!}
+
+                            @include('category.selector', ['orientation' => 'horizontal', 'selected' => $call ? $call->category_id : null])
+
                             {!! BootForm::radios('status', 'Stato', [
                                 'draft' => 'Bozza (non visibile pubblicamente)',
                                 'open' => 'Pubblicato',
                                 'archived' => 'Archiviato',
                             ]) !!}
-                            {!! BootForm::submit('Salva') !!}
+
+                            <div class="form-group">
+                                <div>
+                                    <button class="button" type="submit">
+                                        <span>Salva</span>
+                                    </button>
+                                </div>
+                            </div>
                         {!! BootForm::close() !!}
                     </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Chiudi</button>
+                </div>
             </div>
         </div>
     </div>

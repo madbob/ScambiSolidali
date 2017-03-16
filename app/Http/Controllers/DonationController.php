@@ -14,21 +14,14 @@ use App\Call;
 
 class DonationController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth', ['except' => ['edit', 'update']]);
-    }
-
     public function index(Request $request)
     {
         $user = Auth::user();
-        if ($user->role != 'admin' && $user->role != 'operator' && $user->role != 'carrier') {
-            return redirect(url('/'));
-        }
-
         $query = Donation::whereIn('status', ['pending'])->orderBy('created_at', 'desc');
-        if ($user->role == 'carrier')
+
+        if ($user && $user->role == 'carrier')
             $query->where('recoverable', true);
+
         $data['donations'] = $query->paginate(50);
 
         if ($request->has('show'))
@@ -56,6 +49,8 @@ class DonationController extends Controller
     public function create(Request $request)
     {
         $user = Auth::user();
+        if ($user == null)
+            return redirect(url('login'));
 
         if($request->has('call'))
             $call = Call::find($request->input('call'));

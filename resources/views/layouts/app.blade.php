@@ -43,39 +43,39 @@
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
-                        @if (Auth::guest())
-                            <li><a href="{{ url('/login') }}">Login</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+                        <li>
+                            @if (Auth::guest())
+                                <a href="{{ url('/register') }}">Registrati</a>
+                                <a href="{{ url('/login') }}">Login</a>
+                            @else
+                                <a href="{{ url('/donazione/mie') }}">Mie Donazioni</a>
+                                <a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
 
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a href="{{ url('/donazione/mie') }}">Mie Donazioni</a></li>
-
-                                    @if(Auth::user()->role == 'admin' || Auth::user()->role == 'operator' || Auth::user()->role == 'carrier')
-                                        <li><a href="{{ url('/donazione') }}">Amministrazione</a></li>
-                                    @endif
-
-                                    <li>
-                                        <a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endif
+                                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            @endif
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
 
 		<div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="main-menu">
+                        <li><a href="{{ url('progetto') }}">Progetto</a></li>
+                        <li><a href="{{ url('celo') }}">Celo</a></li>
+                        <li><a href="{{ url('manca') }}">Manca</a></li>
+                        <li><a href="{{ url('giocatori') }}">Giocatori</a></li>
+                        <li><a href="{{ url('numeri') }}">Numeri</a></li>
+                        <li><a href="{{ url('parlano-di-noi') }}">Parlano di Noi</a></li>
+                        <li><a href="{{ url('contatti') }}">Contatti</a></li>
+                    </ul>
+                </div>
+            </div>
+
             @if(Session::has('message'))
                 <div class="alert alert-info">{{ Session::get('message') }}</div>
             @endif

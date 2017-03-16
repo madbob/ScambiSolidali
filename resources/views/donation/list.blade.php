@@ -1,67 +1,67 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 
-@section('title', 'Ricerca Donazioni')
+@section('title', 'Celo')
 
-@section('acontent')
+@section('content')
+    <div class="manca">
+    	<div class="row">
+    		<div class="col-md-12">
+    			<a href="{{ url('celo/nuovo') }}" class="btn btn-default">Celo! (questo tasto è da mettere da qualche parte)</a>
+    		</div>
+    	</div>
 
-@if($current_show != -1)
-    <input type="hidden" name="trigger-show-details" data-endpoint="donazione" data-item-id="{{ $current_show }}">
-@endif
+    	<div class="row">
+    		<div class="col-md-2">
+                <h2>celo!</h2>
 
-<div class="row">
-    <div class="col-md-12">
-        @if($donations->isEmpty())
-            <div class="alert alert-info">
                 <p>
-                    Non ci sono donazioni in attesa.
+                    Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
                 </p>
-            </div>
-        @else
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Categoria</th>
-                        <th>Oggetto</th>
-                        <th>Utente</th>
-                        <th>Recuperabile</th>
-                        <th>Azioni</th>
-                    </tr>
-                </thead>
-                <tbody>
-					@foreach($donations as $donation)
-                        <tr data-donation-id="{{ $donation->id }}">
-                            <td class="category">{{ $donation->category->name }}</td>
-                            <td>{{ $donation->title }}</td>
-                            <td>
-								{{ $donation->user->printableName() }}
-								@include('user.rating', ['user' => $donation->user])
-                            </td>
-                            <td>
-                                @if($donation->recoverable)
-                                    @if($donation->really_recoverable)
-                                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                                    @else
-                                        <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
-                                    @endif
-                                @else
-                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                                @endif
-                            </td>
-                            <td>
-                                <button class="btn btn-default show-details" data-endpoint="donazione" data-item-id="{{ $donation->id }}">
-                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                                </button>
-                            </td>
-                        </tr>
-					@endforeach
-                </tbody>
-            </table>
 
-            <div class="text-center">
-                {{ $donations->links() }}
+                <ul class="categories-select primary-1">
+                    @foreach(App\Category::where('parent_id', 0)->orderBy('name', 'asc')->get() as $cat)
+                    	<li class="border-top">
+                            <span><a href="{{ url('manca/?filter=' . $cat->id) }}">{{ $cat->name }}</a></span>
+
+                            <ul>
+                            	@foreach($cat->children as $sub)
+                    				<li>
+                                        <span><a href="{{ url('manca/?filter=' . $sub->id) }}">{{ $sub->name }}</a></span>
+                                    </li>
+                            	@endforeach
+                            </ul>
+
+                        </li>
+                    @endforeach
+                </ul>
             </div>
-        @endif
+
+            <div class="col-md-9 col-md-offset-1 primary-2">
+                @if($donations->isEmpty())
+                    <div class="alert alert-info">
+                        <p>
+                            Non ci sono oggetti.
+                        </p>
+                    </div>
+                @else
+    				@foreach($donations as $donation)
+                        <div class="col-md-4 right-p">
+                            <div class="common-card">
+                                <div class="card-main image-frame" style="background-image: url('{{ $donation->imageUrl(1) }}')">
+                                    &nbsp;
+                                </div>
+                                <div class="card-footer vert-align">
+                                    <p>
+                                        <a href="{{ url('celo') }}">{{ $donation->title }}</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+    				@endforeach
+
+        			{{ $donations->links() }}
+                @endif
+    		</div>
+    	</div>
     </div>
-</div>
-
 @endsection

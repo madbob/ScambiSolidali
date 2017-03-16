@@ -11,6 +11,7 @@ class CreateCallsTable extends Migration
         Schema::create('calls', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
+            $table->integer('category_id');
             $table->string('title');
             $table->text('who');
             $table->text('what');

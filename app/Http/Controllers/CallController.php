@@ -8,23 +8,37 @@ use Auth;
 use Session;
 
 use App\Call;
+use App\Category;
 
 class CallController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    public function index()
+    public function index(Request $request)
     {
         $user = Auth::user();
-        if ($user->role != 'admin' && $user->role != 'operator') {
-            return redirect(url('/'));
+        $edit_enabled = ($user != null && ($user->role != 'admin' || $user->role != 'operator'));
+
+        $query = Call::orderBy('updated_at', 'desc');
+
+        if ($request->has('filter')) {
+            $category = Category::find($request->input('filter'));
+            if ($category->parent_id == 0) {
+                $subs = [];
+                foreach($category->children as $children)
+                    $subs[] = $children->id;
+
+                $query->whereIn('category_id', $subs);
+            }
+            else {
+                $query->where('category_id', $category->id);
+            }
         }
 
-        $calls = Call::orderBy('updated_at', 'desc')->paginate(50);
-        return view('call.list', ['calls' => $calls]);
+        if ($edit_enabled == false)
+            $query->where('status', 'open');
+
+        $calls = $query->paginate(50);
+
+        return view('call.list', ['calls' => $calls, 'edit_enabled' => $edit_enabled]);
     }
 
     public function store(Request $request)
@@ -45,6 +59,7 @@ class CallController extends Controller
         $call = new Call();
         $call->user_id = $user->id;
         $call->title = $request->input('title');
+        $call->category_id = $request->input('category_id');
         $call->who = $request->input('who');
         $call->what = $request->input('what');
         $call->whom = $request->input('whom');
@@ -53,7 +68,7 @@ class CallController extends Controller
         $call->save();
 
         Session::flash('message', 'Nuovo appello salvato');
-        return redirect(url('appello'));
+        return redirect(url('manca'));
     }
 
     public function show($id)
@@ -84,6 +99,7 @@ class CallController extends Controller
 
         $call = Call::find($id);
         $call->title = $request->input('title');
+        $call->category_id = $request->input('category_id');
         $call->who = $request->input('who');
         $call->what = $request->input('what');
         $call->whom = $request->input('whom');
@@ -92,6 +108,6 @@ class CallController extends Controller
         $call->save();
 
         Session::flash('message', 'Appello salvato');
-        return redirect(url('appello'));
+        return redirect(url('manca'));
     }
 }

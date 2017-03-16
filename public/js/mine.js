@@ -1,11 +1,6 @@
 $(document).ready(function() {
     function commonInit() {
-        $('.many-rows').each(function() {
-            manyRowsAddDeleteButtons($(this));
-            $('img[src="#"]', this).hide();
-        });
-
-        $('.chosen-select', d).chosen({width: "100%"});
+        $('.chosen-select').chosen({width: "100%"});
     }
 
     function dynamicModal(endpoint, id) {
@@ -24,18 +19,6 @@ $(document).ready(function() {
                 commonInit();
             }
         });
-    }
-
-    function manyRowsAddDeleteButtons(node) {
-        if (node.find('.single-row:not(.static-row) .delete-many-rows').length == 0) {
-            var fields = node.find('.single-row:not(.static-row)');
-            if (fields.length > 1) {
-                fields.each(function() {
-                    var button = '<button class="btn btn-danger delete-many-rows"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>';
-                    $(this).append(button);
-                });
-            }
-        }
     }
 
     $('input.date').datepicker({
@@ -64,26 +47,13 @@ $(document).ready(function() {
             }
         });
 
-    }).on('click', '.many-rows .delete-many-rows', function(e) {
-        e.preventDefault();
-        var container = $(this).closest('.many-rows');
-        $(this).closest('.single-row').remove();
-        if (container.find('.single-row:not(.static-row)').length <= 1)
-            container.find('.single-row:not(.static-row) .delete-many-rows').remove();
-        return false;
+    }).on('click', '.fileuploader', function(e) {
+        $(this).find('input:file').click();
 
-    }).on('click', '.many-rows .add-many-rows', function(e) {
-        e.preventDefault();
-        var container = $(this).parents('.many-rows');
-        var row = container.find('.single-row:not(.static-row)').first().clone();
-        row.find('input').val('');
-        row.find('img').attr('src', '#').hide();
-        row.find('select option').removeAttr('selected');
-        container.find('.add-many-rows').closest('div').before(row);
-        manyRowsAddDeleteButtons(container);
-        return false;
+    }).on('click', '.fileuploader input:file', function(e) {
+        e.stopPropagation();
 
-    }).on('change', '.filestyle', function() {
+    }).on('change', '.fileuploader input:file', function() {
         var input = this;
 
         if (input.files && input.files[0]) {
@@ -97,7 +67,15 @@ $(document).ready(function() {
                     canvas.height = img.height * ratio;
                     var ctx = canvas.getContext("2d");
                     ctx.drawImage(img, 0,0,canvas.width, canvas.height);
-                    $(input).siblings('img').show().attr('src', canvas.toDataURL());
+
+                    var cell = $(input).closest('.fileuploader');
+                    if (cell.attr('data-inited') == null) {
+                        var ncell = cell.clone();
+                        cell.after(ncell);
+                    }
+                    cell.attr('data-inited', true);
+
+                    cell.find('.image-frame').empty().css('background-image', 'url(' + canvas.toDataURL() + ')');
                 }
 
                 img.src = e.target.result;

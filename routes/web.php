@@ -16,6 +16,14 @@ Route::get('/', function () {
 });
 
 Route::get('/home', 'CommonController@home');
+Route::get('/progetto', 'CommonController@project');
+Route::get('/giocatori', 'CommonController@players');
+Route::get('/numeri', 'CommonController@numbers');
+Route::get('/parlano-di-noi', 'CommonController@media');
+Route::get('/contatti', 'CommonController@contacts');
+
+Route::get('/celo/nuovo', 'DonationController@create');
+
 Route::get('/donazione/image/{id}/{index}', 'DonationController@getImage');
 Route::get('/donazione/mie', 'DonationController@myIndex');
 Route::post('/donazione/assegna/{id}', 'DonationController@postAssign');
@@ -25,11 +33,11 @@ Route::get('/register/activate/{token}', 'Auth\RegisterController@activate');
 Route::get('/register/operator', 'Auth\RegisterController@registerOp');
 Route::post('/register/operator', 'Auth\RegisterController@postRegisterOp');
 
-Route::resource('/donazione', 'DonationController');
+Route::resource('/celo', 'DonationController');
 Route::resource('/utente', 'UserController');
 Route::resource('/fruitore', 'ReceiverController');
 Route::resource('/archivio', 'ArchiveController');
 Route::resource('/ente', 'InstituteController');
-Route::resource('/appello', 'CallController');
+Route::resource('/manca', 'CallController');
 
 Auth::routes();
