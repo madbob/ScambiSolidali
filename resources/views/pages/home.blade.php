@@ -18,7 +18,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row spaced-below">
             <div class="col-md-6 primary-1">
                 <div class="col-md-4 tb-border vert-align">
                     <p class="txt-color">

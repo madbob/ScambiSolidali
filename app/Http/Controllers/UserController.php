@@ -11,26 +11,31 @@ use Mail;
 use App\Mail\NewUserCreated;
 use App\User;
 use App\Institute;
+use App\Receiver;
 
 class UserController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
         $user = Auth::user();
-        if ($user->role != 'admin') {
-            return redirect(url('/'));
-        }
 
         $institutes = Institute::orderBy('name', 'asc')->get();
-        $operators = User::where('role', 'operator')->orderBy('surname', 'asc')->get();
-        $users = User::whereDoesntHave('institutes')->orderBy('surname', 'asc')->get();
+        $operators = [];
+        $users = [];
+        $receivers = [];
 
-        return view('user.list', ['institutes' => $institutes, 'operators' => $operators, 'users' => $users]);
+        if ($user && $user->role == 'admin')
+            $users = User::orderBy('surname', 'asc')->get();
+
+        if ($user && ($user->role == 'admin' || $user->role == 'operator'))
+            $receivers = Receiver::orderBy('surname', 'asc');
+
+        return view('pages.players', [
+            'user' => $user,
+            'institutes' => $institutes,
+            'users' => $users,
+            'receivers' => $receivers
+        ]);
     }
 
     public function store(Request $request)

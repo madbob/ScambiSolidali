@@ -18,7 +18,7 @@
                     </p>
                 </div>
 
-                <input type="file" name="" class="hidden">
+                <input type="file" name="photo[]" class="hidden" required>
             </div>
         </div>
 

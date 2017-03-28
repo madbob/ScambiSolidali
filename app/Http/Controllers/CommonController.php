@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+
 class CommonController extends Controller
 {
     public function home()
@@ -14,19 +16,9 @@ class CommonController extends Controller
         return view('pages.project');
     }
 
-    public function players()
-    {
-        return view('pages.players');
-    }
-
     public function numbers()
     {
         return view('pages.numbers');
-    }
-
-    public function media()
-    {
-        return view('pages.media');
     }
 
     public function contacts()

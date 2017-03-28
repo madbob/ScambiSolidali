@@ -11,11 +11,11 @@
                 <th>Operatore</th>
 
                 @if($print_receiver == true)
-                <th>Ricevente</th>
+                    <th>Ricevente</th>
                 @endif
 
                 @if($print_object == true)
-                <th>Oggetto</th>
+                    <th>Oggetto</th>
                 @endif
 
                 <th>Stato</th>

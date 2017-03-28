@@ -3,26 +3,27 @@
 @section('title', 'Manca')
 
 @section('content')
-    <div class="manca">
-        @if($edit_enabled)
-        	<div class="row">
-        		<div class="col-md-12">
-        			<button class="btn btn-default" data-toggle="modal" data-target="#new-call">Crea Nuovo Appello</button>
-        		</div>
-        	</div>
-
-        	@include('call.modal', ['call' => null])
-        @endif
-
+    <div class="manca primary-2">
     	<div class="row">
     		<div class="col-md-2">
-                <h2>manca!</h2>
+                @if($edit_enabled)
+                    <button class="btn btn-default dense-button" data-toggle="modal" data-target="#new-call">
+                        <span>Manca!</span>
+                    </button>
+                    @include('call.modal', ['call' => null])
+                @else
+                    <button class="btn btn-default dense-button">
+                        <span>Manca!</span>
+                    </button>
+                @endif
+
+                <br/>
 
                 <p>
                     Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
                 </p>
 
-                <ul class="categories-select primary-2">
+                <ul class="categories-select">
                     @foreach(App\Category::where('parent_id', 0)->orderBy('name', 'asc')->get() as $cat)
                     	<li class="border-top">
                             <span><a href="{{ url('manca/?filter=' . $cat->id) }}">{{ $cat->name }}</a></span>
@@ -56,7 +57,7 @@
                                 </div>
                                 <div class="card-footer vert-align">
                                     <p>
-                                        <a href="{{ url('celo') }}">{{ $call->title }}</a>
+                                        <a class="show-details" data-endpoint="manca" data-item-id="{{ $call->id }}">{{ $call->title }}</a>
                                     </p>
                                 </div>
                             </div>

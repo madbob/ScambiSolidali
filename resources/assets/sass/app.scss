@@ -9,7 +9,7 @@
 
 /********************************* COMMONS */
 
-$colors: $primary-color-1 $primary-color-2 $secondary-color-1;
+$colors: $primary-color-1 $primary-color-2 $secondary-color-1 $gray-color-1;
 
 @each $color in $colors {
     $i: index($colors, $color);
@@ -21,6 +21,10 @@ $colors: $primary-color-1 $primary-color-2 $secondary-color-1;
 
         .fancy-bg {
             background: repeating-linear-gradient(-45deg, $color, $color 2px, #FFF 2px, #FFF 12px);
+        }
+
+        .dense-fancy-bg {
+            background: repeating-linear-gradient(-45deg, $color, $color 9px, #FFF 2px, #FFF 12px);
         }
 
         .txt-color {
@@ -43,6 +47,40 @@ $colors: $primary-color-1 $primary-color-2 $secondary-color-1;
             }
         }
 
+        .dense-button {
+            @extend .dense-fancy-bg;
+            border: 0;
+            padding: 17px;
+            width: 100%;
+            display: block;
+            font-size: 40px;
+            font-weight: bold;
+
+            span {
+                background-color: #FFF;
+                color: $color;
+                padding: 10px;
+                display: block;
+                text-transform: uppercase;
+            }
+        }
+
+        .nav-tabs {
+            display: flex;
+            align-items: stretch;
+            justify-content: space-between;
+            margin-bottom: 10px;
+
+            > li {
+                @extend .button;
+                text-align: center;
+
+                a {
+                    color: #FFF;
+                }
+            }
+        }
+
         .tb-border {
             border-top: 2px solid $color;
             border-bottom: 2px solid $color;
@@ -60,6 +98,10 @@ $colors: $primary-color-1 $primary-color-2 $secondary-color-1;
         .border-top {
             border-top: 2px solid $color;
         }
+
+        .border-bottom {
+            border-bottom: 2px solid $color;
+        }
     }
 }
 
@@ -73,10 +115,15 @@ $colors: $primary-color-1 $primary-color-2 $secondary-color-1;
     background-color: #FFF;
 }
 
+a:hover {
+    text-decoration: none;
+}
+
 hr {
     border: 0;
     height: 2px;
     background: linear-gradient(to right, $primary-color-1 0%, $primary-color-1 25%, #FFF 25%, #FFF 75%, $primary-color-2 75%, $primary-color-2 100%);
+    margin-bottom: 62px;
 }
 
 h1, .h1, h2, .h2, h3, .h3 {
@@ -89,17 +136,18 @@ h1, .h1, h2, .h2, h3, .h3 {
     font-weight: normal;
 }
 
-.form-control {
+input.form-control {
     padding: 10px;
     border: none;
     box-shadow: none;
     background-attachment: local;
-    background-image: linear-gradient(to left, white 10px, transparent 10px), repeating-linear-gradient(white, white 30px, $primary-color-1 30px, $primary-color-1 31px, white 31px);
+    background-image: linear-gradient(to left, white 13px, transparent 13px), repeating-linear-gradient(white, white 33px, $primary-color-1 33px, $primary-color-1 34px, white 34px);
     line-height: 31px;
 }
 
 textarea.form-control {
-    height: 100px;
+    @extend input.form-control;
+    height: 105px;
 }
 
 .right-p {
@@ -108,6 +156,39 @@ textarea.form-control {
 
 .left-p {
     padding-left: 10px !important;
+}
+
+.spaced-below {
+    margin-bottom: 40px;
+}
+
+.spaced-middle {
+    margin: 20px 0;
+}
+
+.square-block {
+    color: #000;
+    height: 300px;
+    text-align: center;
+    display: table;
+    margin: 10px;
+
+    .content {
+        display: table-cell;
+        vertical-align: middle;
+
+        .top {
+            padding: 20px;
+            font-weight: bold;
+            border-bottom: 2px solid $primary-color-2;
+            display: inline-block;
+        }
+
+        .bottom {
+            padding: 20px;
+            display: block;
+        }
+    }
 }
 
 .image-frame {
@@ -129,14 +210,11 @@ textarea.form-control {
     padding-right: 0;
 }
 
-.row {
-    margin-bottom: 40px;
-}
-
 .modal-body {
     > .row {
         margin-left: 10px;
         margin-right: 10px;
+        margin-bottom: 0;
     }
 }
 
@@ -209,6 +287,7 @@ textarea.form-control {
 
 .main-menu {
     border-top: 2px solid $primary-color-1;
+    margin-bottom: 40px;
     padding: 30px 0 0 0;
     display: flex;
     align-items: stretch;
@@ -232,6 +311,7 @@ textarea.form-control {
     box-sizing: border-box;
     color: #FFF;
     padding: 30px;
+    margin-bottom: 40px;
     font-size: 35px;
     text-align: center;
 
@@ -254,7 +334,7 @@ textarea.form-control {
 
     .border-top {
         span {
-            padding: 10px 0;
+            padding: 15px 0;
             display: block;
 
             a {
@@ -274,7 +354,20 @@ textarea.form-control {
     }
 }
 
+.show-details {
+    cursor: pointer;
+}
+
 .fileuploader {
     cursor: pointer;
     margin-bottom: 20px;
+}
+
+#mapid {
+    height: 100%;
+}
+
+.map-select {
+    width: 100%;
+    height: 300px;
 }

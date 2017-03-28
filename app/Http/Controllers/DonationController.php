@@ -29,6 +29,8 @@ class DonationController extends Controller
         else
             $data['current_show'] = -1;
 
+        $data['edit_enabled'] = ($user != null && ($user->role != 'admin' || $user->role != 'operator'));
+
         return view('donation.list', $data);
     }
 

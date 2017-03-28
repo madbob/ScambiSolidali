@@ -39,6 +39,22 @@ class User extends Authenticatable
 		return $this->name . ' ' . $this->surname;
 	}
 
+    public function getRoleNameAttribute()
+    {
+        switch($this->role) {
+            case 'user':
+                return 'Utente';
+            case 'operator':
+                return 'Operatore';
+            case 'admin':
+                return 'Amministratore';
+            case 'carrier':
+                return 'Trasporto';
+        }
+
+        return '???';
+    }
+
 	public function getRatingAttribute()
 	{
 		$rating = 0;

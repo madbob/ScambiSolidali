@@ -17,9 +17,7 @@ Route::get('/', function () {
 
 Route::get('/home', 'CommonController@home');
 Route::get('/progetto', 'CommonController@project');
-Route::get('/giocatori', 'CommonController@players');
 Route::get('/numeri', 'CommonController@numbers');
-Route::get('/parlano-di-noi', 'CommonController@media');
 Route::get('/contatti', 'CommonController@contacts');
 
 Route::get('/celo/nuovo', 'DonationController@create');
@@ -34,7 +32,8 @@ Route::get('/register/operator', 'Auth\RegisterController@registerOp');
 Route::post('/register/operator', 'Auth\RegisterController@postRegisterOp');
 
 Route::resource('/celo', 'DonationController');
-Route::resource('/utente', 'UserController');
+Route::resource('/giocatori', 'UserController');
+Route::resource('/parlano-di-noi', 'MediaController');
 Route::resource('/fruitore', 'ReceiverController');
 Route::resource('/archivio', 'ArchiveController');
 Route::resource('/ente', 'InstituteController');

@@ -3,30 +3,28 @@
 @section('title', 'Celo')
 
 @section('content')
-    <div class="manca">
-    	<div class="row">
-    		<div class="col-md-12">
-    			<a href="{{ url('celo/nuovo') }}" class="btn btn-default">Celo! (questo tasto è da mettere da qualche parte)</a>
-    		</div>
-    	</div>
-
+    <div class="celo primary-1">
     	<div class="row">
     		<div class="col-md-2">
-                <h2>celo!</h2>
+                <a href="{{ url('celo/nuovo') }}" class="btn btn-default dense-button">
+                    <span>Celo!</span>
+                </a>
+
+                <br/>
 
                 <p>
                     Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
                 </p>
 
-                <ul class="categories-select primary-1">
+                <ul class="categories-select">
                     @foreach(App\Category::where('parent_id', 0)->orderBy('name', 'asc')->get() as $cat)
                     	<li class="border-top">
-                            <span><a href="{{ url('manca/?filter=' . $cat->id) }}">{{ $cat->name }}</a></span>
+                            <span><a href="{{ url('celo/?filter=' . $cat->id) }}">{{ $cat->name }}</a></span>
 
                             <ul>
                             	@foreach($cat->children as $sub)
                     				<li>
-                                        <span><a href="{{ url('manca/?filter=' . $sub->id) }}">{{ $sub->name }}</a></span>
+                                        <span><a href="{{ url('celo/?filter=' . $sub->id) }}">{{ $sub->name }}</a></span>
                                     </li>
                             	@endforeach
                             </ul>
@@ -52,7 +50,11 @@
                                 </div>
                                 <div class="card-footer vert-align">
                                     <p>
-                                        <a href="{{ url('celo') }}">{{ $donation->title }}</a>
+                                        @if($edit_enabled)
+                                            <a class="show-details" data-endpoint="celo" data-item-id="{{ $donation->id }}">{{ $donation->title }}</a>
+                                        @else
+                                            <a>{{ $donation->title }}</a>
+                                        @endif
                                     </p>
                                 </div>
                             </div>

@@ -73,13 +73,13 @@ class CallController extends Controller
 
     public function show($id)
     {
-        $user = Auth::user();
-        if ($user->role != 'admin' && $user->role != 'operator') {
-            return redirect(url('/'));
-        }
-
         $call = Call::find($id);
-        return view('call.modal', ['call' => $call]);
+
+        $user = Auth::user();
+        if ($user == null || ($user->role != 'admin' && $user->role != 'operator'))
+            return view('call.info', ['call' => $call]);
+        else
+            return view('call.modal', ['call' => $call]);
     }
 
     public function update(Request $request, $id)

@@ -1,6 +1,5 @@
 <p class="form-control-static">
-    Inserito da: {{ $donation->user->printableName() }}
-    @include('user.rating', ['user' => $donation->user])
+    Inserito da:<br/>{{ $donation->user->printableName() }} @include('user.rating', ['user' => $donation->user])
 </p>
 
 <hr/>
@@ -23,5 +22,8 @@
     <p class="form-control-static">{!! nl2br($donation->shipping_notes) !!}</p>
 @endif
 
-<p class="form-control-static">Piano: {{ $donation->floor }}</p>
+@if(!empty($donation->floor))
+    <p class="form-control-static">Piano: {{ $donation->floor }}</p>
+@endif
+
 <p class="form-control-static">Ascensore: {{ $donation->elevator ? 'Si' : 'No' }}</p>

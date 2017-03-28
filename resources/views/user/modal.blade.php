@@ -1,4 +1,4 @@
-<div class="modal fade" id="user-{{ $user->id }}" tabindex="-1" role="dialog">
+<div class="modal fade primary-1" id="user-{{ $user ? $user->id : 'new' }}" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -9,7 +9,7 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-12">
-                        {!! BootForm::horizontal(['model' => $user, 'store' => 'utente.store', 'update' => 'utente.update']) !!}
+                        {!! BootForm::vertical(['model' => $user, 'store' => 'giocatori.store', 'update' => 'giocatori.update']) !!}
                             {!! BootForm::text('name', 'Nome') !!}
                             {!! BootForm::text('surname', 'Cognome') !!}
                             {!! BootForm::text('phone', 'Telefono') !!}
@@ -29,18 +29,21 @@
                             ?>
 
                             @if(!empty($institutes))
-                                {!! BootForm::checkboxes('institutes[]', 'Affiliazioni', $institutes, $user->institutes->reduce(function($carry, $item) {
+                                {!! BootForm::checkboxes('institutes[]', 'Affiliazioni', $institutes, $user ? $user->institutes->reduce(function($carry, $item) {
                                     $carry[] = $item->id;
                                     return $carry;
-                                }, [])) !!}
+                                }, []) : []) !!}
                             @endif
 
-                            {!! BootForm::submit('Salva') !!}
+                            <div class="form-group">
+                                <div>
+                                    <button class="button" type="submit">
+                                        <span>Salva</span>
+                                    </button>
+                                </div>
+                            </div>
                         {!! BootForm::close() !!}
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Chiudi</button>
                 </div>
             </div>
         </div>

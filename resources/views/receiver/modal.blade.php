@@ -1,4 +1,4 @@
-<div class="modal fade" id="receiver-{{ $receiver->id }}" tabindex="-1" role="dialog">
+<div class="modal fade" id="receiver-{{ $receiver ? $receiver->id : 'new' }}" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -9,23 +9,34 @@
 
             <div class="modal-body">
                 <div class="row">
+                    @if($receiver)
                     <div class="col-md-6">
-                        {!! BootForm::horizontal(['model' => $receiver, 'store' => 'fruitore.store', 'update' => 'fruitore.update']) !!}
+                    @else
+                    <div class="col-md-12">
+                    @endif
+                        {!! BootForm::vertical(['model' => $receiver, 'store' => 'fruitore.store', 'update' => 'fruitore.update']) !!}
                             {!! BootForm::text('name', 'Nome') !!}
                             {!! BootForm::text('surname', 'Cognome') !!}
                             {!! BootForm::text('address', 'Indirizzo') !!}
                             {!! BootForm::text('phone', 'Telefono') !!}
                             {!! BootForm::email() !!}
                             {!! BootForm::textarea('notes', 'Note') !!}
-                            {!! BootForm::submit('Salva') !!}
+
+                            <div class="form-group">
+                                <div>
+                                    <button class="button" type="submit">
+                                        <span>Salva</span>
+                                    </button>
+                                </div>
+                            </div>
                         {!! BootForm::close() !!}
                     </div>
-                    <div class="col-md-6">
-                        @include('donation.minilist', ['list' => $receiver->donations, 'print_receiver' => false, 'print_object' => true])
-                    </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Chiudi</button>
+
+                    @if($receiver)
+                        <div class="col-md-6">
+                            @include('donation.minilist', ['list' => $receiver->donations, 'print_receiver' => false, 'print_object' => true])
+                        </div>
+                    @endif
             </div>
         </div>
     </div>

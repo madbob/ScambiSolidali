@@ -13,7 +13,8 @@
     <link href="/css/chosen.min.css" rel="stylesheet">
     <link href="/css/bootstrap-chosen.css" rel="stylesheet">
     <link href="/css/bootstrap-datepicker3.min.css" rel="stylesheet">
-	<link href="/css/mine.css" rel="stylesheet">
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.0.1/mapbox-gl-geocoder.css' type='text/css' />
 
     <script>
         window.Laravel = <?php echo json_encode([
@@ -69,7 +70,7 @@
                         <li><a href="{{ url('celo') }}">Celo</a></li>
                         <li><a href="{{ url('manca') }}">Manca</a></li>
                         <li><a href="{{ url('giocatori') }}">Giocatori</a></li>
-                        <li><a href="{{ url('numeri') }}">Numeri</a></li>
+                        <li><a href="{{ url('numeri') }}">Lieto Fine</a></li>
                         <li><a href="{{ url('parlano-di-noi') }}">Parlano di Noi</a></li>
                         <li><a href="{{ url('contatti') }}">Contatti</a></li>
                     </ul>
@@ -86,8 +87,10 @@
 
     <script src="{{ url('js/app.js') }}"></script>
     <script src="{{ url('js/chosen.jquery.min.js') }}"></script>
-    <script src="/js/bootstrap-datepicker.min.js"></script>
-    <script src="/js/bootstrap-datepicker.it.min.js"></script>
+    <script src="{{ url('js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ url('js/bootstrap-datepicker.it.min.js') }}"></script>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.js'></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.0.1/mapbox-gl-geocoder.js'></script>
 	<script src="{{ url('js/mine.js') }}"></script>
 </body>
 </html>

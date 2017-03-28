@@ -1,6 +1,36 @@
 $(document).ready(function() {
     function commonInit() {
         $('.chosen-select').chosen({width: "100%"});
+
+        $('.map-select').each(function() {
+            mapboxgl.accessToken = 'pk.eyJ1IjoibWFkYm9iIiwiYSI6ImNpdzE5MHN2ajAwMXYydG8xejBvbHdzOWwifQ.Lk5hnbjb720Z4C_jfqzBNg';
+            var map = new mapboxgl.Map({
+                container: $(this).attr('id'),
+                style: 'mapbox://styles/mapbox/light-v9',
+                center: [7.6700, 45.0516],
+                zoom: 12
+            });
+
+            var geocoder = new MapboxGeocoder({
+                proximity: {latitude: 45.0516, longitude: 7.6700},
+                bbox: [7.430458,44.907397,7.900369,45.194847],
+                placeholder: 'Scrivi qui l\'indirizzo',
+                accessToken: mapboxgl.accessToken
+            });
+            map.addControl(geocoder);
+
+            /*
+                Questo è per forzare l'attributo "required" nel campo di testo dove
+                mettere l'indirizzo
+            */
+            $('.mapboxgl-ctrl-geocoder input:text').attr('required', 'required');
+            var form = $(this).closest('form');
+
+            geocoder.on('result', function(ev) {
+                $('input[name=address]', form).val(ev.result.place_name);
+                $('input[name=coordinates]', form).val(ev.result.geometry.coordinates[1] + ',' + ev.result.geometry.coordinates[0]);
+            });
+        });
     }
 
     function dynamicModal(endpoint, id) {
@@ -16,6 +46,9 @@ $(document).ready(function() {
                 var d = $(data);
                 $('body').append(d);
                 d.modal('show');
+                d.on('hidden.bs.modal', function() {
+                    $(this).remove();
+                });
                 commonInit();
             }
         });
@@ -104,6 +137,37 @@ $(document).ready(function() {
             var endpoint = $(this).attr('data-endpoint');
             var id = $(this).attr('data-item-id');
             dynamicModal(endpoint, id);
+        });
+    }
+
+    if ($('#mapid').length > 0) {
+        var markers = new Array();
+
+        $('#mapid').css('height', $(window).height() - 300);
+
+        mapboxgl.accessToken = 'pk.eyJ1IjoibWFkYm9iIiwiYSI6ImNpdzE5MHN2ajAwMXYydG8xejBvbHdzOWwifQ.Lk5hnbjb720Z4C_jfqzBNg';
+        var map = new mapboxgl.Map({
+            container: 'mapid',
+            style: 'mapbox://styles/mapbox/light-v9',
+            center: [7.6700, 45.0516],
+            zoom: 12
+        });
+
+        /*
+            L'oggetto geoJson viene generato all'interno del template
+        */
+
+        map.on('load', function() {
+            map.addLayer(geoJson);
+        });
+
+        map.on('click', function (e) {
+            var features = map.queryRenderedFeatures(e.point);
+            if (!features.length)
+                return;
+
+            var feature = features[0];
+            $('.institute').removeClass('selected').filter('[data-institute-id=' + feature.properties['id'] + ']').addClass('selected');
         });
     }
 
