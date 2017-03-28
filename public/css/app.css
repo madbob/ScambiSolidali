@@ -5842,7 +5842,8 @@ button.close {
   width: 100%;
   display: block;
   font-size: 40px;
-  font-weight: bold; }
+  font-weight: bold;
+  text-align: center; }
   .primary-1 .dense-button span {
     background-color: #FFF;
     color: #00E4E4;
@@ -5863,6 +5864,10 @@ button.close {
   border-bottom: 2px solid #00E4E4; }
 .primary-1 .common-card {
   color: #00E4E4; }
+  .primary-1 .common-card .card-main, .primary-1 .common-card .card-main-filter, .primary-1 .common-card .card-main-overlay {
+    background-color: #00E4E4; }
+  .primary-1 .common-card .card-main-filter {
+    background-color: #00E4E4; }
 .primary-1 .bg-color {
   background-color: #00E4E4; }
 .primary-1 .border-top {
@@ -5895,7 +5900,8 @@ button.close {
   width: 100%;
   display: block;
   font-size: 40px;
-  font-weight: bold; }
+  font-weight: bold;
+  text-align: center; }
   .primary-2 .dense-button span {
     background-color: #FFF;
     color: #00BFE3;
@@ -5916,6 +5922,10 @@ button.close {
   border-bottom: 2px solid #00BFE3; }
 .primary-2 .common-card {
   color: #00BFE3; }
+  .primary-2 .common-card .card-main, .primary-2 .common-card .card-main-filter, .primary-2 .common-card .card-main-overlay {
+    background-color: #00BFE3; }
+  .primary-2 .common-card .card-main-filter {
+    background-color: #00BFE3; }
 .primary-2 .bg-color {
   background-color: #00BFE3; }
 .primary-2 .border-top {
@@ -5948,7 +5958,8 @@ button.close {
   width: 100%;
   display: block;
   font-size: 40px;
-  font-weight: bold; }
+  font-weight: bold;
+  text-align: center; }
   .primary-3 .dense-button span {
     background-color: #FFF;
     color: #00DDB2;
@@ -5969,6 +5980,10 @@ button.close {
   border-bottom: 2px solid #00DDB2; }
 .primary-3 .common-card {
   color: #00DDB2; }
+  .primary-3 .common-card .card-main, .primary-3 .common-card .card-main-filter, .primary-3 .common-card .card-main-overlay {
+    background-color: #00DDB2; }
+  .primary-3 .common-card .card-main-filter {
+    background-color: #00DDB2; }
 .primary-3 .bg-color {
   background-color: #00DDB2; }
 .primary-3 .border-top {
@@ -6001,7 +6016,8 @@ button.close {
   width: 100%;
   display: block;
   font-size: 40px;
-  font-weight: bold; }
+  font-weight: bold;
+  text-align: center; }
   .primary-4 .dense-button span {
     background-color: #FFF;
     color: #DDD;
@@ -6022,6 +6038,10 @@ button.close {
   border-bottom: 2px solid #DDD; }
 .primary-4 .common-card {
   color: #DDD; }
+  .primary-4 .common-card .card-main, .primary-4 .common-card .card-main-filter, .primary-4 .common-card .card-main-overlay {
+    background-color: #DDD; }
+  .primary-4 .common-card .card-main-filter {
+    background-color: #DDD; }
 .primary-4 .bg-color {
   background-color: #DDD; }
 .primary-4 .border-top {
@@ -6119,7 +6139,7 @@ textarea.form-control {
   height: 500px;
   border: 20px solid;
   position: relative; }
-  .common-card .card-main {
+  .common-card .card-main, .common-card .card-main-filter, .common-card .card-main-overlay {
     position: absolute;
     top: 5%;
     left: 5%;
@@ -6131,6 +6151,17 @@ textarea.form-control {
     box-sizing: border-box;
     text-align: center;
     border-bottom: 0; }
+  .common-card .card-main-filter {
+    opacity: 0.3; }
+  .common-card .card-main-overlay {
+    background-color: transparent !important;
+    text-transform: uppercase;
+    display: table; }
+    .common-card .card-main-overlay span {
+      font-size: 35px;
+      font-weight: bold;
+      display: table-cell;
+      vertical-align: middle; }
   .common-card .card-footer {
     position: absolute;
     bottom: 5%;

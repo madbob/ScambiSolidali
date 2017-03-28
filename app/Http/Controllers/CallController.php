@@ -34,7 +34,7 @@ class CallController extends Controller
         }
 
         if ($edit_enabled == false)
-            $query->where('status', 'open');
+            $query->whereIn('status', ['open', 'archived']);
 
         $calls = $query->paginate(50);
 

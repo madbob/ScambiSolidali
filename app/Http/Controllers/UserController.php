@@ -103,10 +103,10 @@ class UserController extends Controller
 
         $user->save();
 
-        $user->institutes()->sync($request->input('institutes'));
+        $user->institutes()->sync($request->input('institutes', []));
 
         Session::flash('message', 'Utente salvato');
-        return redirect(url('utente'));
+        return redirect(url('giocatori'));
     }
 
     public function destroy($id)

@@ -7,14 +7,14 @@
     	<div class="row">
     		<div class="col-md-2">
                 @if($edit_enabled)
-                    <button class="btn btn-default dense-button" data-toggle="modal" data-target="#new-call">
+                    <button class="dense-button" data-toggle="modal" data-target="#new-call">
                         <span>Manca!</span>
                     </button>
                     @include('call.modal', ['call' => null])
                 @else
-                    <button class="btn btn-default dense-button">
+                    <p class="dense-button">
                         <span>Manca!</span>
-                    </button>
+                    </p>
                 @endif
 
                 <br/>
@@ -55,6 +55,13 @@
                                 <div class="card-main image-frame" style="background-image: url('https://placeholdit.imgix.net/~text?txtsize=33&txt=boh...&w=150&h=250')">
                                     &nbsp;
                                 </div>
+                                @if($call->status == 'archived')
+                                    <div class="card-main-filter">
+                                    </div>
+                                    <div class="card-main-overlay">
+                                        <span>Trovato!</span>
+                                    </div>
+                                @endif
                                 <div class="card-footer vert-align">
                                     <p>
                                         <a class="show-details" data-endpoint="manca" data-item-id="{{ $call->id }}">{{ $call->title }}</a>

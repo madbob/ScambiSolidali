@@ -55,6 +55,7 @@ $colors: $primary-color-1 $primary-color-2 $secondary-color-1 $gray-color-1;
             display: block;
             font-size: 40px;
             font-weight: bold;
+            text-align: center;
 
             span {
                 background-color: #FFF;
@@ -89,6 +90,14 @@ $colors: $primary-color-1 $primary-color-2 $secondary-color-1 $gray-color-1;
         .common-card {
             @extend .fancy-bg;
             color: $color;
+
+            .card-main {
+                background-color: $color;
+            }
+
+            .card-main-filter {
+                background-color: $color;
+            }
         }
 
         .bg-color {
@@ -236,6 +245,25 @@ textarea.form-control {
         box-sizing: border-box;
         text-align: center;
         border-bottom: 0;
+    }
+
+    .card-main-filter {
+        @extend .card-main;
+        opacity: 0.3;
+    }
+
+    .card-main-overlay {
+        @extend .card-main;
+        background-color: transparent !important;
+        text-transform: uppercase;
+        display: table;
+
+        span {
+            font-size: 35px;
+            font-weight: bold;
+            display: table-cell;
+            vertical-align: middle;
+        }
     }
 
     .card-footer {

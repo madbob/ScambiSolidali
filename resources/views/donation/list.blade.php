@@ -6,7 +6,7 @@
     <div class="celo primary-1">
     	<div class="row">
     		<div class="col-md-2">
-                <a href="{{ url('celo/nuovo') }}" class="btn btn-default dense-button">
+                <a href="{{ url('celo/nuovo') }}" class="dense-button">
                     <span>Celo!</span>
                 </a>
 
@@ -34,7 +34,7 @@
                 </ul>
             </div>
 
-            <div class="col-md-9 col-md-offset-1 primary-2">
+            <div class="col-md-9 col-md-offset-1">
                 @if($donations->isEmpty())
                     <div class="alert alert-info">
                         <p>
@@ -48,6 +48,13 @@
                                 <div class="card-main image-frame" style="background-image: url('{{ $donation->imageUrl(1) }}')">
                                     &nbsp;
                                 </div>
+                                @if($donation->status == 'assigned')
+                                    <div class="card-main-filter">
+                                    </div>
+                                    <div class="card-main-overlay">
+                                        <span>Consegnato!</span>
+                                    </div>
+                                @endif
                                 <div class="card-footer vert-align">
                                     <p>
                                         @if($edit_enabled)

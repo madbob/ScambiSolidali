@@ -1,4 +1,4 @@
-<div class="modal fade" id="{{ $call->id }}" tabindex="-1" role="dialog">
+<div class="modal fade primary-2" id="{{ $call->id }}" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -8,12 +8,16 @@
 
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-md-12 primary-1">
+                    <div class="col-md-12">
                         {!! BootForm::vertical() !!}
                             <p class="form-control-static">{{ $call->who }}</p>
                             <p class="form-control-static">{{ $call->what }}</p>
                             <p class="form-control-static">{{ $call->whom }}</p>
                             <p class="form-control-static">{{ printableDate($call->when) }}</p>
+
+                            <a href="{{ url('celo/nuovo?call=' . $call->id) }}" class="btn btn-default button">
+                                <span>Celo!</span>
+                            </a>
                         {!! BootForm::close() !!}
                     </div>
                 </div>

@@ -14,10 +14,15 @@ use App\Call;
 
 class DonationController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'getImage']);
+    }
+
     public function index(Request $request)
     {
         $user = Auth::user();
-        $query = Donation::whereIn('status', ['pending'])->orderBy('created_at', 'desc');
+        $query = Donation::whereIn('status', ['pending', 'assigned'])->orderBy('created_at', 'desc');
 
         if ($user && $user->role == 'carrier')
             $query->where('recoverable', true);
@@ -51,8 +56,6 @@ class DonationController extends Controller
     public function create(Request $request)
     {
         $user = Auth::user();
-        if ($user == null)
-            return redirect(url('login'));
 
         if($request->has('call'))
             $call = Call::find($request->input('call'));
