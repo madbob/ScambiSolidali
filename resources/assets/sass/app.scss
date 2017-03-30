@@ -19,6 +19,11 @@ $colors: $primary-color-1 $primary-color-2 $secondary-color-1 $gray-color-1;
             color: $color;
         }
 
+        h4 {
+            color: $color;
+            margin-top: 0;
+        }
+
         .fancy-bg {
             background: repeating-linear-gradient(-45deg, $color, $color 2px, #FFF 2px, #FFF 12px);
         }
@@ -33,6 +38,7 @@ $colors: $primary-color-1 $primary-color-2 $secondary-color-1 $gray-color-1;
 
         .button {
             @extend .fancy-bg;
+            text-align: center;
             border: 0;
             padding: 10px;
             width: 100%;
@@ -44,6 +50,17 @@ $colors: $primary-color-1 $primary-color-2 $secondary-color-1 $gray-color-1;
                 padding: 10px;
                 display: block;
                 text-transform: uppercase;
+            }
+        }
+
+        .pagetitle {
+            @extend .button;
+            margin-bottom: 30px;
+
+            span {
+                padding: 20px;
+                font-weight: bold;
+                font-size: 30px;
             }
         }
 
@@ -63,6 +80,14 @@ $colors: $primary-color-1 $primary-color-2 $secondary-color-1 $gray-color-1;
                 padding: 10px;
                 display: block;
                 text-transform: uppercase;
+            }
+        }
+
+        .screaming-border {
+            border: 15px solid $color;
+
+            span {
+                padding: 15px;
             }
         }
 
@@ -128,11 +153,27 @@ a:hover {
     text-decoration: none;
 }
 
+.arrowlink {
+    font-weight: bold;
+    text-decoration: underline;
+
+    &:before {
+        content: '> ';
+    }
+}
+
 hr {
     border: 0;
     height: 2px;
     background: linear-gradient(to right, $primary-color-1 0%, $primary-color-1 25%, #FFF 25%, #FFF 75%, $primary-color-2 75%, $primary-color-2 100%);
     margin-bottom: 62px;
+}
+
+hr.black {
+    border-bottom: 2px solid #000;
+    background: none;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 h1, .h1, h2, .h2, h3, .h3 {
@@ -160,11 +201,11 @@ textarea.form-control {
 }
 
 .right-p {
-    padding-right: 10px !important;
+    padding-right: 20px !important;
 }
 
 .left-p {
-    padding-left: 10px !important;
+    padding-left: 20px !important;
 }
 
 .spaced-below {
@@ -289,7 +330,7 @@ textarea.form-control {
 
 @media (min-width: 1900px) {
     .container {
-        width: 1500px;
+        width: 1350px;
     }
 }
 
@@ -398,4 +439,24 @@ textarea.form-control {
 .map-select {
     width: 100%;
     height: 300px;
+}
+
+/********************************* PROGETTO */
+
+.credits {
+    font-size: 17px;
+
+    .intro {
+        text-decoration: underline;
+        color: $primary-color-1;
+    }
+}
+
+/********************************* COME FUNZIONA */
+
+.working {
+    a {
+        color: #000;
+        text-decoration: underline;
+    }
 }

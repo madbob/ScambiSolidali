@@ -25,7 +25,7 @@
                         quante cose hai, che non ti servono più?
                     </p>
                 </div>
-                <div class="col-md-offset-2 col-md-6 left-p">
+                <div class="col-md-offset-1 col-md-7 left-p">
                     <div class="common-card">
                         <div class="card-main vert-align bg-color">
                             <p>
@@ -41,7 +41,7 @@
                 </div>
             </div>
             <div class="col-md-6 primary-2">
-                <div class="col-md-6 col-md-offset-1 right-p">
+                <div class="col-md-7 right-p">
                     <div class="common-card">
                         <div class="card-main vert-align bg-color">
                             <p>

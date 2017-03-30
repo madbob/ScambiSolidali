@@ -20,7 +20,9 @@
                 <br/>
 
                 <p>
-                    Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
+                    Guarda cosa ci manca!<br/>
+                    Hai uno di questi oggetti? Vuoi donarcelo?<br/>
+                    Rispondi alle nostre call, ti contatteremo appena possibile!
                 </p>
 
                 <ul class="categories-select">

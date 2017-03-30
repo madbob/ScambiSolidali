@@ -16,6 +16,11 @@ class CommonController extends Controller
         return view('pages.project');
     }
 
+    public function working()
+    {
+        return view('pages.working');
+    }
+
     public function numbers()
     {
         return view('pages.numbers');

@@ -3,7 +3,13 @@
 @section('title', 'Parlano di Noi')
 
 @section('content')
-    <div class="media primary-4">
+    <div class="journal">
+        <div class="row primary-1">
+            <div class="pagetitle">
+                <span>PARLANO DI NOI</span>
+            </div>
+        </div>
+
         @if($edit_enabled)
             <div class="row">
                 <div class="col-md-12">
@@ -13,7 +19,7 @@
             </div>
         @endif
 
-        <div class="row">
+        <div class="row primary-4">
             @foreach($media as $m)
                 <a href="{{ $m->link }}" target="_blank">
                     @if($m->picture == null)

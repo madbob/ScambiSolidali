@@ -67,6 +67,7 @@
                 <div class="col-md-12">
                     <ul class="main-menu">
                         <li><a href="{{ url('progetto') }}">Progetto</a></li>
+                        <li><a href="{{ url('come-funziona') }}">Come Funziona</a></li>
                         <li><a href="{{ url('celo') }}">Celo</a></li>
                         <li><a href="{{ url('manca') }}">Manca</a></li>
                         <li><a href="{{ url('giocatori') }}">Giocatori</a></li>
@@ -83,6 +84,8 @@
 
         	@yield('content')
 		</div>
+
+        <br/>
     </div>
 
     <script src="{{ url('js/app.js') }}"></script>

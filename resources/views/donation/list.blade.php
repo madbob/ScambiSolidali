@@ -13,7 +13,8 @@
                 <br/>
 
                 <p>
-                    Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
+                    Qui puoi inserire il tuo oggetto!<br/>
+                    Descrivi l’oggetto, carica una foto e attendi la nostra risposta!
                 </p>
 
                 <ul class="categories-select">

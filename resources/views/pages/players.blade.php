@@ -37,6 +37,12 @@
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="entities">
                 <div class="row">
+                    <div class="col-md-12">
+                        <div class="pagetitle">
+                            <span>RICEVENTI</span>
+                        </div>
+                    </div>
+
                     <div class="col-md-6">
                         <div class="map" id="mapid"></div>
                         <script>
