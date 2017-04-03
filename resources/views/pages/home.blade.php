@@ -13,7 +13,7 @@
                 </p>
 
                 <p class="small-link">
-                    <a href="{{ url('progetto') }}">Scopri il progetto</a>
+                    <a href="{{ url('come-funziona') }}">Come funziona</a>
                 </p>
             </div>
         </div>
