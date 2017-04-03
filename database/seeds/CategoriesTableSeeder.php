@@ -8,54 +8,43 @@ class CategoriesTableSeeder extends Seeder
 {
     public function run()
     {
-        $master = new Category();
-		$master->name = 'Casa';
-		$master->parent_id = 0;
-		$master->save();
+        $categories = [
+            'Bambini' => [
+                'Giocattoli',
+                'Abbigliamento',
+                'Attrezzatura'
+            ],
+            'Casa' => [
+                'Arredamento',
+                'Elettrodomestici',
+                'Elettronica',
+                'Utensili'
+            ],
+            'Abbigliamento' => [
+                'Uomo',
+                'Donna',
+                'Scarpe',
+                'Accessori'
+            ],
+            'Hobby' => [
+                'Attrezzatura Sportiva',
+                'Biciclette',
+                'Altro'
+            ]
+        ];
 
-        $cat = new Category();
-		$cat->name = 'Arredamento';
-		$cat->parent_id = $master->id;
-		$cat->save();
+        foreach($categories as $primary => $subs) {
+            $master = new Category();
+    		$master->name = $primary;
+    		$master->parent_id = 0;
+    		$master->save();
 
-		$cat = new Category();
-		$cat->name = 'Elettrodomestici';
-		$cat->parent_id = $master->id;
-		$cat->save();
-
-		$cat = new Category();
-		$cat->name = 'Utensili';
-		$cat->parent_id = $master->id;
-		$cat->save();
-
-		$master = new Category();
-		$master->name = 'Bambini';
-		$master->parent_id = 0;
-		$master->save();
-
-		$cat = new Category();
-		$cat->name = 'Giocattoli';
-		$cat->parent_id = $master->id;
-		$cat->save();
-
-		$cat = new Category();
-		$cat->name = 'Abbigliamento';
-		$cat->parent_id = $master->id;
-		$cat->save();
-
-		$master = new Category();
-		$master->name = 'Sport e Hobby';
-		$master->parent_id = 0;
-		$master->save();
-
-		$cat = new Category();
-		$cat->name = 'Biciclette';
-		$cat->parent_id = $master->id;
-		$cat->save();
-
-		$cat = new Category();
-		$cat->name = 'Intrattenimento';
-		$cat->parent_id = $master->id;
-		$cat->save();
+            foreach ($subs as $s) {
+                $cat = new Category();
+        		$cat->name = $s;
+        		$cat->parent_id = $master->id;
+        		$cat->save();
+            }
+        }
     }
 }
