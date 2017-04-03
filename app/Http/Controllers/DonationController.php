@@ -9,6 +9,7 @@ use Mail;
 
 use App\Mail\CallReponsed;
 use App\Donation;
+use App\Category;
 use App\Receiver;
 use App\Call;
 
@@ -26,6 +27,20 @@ class DonationController extends Controller
 
         if ($user && $user->role == 'carrier')
             $query->where('recoverable', true);
+
+        if ($request->has('filter')) {
+            $category = Category::find($request->input('filter'));
+            if ($category->parent_id == 0) {
+                $subs = [];
+                foreach($category->children as $children)
+                    $subs[] = $children->id;
+
+                $query->whereIn('category_id', $subs);
+            }
+            else {
+                $query->where('category_id', $category->id);
+            }
+        }
 
         $data['donations'] = $query->paginate(50);
 
