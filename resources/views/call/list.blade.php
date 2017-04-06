@@ -52,25 +52,31 @@
                     </div>
                 @else
     				@foreach($calls as $call)
-                        <div class="col-md-4 right-p">
-                            <div class="common-card">
-                                <div class="card-main image-frame" style="background-image: url('https://placeholdit.imgix.net/~text?txtsize=33&txt=boh...&w=150&h=250')">
-                                    &nbsp;
-                                </div>
-                                @if($call->status == 'archived')
-                                    <div class="card-main-filter">
+                        <?php $image = $call->image ?>
+                        @if($image)
+                            <div class="col-md-4 right-p">
+                                <div class="common-card">
+                                    <div class="card-main image-frame" style="background-image: url('{{ $image }}')">
+                                        &nbsp;
                                     </div>
-                                    <div class="card-main-overlay">
-                                        <span>Trovato!</span>
+                                    @if($call->status == 'archived')
+                                        <div class="card-main-filter">
+                                        </div>
+                                        <div class="card-main-overlay">
+                                            <span>
+                                                <p>Trovato!</p>
+                                                <img src="{{ url('images/trofeo.svg') }}">
+                                            </span>
+                                        </div>
+                                    @endif
+                                    <div class="card-footer vert-align">
+                                        <p>
+                                            <a class="show-details" data-endpoint="manca" data-item-id="{{ $call->id }}">{{ $call->title }}</a>
+                                        </p>
                                     </div>
-                                @endif
-                                <div class="card-footer vert-align">
-                                    <p>
-                                        <a class="show-details" data-endpoint="manca" data-item-id="{{ $call->id }}">{{ $call->title }}</a>
-                                    </p>
                                 </div>
                             </div>
-                        </div>
+                        @endif
     				@endforeach
 
         			{{ $calls->links() }}

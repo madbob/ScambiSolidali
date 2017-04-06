@@ -9,7 +9,7 @@
 
 /********************************* COMMONS */
 
-$colors: $primary-color-1 $primary-color-2 $secondary-color-1 $gray-color-1;
+$colors: $primary-color-1 $primary-color-2 $secondary-color-1 $gray-color-1 $black-1;
 
 @each $color in $colors {
     $i: index($colors, $color);
@@ -165,7 +165,17 @@ a:hover {
     text-decoration: underline;
 
     &:before {
-        content: '> ';
+        font-family: "Work Sans", sans-serif;
+        content: "\2192";
+    }
+}
+
+.other-arrowlink {
+    font-weight: bold;
+
+    &:after {
+        font-family: "Work Sans", sans-serif;
+        content: "\2192";
     }
 }
 
@@ -297,7 +307,7 @@ textarea.form-control {
 
     .card-main-filter {
         @extend .card-main;
-        opacity: 0.3;
+        opacity: 0.6;
     }
 
     .card-main-overlay {
@@ -311,6 +321,14 @@ textarea.form-control {
             font-weight: bold;
             display: table-cell;
             vertical-align: middle;
+
+            p {
+                margin: 0;
+            }
+
+            img {
+                width: 60%;
+            }
         }
     }
 
@@ -351,6 +369,7 @@ textarea.form-control {
     margin-top: 20px;
     padding-top: 10px;
     border-top: 2px solid $primary-color-1;
+    text-transform: uppercase;
 }
 
 .navbar-nav {
@@ -402,6 +421,21 @@ textarea.form-control {
     height: 500px;
 }
 
+.double-side {
+    font-size: 28px;
+    display: table;
+
+    .col-md-4 {
+        float: none;
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    img {
+        width: 70%;
+    }
+}
+
 /********************************* CELO/MANCA */
 
 .categories-select {
@@ -448,6 +482,12 @@ textarea.form-control {
     height: 300px;
 }
 
+.celo, .manca {
+    .common-card {
+        margin-bottom: 22px;
+    }
+}
+
 /********************************* PROGETTO */
 
 .credits {
@@ -465,6 +505,34 @@ textarea.form-control {
     a {
         color: #000;
         text-decoration: underline;
+    }
+}
+
+/********************************* MIE DONAZIONI */
+
+.mydonations {
+    color: #000;
+
+    .mydonation {
+        border-top: 2px solid #000;
+        padding-top: 20px;
+        margin: 20px 0;
+        display: block;
+        width: 48%;
+
+        h2 {
+            display: inline-block;
+            text-transform: uppercase;
+            border-bottom: 2px solid #000;
+        }
+
+        &:nth-child(even) {
+            float: right;
+        }
+
+        &:nth-child(odd) {
+            float: left;
+        }
     }
 }
 

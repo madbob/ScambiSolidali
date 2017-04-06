@@ -7,7 +7,7 @@ use Auth;
 use Session;
 use Mail;
 
-use App\Mail\CallReponsed;
+use App\Mail\CallResponded;
 use App\Donation;
 use App\Category;
 use App\Receiver;
@@ -120,7 +120,7 @@ class DonationController extends Controller
 
         if ($donation->call_id != null) {
             $call = Call::find($donation->call_id);
-            Mail::to($call->user->email)->send(new CallReponsed($donation));
+            Mail::to($call->user->email)->send(new CallResponded($donation));
         }
 
         return view('donation.thanks');

@@ -13,7 +13,7 @@
                 </p>
 
                 <p class="small-link">
-                    <a href="{{ url('come-funziona') }}">Come funziona</a>
+                    <a class="other-arrowlink" href="{{ url('come-funziona') }}">Come funziona</a>
                 </p>
             </div>
         </div>
@@ -66,20 +66,23 @@
         <div class="row primary-2">
             <div class="col-md-12 bg-color header-claim">
                 <p>
-                    <strong>Celocelo</strong> è una piattaforma che migliora la vita delle persone in difficoltà che ti stanno attorno. Ti permette di:
+                    <strong>Celocelo</strong> è una piattaforma che migliora la vita<br/>delle persone in difficoltà che ti stanno attorno. Ti permette di:
                 </p>
 
                 <div class="double-side">
-                    <div class="col-md-4">
-                        donare un oggetto in buono stato ma che non utilizzi più
+                    <div class="col-md-4 text-right">
+                        donare un oggetto<br/>in buono stato ma<br/>che non utilizzi più
                     </div>
                     <div class="col-md-4 text-center">
-                        <p>
-                            MANCANO ICONE QUI
-                        </p>
+                        <div class="col-md-6">
+                            <img src="{{ url('images/oggetti.svg') }}">
+                        </div>
+                        <div class="col-md-6">
+                            <img src="{{ url('images/tempo.svg') }}">
+                        </div>
                     </div>
-                    <div class="col-md-4">
-                        offrire una competenza professionale e un po' del tempo a tua disposizione
+                    <div class="col-md-4 text-left">
+                        offrire una competenza<br/>professionale e un po'<br/>del tempo a tua disposizione
                     </div>
                 </div>
             </div>

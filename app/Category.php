@@ -10,4 +10,17 @@ class Category extends Model
     {
         return $this->hasMany('App\Category', 'parent_id');
     }
+
+    public function parent()
+    {
+        return $this->belongsTo('App\Category', 'parent_id');
+    }
+
+    public function getIconAttribute()
+    {
+        $parent = $this->parent;
+        return url(sprintf('images/categories/%s_%s.svg',
+            str_replace(' ', '_', strtolower($parent->name)),
+            str_replace(' ', '_', strtolower($this->name))));
+    }
 }

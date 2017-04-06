@@ -20,4 +20,19 @@ class Call extends Model
     {
         return $this->hasMany('App\Donation');
     }
+
+    public function getImageAttribute()
+    {
+        if ($this->status == 'archived') {
+            $donations = $this->donations;
+            if ($donations->isEmpty())
+                return null;
+
+            $donation = $donations->first();
+            return $donation->imageUrl(0);
+        }
+        else {
+            return $this->category->icon;
+        }
+    }
 }

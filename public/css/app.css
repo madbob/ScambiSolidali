@@ -5822,13 +5822,13 @@ button.close {
 .primary-1 h4 {
   color: #00E4E4;
   margin-top: 0; }
-.primary-1 .fancy-bg, .primary-1 .button, .primary-1 .pagetitle, .primary-1 .nav-tabs > li, .primary-1 .common-card, .primary-1 .primary-2 .nav-tabs > li, .primary-1 .primary-3 .nav-tabs > li, .primary-1 .primary-4 .nav-tabs > li {
+.primary-1 .fancy-bg, .primary-1 .button, .primary-1 .pagetitle, .primary-1 .nav-tabs > li, .primary-1 .common-card, .primary-1 .primary-2 .nav-tabs > li, .primary-1 .primary-3 .nav-tabs > li, .primary-1 .primary-4 .nav-tabs > li, .primary-1 .primary-5 .nav-tabs > li {
   background: repeating-linear-gradient(-45deg, #00E4E4, #00E4E4 2px, #FFF 2px, #FFF 12px); }
 .primary-1 .dense-fancy-bg, .primary-1 .dense-button {
   background: repeating-linear-gradient(-45deg, #00E4E4, #00E4E4 9px, #FFF 2px, #FFF 12px); }
 .primary-1 .txt-color {
   color: #00E4E4 !important; }
-.primary-1 .button, .primary-1 .pagetitle, .primary-1 .nav-tabs > li, .primary-1 .primary-2 .nav-tabs > li, .primary-1 .primary-3 .nav-tabs > li, .primary-1 .primary-4 .nav-tabs > li {
+.primary-1 .button, .primary-1 .pagetitle, .primary-1 .nav-tabs > li, .primary-1 .primary-2 .nav-tabs > li, .primary-1 .primary-3 .nav-tabs > li, .primary-1 .primary-4 .nav-tabs > li, .primary-1 .primary-5 .nav-tabs > li {
   text-align: center;
   border: 0;
   padding: 10px;
@@ -5899,13 +5899,13 @@ button.close {
 .primary-2 h4 {
   color: #00BFE3;
   margin-top: 0; }
-.primary-2 .fancy-bg, .primary-2 .button, .primary-2 .primary-1 .nav-tabs > li, .primary-2 .pagetitle, .primary-2 .nav-tabs > li, .primary-2 .common-card, .primary-2 .primary-3 .nav-tabs > li, .primary-2 .primary-4 .nav-tabs > li {
+.primary-2 .fancy-bg, .primary-2 .button, .primary-2 .primary-1 .nav-tabs > li, .primary-2 .pagetitle, .primary-2 .nav-tabs > li, .primary-2 .common-card, .primary-2 .primary-3 .nav-tabs > li, .primary-2 .primary-4 .nav-tabs > li, .primary-2 .primary-5 .nav-tabs > li {
   background: repeating-linear-gradient(-45deg, #00BFE3, #00BFE3 2px, #FFF 2px, #FFF 12px); }
 .primary-2 .dense-fancy-bg, .primary-2 .dense-button {
   background: repeating-linear-gradient(-45deg, #00BFE3, #00BFE3 9px, #FFF 2px, #FFF 12px); }
 .primary-2 .txt-color {
   color: #00BFE3 !important; }
-.primary-2 .button, .primary-2 .primary-1 .nav-tabs > li, .primary-2 .pagetitle, .primary-2 .nav-tabs > li, .primary-2 .primary-3 .nav-tabs > li, .primary-2 .primary-4 .nav-tabs > li {
+.primary-2 .button, .primary-2 .primary-1 .nav-tabs > li, .primary-2 .pagetitle, .primary-2 .nav-tabs > li, .primary-2 .primary-3 .nav-tabs > li, .primary-2 .primary-4 .nav-tabs > li, .primary-2 .primary-5 .nav-tabs > li {
   text-align: center;
   border: 0;
   padding: 10px;
@@ -5976,13 +5976,13 @@ button.close {
 .primary-3 h4 {
   color: #00DDB2;
   margin-top: 0; }
-.primary-3 .fancy-bg, .primary-3 .button, .primary-3 .primary-1 .nav-tabs > li, .primary-3 .primary-2 .nav-tabs > li, .primary-3 .pagetitle, .primary-3 .nav-tabs > li, .primary-3 .common-card, .primary-3 .primary-4 .nav-tabs > li {
+.primary-3 .fancy-bg, .primary-3 .button, .primary-3 .primary-1 .nav-tabs > li, .primary-3 .primary-2 .nav-tabs > li, .primary-3 .pagetitle, .primary-3 .nav-tabs > li, .primary-3 .common-card, .primary-3 .primary-4 .nav-tabs > li, .primary-3 .primary-5 .nav-tabs > li {
   background: repeating-linear-gradient(-45deg, #00DDB2, #00DDB2 2px, #FFF 2px, #FFF 12px); }
 .primary-3 .dense-fancy-bg, .primary-3 .dense-button {
   background: repeating-linear-gradient(-45deg, #00DDB2, #00DDB2 9px, #FFF 2px, #FFF 12px); }
 .primary-3 .txt-color {
   color: #00DDB2 !important; }
-.primary-3 .button, .primary-3 .primary-1 .nav-tabs > li, .primary-3 .primary-2 .nav-tabs > li, .primary-3 .pagetitle, .primary-3 .nav-tabs > li, .primary-3 .primary-4 .nav-tabs > li {
+.primary-3 .button, .primary-3 .primary-1 .nav-tabs > li, .primary-3 .primary-2 .nav-tabs > li, .primary-3 .pagetitle, .primary-3 .nav-tabs > li, .primary-3 .primary-4 .nav-tabs > li, .primary-3 .primary-5 .nav-tabs > li {
   text-align: center;
   border: 0;
   padding: 10px;
@@ -6053,13 +6053,13 @@ button.close {
 .primary-4 h4 {
   color: #DDD;
   margin-top: 0; }
-.primary-4 .fancy-bg, .primary-4 .button, .primary-4 .primary-1 .nav-tabs > li, .primary-4 .primary-2 .nav-tabs > li, .primary-4 .primary-3 .nav-tabs > li, .primary-4 .pagetitle, .primary-4 .nav-tabs > li, .primary-4 .common-card {
+.primary-4 .fancy-bg, .primary-4 .button, .primary-4 .primary-1 .nav-tabs > li, .primary-4 .primary-2 .nav-tabs > li, .primary-4 .primary-3 .nav-tabs > li, .primary-4 .pagetitle, .primary-4 .nav-tabs > li, .primary-4 .common-card, .primary-4 .primary-5 .nav-tabs > li {
   background: repeating-linear-gradient(-45deg, #DDD, #DDD 2px, #FFF 2px, #FFF 12px); }
 .primary-4 .dense-fancy-bg, .primary-4 .dense-button {
   background: repeating-linear-gradient(-45deg, #DDD, #DDD 9px, #FFF 2px, #FFF 12px); }
 .primary-4 .txt-color {
   color: #DDD !important; }
-.primary-4 .button, .primary-4 .primary-1 .nav-tabs > li, .primary-4 .primary-2 .nav-tabs > li, .primary-4 .primary-3 .nav-tabs > li, .primary-4 .pagetitle, .primary-4 .nav-tabs > li {
+.primary-4 .button, .primary-4 .primary-1 .nav-tabs > li, .primary-4 .primary-2 .nav-tabs > li, .primary-4 .primary-3 .nav-tabs > li, .primary-4 .pagetitle, .primary-4 .nav-tabs > li, .primary-4 .primary-5 .nav-tabs > li {
   text-align: center;
   border: 0;
   padding: 10px;
@@ -6125,6 +6125,83 @@ button.close {
   margin-top: 30px;
   margin-bottom: 30px; }
 
+.primary-5 a {
+  color: #000; }
+.primary-5 h4 {
+  color: #000;
+  margin-top: 0; }
+.primary-5 .fancy-bg, .primary-5 .button, .primary-5 .primary-1 .nav-tabs > li, .primary-5 .primary-2 .nav-tabs > li, .primary-5 .primary-3 .nav-tabs > li, .primary-5 .primary-4 .nav-tabs > li, .primary-5 .pagetitle, .primary-5 .nav-tabs > li, .primary-5 .common-card {
+  background: repeating-linear-gradient(-45deg, #000, #000 2px, #FFF 2px, #FFF 12px); }
+.primary-5 .dense-fancy-bg, .primary-5 .dense-button {
+  background: repeating-linear-gradient(-45deg, #000, #000 9px, #FFF 2px, #FFF 12px); }
+.primary-5 .txt-color {
+  color: #000 !important; }
+.primary-5 .button, .primary-5 .primary-1 .nav-tabs > li, .primary-5 .primary-2 .nav-tabs > li, .primary-5 .primary-3 .nav-tabs > li, .primary-5 .primary-4 .nav-tabs > li, .primary-5 .pagetitle, .primary-5 .nav-tabs > li {
+  text-align: center;
+  border: 0;
+  padding: 10px;
+  width: 100%;
+  display: block; }
+  .primary-5 .button span, .primary-5 .pagetitle span, .primary-5 .nav-tabs > li span {
+    background-color: #000;
+    color: #FFF;
+    padding: 10px;
+    display: block;
+    text-transform: uppercase; }
+.primary-5 .pagetitle {
+  margin-bottom: 30px; }
+  .primary-5 .pagetitle span {
+    padding: 20px;
+    font-weight: bold;
+    font-size: 30px; }
+.primary-5 .dense-button {
+  border: 0;
+  padding: 17px;
+  width: 100%;
+  display: block;
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center; }
+  .primary-5 .dense-button span {
+    background-color: #FFF;
+    color: #000;
+    padding: 10px;
+    display: block;
+    text-transform: uppercase; }
+.primary-5 .screaming-border {
+  border: 15px solid #000; }
+  .primary-5 .screaming-border span {
+    padding: 15px; }
+.primary-5 .nav-tabs {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  margin-bottom: 10px; }
+  .primary-5 .nav-tabs > li {
+    text-align: center; }
+    .primary-5 .nav-tabs > li a {
+      color: #FFF; }
+.primary-5 .tb-border {
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000; }
+.primary-5 .common-card {
+  color: #000; }
+  .primary-5 .common-card .card-main, .primary-5 .common-card .card-main-filter, .primary-5 .common-card .card-main-overlay {
+    background-color: #000; }
+  .primary-5 .common-card .card-main-filter {
+    background-color: #000; }
+.primary-5 .bg-color {
+  background-color: #000; }
+.primary-5 .border-top {
+  border-top: 2px solid #000; }
+.primary-5 .border-bottom {
+  border-bottom: 2px solid #000; }
+.primary-5 hr.colored {
+  border-bottom: 2px solid #000;
+  background: none;
+  margin-top: 30px;
+  margin-bottom: 30px; }
+
 .common-link, .common-card .card-footer a, .header-claim a {
   text-transform: uppercase;
   border-bottom: 1px solid;
@@ -6140,7 +6217,14 @@ a:hover {
   font-weight: bold;
   text-decoration: underline; }
   .arrowlink:before {
-    content: '> '; }
+    font-family: "Work Sans", sans-serif;
+    content: "\2192"; }
+
+.other-arrowlink {
+  font-weight: bold; }
+  .other-arrowlink:after {
+    font-family: "Work Sans", sans-serif;
+    content: "\2192"; }
 
 hr {
   border: 0;
@@ -6240,7 +6324,7 @@ textarea.form-control {
     text-align: center;
     border-bottom: 0; }
   .common-card .card-main-filter {
-    opacity: 0.3; }
+    opacity: 0.6; }
   .common-card .card-main-overlay {
     background-color: transparent !important;
     text-transform: uppercase;
@@ -6250,6 +6334,10 @@ textarea.form-control {
       font-weight: bold;
       display: table-cell;
       vertical-align: middle; }
+      .common-card .card-main-overlay span p {
+        margin: 0; }
+      .common-card .card-main-overlay span img {
+        width: 60%; }
   .common-card .card-footer {
     position: absolute;
     bottom: 5%;
@@ -6274,7 +6362,8 @@ textarea.form-control {
 .navbar-right {
   margin-top: 20px;
   padding-top: 10px;
-  border-top: 2px solid #00E4E4; }
+  border-top: 2px solid #00E4E4;
+  text-transform: uppercase; }
 
 .navbar-nav > li > a {
   padding: 3px 0;
@@ -6311,6 +6400,16 @@ textarea.form-control {
 .tb-border {
   height: 500px; }
 
+.double-side {
+  font-size: 28px;
+  display: table; }
+  .double-side .col-md-4 {
+    float: none;
+    display: table-cell;
+    vertical-align: middle; }
+  .double-side img {
+    width: 70%; }
+
 /********************************* CELO/MANCA */
 .categories-select {
   margin: 40px 0;
@@ -6341,6 +6440,9 @@ textarea.form-control {
   width: 100%;
   height: 300px; }
 
+.celo .common-card, .manca .common-card {
+  margin-bottom: 22px; }
+
 /********************************* PROGETTO */
 .credits {
   font-size: 17px; }
@@ -6352,6 +6454,24 @@ textarea.form-control {
 .working a {
   color: #000;
   text-decoration: underline; }
+
+/********************************* MIE DONAZIONI */
+.mydonations {
+  color: #000; }
+  .mydonations .mydonation {
+    border-top: 2px solid #000;
+    padding-top: 20px;
+    margin: 20px 0;
+    display: block;
+    width: 48%; }
+    .mydonations .mydonation h2 {
+      display: inline-block;
+      text-transform: uppercase;
+      border-bottom: 2px solid #000; }
+    .mydonations .mydonation:nth-child(even) {
+      float: right; }
+    .mydonations .mydonation:nth-child(odd) {
+      float: left; }
 
 /********************************* NUMERI */
 .numbers .metric {
