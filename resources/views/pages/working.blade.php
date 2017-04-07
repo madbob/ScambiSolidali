@@ -43,7 +43,7 @@
         <div class="row primary-2">
             <div class="col-md-3">
                 <div class="button screaming-border">
-                    <span>SEI UN OPERATORE?</span>
+                    <span>SEI UN OPERATORE SOCIALE?</span>
                 </div>
             </div>
 

@@ -15,7 +15,7 @@ class CallController extends Controller
     public function index(Request $request)
     {
         $user = Auth::user();
-        $edit_enabled = ($user != null && ($user->role != 'admin' || $user->role != 'operator'));
+        $edit_enabled = ($user != null && ($user->role == 'admin' || $user->role == 'operator'));
 
         $query = Call::orderBy('updated_at', 'desc');
 
