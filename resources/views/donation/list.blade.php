@@ -6,15 +6,15 @@
     <div class="celo primary-1">
     	<div class="row">
     		<div class="col-md-2">
-                <a href="{{ url('celo/nuovo') }}" class="dense-button">
+                <a href="{{ url('celo/nuovo/oggetto') }}" class="dense-button">
                     <span>Celo!</span>
                 </a>
 
                 <br/>
 
                 <p>
-                    Qui puoi inserire il tuo oggetto!<br/>
-                    Descrivi l’oggetto, carica una foto e attendi la nostra risposta!
+                    Qui puoi inserire il tuo annuncio!<br/>
+                    Dicci cosa vuoi regalare e attendi la nostra risposta!
                 </p>
 
                 <ul class="categories-select">
@@ -61,7 +61,7 @@
                                         @if($edit_enabled)
                                             <a class="show-details" data-endpoint="celo" data-item-id="{{ $donation->id }}">{{ $donation->title }}</a>
                                         @else
-                                            <a>{{ $donation->title }}</a>
+                                            {{ $donation->title }}
                                         @endif
                                     </p>
                                 </div>

@@ -7,9 +7,7 @@
         <div class="row primary-3">
             <div class="col-md-12 bg-color header-claim">
                 <p>
-                    Non si butta via niente!<br/>
-                    Quello che non ti serve, serve!<br/>
-                    Fai vivere meglio chi ti sta attorno!
+                    Non si butta via niente:<br/>quello che non serve a te puoi darlo a Celocelo
                 </p>
 
                 <p class="small-link">
@@ -34,7 +32,7 @@
                         </div>
                         <div class="card-footer vert-align">
                             <p>
-                                <a href="{{ url('celo') }}">Fai la tua proposta</a>
+                                <a href="{{ url('celo') }}">Inserisci il tuo annuncio</a>
                             </p>
                         </div>
                     </div>
@@ -50,7 +48,7 @@
                         </div>
                         <div class="card-footer vert-align">
                             <p>
-                                <a href="{{ url('manca') }}">Vedi se ci puoi aiutare</a>
+                                <a href="{{ url('manca') }}">Ci puoi aiutare?</a>
                             </p>
                         </div>
                     </div>
@@ -82,7 +80,7 @@
                         </div>
                     </div>
                     <div class="col-md-4 text-left">
-                        offrire una competenza<br/>professionale e un po'<br/>del tempo a tua disposizione
+                        offrire un po’ del tuo tempo<br/>o una tua competenza professionale
                     </div>
                 </div>
             </div>
@@ -94,10 +92,10 @@
 
         <div class="row primary-3">
             <div class="col-md-12 bg-color header-claim">
-                <h2>Storie di successo</h2>
+                <h2>Lieto fine</h2>
 
                 <p>
-                    Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla.
+                    Vuoi scoprire che fine ha fatto il tuo frigo? Qui ti raccontiamo  le storie di successo di Celocelo.
                 </p>
             </div>
         </div>

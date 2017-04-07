@@ -35,6 +35,7 @@
                     </button>
                     <a class="navbar-brand" href="{{ url('/') }}">
                         <img src="{{ url('images/logo.png') }}" alt="{{ config('app.name', 'Laravel') }}" class="img-responsive">
+                        <span class="tagline">Mettiamo in contatto chi opera nel sociale con chi ha qualcosa da regalare!</span>
                     </a>
                 </div>
 
@@ -67,11 +68,11 @@
                 <div class="col-md-12">
                     <ul class="main-menu">
                         <li><a href="{{ url('progetto') }}">Progetto</a></li>
-                        <li><a href="{{ url('come-funziona') }}">Come Funziona</a></li>
+                        <li><a href="{{ url('come-funziona') }}">Regole</a></li>
                         <li><a href="{{ url('celo') }}">Celo</a></li>
                         <li><a href="{{ url('manca') }}">Manca</a></li>
                         <li><a href="{{ url('giocatori') }}">Giocatori</a></li>
-                        <li><a href="{{ url('numeri') }}">Lieto Fine</a></li>
+                        <li><a href="{{ url('numeri') }}">Vincitori</a></li>
                         <li><a href="{{ url('parlano-di-noi') }}">Parlano di Noi</a></li>
                         <li><a href="{{ url('contatti') }}">Contatti</a></li>
                     </ul>

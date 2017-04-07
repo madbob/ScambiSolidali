@@ -21,7 +21,7 @@ Route::get('/come-funziona', 'CommonController@working');
 Route::get('/numeri', 'CommonController@numbers');
 Route::get('/contatti', 'CommonController@contacts');
 
-Route::get('/celo/nuovo', 'DonationController@create');
+Route::get('/celo/nuovo/{type}', 'DonationController@create');
 
 Route::get('/donazione/image/{id}/{index}', 'DonationController@getImage');
 Route::get('/donazione/mie', 'DonationController@myIndex');

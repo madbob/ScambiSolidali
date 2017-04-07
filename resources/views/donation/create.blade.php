@@ -35,13 +35,13 @@
             {!! BootForm::text('title', 'Il mio Oggetto', null, ['required' => 'required']) !!}
 
             <div class="form-group">
-                <label for="category_id" class="col-sm-2 col-md-3 control-label">Categoria</label>
-                <div class="col-sm-10 col-md-9">
+                <label for="category_id" class="col-sm-2 col-md-2 control-label">Categoria</label>
+                <div class="col-sm-10 col-md-10">
                     @include('category.selector', ['orientation' => 'horizontal', 'selected' => null])
                 </div>
             </div>
 
-            {!! BootForm::textarea('description', 'Come è fatto', null, ['required' => 'required']) !!}
+            {!! BootForm::textarea('description', 'Descrizione', null, ['required' => 'required']) !!}
 
             <?php $last = Auth::user()->lastDonation() ?>
 
@@ -54,7 +54,7 @@
             {!! BootForm::checkbox('elevator', 'Ascensore', $last ? $last->elevator : false) !!}
             {!! BootForm::textarea('shipping_notes', 'Note') !!}
             {!! BootForm::checkbox('autoship', 'Lo posso trasportare io', 'autoship', null, ['help_text' => 'Bla Bla Bla se puoi consegnarlo tu Bla Bla Bla']) !!}
-            {!! BootForm::checkbox('recoverable', 'Recupera Oggetto', 'recoverable', null, ['help_text' => 'Bla Bla Bla Cooperativa Triciclo Bla Bla Bla']) !!}
+            {!! BootForm::checkbox('recoverable', "Se l'oggetto che hai inserito non viene richiesto da nessun operatore, passato un mese puoi scegliere di farlo valutare dalla cooperativa sociale Triciclo, nel caso in cui fossero interessati al tuo oggetto verrà preso in carico da loro.", 'recoverable', null) !!}
 
             <br/>
 

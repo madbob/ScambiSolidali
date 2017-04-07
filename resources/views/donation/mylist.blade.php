@@ -3,7 +3,7 @@
 @section('title', 'Le Mie Donazioni')
 
 @section('content')
-    <div class="mydonations primary-5">
+    <div class="mydonations primary-3">
         <div class="row">
             <div class="pagetitle">
                 <span>LE MIE DONAZIONI</span>

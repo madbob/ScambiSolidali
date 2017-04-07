@@ -49,7 +49,7 @@ class DonationController extends Controller
         else
             $data['current_show'] = -1;
 
-        $data['edit_enabled'] = ($user != null && ($user->role != 'admin' || $user->role != 'operator'));
+        $data['edit_enabled'] = ($user != null && ($user->role == 'admin' || $user->role == 'operator'));
 
         return view('donation.list', $data);
     }
@@ -68,7 +68,7 @@ class DonationController extends Controller
         return view('donation.mylist', $data);
     }
 
-    public function create(Request $request)
+    public function create(Request $request, $type)
     {
         $user = Auth::user();
 
@@ -77,7 +77,10 @@ class DonationController extends Controller
         else
             $call = null;
 
-        return view('donation.create', ['user' => $user, 'call' => $call]);
+        if ($type == 'servizio')
+            return view('donation.service', ['user' => $user, 'call' => $call]);
+        else
+            return view('donation.create', ['user' => $user, 'call' => $call]);
     }
 
     public function store(Request $request)

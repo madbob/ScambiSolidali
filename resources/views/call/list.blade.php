@@ -21,7 +21,7 @@
 
                 <p>
                     Guarda cosa ci manca!<br/>
-                    Hai uno di questi oggetti? Vuoi donarcelo?<br/>
+                    Ce l'hai?<br/>
                     Rispondi alle nostre call, ti contatteremo appena possibile!
                 </p>
 

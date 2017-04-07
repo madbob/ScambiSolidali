@@ -26,7 +26,7 @@
                 <div class="col-md-12">
                     <div class="metric">
                         <p class="name txt-color">
-                            Oggetti Donati
+                            Oggetti Inseriti
                         </p>
                         <div class="bar">
                             <div class="indicator" style="width: {{ $donated_width }}%">&nbsp;</div>
@@ -35,7 +35,7 @@
                     </div>
                     <div class="metric">
                         <p class="name txt-color">
-                            Oggetti Ricevuti
+                            Oggetti Assegnati
                         </p>
                         <div class="bar">
                             <div class="indicator" style="width: {{ $assigned_width }}%">&nbsp;</div>

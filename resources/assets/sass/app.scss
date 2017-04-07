@@ -87,6 +87,7 @@ $colors: $primary-color-1 $primary-color-2 $secondary-color-1 $gray-color-1 $bla
             border: 15px solid $color;
 
             span {
+                font-weight: bold;
                 padding: 15px;
             }
         }
@@ -340,8 +341,9 @@ textarea.form-control {
         width: 90%;
         background-color: #FFF;
         box-sizing: border-box;
-        padding: 20px 60px;
+        padding: 20px 30px;
         text-align: center;
+        text-transform: uppercase;
 
         a {
             @extend .common-link;
@@ -363,6 +365,10 @@ textarea.form-control {
 
 .navbar-default {
     border: 0;
+
+    .tagline {
+        font-size: 15px;
+    }
 }
 
 .navbar-right {

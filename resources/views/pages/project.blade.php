@@ -11,7 +11,7 @@
 
             <div class="col-md-3">
                 <div class="common-card">
-                    <div class="card-main image-frame" style="background-image: url('https://placeholdit.imgix.net/~text?txtsize=33&txt=boh...&w=150&h=250')">
+                    <div class="card-main image-frame" style="background-image: url('{{ url('images/categories/casa_elettrodomestici.svg') }}')">
                         &nbsp;
                     </div>
                     <div class="card-footer vert-align">

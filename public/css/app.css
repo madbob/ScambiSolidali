@@ -5863,6 +5863,7 @@ button.close {
 .primary-1 .screaming-border {
   border: 15px solid #00E4E4; }
   .primary-1 .screaming-border span {
+    font-weight: bold;
     padding: 15px; }
 .primary-1 .nav-tabs {
   display: flex;
@@ -5940,6 +5941,7 @@ button.close {
 .primary-2 .screaming-border {
   border: 15px solid #00BFE3; }
   .primary-2 .screaming-border span {
+    font-weight: bold;
     padding: 15px; }
 .primary-2 .nav-tabs {
   display: flex;
@@ -6017,6 +6019,7 @@ button.close {
 .primary-3 .screaming-border {
   border: 15px solid #00DDB2; }
   .primary-3 .screaming-border span {
+    font-weight: bold;
     padding: 15px; }
 .primary-3 .nav-tabs {
   display: flex;
@@ -6094,6 +6097,7 @@ button.close {
 .primary-4 .screaming-border {
   border: 15px solid #DDD; }
   .primary-4 .screaming-border span {
+    font-weight: bold;
     padding: 15px; }
 .primary-4 .nav-tabs {
   display: flex;
@@ -6171,6 +6175,7 @@ button.close {
 .primary-5 .screaming-border {
   border: 15px solid #000; }
   .primary-5 .screaming-border span {
+    font-weight: bold;
     padding: 15px; }
 .primary-5 .nav-tabs {
   display: flex;
@@ -6346,8 +6351,9 @@ textarea.form-control {
     width: 90%;
     background-color: #FFF;
     box-sizing: border-box;
-    padding: 20px 60px;
-    text-align: center; }
+    padding: 20px 30px;
+    text-align: center;
+    text-transform: uppercase; }
 
 .black {
   color: #000; }
@@ -6358,6 +6364,8 @@ textarea.form-control {
 /********************************* NAVIGAZIONE */
 .navbar-default {
   border: 0; }
+  .navbar-default .tagline {
+    font-size: 15px; }
 
 .navbar-right {
   margin-top: 20px;
