@@ -25,6 +25,7 @@ Route::get('/celo/nuovo/{type}', 'DonationController@create');
 
 Route::get('/donazione/image/{id}/{index}', 'DonationController@getImage');
 Route::get('/donazione/mie', 'DonationController@myIndex');
+Route::get('/donazione/mio/{id}', 'DonationController@getMyEdit');
 Route::post('/donazione/assegna/{id}', 'DonationController@postAssign');
 Route::post('/donazione/prenota/{id}', 'DonationController@postBook');
 Route::post('/donazione/recuperabile/{id}', 'DonationController@postRecoverable');

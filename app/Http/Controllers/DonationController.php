@@ -84,6 +84,25 @@ class DonationController extends Controller
             return view('donation.create', ['user' => $user, 'call' => $call]);
     }
 
+    private function requestInDonation($donation, $request)
+    {
+        $donation->type = $request->input('type');
+        $donation->title = $request->input('title');
+        $donation->category_id = $request->input('category_id', -1);
+        $donation->description = $request->input('description');
+        $donation->name = $request->input('name');
+        $donation->surname = $request->input('surname');
+        $donation->address = $request->input('address', '');
+        $donation->call_id = $request->input('call_id', null);
+        $donation->phone = $request->input('phone');
+        $donation->email = $request->input('email');
+        $donation->floor = $request->input('floor', -1);
+        $donation->elevator = $request->has('elevator');
+        $donation->shipping_notes = $request->input('shipping_notes', '');
+        $donation->autoship = $request->has('autoship');
+        $donation->recoverable = $request->has('recoverable');
+    }
+
     public function store(Request $request)
     {
         $type = $request->input('type');
@@ -112,23 +131,9 @@ class DonationController extends Controller
         }
 
         $donation = new Donation();
-        $donation->type = $type;
         $donation->user_id = Auth::user()->id;
-        $donation->title = $request->input('title');
-        $donation->category_id = $request->input('category_id', -1);
-        $donation->description = $request->input('description');
-        $donation->name = $request->input('name');
-        $donation->surname = $request->input('surname');
-        $donation->address = $request->input('address', '');
-        $donation->call_id = $request->input('call_id', null);
-        $donation->phone = $request->input('phone');
-        $donation->email = $request->input('email');
-        $donation->floor = $request->input('floor', -1);
-        $donation->elevator = $request->has('elevator');
-        $donation->shipping_notes = $request->input('shipping_notes', '');
-        $donation->autoship = $request->has('autoship');
+        $this->requestInDonation($donation, $request);
         $donation->status = 'pending';
-        $donation->recoverable = $request->has('recoverable');
         $donation->save();
 
         if ($request->has('photo')) {
@@ -172,19 +177,7 @@ class DonationController extends Controller
         if ($donation->status != 'pending')
             return redirect(url('/'));
 
-        $donation->title = $request->input('title');
-        $donation->category_id = $request->input('category_id');
-        $donation->description = $request->input('description');
-        $donation->name = $request->input('name');
-        $donation->surname = $request->input('surname');
-        $donation->address = $request->input('address');
-        $donation->phone = $request->input('phone');
-        $donation->email = $request->input('email');
-        $donation->floor = $request->input('floor');
-        $donation->elevator = $request->has('elevator');
-        $donation->shipping_notes = $request->input('shipping_notes');
-        $donation->autoship = $request->has('autoship');
-        $donation->recoverable = $request->has('recoverable');
+        $this->requestInDonation($donation, $request);
         $donation->save();
 
         $kept_photos = [];
@@ -338,5 +331,19 @@ class DonationController extends Controller
         $donation->really_recoverable = $status;
         $donation->save();
         return 'ok';
+    }
+
+    public function getMyEdit(Request $request, $id)
+    {
+        $user = Auth::user();
+
+        $donation = Donation::find($id);
+        if ($donation->user_id != $user->id)
+            return redirect(url('/'));
+
+        if ($donation->type == 'servizio')
+            return view('donation.service', ['user' => $user, 'donation' => $donation]);
+        else
+            return view('donation.create', ['user' => $user, 'donation' => $donation]);
     }
 }

@@ -3,9 +3,38 @@
 @section('title', 'Celo')
 
 @section('content')
+
+<?php
+
+if (isset($call) == false)
+    $call = null;
+
+if (isset($donation) == false)
+    $donation = null;
+else
+    $call = $donation->call;
+
+?>
+
 <div class="row new-donation-form primary-1">
-    {!! BootForm::vertical(['action' => 'DonationController@store', 'enctype' => 'multipart/form-data']) !!}
+    {!! BootForm::vertical(['model' => $donation, 'store' => 'DonationController@store', 'update' => 'DonationController@update', 'enctype' => 'multipart/form-data']) !!}
         <div class="col-md-3">
+            @if($donation)
+                @for($i = 1; $i <= $donation->imagesNum(); $i++)
+                    <div class="common-card fileuploader">
+                        <div class="card-main vert-align image-frame bg-white txt-color" style="background-image: url('{{ $donation->imageUrl($i) }}')">
+                        </div>
+                        <div class="card-footer vert-align">
+                            <p>
+                                CARICA FOTO
+                            </p>
+                        </div>
+
+                        <input type="hidden" name="keep_photo[]" value="{{ $i }}">
+                    </div>
+                @endfor
+            @endif
+
             <div class="common-card fileuploader">
                 <div class="card-main vert-align image-frame bg-white txt-color">
                     <p>
@@ -18,7 +47,7 @@
                     </p>
                 </div>
 
-                <input type="file" name="photo[]" class="hidden" required>
+                <input type="file" name="photo[]" class="hidden" {{ $donation ? '' : 'required' }}>
             </div>
         </div>
 
@@ -39,13 +68,13 @@
             <div class="form-group">
                 <label for="category_id" class="col-sm-2 col-md-2 control-label">Categoria</label>
                 <div class="col-sm-10 col-md-10">
-                    @include('category.selector', ['orientation' => 'horizontal', 'selected' => null])
+                    @include('category.selector', ['orientation' => 'horizontal', 'selected' => $donation ? $donation->category_id : null])
                 </div>
             </div>
 
             {!! BootForm::textarea('description', 'Descrizione', null, ['required' => 'required']) !!}
 
-            <?php $last = Auth::user()->lastDonation() ?>
+            <?php $last = $donation ? $donation : Auth::user()->lastDonation() ?>
 
             {!! BootForm::text('name', 'Nome', $last ? $last->name : $user->name, ['required' => 'required']) !!}
             {!! BootForm::text('surname', 'Cognome', $last ? $last->surname : $user->surname, ['required' => 'required']) !!}
@@ -73,4 +102,5 @@
         </div>
     {!! BootForm::close() !!}
 </div>
+
 @endsection

@@ -27,6 +27,14 @@
                                 <br/>
                                 {{ nl2br($donation->description) }}
                             </p>
+
+                            @if($donation->status == 'pending')
+                                <p>
+                                    <a class="button" href="{{ url('donazione/mio/' . $donation->id) }}">
+                                        <span>Modifica</span>
+                                    </a>
+                                </p>
+                            @endif
                         </div>
 					@endforeach
                 @endif
