@@ -3,12 +3,14 @@
 @section('title', 'Celo')
 
 @section('content')
+    <input type="hidden" name="trigger-show-details" data-endpoint="celo" data-item-id="{{ $current_show }}">
+
     <div class="celo primary-1">
     	<div class="row">
     		<div class="col-md-2">
-                <a href="{{ url('celo/nuovo/oggetto') }}" class="dense-button">
+                <button data-toggle="modal" data-target="#celo-select" class="dense-button">
                     <span>Celo!</span>
-                </a>
+                </button>
 
                 <br/>
 
@@ -73,5 +75,32 @@
                 @endif
     		</div>
     	</div>
+
+        <div class="modal fade" id="celo-select" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <a href="{{ url('celo/nuovo/oggetto') }}" class="dense-button">
+                                    <img src="{{ url('images/oggetti.svg') }}">
+                                    <span>Dona un oggetto</span>
+                                </a>
+                            </div>
+                            <div class="col-md-5 col-md-offset-2">
+                                <a href="{{ url('celo/nuovo/servizio') }}"  class="dense-button">
+                                    <img src="{{ url('images/tempo.svg') }}">
+                                    <span>Dona una competenza</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection

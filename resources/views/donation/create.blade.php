@@ -32,6 +32,8 @@
                 <br/>
             @endif
 
+            <input type="hidden" name="type" value="object">
+
             {!! BootForm::text('title', 'Il mio Oggetto', null, ['required' => 'required']) !!}
 
             <div class="form-group">

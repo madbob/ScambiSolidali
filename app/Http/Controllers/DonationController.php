@@ -8,6 +8,7 @@ use Session;
 use Mail;
 
 use App\Mail\CallResponded;
+use App\Mail\DonationAssigned;
 use App\Donation;
 use App\Category;
 use App\Receiver;
@@ -85,40 +86,57 @@ class DonationController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'title' => 'required|max:255',
-            'category_id' => 'required|integer|exists:categories,id',
-            'description' => 'required',
-            'name' => 'required|max:255',
-            'surname' => 'required|max:255',
-            'address' => 'required|max:255',
-            'phone' => 'required|max:255',
-            'email' => 'required|max:255'
-        ]);
+        $type = $request->input('type');
+
+        if ($type == 'object') {
+            $this->validate($request, [
+                'title' => 'required|max:255',
+                'category_id' => 'required|integer|exists:categories,id',
+                'description' => 'required',
+                'name' => 'required|max:255',
+                'surname' => 'required|max:255',
+                'address' => 'required|max:255',
+                'phone' => 'required|max:255',
+                'email' => 'required|max:255'
+            ]);
+        }
+        else {
+            $this->validate($request, [
+                'title' => 'required|max:255',
+                'description' => 'required',
+                'name' => 'required|max:255',
+                'surname' => 'required|max:255',
+                'phone' => 'required|max:255',
+                'email' => 'required|max:255'
+            ]);
+        }
 
         $donation = new Donation();
+        $donation->type = $type;
         $donation->user_id = Auth::user()->id;
         $donation->title = $request->input('title');
-        $donation->category_id = $request->input('category_id');
+        $donation->category_id = $request->input('category_id', -1);
         $donation->description = $request->input('description');
         $donation->name = $request->input('name');
         $donation->surname = $request->input('surname');
-        $donation->address = $request->input('address');
+        $donation->address = $request->input('address', '');
         $donation->call_id = $request->input('call_id', null);
         $donation->phone = $request->input('phone');
         $donation->email = $request->input('email');
-        $donation->floor = $request->input('floor');
+        $donation->floor = $request->input('floor', -1);
         $donation->elevator = $request->has('elevator');
-        $donation->shipping_notes = $request->input('shipping_notes');
+        $donation->shipping_notes = $request->input('shipping_notes', '');
         $donation->autoship = $request->has('autoship');
         $donation->status = 'pending';
         $donation->recoverable = $request->has('recoverable');
         $donation->save();
 
-        $index = 1;
-        foreach ($request->file('photo') as $op) {
-            $op->move(Donation::photosPath(), $donation->id . '_' . $index);
-            $index++;
+        if ($request->has('photo')) {
+            $index = 1;
+            foreach ($request->file('photo') as $op) {
+                $op->move(Donation::photosPath(), $donation->id . '_' . $index);
+                $index++;
+            }
         }
 
         if ($donation->call_id != null) {
@@ -206,7 +224,10 @@ class DonationController extends Controller
         }
 
         $donation = Donation::find($id);
-        return view('donation.modal', ['donation' => $donation]);
+        if ($donation->type == 'object')
+            return view('donation.modal', ['donation' => $donation]);
+        else
+            return view('donation.smodal', ['donation' => $donation]);
     }
 
     public function destroy(Request $request, $id)
@@ -286,11 +307,20 @@ class DonationController extends Controller
                 'updated_at' => date('Y-m-d G:i:s')
             ]);
 
-            $donation->status = 'assigned';
             $donation->rating = 5;
-            $donation->save();
 
-            Session::flash('message', 'Donazione assegnata. È stata inviata una mail al donatore per avere informazioni sul ritiro, trovi i dettagli nella pagina "Archivio"');
+            /*
+                Solo se la donazione riguarda un oggetto essa viene "consumata"
+                e ne cambio lo stato, altrimenti (se riguarda un servizio) resta
+                a disposizione
+            */
+            if ($donation->type == 'object') {
+                $donation->status = 'assigned';
+                Mail::to($donation->email)->send(new DonationAssigned($donation));
+                Session::flash('message', 'Donazione assegnata. È stata inviata una mail al donatore per avere informazioni sul ritiro.');
+            }
+
+            $donation->save();
         }
 
         return redirect(url('donazione'));

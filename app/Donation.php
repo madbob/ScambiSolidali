@@ -47,7 +47,10 @@ class Donation extends Model
 
     public function imageUrl($index)
     {
-        return url('donazione/image/' . $this->id . '/' . $index . '?d=' . $this->updated_at);
+        if ($this->type == 'service')
+            return url('images/tempo.svg');
+        else
+            return url('donazione/image/' . $this->id . '/' . $index . '?d=' . $this->updated_at);
     }
 
 	public function printableAddress()
