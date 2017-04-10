@@ -341,7 +341,7 @@ class DonationController extends Controller
         if ($donation->user_id != $user->id)
             return redirect(url('/'));
 
-        if ($donation->type == 'servizio')
+        if ($donation->type == 'service')
             return view('donation.service', ['user' => $user, 'donation' => $donation]);
         else
             return view('donation.create', ['user' => $user, 'donation' => $donation]);

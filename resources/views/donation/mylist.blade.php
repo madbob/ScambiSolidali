@@ -19,7 +19,11 @@
                         </p>
                     </div>
                 @else
-					@foreach($donations as $donation)
+					@foreach($donations as $index => $donation)
+                        @if($index % 2 == 0 && $index != 0)
+                            <div class="clearfix"></div>
+                        @endif
+
                         <div class="col-md-6 mydonation">
                             <p>{{ date('d.m.Y', strtotime($donation->created_at)) }}</p>
                             <h2>{{ $donation->title }}</h2>

@@ -3,8 +3,21 @@
 @section('title', 'Celo')
 
 @section('content')
+
+<?php
+
+if (isset($call) == false)
+    $call = null;
+
+if (isset($donation) == false)
+    $donation = null;
+else
+    $call = $donation->call;
+
+?>
+
 <div class="row new-donation-form primary-1">
-    {!! BootForm::vertical(['action' => 'DonationController@store', 'enctype' => 'multipart/form-data']) !!}
+    {!! BootForm::vertical(['model' => $donation, 'store' => 'DonationController@store', 'update' => 'DonationController@update', 'enctype' => 'multipart/form-data']) !!}
         <div class="col-md-12">
             @if($call != null)
                 <br/>

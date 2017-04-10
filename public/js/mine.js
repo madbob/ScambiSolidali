@@ -136,7 +136,8 @@ $(document).ready(function() {
         $('input:hidden[name=trigger-show-details]').each(function() {
             var endpoint = $(this).attr('data-endpoint');
             var id = $(this).attr('data-item-id');
-            dynamicModal(endpoint, id);
+            if (id != -1)
+                dynamicModal(endpoint, id);
         });
     }
 
