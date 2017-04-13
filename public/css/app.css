@@ -6490,6 +6490,10 @@ textarea.form-control {
   .categories-select li {
     list-style: none;
     text-transform: uppercase; }
+    .categories-select li.selected {
+      font-weight: bold; }
+      .categories-select li.selected li span {
+        font-weight: bold; }
 
 .show-details {
   cursor: pointer; }

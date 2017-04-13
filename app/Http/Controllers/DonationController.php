@@ -29,20 +29,31 @@ class DonationController extends Controller
         if ($user && $user->role == 'carrier')
             $query->where('recoverable', true);
 
-        if ($request->has('filter')) {
-            $category = Category::find($request->input('filter'));
-            if ($category->parent_id == 0) {
-                $subs = [];
-                foreach($category->children as $children)
-                    $subs[] = $children->id;
+        $filter = null;
 
-                $query->whereIn('category_id', $subs);
+        if ($request->has('filter')) {
+            $filter = $request->input('filter');
+            if ($filter == 'service') {
+                $query->where('type', 'service');
             }
             else {
-                $query->where('category_id', $category->id);
+                $query->where('type', 'object');
+
+                $category = Category::find($filter);
+                if ($category->parent_id == 0) {
+                    $subs = [];
+                    foreach($category->children as $children)
+                        $subs[] = $children->id;
+
+                    $query->whereIn('category_id', $subs);
+                }
+                else {
+                    $query->where('category_id', $category->id);
+                }
             }
         }
 
+        $data['filter'] = $filter;
         $data['donations'] = $query->paginate(50);
 
         if ($request->has('show'))

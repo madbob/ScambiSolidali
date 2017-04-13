@@ -511,6 +511,16 @@ textarea.form-control {
     li {
         list-style: none;
         text-transform: uppercase;
+
+        &.selected {
+            font-weight: bold;
+
+            li {
+                span {
+                    font-weight: bold;
+                }
+            }
+        }
     }
 }
 
