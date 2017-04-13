@@ -9,12 +9,12 @@
 
     <title>{{ config('app.name', 'Scambi Solidali') }}</title>
 
-    <link href="/css/app.css" rel="stylesheet">
     <link href="/css/chosen.min.css" rel="stylesheet">
     <link href="/css/bootstrap-chosen.css" rel="stylesheet">
     <link href="/css/bootstrap-datepicker3.min.css" rel="stylesheet">
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.css' rel='stylesheet' />
     <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.0.1/mapbox-gl-geocoder.css' type='text/css' />
+    {!! Minify::stylesheet('/css/app.css') !!}
 
     <script>
         window.Laravel = <?php echo json_encode([
@@ -100,6 +100,6 @@
     <script src="{{ url('js/bootstrap-datepicker.it.min.js') }}"></script>
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.js'></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.0.1/mapbox-gl-geocoder.js'></script>
-	<script src="{{ url('js/mine.js') }}"></script>
+	{!! Minify::javascript('/js/mine.js') !!}
 </body>
 </html>
