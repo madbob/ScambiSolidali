@@ -108,6 +108,10 @@ $colors: $primary-color-1 $primary-color-2 $secondary-color-1 $gray-color-1 $bla
             }
         }
 
+        .top-border {
+            border-top: 2px solid $color;
+        }
+
         .tb-border {
             border-top: 2px solid $color;
             border-bottom: 2px solid $color;
@@ -147,6 +151,10 @@ $colors: $primary-color-1 $primary-color-2 $secondary-color-1 $gray-color-1 $bla
     }
 }
 
+body {
+    color: #000;
+}
+
 .common-link {
     text-transform: uppercase;
     border-bottom: 1px solid;
@@ -180,13 +188,6 @@ a:hover {
     }
 }
 
-hr {
-    border: 0;
-    height: 2px;
-    background: linear-gradient(to right, $primary-color-1 0%, $primary-color-1 25%, #FFF 25%, #FFF 75%, $primary-color-2 75%, $primary-color-2 100%);
-    margin-bottom: 62px;
-}
-
 hr.black {
     border-bottom: 2px solid #000;
     background: none;
@@ -207,10 +208,14 @@ h1, .h1, h2, .h2, h3, .h3 {
 input.form-control {
     padding: 10px;
     border: none;
-    box-shadow: none;
     background-attachment: local;
     background-image: linear-gradient(to left, white 13px, transparent 13px), repeating-linear-gradient(white, white 33px, $primary-color-1 33px, $primary-color-1 34px, white 34px);
     line-height: 31px;
+    box-shadow: none;
+
+    &:focus {
+        box-shadow: none;
+    }
 }
 
 textarea.form-control {
@@ -278,11 +283,20 @@ textarea.form-control {
     padding-right: 0;
 }
 
-.modal-body {
-    > .row {
-        margin-left: 10px;
-        margin-right: 10px;
-        margin-bottom: 0;
+.modal-content {
+    border-radius: 0px;
+
+    .modal-title {
+        color: $primary-color-2;
+        margin-top: 10px;
+    }
+
+    .modal-body {
+        > .row {
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-bottom: 0;
+        }
     }
 }
 
@@ -365,29 +379,37 @@ textarea.form-control {
 
 .navbar-default {
     border: 0;
-
-    .tagline {
-        font-size: 15px;
-    }
 }
 
 .navbar-right {
     margin-top: 20px;
     padding-top: 10px;
-    border-top: 2px solid $primary-color-1;
+    border-top: 2px solid $primary-color-2;
     text-transform: uppercase;
 }
 
 .navbar-nav {
     > li > a {
         padding: 3px 0;
-        font-weight: bold;
         text-decoration: none;
+        color: #000 !important;
+    }
+}
+
+.tagline {
+    border-top: 2px solid $primary-color-2;
+    padding: 20px 0;
+    display: block;
+    color: $primary-color-2;
+
+    &:before {
+        font-family: "Work Sans", sans-serif;
+        content: "\2192";
     }
 }
 
 .main-menu {
-    border-top: 2px solid $primary-color-1;
+    border-top: 2px solid $primary-color-2;
     margin-bottom: 40px;
     padding: 30px 0 0 0;
     display: flex;

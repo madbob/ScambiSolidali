@@ -35,7 +35,6 @@
                     </button>
                     <a class="navbar-brand" href="{{ url('/') }}">
                         <img src="{{ url('images/logo.png') }}" alt="{{ config('app.name', 'Laravel') }}" class="img-responsive">
-                        <span class="tagline">Mettiamo in contatto chi opera nel sociale con chi ha qualcosa da regalare!</span>
                     </a>
                 </div>
 
@@ -64,6 +63,12 @@
         </nav>
 
 		<div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <span class="tagline">mettiamo in contatto chi opera nel sociale con chi ha qualcosa da regalare!</span>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="col-md-12">
                     <ul class="main-menu">

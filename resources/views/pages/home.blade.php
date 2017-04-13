@@ -86,8 +86,19 @@
             </div>
         </div>
 
-        <div class="row">
-            <hr/>
+        <div class="row spaced-below">
+            <div class="col-md-6 primary-1">
+                <div class="col-md-4 top-border">
+                </div>
+                <div class="col-md-offset-1 col-md-7 left-p">
+                </div>
+            </div>
+            <div class="col-md-6 primary-2">
+                <div class="col-md-7 right-p">
+                </div>
+                <div class="col-md-offset-1 col-md-4 top-border">
+                </div>
+            </div>
         </div>
 
         <div class="row primary-3">

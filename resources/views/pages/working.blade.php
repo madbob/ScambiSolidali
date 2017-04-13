@@ -59,7 +59,7 @@
 
         <hr class="black">
 
-        <div class="row primary-3">
+        <div class="row primary-1">
             <div class="col-md-3">
                 <div class="button screaming-border">
                     <span>COME AVVIENE LA DONAZIONE?</span>
