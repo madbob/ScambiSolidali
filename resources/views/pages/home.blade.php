@@ -23,7 +23,7 @@
                         quante cose hai, che non ti servono più?
                     </p>
                 </div>
-                <div class="col-md-offset-1 col-md-7 left-p">
+                <div class="col-md-offset-1 col-md-7 both-p">
                     <div class="common-card">
                         <div class="card-main vert-align bg-color">
                             <p>
@@ -39,7 +39,7 @@
                 </div>
             </div>
             <div class="col-md-6 primary-2">
-                <div class="col-md-7 right-p">
+                <div class="col-md-7 both-p">
                     <div class="common-card">
                         <div class="card-main vert-align bg-color">
                             <p>
@@ -72,7 +72,7 @@
                         donare un oggetto<br/>in buono stato ma<br/>che non utilizzi più
                     </div>
                     <div class="col-md-4 text-center">
-                        <div class="col-md-6">
+                        <div class="col-md-6 right-border">
                             <img src="{{ url('images/oggetti.svg') }}">
                         </div>
                         <div class="col-md-6">

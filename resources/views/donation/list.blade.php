@@ -86,15 +86,32 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-5">
-                                <a href="{{ url('celo/nuovo/oggetto') }}" class="dense-button">
-                                    <img src="{{ url('images/oggetti.svg') }}">
-                                    <span>Dona un oggetto</span>
+                                <a href="{{ url('celo/nuovo/oggetto') }}">
+                                    <div class="common-card">
+                                        <div class="card-main image-frame empty" style="background-image: url('{{ url('images/oggetti-filled.svg') }}')">
+                                            &nbsp;
+                                        </div>
+                                        <div class="card-footer vert-align">
+                                            <p>
+                                                Dona un oggetto
+                                            </p>
+                                        </div>
+                                    </div>
                                 </a>
                             </div>
+
                             <div class="col-md-5 col-md-offset-2">
-                                <a href="{{ url('celo/nuovo/servizio') }}"  class="dense-button">
-                                    <img src="{{ url('images/tempo.svg') }}">
-                                    <span>Dona una competenza</span>
+                                <a href="{{ url('celo/nuovo/servizio') }}">
+                                    <div class="common-card">
+                                        <div class="card-main image-frame" style="background-image: url('{{ url('images/tempo.svg') }}')">
+                                            &nbsp;
+                                        </div>
+                                        <div class="card-footer vert-align filled">
+                                            <p>
+                                                Dona una competenza
+                                            </p>
+                                        </div>
+                                    </div>
                                 </a>
                             </div>
                         </div>
