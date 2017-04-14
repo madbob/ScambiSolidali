@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">{{ $call->category->name }} - {{ $call->title }}</h4>
+                <h4 class="modal-title">{{ $call->type == 'service' ? 'Servizi' : $call->category->name }} - {{ $call->title }}</h4>
             </div>
 
             <div class="modal-body">
@@ -15,7 +15,7 @@
                             <p class="form-control-static">{{ $call->whom }}</p>
                             <p class="form-control-static">{{ printableDate($call->when) }}</p>
 
-                            <a href="{{ url('celo/nuovo?call=' . $call->id) }}" class="btn btn-default button">
+                            <a href="{{ url('celo/nuovo/' . ($call->type == 'service' ? 'servizio' : 'oggetto') . '?call=' . $call->id) }}" class="btn btn-default button">
                                 <span>Celo!</span>
                             </a>
                         {!! BootForm::close() !!}

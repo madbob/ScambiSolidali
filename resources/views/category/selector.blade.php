@@ -21,4 +21,22 @@
 	</div>
 @endforeach
 
+@if(isset($and_service) && $and_service)
+    @if ($orientation == 'horizontal')
+        <div class="col-md-3 black">
+    @else
+        <div class="row black">
+    @endif
+
+        <h5>Servizi</h5>
+
+        <div class="radio">
+            <label>
+                <input type="radio" name="category_id" value="service" {{ $selected == 'service' ? 'checked' : '' }}>
+                Servizi
+            </label>
+        </div>
+    </div>
+@endif
+
 <p class="clearfix"></p>

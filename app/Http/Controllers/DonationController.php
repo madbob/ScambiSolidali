@@ -29,10 +29,8 @@ class DonationController extends Controller
         if ($user && $user->role == 'carrier')
             $query->where('recoverable', true);
 
-        $filter = null;
-
-        if ($request->has('filter')) {
-            $filter = $request->input('filter');
+        $filter = $request->input('filter', null);
+        if ($filter != null) {
             if ($filter == 'service') {
                 $query->where('type', 'service');
             }
@@ -70,7 +68,7 @@ class DonationController extends Controller
     {
         $user = Auth::user();
 
-        $data['donations'] = Donation::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
+        $data['donations'] = Donation::where('user_id', $user->id)->where('status', '!=', 'voided')->orderBy('created_at', 'desc')->get();
 
         if ($request->has('show'))
             $data['current_show'] = $request->input('show');
@@ -192,7 +190,7 @@ class DonationController extends Controller
         $donation->save();
 
         $kept_photos = [];
-        $keep = $request->input('keep_photo');
+        $keep = $request->input('keep_photo', []);
         $tot = $donation->imagesNum();
 
         for($i = 1, $index = 1; $i <= $tot; $i++) {
@@ -236,16 +234,21 @@ class DonationController extends Controller
 
     public function destroy(Request $request, $id)
     {
+        $self_remove = false;
+        $donation = Donation::find($id);
+
         $user = Auth::user();
         if ($user->role != 'admin' && $user->role != 'operator') {
-            return redirect(url('/'));
+            if ($donation->user_id != $user->id)
+                return redirect(url('/'));
+            else
+                $self_remove = true;
         }
 
         $this->validate($request, [
             'reason' => 'required',
         ]);
 
-        $donation = Donation::find($id);
         if ($donation != null) {
             $donation->status = 'voided';
             $donation->rating = Donation::declineReasons()[$request->input('reason')]->penalty;
@@ -253,7 +256,10 @@ class DonationController extends Controller
             Session::flash('message', 'Donazione archiviata');
         }
 
-        return redirect(url('donazione'));
+        if ($self_remove)
+            return redirect(url('donazione/mie'));
+        else
+            return redirect(url('celo'));
     }
 
     public function getImage(Request $request, $id, $index)
@@ -286,7 +292,7 @@ class DonationController extends Controller
             Session::flash('message', 'Donazione etichettata');
         }
 
-        return redirect(url('donazione'));
+        return redirect(url('celo'));
     }
 
     public function postAssign(Request $request, $id)
@@ -327,7 +333,7 @@ class DonationController extends Controller
             $donation->save();
         }
 
-        return redirect(url('donazione'));
+        return redirect(url('celo'));
     }
 
     public function postRecoverable(Request $request, $id)

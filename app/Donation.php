@@ -96,6 +96,10 @@ class Donation extends Model
                 'text' => 'Non conforme alla descrizione',
                 'penalty' => 2
             ],
+            'user-deleted' => (object) [
+                'text' => 'Rimossa dall\'utente',
+                'penalty' => 0
+            ],
         ];
     }
 }

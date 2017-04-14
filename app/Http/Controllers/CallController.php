@@ -19,17 +19,25 @@ class CallController extends Controller
 
         $query = Call::orderBy('updated_at', 'desc');
 
-        if ($request->has('filter')) {
-            $category = Category::find($request->input('filter'));
-            if ($category->parent_id == 0) {
-                $subs = [];
-                foreach($category->children as $children)
-                    $subs[] = $children->id;
-
-                $query->whereIn('category_id', $subs);
+        $filter = $request->input('filter', null);
+        if ($filter != null) {
+            if ($filter == 'service') {
+                $query->where('type', 'service');
             }
             else {
-                $query->where('category_id', $category->id);
+                $query->where('type', 'object');
+
+                $category = Category::find($filter);
+                if ($category->parent_id == 0) {
+                    $subs = [];
+                    foreach($category->children as $children)
+                        $subs[] = $children->id;
+
+                    $query->whereIn('category_id', $subs);
+                }
+                else {
+                    $query->where('category_id', $category->id);
+                }
             }
         }
 
@@ -38,7 +46,27 @@ class CallController extends Controller
 
         $calls = $query->paginate(50);
 
-        return view('call.list', ['calls' => $calls, 'edit_enabled' => $edit_enabled]);
+        return view('call.list', ['calls' => $calls, 'edit_enabled' => $edit_enabled, 'filter' => $filter]);
+    }
+
+    private function requestInCall($call, $request)
+    {
+        $category = $request->input('category_id');
+        if ($category == 'service') {
+            $call->type = 'service';
+            $call->category_id = -1;
+        }
+        else {
+            $call->type = 'object';
+            $call->category_id = $category;
+        }
+
+        $call->title = $request->input('title');
+        $call->who = $request->input('who');
+        $call->what = $request->input('what');
+        $call->whom = $request->input('whom');
+        $call->when = decodeDate($request->input('when'));
+        $call->status = $request->input('status');
     }
 
     public function store(Request $request)
@@ -58,13 +86,7 @@ class CallController extends Controller
 
         $call = new Call();
         $call->user_id = $user->id;
-        $call->title = $request->input('title');
-        $call->category_id = $request->input('category_id');
-        $call->who = $request->input('who');
-        $call->what = $request->input('what');
-        $call->whom = $request->input('whom');
-        $call->when = decodeDate($request->input('when'));
-        $call->status = $request->input('status');
+        $this->requestInCall($call, $request);
         $call->save();
 
         Session::flash('message', 'Nuovo appello salvato');
@@ -98,13 +120,7 @@ class CallController extends Controller
         ]);
 
         $call = Call::find($id);
-        $call->title = $request->input('title');
-        $call->category_id = $request->input('category_id');
-        $call->who = $request->input('who');
-        $call->what = $request->input('what');
-        $call->whom = $request->input('whom');
-        $call->when = decodeDate($request->input('when'));
-        $call->status = $request->input('status');
+        $this->requestInCall($call, $request);
         $call->save();
 
         Session::flash('message', 'Appello salvato');

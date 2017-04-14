@@ -25,22 +25,7 @@
                     Rispondi alle nostre call, ti contatteremo appena possibile!
                 </p>
 
-                <ul class="categories-select">
-                    @foreach(App\Category::where('parent_id', 0)->orderBy('name', 'asc')->get() as $cat)
-                    	<li class="border-top">
-                            <span><a href="{{ url('manca/?filter=' . $cat->id) }}">{{ $cat->name }}</a></span>
-
-                            <ul>
-                            	@foreach($cat->children as $sub)
-                    				<li>
-                                        <span><a href="{{ url('manca/?filter=' . $sub->id) }}">{{ $sub->name }}</a></span>
-                                    </li>
-                            	@endforeach
-                            </ul>
-
-                        </li>
-                    @endforeach
-                </ul>
+                @include('category.filter', ['filter' => $filter, 'endpoint' => 'manca'])
             </div>
 
             <div class="col-md-9 col-md-offset-1 primary-2">

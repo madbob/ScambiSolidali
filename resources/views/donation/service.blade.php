@@ -30,7 +30,7 @@ else
 
             <input type="hidden" name="type" value="service">
 
-            {!! BootForm::text('title', 'Cosa faccio', null, ['required' => 'required']) !!}
+            {!! BootForm::text('title', 'Cosa offro', null, ['required' => 'required']) !!}
             {!! BootForm::textarea('description', 'Descrizione', null, ['required' => 'required']) !!}
             {!! BootForm::text('name', 'Nome', $user->name, ['required' => 'required']) !!}
             {!! BootForm::text('surname', 'Cognome', $user->surname, ['required' => 'required']) !!}
@@ -51,4 +51,29 @@ else
         </div>
     {!! BootForm::close() !!}
 </div>
+
+@if($donation)
+    <br/>
+    <div class="row new-donation-form primary-1">
+        <form method="POST" action="{{ url('celo/' . $donation->id) }}">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="hidden" name="reason" value="user-deleted">
+            {!! csrf_field() !!}
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    <p class="text-center">
+                        (HAI CAMBIATO IDEA?)
+                    </p>
+                    <div>
+                        <button class="button" type="submit">
+                            <span>Clicca qui per eliminare la tua donazione</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+@endif
+
 @endsection

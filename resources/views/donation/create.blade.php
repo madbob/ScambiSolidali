@@ -21,17 +21,18 @@ else
         <div class="col-md-3">
             @if($donation)
                 @for($i = 1; $i <= $donation->imagesNum(); $i++)
-                    <div class="common-card fileuploader">
+                    <div class="common-card">
                         <div class="card-main vert-align image-frame bg-white txt-color" style="background-image: url('{{ $donation->imageUrl($i) }}')">
                         </div>
                         <div class="card-footer vert-align">
-                            <p>
-                                CARICA FOTO
+                            <p class="removefile">
+                                RIMUOVI FOTO
                             </p>
                         </div>
 
                         <input type="hidden" name="keep_photo[]" value="{{ $i }}">
                     </div>
+                    <br/>
                 @endfor
             @endif
 
@@ -84,7 +85,7 @@ else
             {!! BootForm::text('floor', 'Piano', $last ? $last->floor : '') !!}
             {!! BootForm::checkbox('elevator', 'Ascensore', $last ? $last->elevator : false) !!}
             {!! BootForm::textarea('shipping_notes', 'Note') !!}
-            {!! BootForm::checkbox('autoship', 'Lo posso trasportare io', 'autoship', null, ['help_text' => 'Bla Bla Bla se puoi consegnarlo tu Bla Bla Bla']) !!}
+            {!! BootForm::checkbox('autoship', 'Lo posso trasportare io', 'autoship', null) !!}
             {!! BootForm::checkbox('recoverable', "Se l'oggetto che hai inserito non viene richiesto da nessun operatore, passato un mese puoi scegliere di farlo valutare dalla cooperativa sociale Triciclo, nel caso in cui fossero interessati al tuo oggetto verrà preso in carico da loro.", 'recoverable', null) !!}
 
             <br/>
@@ -99,8 +100,33 @@ else
                     </button>
                 </div>
             </div>
+
         </div>
     {!! BootForm::close() !!}
 </div>
+
+@if($donation)
+    <br/>
+    <div class="row new-donation-form primary-1">
+        <form method="POST" action="{{ url('celo/' . $donation->id) }}">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="hidden" name="reason" value="user-deleted">
+            {!! csrf_field() !!}
+
+            <div class="col-md-8 col-md-offset-4">
+                <div class="form-group">
+                    <p class="text-center">
+                        (HAI CAMBIATO IDEA?)
+                    </p>
+                    <div>
+                        <button class="button" type="submit">
+                            <span>Clicca qui per eliminare la tua donazione</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+@endif
 
 @endsection

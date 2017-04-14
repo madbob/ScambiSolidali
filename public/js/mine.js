@@ -116,6 +116,9 @@ $(document).ready(function() {
 
             reader.readAsDataURL(input.files[0]);
         }
+
+    }).on('click', '.removefile', function() {
+        $(this).closest('.common-card').remove();
     });
 
     $('.new-donation-form form input').keydown(function(event) {

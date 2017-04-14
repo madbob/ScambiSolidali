@@ -16,7 +16,11 @@
                             {!! BootForm::textarea('whom', 'Per chi?') !!}
                             {!! BootForm::text('when', 'Per quando?', $call ? printableDate($call->when) : '', ['class' => 'date']) !!}
 
-                            @include('category.selector', ['orientation' => 'horizontal', 'selected' => $call ? $call->category_id : null])
+                            @include('category.selector', [
+                                'orientation' => 'horizontal',
+                                'selected' => $call ? ($call->type == 'service' ? 'service' : $call->category_id) : null,
+                                'and_service' => true]
+                            )
 
                             {!! BootForm::radios('status', 'Stato', [
                                 'draft' => 'Bozza (non visibile pubblicamente)',
