@@ -1,5 +1,44 @@
-// Fonts
-@import url(https://fonts.googleapis.com/css?family=Work+Sans:300,400,600);
+@font-face {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Work Sans Light'), local('WorkSans-Light'), url(https://fonts.gstatic.com/s/worksans/v2/FD_Udbezj8EHXbdsqLUplz0LW-43aMEzIO6XUTLjad8.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Work Sans Light'), local('WorkSans-Light'), url(https://fonts.gstatic.com/s/worksans/v2/FD_Udbezj8EHXbdsqLUpl-gdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Work Sans'), local('WorkSans-Regular'), url(https://fonts.gstatic.com/s/worksans/v2/WB2LNay3rHMH1zU8UJnUHBJtnKITppOI_IvcXXDNrsc.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Work Sans'), local('WorkSans-Regular'), url(https://fonts.gstatic.com/s/worksans/v2/ElUAY9q6T0Ayx4zWzW63VFtXRa8TVwTICgirnJhmVJw.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Work Sans SemiBold'), local('WorkSans-SemiBold'), url(https://fonts.gstatic.com/s/worksans/v2/z9rX03Xuz9ZNHTMg1_ghGT0LW-43aMEzIO6XUTLjad8.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Work Sans SemiBold'), local('WorkSans-SemiBold'), url(https://fonts.gstatic.com/s/worksans/v2/z9rX03Xuz9ZNHTMg1_ghGegdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
+}
 
 // Variables
 @import "variables";
@@ -188,8 +227,9 @@ a:hover {
     text-decoration: underline;
 
     &:before {
+        font-weight: initial;
         font-family: "Work Sans", sans-serif;
-        content: "\2192";
+        content: "\2192  ";
     }
 }
 
@@ -197,8 +237,9 @@ a:hover {
     font-weight: bold;
 
     &:after {
+        font-weight: initial;
         font-family: "Work Sans", sans-serif;
-        content: "\2192";
+        content: "\2192  ";
     }
 }
 
@@ -427,6 +468,7 @@ textarea.form-control {
     &:before {
         font-family: "Work Sans", sans-serif;
         content: "\2192";
+        margin-right: 5px;
     }
 }
 
