@@ -104,6 +104,7 @@ $(document).ready(function() {
                     var cell = $(input).closest('.fileuploader');
                     if (cell.attr('data-inited') == null) {
                         var ncell = cell.clone();
+                        ncell.find('input').val('').removeAttr('required');
                         cell.after(ncell);
                     }
                     cell.attr('data-inited', true);

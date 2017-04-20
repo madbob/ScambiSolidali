@@ -145,12 +145,10 @@ class DonationController extends Controller
         $donation->status = 'pending';
         $donation->save();
 
-        if ($request->has('photo')) {
-            $index = 1;
-            foreach ($request->file('photo') as $op) {
-                $op->move(Donation::photosPath(), $donation->id . '_' . $index);
-                $index++;
-            }
+        $index = 1;
+        foreach ($request->file('photo') as $op) {
+            $op->move(Donation::photosPath(), $donation->id . '_' . $index);
+            $index++;
         }
 
         if ($donation->call_id != null) {
