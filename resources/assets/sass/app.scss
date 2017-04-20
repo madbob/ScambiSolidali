@@ -195,6 +195,14 @@ $colors: $primary-color-1 $primary-color-2 $secondary-color-1 $gray-color-1 $bla
             border-bottom: 2px solid $color;
         }
 
+        .bordered-spaced {
+            @extend .border-top;
+            @extend .border-bottom;
+            padding: 20px 0;
+            color: $color;
+            margin-bottom: 20px;
+        }
+
         hr.colored {
             border-bottom: 2px solid $color;
             background: none;

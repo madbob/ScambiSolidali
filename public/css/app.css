@@ -5922,10 +5922,14 @@ button.close {
       color: #FFF; }
 .primary-1 .bg-color {
   background-color: #00E4E4; }
-.primary-1 .border-top {
+.primary-1 .border-top, .primary-1 .bordered-spaced {
   border-top: 2px solid #00E4E4; }
-.primary-1 .border-bottom {
+.primary-1 .border-bottom, .primary-1 .bordered-spaced {
   border-bottom: 2px solid #00E4E4; }
+.primary-1 .bordered-spaced {
+  padding: 20px 0;
+  color: #00E4E4;
+  margin-bottom: 20px; }
 .primary-1 hr.colored {
   border-bottom: 2px solid #00E4E4;
   background: none;
@@ -6008,10 +6012,14 @@ button.close {
       color: #FFF; }
 .primary-2 .bg-color {
   background-color: #00BFE3; }
-.primary-2 .border-top {
+.primary-2 .border-top, .primary-2 .bordered-spaced {
   border-top: 2px solid #00BFE3; }
-.primary-2 .border-bottom {
+.primary-2 .border-bottom, .primary-2 .bordered-spaced {
   border-bottom: 2px solid #00BFE3; }
+.primary-2 .bordered-spaced {
+  padding: 20px 0;
+  color: #00BFE3;
+  margin-bottom: 20px; }
 .primary-2 hr.colored {
   border-bottom: 2px solid #00BFE3;
   background: none;
@@ -6094,10 +6102,14 @@ button.close {
       color: #FFF; }
 .primary-3 .bg-color {
   background-color: #00DDB2; }
-.primary-3 .border-top {
+.primary-3 .border-top, .primary-3 .bordered-spaced {
   border-top: 2px solid #00DDB2; }
-.primary-3 .border-bottom {
+.primary-3 .border-bottom, .primary-3 .bordered-spaced {
   border-bottom: 2px solid #00DDB2; }
+.primary-3 .bordered-spaced {
+  padding: 20px 0;
+  color: #00DDB2;
+  margin-bottom: 20px; }
 .primary-3 hr.colored {
   border-bottom: 2px solid #00DDB2;
   background: none;
@@ -6180,10 +6192,14 @@ button.close {
       color: #FFF; }
 .primary-4 .bg-color {
   background-color: #DDD; }
-.primary-4 .border-top {
+.primary-4 .border-top, .primary-4 .bordered-spaced {
   border-top: 2px solid #DDD; }
-.primary-4 .border-bottom {
+.primary-4 .border-bottom, .primary-4 .bordered-spaced {
   border-bottom: 2px solid #DDD; }
+.primary-4 .bordered-spaced {
+  padding: 20px 0;
+  color: #DDD;
+  margin-bottom: 20px; }
 .primary-4 hr.colored {
   border-bottom: 2px solid #DDD;
   background: none;
@@ -6266,10 +6282,14 @@ button.close {
       color: #FFF; }
 .primary-5 .bg-color {
   background-color: #000; }
-.primary-5 .border-top {
+.primary-5 .border-top, .primary-5 .bordered-spaced {
   border-top: 2px solid #000; }
-.primary-5 .border-bottom {
+.primary-5 .border-bottom, .primary-5 .bordered-spaced {
   border-bottom: 2px solid #000; }
+.primary-5 .bordered-spaced {
+  padding: 20px 0;
+  color: #000;
+  margin-bottom: 20px; }
 .primary-5 hr.colored {
   border-bottom: 2px solid #000;
   background: none;
@@ -6511,10 +6531,10 @@ textarea.form-control {
 .categories-select {
   margin: 40px 0;
   padding: 0; }
-  .categories-select .border-top span {
+  .categories-select .border-top span, .categories-select .primary-1 .bordered-spaced span, .primary-1 .categories-select .bordered-spaced span, .categories-select .primary-2 .bordered-spaced span, .primary-2 .categories-select .bordered-spaced span, .categories-select .primary-3 .bordered-spaced span, .primary-3 .categories-select .bordered-spaced span, .categories-select .primary-4 .bordered-spaced span, .primary-4 .categories-select .bordered-spaced span, .categories-select .primary-5 .bordered-spaced span, .primary-5 .categories-select .bordered-spaced span {
     padding: 15px 0;
     display: block; }
-    .categories-select .border-top span a {
+    .categories-select .border-top span a, .categories-select .primary-1 .bordered-spaced span a, .primary-1 .categories-select .bordered-spaced span a, .categories-select .primary-2 .bordered-spaced span a, .primary-2 .categories-select .bordered-spaced span a, .categories-select .primary-3 .bordered-spaced span a, .primary-3 .categories-select .bordered-spaced span a, .categories-select .primary-4 .bordered-spaced span a, .primary-4 .categories-select .bordered-spaced span a, .categories-select .primary-5 .bordered-spaced span a, .primary-5 .categories-select .bordered-spaced span a {
       color: #000;
       text-decoration: none; }
   .categories-select ul {

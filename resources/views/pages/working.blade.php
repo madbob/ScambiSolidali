@@ -48,6 +48,8 @@
             </div>
 
             <div class="col-md-8 col-md-offset-1">
+                <h4>Vuoi aderire al progetto?</h4>
+
                 <p>
                     Se vuoi aderire al progetto ed essere accreditato all’uso della piattaforma scrivi a <a href="mailto:segreteria@agenzia.sansalvario.org">segreteria@agenzia.sansalvario.org</a>.
                 </p>
@@ -67,6 +69,8 @@
             </div>
 
             <div class="col-md-8 col-md-offset-1">
+                <h4>Qui trovi le istruzioni</h4>
+
                 <ol>
                     <li>Registrati sul sito</li>
                     <li>Inserisci il tuo annuncio</li>
