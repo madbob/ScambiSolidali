@@ -98,7 +98,7 @@ class RegisterController extends Controller
         $validator = $this->validator($input);
 
         if ($validator->passes()){
-            $user = (object) $this->create($input)->toArray();
+            $user = $this->create($input);
 
             Mail::send('mails.activation', ['user' => $user], function($message) use ($user){
                 $message->to($user->email);
