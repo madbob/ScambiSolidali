@@ -54,6 +54,35 @@ $(document).ready(function() {
         });
     }
 
+    function previewImage(input, img, angle) {
+        var ratio = 400 / img.width;
+        var canvas = $("<canvas>")[0];
+        canvas.width = img.width * ratio;
+        canvas.height = img.height * ratio;
+        var ctx = canvas.getContext("2d");
+
+        ctx.save();
+
+        if (angle != 0) {
+            ctx.translate(canvas.width / 2, canvas.height / 2);
+            ctx.rotate(angle * Math.PI / 180);
+        }
+
+        ctx.drawImage(img, -canvas.width/2, -canvas.height/2, canvas.width, canvas.height);
+
+        ctx.restore();
+
+        var cell = $(input).closest('.fileuploader');
+        if (cell.attr('data-inited') == null) {
+            var ncell = cell.clone();
+            ncell.find('input').val('').removeAttr('required');
+            cell.after(ncell);
+        }
+        cell.attr('data-inited', true);
+
+        cell.find('.image-frame').empty().css('background-image', 'url(' + canvas.toDataURL() + ')');
+    }
+
     $('input.date').datepicker({
         format: 'DD dd MM yyyy',
         autoclose: true,
@@ -94,22 +123,32 @@ $(document).ready(function() {
             reader.onload = function (e) {
                 var img = new Image();
                 img.onload = function() {
-                    var ratio = 200 / img.width;
-                    var canvas = $("<canvas>")[0];
-                    canvas.width = img.width * ratio;
-                    canvas.height = img.height * ratio;
-                    var ctx = canvas.getContext("2d");
-                    ctx.drawImage(img, 0,0,canvas.width, canvas.height);
+                    var convertExifOrienationToAngle = function (orientation) {
+                        var exifDegrees = [
+                            0, // 0 - not used
+                            0, // 1 - The 0th row is at the visual top of the image, and the 0th column is the visual left-hand side.
+                            0, // 2 - The 0th row is at the visual top of the image, and the 0th column is the visual right-hand side.
+                            180, // 3 - The 0th row is at the visual bottom of the image, and the 0th column is the visual right-hand side.
+                            0, // 4 - The 0th row is at the visual bottom of the image, and the 0th column is the visual left-hand side.
+                            0, // 5 - The 0th row is the visual left-hand side of the image, and the 0th column is the visual top.
+                            90, // 6 - The 0th row is the visual right-hand side of the image, and the 0th column is the visual top.
+                            0, // 7 - The 0th row is the visual right-hand side of the image, and the 0th column is the visual bottom.
+                            270 // 8 - The 0th row is the visual left-hand side of the image, and the 0th column is the visual bottom.
+                        ];
+                        if (orientation > 0 && orientation < 9 && exifDegrees[orientation] != 0)
+                            return exifDegrees[orientation];
+                        else
+                            return 0;
+                    };
 
-                    var cell = $(input).closest('.fileuploader');
-                    if (cell.attr('data-inited') == null) {
-                        var ncell = cell.clone();
-                        ncell.find('input').val('').removeAttr('required');
-                        cell.after(ncell);
+                    var test = EXIF.getData(img, function() {
+                        var angle = convertExifOrienationToAngle(EXIF.getTag(img, "Orientation") || 0);
+                        previewImage(input, img, angle);
+                    });
+
+                    if (test == false) {
+                        previewImage(input, img, 0);
                     }
-                    cell.attr('data-inited', true);
-
-                    cell.find('.image-frame').empty().css('background-image', 'url(' + canvas.toDataURL() + ')');
                 }
 
                 img.src = e.target.result;

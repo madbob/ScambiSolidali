@@ -39,7 +39,7 @@ else
             <div class="common-card fileuploader">
                 <div class="card-main vert-align image-frame bg-white txt-color">
                     <p>
-                        X
+                        <canvas id="preview-canvas" height="0" width="0"></canvas>
                     </p>
                 </div>
                 <div class="card-footer vert-align">

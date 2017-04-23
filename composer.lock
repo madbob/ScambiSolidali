@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "dd756c882121e4f156fee2a81dce0a62",
-    "content-hash": "e2a823181e953fe3686550add42f837c",
+    "hash": "7352c88f5beebeb986c116e5c78cf6d6",
+    "content-hash": "0a8af0e9c24b2dbfe2515a3d6196064a",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -188,6 +188,53 @@
                 "minify"
             ],
             "time": "2016-01-04 12:36:52"
+        },
+        {
+            "name": "diversen/image-auto-rotate",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/diversen/image-auto-rotate.git",
+                "reference": "3ad5982408fc8d1028032f4069915740f820580b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/diversen/image-auto-rotate/zipball/3ad5982408fc8d1028032f4069915740f820580b",
+                "reference": "3ad5982408fc8d1028032f4069915740f820580b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "diversen\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dennis Iversen",
+                    "email": "dennis.iversen@gmail.com"
+                }
+            ],
+            "description": "Auto rotate image to correct position from exif",
+            "homepage": "https://github.com/diversen/image-auto-rotate",
+            "keywords": [
+                "gd",
+                "image",
+                "rotate"
+            ],
+            "time": "2016-06-13 09:38:21"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",

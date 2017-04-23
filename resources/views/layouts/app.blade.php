@@ -98,8 +98,10 @@
     <script src="{{ url('js/chosen.jquery.min.js') }}"></script>
     <script src="{{ url('js/bootstrap-datepicker.min.js') }}"></script>
     <script src="{{ url('js/bootstrap-datepicker.it.min.js') }}"></script>
+    <script src="{{ url('js/exif.js') }}"></script>
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.js'></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.0.1/mapbox-gl-geocoder.js'></script>
-	{!! Minify::javascript('/js/mine.js') !!}
+	{!! /* Minify::javascript('/js/mine.js') */ '' !!}
+    <script src="{{ url('js/mine.js') }}"></script>
 </body>
 </html>

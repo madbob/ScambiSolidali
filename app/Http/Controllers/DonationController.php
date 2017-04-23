@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Session;
 use Mail;
+use diversen\imageRotate;
 
 use App\Mail\CallResponded;
 use App\Mail\DonationAssigned;
@@ -112,6 +113,25 @@ class DonationController extends Controller
         $donation->recoverable = $request->has('recoverable');
     }
 
+    private function savePhotos($request, $donation, $index)
+    {
+        $rotate = new imageRotate();
+
+        foreach ($request->file('photo') as $op) {
+            $op->move(Donation::photosPath(), $donation->id . '_' . $index);
+            $path = sprintf('%s/%d_%d', Donation::photosPath(), $donation->id, $index);
+
+            try {
+                $rotate->fixOrientation($path);
+            }
+            catch(\Exception $e) {
+                Log::error('Impossibile ruotare immagine in ' . $path . ': ' . $e->getMessage());
+            }
+
+            $index++;
+        }
+    }
+
     public function store(Request $request)
     {
         $type = $request->input('type');
@@ -145,10 +165,9 @@ class DonationController extends Controller
         $donation->status = 'pending';
         $donation->save();
 
-        $index = 1;
-        foreach ($request->file('photo') as $op) {
-            $op->move(Donation::photosPath(), $donation->id . '_' . $index);
-            $index++;
+        if (!empty($request->file('photo', null))) {
+            $index = 1;
+            $this->savePhotos($request, $donation, 1);
         }
 
         if ($donation->call_id != null) {
@@ -207,10 +226,7 @@ class DonationController extends Controller
 
         if (!empty($request->file('photo', null))) {
             $index = $donation->imagesNum() + 1;
-            foreach ($request->file('photo') as $op) {
-                $op->move(Donation::photosPath(), $donation->id . '_' . $index);
-                $index++;
-            }
+            $this->savePhotos($request, $donation, $index);
         }
 
         return redirect(url('donazione/mie'));
