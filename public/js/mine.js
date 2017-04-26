@@ -66,9 +66,11 @@ $(document).ready(function() {
         if (angle != 0) {
             ctx.translate(canvas.width / 2, canvas.height / 2);
             ctx.rotate(angle * Math.PI / 180);
+            ctx.drawImage(img, -canvas.width/2, -canvas.height/2, canvas.width, canvas.height);
         }
-
-        ctx.drawImage(img, -canvas.width/2, -canvas.height/2, canvas.width, canvas.height);
+        else {
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        }
 
         ctx.restore();
 
