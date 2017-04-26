@@ -78,7 +78,7 @@
 
                                 <div class="collapse" id="removePanel-{{ $donation->id }}">
                                     <div class="well">
-                                        <form class="form-vertical" method="POST" action="{{ url('donazione/' . $donation->id) }}">
+                                        <form class="form-vertical" method="POST" action="{{ url('celo/' . $donation->id) }}">
                                             <input type="hidden" name="_method" value="delete">
                                             {{ csrf_field() }}
 
