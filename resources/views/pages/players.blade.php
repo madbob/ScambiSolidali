@@ -108,8 +108,10 @@
             @if($user && $user->role == 'admin')
                 <div role="tabpanel" class="tab-pane" id="users">
                     <div class="row">
-                        <div class="col-md-12">
-                            <button class="btn btn-default" data-toggle="modal" data-target="#user-new">Crea Nuovo Utente</button>
+                        <div class="col-md-6">
+                            <button class="btn btn-default button" data-toggle="modal" data-target="#user-new">
+                                <span>Crea Nuovo Utente</span>
+                            </button>
                             @include('user.modal', ['user' => null])
                         </div>
                     </div>
@@ -144,8 +146,10 @@
             @if($user && ($user->role == 'admin' || $user->role == 'operator'))
                 <div role="tabpanel" class="tab-pane" id="receivers">
                     <div class="row">
-                        <div class="col-md-12">
-                            <button class="btn btn-default" data-toggle="modal" data-target="#receiver-new">Crea Nuovo Fruitore</button>
+                        <div class="col-md-6">
+                            <button class="btn btn-default button" data-toggle="modal" data-target="#receiver-new">
+                                <span>Crea Nuovo Fruitore</span>
+                            </button>
                             @include('receiver.modal', ['receiver' => null])
                         </div>
                     </div>

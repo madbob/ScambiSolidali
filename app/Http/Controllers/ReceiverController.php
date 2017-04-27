@@ -52,7 +52,7 @@ class ReceiverController extends Controller
         $receiver->save();
 
         Session::flash('message', 'Nuovo fruitore salvato');
-        return redirect(url('fruitore'));
+        return redirect(url('giocatori'));
     }
 
     public function show($id)

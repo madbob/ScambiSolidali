@@ -28,7 +28,7 @@ class UserController extends Controller
             $users = User::orderBy('surname', 'asc')->get();
 
         if ($user && ($user->role == 'admin' || $user->role == 'operator'))
-            $receivers = Receiver::orderBy('surname', 'asc');
+            $receivers = Receiver::orderBy('surname', 'asc')->get();
 
         return view('pages.players', [
             'user' => $user,

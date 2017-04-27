@@ -1,4 +1,4 @@
-<div class="modal fade" id="receiver-{{ $receiver ? $receiver->id : 'new' }}" tabindex="-1" role="dialog">
+<div class="modal fade primary-1" id="receiver-{{ $receiver ? $receiver->id : 'new' }}" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -10,7 +10,7 @@
             <div class="modal-body">
                 <div class="row">
                     @if($receiver)
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                     @else
                     <div class="col-md-12">
                     @endif
@@ -33,7 +33,7 @@
                     </div>
 
                     @if($receiver)
-                        <div class="col-md-6">
+                        <div class="col-md-7">
                             @include('donation.minilist', ['list' => $receiver->donations, 'print_receiver' => false, 'print_object' => true])
                         </div>
                     @endif
