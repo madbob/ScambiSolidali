@@ -108,6 +108,10 @@
                 <p>
                     Vuoi scoprire che fine ha fatto il tuo frigo? Qui ti raccontiamo  le storie di successo di Celocelo.
                 </p>
+
+                <p class="small-link">
+                    <a class="other-arrowlink" href="{{ url('numeri') }}">Cosa è successo</a>
+                </p>
             </div>
         </div>
 
