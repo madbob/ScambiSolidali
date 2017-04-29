@@ -1,3 +1,9 @@
+<?php
+
+$has_donations = ($call && $call->donations()->count() != 0);
+
+?>
+
 <div class="modal fade" id="{{ $call ? 'call-' . $call->id : 'new-call' }}" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -6,9 +12,9 @@
                 <h4 class="modal-title">Appello</h4>
             </div>
 
-            <div class="modal-body">
+            <div class="modal-body primary-1">
                 <div class="row">
-                    <div class="col-md-12 primary-1">
+                    <div class="col-md-12">
                         {!! BootForm::vertical(['model' => $call, 'store' => 'manca.store', 'update' => 'manca.update']) !!}
                             {!! BootForm::text('title', 'Titolo') !!}
                             {!! BootForm::textarea('who', 'Chi siamo?') !!}
@@ -37,6 +43,33 @@
                             </div>
                         {!! BootForm::close() !!}
                     </div>
+
+                    @if($has_donations)
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr/>
+
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Data</th>
+                                            <th>Utente</th>
+                                            <th>Link</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($call->donations as $item)
+                                            <tr>
+                                                <td>{{ ucwords(strftime('%d/%m/%G', strtotime($item->updated_at))) }}</td>
+                                                <td>{{ $item->user->printableName() }}</td>
+                                                <td><a href="{{ url('celo/?show=' . $item->id) }}">Visualizza</a></td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
