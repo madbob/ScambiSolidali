@@ -6471,8 +6471,12 @@ textarea.form-control {
   padding-top: 10px;
   border-top: 2px solid #00BFE3;
   text-transform: uppercase; }
+  .navbar-right .row {
+    margin-left: 0; }
+  .navbar-right span {
+    text-transform: none; }
 
-.navbar-nav > li > a {
+.navbar-nav > li a {
   padding: 3px 0;
   text-decoration: none;
   color: #000 !important; }

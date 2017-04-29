@@ -457,13 +457,23 @@ textarea.form-control {
     padding-top: 10px;
     border-top: 2px solid $primary-color-2;
     text-transform: uppercase;
+
+    .row {
+        margin-left: 0;
+    }
+
+    span {
+        text-transform: none;
+    }
 }
 
 .navbar-nav {
-    > li > a {
-        padding: 3px 0;
-        text-decoration: none;
-        color: #000 !important;
+    > li {
+        a {
+            padding: 3px 0;
+            text-decoration: none;
+            color: #000 !important;
+        }
     }
 }
 

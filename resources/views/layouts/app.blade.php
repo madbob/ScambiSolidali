@@ -49,12 +49,19 @@
                                 <a href="{{ url('/register') }}">Registrati</a>
                                 <a href="{{ url('/login') }}">Login</a>
                             @else
-                                <a href="{{ url('/donazione/mie') }}">Mie Donazioni</a>
-                                <a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <span>Ciao, {{ Auth::user()->name }}</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a href="{{ url('/donazione/mie') }}">Mie Donazioni</a>
+                                        <a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
 
-                                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
+                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </div>
+                                </div>
                             @endif
                         </li>
                     </ul>
