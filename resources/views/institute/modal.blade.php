@@ -16,7 +16,7 @@
                                 <label for="address" class="control-label">Indirizzo</label>
                                 <div>
                                     <input type="hidden" name="address" value="{{ $institute ? $institute->address : '' }}">
-                                    <input type="hidden" name="coordinates" value="{{ $institute ? ($institute->lat + ',' + $institute->lng) : '' }}">
+                                    <input type="hidden" name="coordinates" value="{{ $institute ? ($institute->lat . ',' . $institute->lng) : '' }}">
                                     <div class="map-select" id="institute-address-selection-{{ $institute ? $institute->id : 'new' }}"></div>
                                     <span class="help-block">Attenzione: digita un indirizzo e selezionalo dal menu di autocompletamento. Se l'indirizzo non viene completato in questo modo, non sarà possibile risalire alle coordinate desiderate</span>
                                 </div>
