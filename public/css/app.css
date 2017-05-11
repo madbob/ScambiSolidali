@@ -6339,6 +6339,9 @@ h1, .h1, h2, .h2, h3, .h3 {
   text-transform: uppercase;
   font-weight: normal; }
 
+.donation-modal form label {
+  padding-right: 20px; }
+
 input.form-control, textarea.form-control {
   padding: 10px;
   border: none;

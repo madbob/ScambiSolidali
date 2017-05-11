@@ -36,7 +36,6 @@ Route::post('/register/operator', 'Auth\RegisterController@postRegisterOp');
 Route::resource('/celo', 'DonationController');
 Route::resource('/giocatori', 'UserController');
 Route::resource('/parlano-di-noi', 'MediaController');
-Route::resource('/fruitore', 'ReceiverController');
 Route::resource('/archivio', 'ArchiveController');
 Route::resource('/ente', 'InstituteController');
 Route::resource('/manca', 'CallController');

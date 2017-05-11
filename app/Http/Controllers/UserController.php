@@ -27,14 +27,10 @@ class UserController extends Controller
         if ($user && $user->role == 'admin')
             $users = User::orderBy('surname', 'asc')->get();
 
-        if ($user && ($user->role == 'admin' || $user->role == 'operator'))
-            $receivers = Receiver::orderBy('surname', 'asc')->get();
-
         return view('pages.players', [
             'user' => $user,
             'institutes' => $institutes,
-            'users' => $users,
-            'receivers' => $receivers
+            'users' => $users
         ]);
     }
 

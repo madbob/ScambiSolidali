@@ -20,7 +20,7 @@
                             <div class="col-md-12">
                                 @if($donation->receivers->isEmpty() == false)
                                     <hr/>
-                                    @include('donation.minilist', ['list' => $donation->receivers, 'print_receiver' => true, 'print_object' => false])
+                                    @include('donation.minilist', ['list' => $donation->receivers, 'print_object' => false])
                                 @endif
 
                                 @if($donation->status == 'pending')

@@ -1,7 +1,5 @@
 $(document).ready(function() {
     function commonInit() {
-        $('.chosen-select').chosen({width: "100%"});
-
         $('.map-select').each(function() {
             mapboxgl.accessToken = 'pk.eyJ1IjoibWFkYm9iIiwiYSI6ImNpdzE5MHN2ajAwMXYydG8xejBvbHdzOWwifQ.Lk5hnbjb720Z4C_jfqzBNg';
             var map = new mapboxgl.Map({
@@ -94,8 +92,6 @@ $(document).ready(function() {
         language: 'it',
         clearBtn: true
     });
-
-    $('.chosen-select').chosen({width: "100%"});
 
     $('body').on('change', '.single-saving-notice-toggle', function() {
         var endpoint = $(this).attr('data-endpoint');

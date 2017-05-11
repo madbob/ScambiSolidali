@@ -281,34 +281,6 @@ class DonationController extends Controller
         return response()->download(Donation::photosPath() . '/' . $id . '_' . $index);
     }
 
-    public function postBook(Request $request, $id)
-    {
-        $user = Auth::user();
-        if ($user->role != 'admin' && $user->role != 'operator') {
-            return redirect(url('/'));
-        }
-
-        $this->validate($request, [
-            'holder' => 'required|integer|exists:receivers,id'
-        ]);
-
-        $donation = Donation::find($id);
-        if ($donation != null) {
-            $receiver = Receiver::find($request->input('holder'));
-            $donation->receivers()->attach($receiver, [
-                'operator_id' => Auth::user()->id,
-                'status' => 'booked',
-                'notes' => $request->input('notes'),
-                'created_at' => date('Y-m-d G:i:s'),
-                'updated_at' => date('Y-m-d G:i:s')
-            ]);
-
-            Session::flash('message', 'Donazione etichettata');
-        }
-
-        return redirect(url('celo'));
-    }
-
     public function postAssign(Request $request, $id)
     {
         $user = Auth::user();
@@ -316,13 +288,22 @@ class DonationController extends Controller
             return redirect(url('/'));
         }
 
-        $this->validate($request, [
-            'holder' => 'required|integer|exists:receivers,id'
-        ]);
-
         $donation = Donation::find($id);
         if ($donation != null) {
-            $receiver = Receiver::find($request->input('holder'));
+            $receiver = new Receiver();
+            $receiver->age = $request->input('receiver-age', 0);
+            if (empty($receiver->age))
+                $receiver->age = null;
+            $receiver->gender = $request->input('receiver-gender');
+            $receiver->status = $request->input('receiver-status');
+            $receiver->children = $request->input('receiver-children');
+            $receiver->area = $request->input('receiver-area');
+            $receiver->country = $request->input('receiver-country');
+            $receiver->past = $request->input('receiver-past', 0);
+            if (empty($receiver->past))
+                $receiver->past = 0;
+            $receiver->save();
+
             $donation->receivers()->attach($receiver, [
                 'operator_id' => Auth::user()->id,
                 'status' => $request->has('shipping') ? 'shipping_needed' : 'assigned',

@@ -8,7 +8,7 @@ class Receiver extends Model
 {
     public function printableName()
     {
-        return $this->name . ' ' . $this->surname;
+        return $this->name;
     }
 
     public function donations()

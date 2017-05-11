@@ -21,14 +21,6 @@
                                 </span>
                             </li>
                         @endif
-
-                        @if($user->role == 'admin' || $user->role == 'operator')
-                            <li role="presentation">
-                                <span>
-                                    <a href="#receivers" aria-controls="receivers" role="tab" data-toggle="tab">Fruitori</a>
-                                </span>
-                            </li>
-                        @endif
                     </ul>
                 </div>
             </div>
@@ -136,42 +128,6 @@
         							<td>{{ $u->phone }}</td>
         							<td>{{ $u->email }}</td>
                                     <td><button class="btn btn-default show-details" data-endpoint="giocatori" data-item-id="{{ $u->id }}"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button></td>
-        						</tr>
-        					@endforeach
-        				</tbody>
-        			</table>
-                </div>
-            @endif
-
-            @if($user && ($user->role == 'admin' || $user->role == 'operator'))
-                <div role="tabpanel" class="tab-pane" id="receivers">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <button class="btn btn-default button" data-toggle="modal" data-target="#receiver-new">
-                                <span>Crea Nuovo Fruitore</span>
-                            </button>
-                            @include('receiver.modal', ['receiver' => null])
-                        </div>
-                    </div>
-
-                    <table class="table">
-        				<thead>
-        					<tr>
-        						<th>Nome</th>
-        						<th>Cognome</th>
-        						<th>Telefono</th>
-        						<th>E-Mail</th>
-                                <th>Azioni</th>
-        					</tr>
-        				</thead>
-        				<tbody>
-        					@foreach($receivers as $receiver)
-        						<tr>
-        							<td>{{ $receiver->name }}</td>
-        							<td>{{ $receiver->surname }}</td>
-        							<td>{{ $receiver->phone }}</td>
-        							<td>{{ $receiver->email }}</td>
-                                    <td><button class="btn btn-default show-details" data-endpoint="fruitore" data-item-id="{{ $receiver->id }}"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button></td>
         						</tr>
         					@endforeach
         				</tbody>

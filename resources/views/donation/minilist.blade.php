@@ -10,10 +10,6 @@
 
                 <th>Operatore</th>
 
-                @if($print_receiver == true)
-                    <th>Ricevente</th>
-                @endif
-
                 @if($print_object == true)
                     <th>Oggetto</th>
                 @endif
@@ -27,10 +23,6 @@
                     <td>{{ ucwords(strftime('%d/%m/%G', strtotime($item->pivot->updated_at))) }}</td>
 
                     <td>{{ App\User::find($item->pivot->operator_id)->printableName() }}</td>
-
-                    @if($print_receiver == true)
-                        <td>{{ App\Receiver::find($item->pivot->receiver_id)->printableName() }}</td>
-                    @endif
 
                     @if($print_object == true)
                         <td>{{ App\Donation::find($item->pivot->donation_id)->title }}</td>
