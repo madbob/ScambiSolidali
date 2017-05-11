@@ -518,6 +518,16 @@ textarea.form-control {
     }
 }
 
+@media (max-width: 768px) {
+    .main-menu {
+        flex-flow: row wrap;
+
+        li {
+            flex: 0 0 50%;
+        }
+    }
+}
+
 /********************************* HOMEPAGE */
 
 .header-claim {

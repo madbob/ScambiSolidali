@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Session;
 use Mail;
+use Log;
 use diversen\imageRotate;
 
 use App\Mail\CallResponded;

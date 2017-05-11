@@ -79,7 +79,7 @@ else
 
             {!! BootForm::text('name', 'Nome', $last ? $last->name : $user->name, ['required' => 'required']) !!}
             {!! BootForm::text('surname', 'Cognome', $last ? $last->surname : $user->surname, ['required' => 'required']) !!}
-            {!! BootForm::text('address', 'Indirizzo', $last ? $last->address : '', ['required' => 'required']) !!}
+            {!! BootForm::text('address', 'Indirizzo (via, numero civico, CAP, città)', $last ? $last->address : '', ['required' => 'required']) !!}
             {!! BootForm::text('phone', 'Telefono', $last ? $last->phone : $user->phone, ['required' => 'required']) !!}
             {!! BootForm::email('email', 'E-Mail', $last ? $last->email : $user->email, ['required' => 'required']) !!}
             {!! BootForm::text('floor', 'Piano', $last ? $last->floor : '') !!}
