@@ -20,6 +20,7 @@ class DonationAssigned extends Mailable
 
     public function build()
     {
-        return $this->view('mails.donationassigned')->with(['donation' => $this->donation]);
+        $subject = sprintf('%s: donazione assegnata', env('APP_NAME'));
+        return $this->subject($subject)->view('mails.donationassigned')->with(['donation' => $this->donation]);
     }
 }

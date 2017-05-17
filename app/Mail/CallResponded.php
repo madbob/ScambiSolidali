@@ -20,6 +20,7 @@ class CallResponded extends Mailable
 
     public function build()
     {
-        return $this->view('mails.callresponded')->with(['donation' => $this->donation]);
+        $subject = sprintf('%s: donazione per appello', env('APP_NAME'));
+        return $this->subject($subject)->view('mails.callresponded')->with(['donation' => $this->donation]);
     }
 }

@@ -22,7 +22,8 @@ class NewUserCreated extends Mailable
 
     public function build()
     {
-        return $this->view('mails.newuser')->with([
+        $subject = sprintf('%s: registrazione nuovo utente', env('APP_NAME'));
+        return $this->subject($subject)->view('mails.newuser')->with([
             'user' => $this->user,
             'password' => $this->password
         ]);

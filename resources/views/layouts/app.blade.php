@@ -7,7 +7,7 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Scambi Solidali') }}</title>
+    <title>{{ config('app.name', 'CeloCelo') }}</title>
 
     <link href="/css/chosen.min.css" rel="stylesheet">
     <link href="/css/bootstrap-chosen.css" rel="stylesheet">
