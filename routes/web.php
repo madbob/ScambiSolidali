@@ -22,6 +22,7 @@ Route::get('/numeri', 'CommonController@numbers');
 Route::get('/contatti', 'CommonController@contacts');
 
 Route::get('/celo/nuovo/{type}', 'DonationController@create');
+Route::get('/celo/renew/{token}', 'DonationController@renew');
 
 Route::get('/donazione/image/{id}/{index}', 'DonationController@getImage');
 Route::get('/donazione/mie', 'DonationController@myIndex');

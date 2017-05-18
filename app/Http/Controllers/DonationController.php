@@ -277,6 +277,21 @@ class DonationController extends Controller
             return redirect(url('celo'));
     }
 
+    public function renew(Request $request, $token)
+    {
+        $token = base64_decode(urldecode($token));
+        list($donation_id, $user_id) = explode('-', $token);
+        $donation = Donation::find($donation_id);
+        if ($donation->user_id != $user_id)
+            abort(404);
+
+        $donation->status = 'pending';
+        $donation->save();
+
+        Session::flash('message', 'La donazione è stata rinnovata per un altro mese. Grazie!');
+        return redirect(url('celo'));
+    }
+
     public function getImage(Request $request, $id, $index)
     {
         return response()->download(Donation::photosPath() . '/' . $id . '_' . $index);
