@@ -24,6 +24,11 @@ class CommonController extends Controller
         return view('pages.working');
     }
 
+    public function privacy()
+    {
+        return view('pages.privacy');
+    }
+
     public function numbers()
     {
         $categories = [];

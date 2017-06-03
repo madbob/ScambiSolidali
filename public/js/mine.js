@@ -93,6 +93,21 @@ $(document).ready(function() {
         clearBtn: true
     });
 
+    $('.register-form form').submit(function(e) {
+        var checkbox = $(this).find('input[name=privacy]')
+        var check = checkbox.prop('checked');
+        if (check == false) {
+            checkbox.closest('.checkbox').addClass('has-error');
+            e.stopPropagation();
+            e.preventDefault();
+            return false;
+        }
+        else {
+            checkbox.closest('.checkbox').removeClass('has-error');
+            return true;
+        }
+    });
+
     $('body').on('change', '.single-saving-notice-toggle', function() {
         var endpoint = $(this).attr('data-endpoint');
         var status = $(this).prop('checked');

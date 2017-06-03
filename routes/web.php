@@ -18,6 +18,7 @@ Route::get('/', function () {
 Route::get('/home', 'CommonController@home');
 Route::get('/progetto', 'CommonController@project');
 Route::get('/come-funziona', 'CommonController@working');
+Route::get('/privacy', 'CommonController@privacy');
 Route::get('/numeri', 'CommonController@numbers');
 Route::get('/contatti', 'CommonController@contacts');
 
