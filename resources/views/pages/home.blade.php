@@ -116,11 +116,11 @@
         </div>
 
         <div class="row">
-            <div class="col-md-4">
-            </div>
-            <div class="col-md-4">
-            </div>
-            <div class="col-md-4">
+            <div class="col-md-12">
+                <p class="pull-right">
+                    <img src="{{ url('images/csp.png') }}" alt="Compagnia di San Paolo" height="50px">&nbsp;&nbsp;&nbsp;
+                    <img src="{{ url('images/agenziasansalvario.jpg') }}" alt="Agenzia per lo Sviluppo Locale di San Salvario" height="54px">
+                </p>
             </div>
         </div>
     </div>
