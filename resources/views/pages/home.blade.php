@@ -115,12 +115,18 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row footer-credits">
             <div class="col-md-12">
-                <p class="pull-right">
-                    <img src="{{ url('images/csp.png') }}" alt="Compagnia di San Paolo" height="50px">&nbsp;&nbsp;&nbsp;
-                    <img src="{{ url('images/agenziasansalvario.jpg') }}" alt="Agenzia per lo Sviluppo Locale di San Salvario" height="54px">
-                </p>
+                <div class="pull-right">
+                    <span>
+                        Un progetto di<br/>
+                        <img src="{{ url('images/agenziasansalvario.jpg') }}" alt="Agenzia per lo Sviluppo Locale di San Salvario" height="54px">
+                    </span>
+                    <span>
+                        Con il sostegno della<br/>
+                        <img src="{{ url('images/csp.png') }}" alt="Compagnia di San Paolo" height="50px">
+                    </span>
+                </div>
             </div>
         </div>
     </div>

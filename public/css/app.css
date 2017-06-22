@@ -6539,6 +6539,10 @@ textarea.form-control {
   .double-side img {
     width: 70%; }
 
+.footer-credits span {
+  display: inline-block;
+  margin-left: 20px; }
+
 /********************************* CELO/MANCA */
 .categories-select {
   margin: 40px 0;
