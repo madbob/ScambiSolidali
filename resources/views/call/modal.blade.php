@@ -16,11 +16,11 @@ $has_donations = ($call && $call->donations()->count() != 0);
                 <div class="row">
                     <div class="col-md-12">
                         {!! BootForm::vertical(['model' => $call, 'store' => 'manca.store', 'update' => 'manca.update']) !!}
-                            {!! BootForm::text('title', 'Titolo') !!}
-                            {!! BootForm::textarea('who', 'Chi siamo?') !!}
-                            {!! BootForm::textarea('what', 'Cosa vogliamo?') !!}
-                            {!! BootForm::textarea('whom', 'Per chi?') !!}
-                            {!! BootForm::text('when', 'Per quando?', $call ? printableDate($call->when) : '', ['class' => 'date']) !!}
+                            {!! BootForm::text('title', 'Titolo', null, ['required' => 'required']) !!}
+                            {!! BootForm::textarea('who', 'Chi siamo?', null, ['required' => 'required']) !!}
+                            {!! BootForm::textarea('what', 'Cosa vogliamo?', null, ['required' => 'required']) !!}
+                            {!! BootForm::textarea('whom', 'Per chi?', null, ['required' => 'required']) !!}
+                            {!! BootForm::text('when', 'Per quando?', $call ? printableDate($call->when) : '', ['class' => 'date', 'required' => 'required']) !!}
 
                             @include('category.selector', [
                                 'orientation' => 'horizontal',

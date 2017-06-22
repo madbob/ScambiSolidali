@@ -12,7 +12,7 @@
 	@foreach($cat->children as $sub)
 		<div class="radio">
 			<label>
-				<input type="radio" name="category_id" value="{{ $sub->id }}" {{ $selected == $sub->id ? 'checked' : '' }}>
+				<input type="radio" name="category_id" value="{{ $sub->id }}" {{ $selected == $sub->id ? 'checked' : '' }} required>
 				{{ $sub->name }}
 			</label>
 		</div>
