@@ -40,7 +40,10 @@
                                     <div class="card-main-filter">
                                     </div>
                                     <div class="card-main-overlay">
-                                        <span>Consegnato!</span>
+                                        <span>
+                                            <p>Consegnato!</p>
+                                            <img src="{{ url('images/trofeo.svg') }}">
+                                        </span>
                                     </div>
                                 @endif
                                 <div class="card-footer vert-align">
