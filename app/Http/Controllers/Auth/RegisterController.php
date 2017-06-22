@@ -87,7 +87,7 @@ class RegisterController extends Controller
     }
 
     public function postRegisterOp(Request $request) {
-        $code = $request->input('code');
+        $code = trim($request->input('code'));
         $institute = Institute::where('code', $code)->first();
         if ($institute == null) {
             Session::flash('message', 'Il codice indicato non è valido');

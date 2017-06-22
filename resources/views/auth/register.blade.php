@@ -11,7 +11,17 @@
             {!! BootForm::text('phone', 'Telefono', '', ['required' => 'required']) !!}
             {!! BootForm::password('password', 'Password', ['required' => 'required']) !!}
             {!! BootForm::password('password_confirmation', 'Conferma Password', ['required' => 'required']) !!}
-            {!! BootForm::checkbox('privacy', "Ho letto ed accetto <a href=\"/privacy\">l'informativa sulla privacy e le condizioni d'uso del servizio</a>", false) !!}
+
+            <div class="form-group">
+                <label for="" class="control-label"></label>
+                <div>
+                    <div class="checkbox">
+                        <label>
+                            <input name="privacy" value="privacy" type="checkbox">Ho letto ed accetto <a href="/privacy">l'informativa sulla privacy e le condizioni d'uso del servizio</a>
+                        </label>
+                    </div>
+                </div>
+            </div>
 
             <br/>
 
