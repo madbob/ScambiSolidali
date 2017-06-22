@@ -7,7 +7,7 @@
         <div class="row primary-3">
             <div class="col-md-12 bg-color header-claim">
                 <p>
-                    Non si butta via niente:<br/>quello che non serve a te puoi darlo a Celocelo
+                    Non si butta via niente:<br/>quello che non serve a te puoi darlo a {{ env('APP_NAME') }}
                 </p>
 
                 <p class="small-link">
@@ -64,7 +64,7 @@
         <div class="row primary-2">
             <div class="col-md-12 bg-color header-claim">
                 <p>
-                    <strong>Celocelo</strong> è una piattaforma che migliora la vita<br/>delle persone in difficoltà che ti stanno attorno. Ti permette di:
+                    <strong>{{ env('APP_NAME') }}</strong> è una piattaforma che migliora la vita<br/>delle persone in difficoltà che ti stanno attorno. Ti permette di:
                 </p>
 
                 <div class="double-side">
@@ -106,7 +106,7 @@
                 <h2>Lieto fine</h2>
 
                 <p>
-                    Vuoi scoprire che fine ha fatto il tuo frigo? Qui ti raccontiamo  le storie di successo di Celocelo.
+                    Vuoi scoprire che fine ha fatto il tuo frigo? Qui ti raccontiamo le storie di successo di {{ env('APP_NAME') }}.
                 </p>
 
                 <p class="small-link">

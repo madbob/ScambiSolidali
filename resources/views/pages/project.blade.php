@@ -16,7 +16,7 @@
                     </div>
                     <div class="card-footer vert-align">
                         <p>
-                            CELOCELO
+                            {{ env('APP_NAME') }}
                         </p>
                     </div>
                 </div>

@@ -158,7 +158,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="receiver-past" class="col-sm-4 control-label">Quante volte ha fruito di Celocelo?</label>
+                                                <label for="receiver-past" class="col-sm-4 control-label">Quante volte ha fruito di {{ env('APP_NAME') }}?</label>
                                                 <div class="col-sm-8">
                                                     <input type="number" name="receiver-past" class="form-control">
                                                 </div>
