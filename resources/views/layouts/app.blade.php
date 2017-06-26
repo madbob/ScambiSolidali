@@ -24,6 +24,7 @@
     <meta property="og:country-name" content="Italy" />
     <meta property="og:email" content="{{ env('MAIL_FROM_ADDRESS') }}" />
     <meta property="og:locale" content="it_IT" />
+    <meta property="og:description" content="Non si butta via niente: quello che non serve a te puoi darlo a {{ env('APP_NAME') }}. Mettiamo in contatto chi opera nel sociale con chi ha qualcosa da regalare!" />
 
     <meta name="twitter:title" content="{{ env('APP_NAME') }}" />
     <meta name="twitter:card" content="summary" />
