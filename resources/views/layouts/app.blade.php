@@ -24,7 +24,6 @@
     <meta property="og:country-name" content="Italy" />
     <meta property="og:email" content="{{ env('MAIL_FROM_ADDRESS') }}" />
     <meta property="og:locale" content="it_IT" />
-    <meta property="fb:app_id" content="190331531485606" />
 
     <meta name="twitter:title" content="{{ env('APP_NAME') }}" />
     <meta name="twitter:card" content="summary" />
