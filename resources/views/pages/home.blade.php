@@ -117,7 +117,7 @@
 
         <div class="row footer-credits">
             <div class="col-md-12">
-                <div class="pull-right">
+                <div class="text-center">
                     <span>
                         Un progetto di<br/>
                         <img src="{{ url('images/agenziasansalvario.jpg') }}" alt="Agenzia per lo Sviluppo Locale di San Salvario" height="54px">

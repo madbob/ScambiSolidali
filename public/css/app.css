@@ -6539,9 +6539,15 @@ textarea.form-control {
   .double-side img {
     width: 70%; }
 
-.footer-credits span {
-  display: inline-block;
-  margin-left: 20px; }
+.footer-credits {
+  padding: 40px 0;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000; }
+  .footer-credits span {
+    text-align: left;
+    font-weight: bold;
+    display: inline-block;
+    margin: 0 30px; }
 
 /********************************* CELO/MANCA */
 .categories-select {
