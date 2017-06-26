@@ -16,6 +16,21 @@
     <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.0.1/mapbox-gl-geocoder.css' type='text/css' />
     {!! Minify::stylesheet('/css/app.css') !!}
 
+    <meta property="og:site_name" content="{{ env('APP_NAME') }}" />
+    <meta property="og:title" content="{{ env('APP_NAME') }}" />
+    <meta property="og:url" content="{{ env('APP_URL') }}" />
+    <meta property="og:image" content="{{ env('APP_URL') }}/images/fb.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:country-name" content="Italy" />
+    <meta property="og:email" content="{{ env('MAIL_FROM_ADDRESS') }}" />
+    <meta property="og:locale" content="it_IT" />
+    <meta property="fb:app_id" content="190331531485606" />
+
+    <meta name="twitter:title" content="{{ env('APP_NAME') }}" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:url" content="{{ env('APP_URL') }}" />
+    <meta name="twitter:image" content="{{ env('APP_URL') }}/images/tw.png" />
+
     <script>
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
