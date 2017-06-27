@@ -6548,6 +6548,8 @@ textarea.form-control {
     font-weight: bold;
     display: inline-block;
     margin: 0 30px; }
+    .footer-credits span img {
+      height: 70px; }
 
 /********************************* CELO/MANCA */
 .categories-select {

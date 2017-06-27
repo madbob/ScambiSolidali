@@ -120,7 +120,7 @@
                 <div class="text-center">
                     <span>
                         Un progetto di<br/>
-                        <img src="{{ url('images/agenziasansalvario.jpg') }}" alt="Agenzia per lo Sviluppo Locale di San Salvario" height="54px">
+                        <img src="{{ url('images/agenziasansalvario.jpg') }}" alt="Agenzia per lo Sviluppo Locale di San Salvario">
                     </span>
                     <span>
                         Con il sostegno della<br/>
