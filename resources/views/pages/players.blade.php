@@ -48,7 +48,7 @@
                                                         coordinates: [{{ $institute->lng }}, {{ $institute->lat }}]
                                                     },
                                                     properties: {
-                                                        title: "{{ $institute->name }}",
+                                                        title: "",
                                                         id: {{ $institute->id }}
                                                     }
                                                 },
