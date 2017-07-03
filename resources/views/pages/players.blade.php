@@ -76,7 +76,15 @@
                                             <p class="show-details" data-endpoint="ente" data-item-id="{{ $institute->id }}">Edit</p>
                                         </div>
                                     @endif
-                                    <p class="institute" data-institute-id="{{ $institute->id }}">{{ $institute->name }}</p>
+                                    <p class="institute" data-institute-id="{{ $institute->id }}">
+                                        @if(!empty($institute->website))
+                                            <a href="{{ $institute->website }}">
+                                        @endif
+                                        {{ $institute->name }}
+                                        @if(!empty($institute->website))
+                                            </a>
+                                        @endif
+                                    </p>
                                 </div>
                             </div>
                         @endforeach

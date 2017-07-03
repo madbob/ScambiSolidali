@@ -11,6 +11,7 @@
                     <div class="col-md-12">
                         {!! BootForm::vertical(['model' => $institute, 'store' => 'ente.store', 'update' => 'ente.update']) !!}
                             {!! BootForm::text('name', 'Nome') !!}
+                            {!! BootForm::text('website', 'Sito Web') !!}
 
                             <div class="form-group">
                                 <label for="address" class="control-label">Indirizzo</label>
