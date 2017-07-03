@@ -20,17 +20,30 @@ class UserController extends Controller
         $user = Auth::user();
 
         $institutes = Institute::orderBy('name', 'asc')->get();
-        $operators = [];
-        $users = [];
-        $receivers = [];
 
-        if ($user && $user->role == 'admin')
+        if ($user && $user->role == 'admin') {
             $users = User::orderBy('surname', 'asc')->get();
+            $admins_count = User::where('role', 'admin')->count();
+            $users_count = User::where('role', 'user')->count();
+            $operators_count = User::where('role', 'operator')->count();
+            $carriers_count = User::where('role', 'carrier')->count();
+        }
+        else {
+            $users = [];
+            $admins_count = 0;
+            $users_count = 0;
+            $operators_count = 0;
+            $carriers_count = 0;
+        }
 
         return view('pages.players', [
             'user' => $user,
             'institutes' => $institutes,
-            'users' => $users
+            'users' => $users,
+            'admins_count' => $admins_count,
+            'users_count' => $users_count,
+            'operators_count' => $operators_count,
+            'carriers_count' => $carriers_count,
         ]);
     }
 

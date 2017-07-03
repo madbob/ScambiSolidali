@@ -184,6 +184,19 @@ $(document).ready(function() {
         }
     });
 
+    $('input[name=role-filter]').change(function() {
+        if ($(this).prop('checked')) {
+            var role = $(this).attr('data-role');
+            if (role == 'all') {
+                $('.users-list tr').show();
+            }
+            else {
+                $('.users-list tr').hide();
+                $('.users-list tr[data-role=' + role + ']').show();
+            }
+        }
+    });
+
     $('.show-details').click(function(e) {
         e.preventDefault();
         var endpoint = $(this).attr('data-endpoint');

@@ -106,9 +106,29 @@
                             </button>
                             @include('user.modal', ['user' => null])
                         </div>
+
+                        <div class="col-md-6">
+                            <div class="btn-group pull-right" role="group" data-toggle="buttons">
+                                <label class="btn btn-default active">
+                                    <input type="radio" name="role-filter" data-role="all" autocomplete="off" checked> Tutti
+                                </label>
+                                <label class="btn btn-default">
+                                    <input type="radio" name="role-filter" data-role="admin" autocomplete="off"> {{ $admins_count }} Amministratori
+                                </label>
+                                <label class="btn btn-default">
+                                    <input type="radio" name="role-filter" data-role="user" autocomplete="off"> {{ $users_count }} Utenti
+                                </label>
+                                <label class="btn btn-default">
+                                    <input type="radio" name="role-filter" data-role="operator" autocomplete="off"> {{ $operators_count }} Operatori
+                                </label>
+                                <label class="btn btn-default">
+                                    <input type="radio" name="role-filter" data-role="carrier" autocomplete="off"> {{ $carriers_count }} Recupero
+                                </label>
+                            </div>
+                        </div>
                     </div>
 
-                    <table class="table">
+                    <table class="table users-list">
         				<thead>
         					<tr>
                                 <th>Ruolo</th>
@@ -121,7 +141,7 @@
         				</thead>
         				<tbody>
         					@foreach($users as $u)
-        						<tr>
+                                <tr data-role="{{ $u->role }}">
                                     <td>{{ $u->role_name }}</td>
         							<td>{{ $u->name }}</td>
                                     <td>{{ $u->surname }}</td>
