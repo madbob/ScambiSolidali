@@ -171,6 +171,7 @@ return [
         Watson\BootstrapForm\BootstrapFormServiceProvider::class,
         Jenssegers\Date\DateServiceProvider::class,
         Devfactory\Minify\MinifyServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
 
         //
 
@@ -236,7 +237,8 @@ return [
         'BootForm' => Watson\BootstrapForm\Facades\BootstrapForm::class,
         'Uuid' => Webpatser\Uuid\Uuid::class,
         'Date' => Jenssegers\Date\Date::class,
-        'Minify' => Devfactory\Minify\Facades\MinifyFacade::class
+        'Minify' => Devfactory\Minify\Facades\MinifyFacade::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];

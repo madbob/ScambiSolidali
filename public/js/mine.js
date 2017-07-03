@@ -197,6 +197,10 @@ $(document).ready(function() {
         }
     });
 
+    $('.journal .btn').click(function(e) {
+        e.preventDefault();
+    });
+
     $('.show-details').click(function(e) {
         e.preventDefault();
         var endpoint = $(this).attr('data-endpoint');

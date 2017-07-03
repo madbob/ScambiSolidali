@@ -123,6 +123,10 @@
     <script src="{{ url('js/exif.js') }}"></script>
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.js'></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.0.1/mapbox-gl-geocoder.js'></script>
-	{!! Minify::javascript('/js/mine.js') !!}
+    @if(env('APP_DEBUG', false) == false)
+        {!! Minify::javascript('/js/mine.js') !!}
+    @else
+        <script src="{{ url('js/mine.js') }}"></script>
+    @endif
 </body>
 </html>

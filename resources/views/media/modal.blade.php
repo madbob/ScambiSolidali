@@ -23,6 +23,21 @@
                                 </div>
                             </div>
                         {!! BootForm::close() !!}
+
+                        @if($media)
+                            <form method="POST" action="{{ url('parlano-di-noi/' . $media->id) }}">
+                                <input type="hidden" name="_method" value="DELETE">
+                                {!! csrf_field() !!}
+
+                                <div class="form-group">
+                                    <div>
+                                        <button class="button" type="submit">
+                                            <span>Elimina</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        @endif
                     </div>
                 </div>
             </div>

@@ -20,6 +20,11 @@ class MediaController extends Controller
 
     public function store(Request $request)
     {
+        $user = Auth::user();
+        if ($user->role != 'admin') {
+            return redirect(url('/'));
+        }
+
         $media = new Media();
         $media->channel = $request->input('channel');
         $media->date = decodeDate($request->input('date'));
@@ -36,23 +41,38 @@ class MediaController extends Controller
         return redirect(url('parlano-di-noi'));
     }
 
-    public function show($id)
-    {
-        //
-    }
-
-    public function edit($id)
-    {
-        //
-    }
-
     public function update(Request $request, $id)
     {
-        //
+        $user = Auth::user();
+        if ($user->role != 'admin') {
+            return redirect(url('/'));
+        }
+
+        $media = Media::find($id);
+        $media->channel = $request->input('channel');
+        $media->date = decodeDate($request->input('date'));
+        $media->link = $request->input('link', '');
+
+        if ($request->hasFile('file')) {
+            $filename = $request->file->getClientOriginalName();
+            $request->file->move(public_path() . '/media/', $filename);
+            $media->link = url('/media/' . $filename);
+        }
+
+        $media->save();
+
+        return redirect(url('parlano-di-noi'));
     }
 
     public function destroy($id)
     {
-        //
+        $user = Auth::user();
+        if ($user->role != 'admin') {
+            return redirect(url('/'));
+        }
+
+        $media = Media::find($id);
+        $media->delete();
+        return redirect(url('parlano-di-noi'));
     }
 }

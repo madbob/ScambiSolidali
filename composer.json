@@ -12,7 +12,8 @@
         "jenssegers/date": "^3.2",
         "aws/aws-sdk-php": "^3.20",
         "devfactory/minify": "^1.0",
-        "diversen/image-auto-rotate": "^1.0"
+        "diversen/image-auto-rotate": "^1.0",
+        "barryvdh/laravel-debugbar": "^2.4"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
