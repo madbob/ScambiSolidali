@@ -31,6 +31,7 @@ $has_donations = ($call && $call->donations()->count() != 0);
                             {!! BootForm::radios('status', 'Stato', [
                                 'draft' => 'Bozza (non visibile pubblicamente)',
                                 'open' => 'Pubblicato',
+                                'closed' => 'Chiuso',
                                 'archived' => 'Archiviato',
                             ]) !!}
 

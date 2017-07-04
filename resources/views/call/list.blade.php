@@ -44,13 +44,12 @@
                                     <div class="card-main image-frame" style="background-image: url('{{ $image }}')">
                                         &nbsp;
                                     </div>
-                                    @if($call->status == 'archived')
+                                    @if($call->status == 'closed')
                                         <div class="card-main-filter">
                                         </div>
                                         <div class="card-main-overlay">
                                             <span>
                                                 <p>Trovato!</p>
-                                                <img src="{{ url('images/trofeo.svg') }}">
                                             </span>
                                         </div>
                                     @endif
