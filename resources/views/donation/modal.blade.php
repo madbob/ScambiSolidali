@@ -20,18 +20,15 @@
 
                             @if($role == 'admin' || $role == 'operator')
                                 @if($donation->recoverable)
-                                    <div class="alert alert-info">Marcato per il possibile recupero</div>
-                                    @if($donation->really_recoverable)
-                                        <div class="alert alert-info">Recuperabile alla scadenza</div>
-                                    @endif
+                                    <div class="alert alert-info">Marcato per il possibile recupero di Triciclo</div>
                                 @else
-                                    <div class="alert alert-info">Non marcato per il recupero</div>
+                                    <div class="alert alert-info">Non marcato per il recupero di Triciclo</div>
                                 @endif
-                            @else
-                                @if($donation->recoverable)
+                            @elseif($role == 'carrier')
+                                @if($donation->recoverable && ($donation->status == 'expired' || $donation->status == 'recovered'))
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox" class="single-saving-notice-toggle" data-endpoint="{{ url('donazione/recuperabile/' . $donation->id) }}" {{ $donation->really_recoverable ? 'checked="checked"' : '' }}> Recuperabile alla scadenza <span class="single-saving-notice"></span>
+                                            <input type="checkbox" class="single-saving-notice-toggle" data-endpoint="{{ url('donazione/recuperato/' . $donation->id) }}" {{ $donation->status == 'recovered' ? 'checked="checked"' : '' }}> Recuperato da Triciclo <span class="single-saving-notice"></span>
                                         </label>
                                     </div>
                                 @else

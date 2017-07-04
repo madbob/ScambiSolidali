@@ -26,10 +26,12 @@ class DonationController extends Controller
     public function index(Request $request)
     {
         $user = Auth::user();
-        $query = Donation::whereIn('status', ['pending', 'assigned'])->orderBy('created_at', 'desc');
+        $query = Donation::orderBy('created_at', 'desc');
 
         if ($user && $user->role == 'carrier')
-            $query->where('recoverable', true);
+            $query->where('recoverable', true)->whereIn('status', ['expired', 'recovered']);
+        else
+            $query->whereIn('status', ['pending', 'assigned']);
 
         $filter = $request->input('filter', null);
         if ($filter != null) {
@@ -61,7 +63,7 @@ class DonationController extends Controller
         else
             $data['current_show'] = -1;
 
-        $data['edit_enabled'] = ($user != null && ($user->role == 'admin' || $user->role == 'operator'));
+        $data['edit_enabled'] = ($user != null && ($user->role == 'admin' || $user->role == 'operator' || $user->role == 'carrier'));
 
         return view('donation.list', $data);
     }
@@ -347,16 +349,16 @@ class DonationController extends Controller
         return redirect(url('celo'));
     }
 
-    public function postRecoverable(Request $request, $id)
+    public function postRecovered(Request $request, $id)
     {
         $user = Auth::user();
         if ($user->role != 'carrier') {
             return redirect(url('/'));
         }
 
-        $status = ($request->input('status') == 'true');
         $donation = Donation::find($id);
-        $donation->really_recoverable = $status;
+        $donation->timestamps = false;
+        $donation->status = ($request->input('status') == 'true') ? 'recovered' : 'expired';
         $donation->save();
         return 'ok';
     }
