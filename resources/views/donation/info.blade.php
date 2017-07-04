@@ -1,5 +1,6 @@
 <p class="form-control-static">
-    Inserito da:<br/>{{ $donation->user->printableName() }} @include('user.rating', ['user' => $donation->user])
+    Inserito da:<br/>{{ $donation->user->printableName() }} @include('user.rating', ['user' => $donation->user])<br>
+    {{ printableDate($donation->created_at) }}
 </p>
 
 <hr/>

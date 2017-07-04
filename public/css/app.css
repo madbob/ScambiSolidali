@@ -6378,7 +6378,7 @@ textarea.form-control {
   height: 300px;
   text-align: center;
   display: table;
-  margin: 10px; }
+  border: 5px solid #FFF; }
   .square-block .content {
     display: table-cell;
     vertical-align: middle; }
