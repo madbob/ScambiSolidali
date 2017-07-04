@@ -73,6 +73,12 @@ class Donation extends Model
             case 'recovered':
                 return 'Recuperato';
 
+            case 'expiring':
+                return 'In Scadenza';
+
+            case 'expired':
+                return 'Scaduto';
+
             case 'dropped':
                 return 'Abbondonato';
         }

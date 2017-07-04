@@ -33,6 +33,8 @@ class DonationController extends Controller
         else
             $query->whereIn('status', ['pending', 'assigned']);
 
+        $data['user'] = $user;
+
         $filter = $request->input('filter', null);
         if ($filter != null) {
             if ($filter == 'service') {
@@ -297,6 +299,17 @@ class DonationController extends Controller
     public function getImage(Request $request, $id, $index)
     {
         return response()->download(Donation::photosPath() . '/' . $id . '_' . $index);
+    }
+
+    public function getArchive()
+    {
+        $user = Auth::user();
+        if ($user->role != 'admin') {
+            return redirect(url('/'));
+        }
+
+        $data['donations'] = Donation::orderBy('created_at', 'desc')->paginate(50);
+        return view('donation.archive', $data);
     }
 
     public function postAssign(Request $request, $id)

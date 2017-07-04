@@ -19,6 +19,12 @@
                     Dicci cosa vuoi regalare e attendi la nostra risposta!
                 </p>
 
+                @if($user && $user->role == 'admin')
+                    <a href="{{ url('/celo/archivio') }}" class="btn btn-default">
+                        <span>Vedi Archivio Completo</span>
+                    </a>
+                @endif
+
                 @include('category.filter', ['filter' => $filter, 'endpoint' => 'celo'])
             </div>
 
