@@ -28,6 +28,8 @@ $has_donations = ($call && $call->donations()->count() != 0);
                                 'and_service' => true]
                             )
 
+                            {!! BootForm::textarea('notes', 'Note (private, visualizzate solo agli operatori)', null) !!}
+
                             {!! BootForm::radios('status', 'Stato', [
                                 'draft' => 'Bozza (non visibile pubblicamente)',
                                 'open' => 'Pubblicato',

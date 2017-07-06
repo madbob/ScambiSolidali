@@ -66,6 +66,7 @@ class CallController extends Controller
         $call->what = $request->input('what');
         $call->whom = $request->input('whom');
         $call->when = decodeDate($request->input('when'));
+        $call->notes = $request->input('notes');
         $call->status = $request->input('status');
     }
 
