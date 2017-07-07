@@ -51,7 +51,7 @@ class Donation extends Model
         if ($user == null)
             $user = Auth::user();
 
-        return ($this->bookings()->where('user_id', $user->id)->count() != 0);
+        return ($this->bookings()->where('user_id', $user->id)->first() != null);
     }
 
     static public function photosPath()
