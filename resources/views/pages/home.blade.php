@@ -13,6 +13,9 @@
                 <p class="small-link">
                     <a class="other-arrowlink" href="{{ url('come-funziona') }}">Come funziona</a>
                 </p>
+                <p class="small-link">
+                    <a class="other-arrowlink" href="https://www.youtube.com/watch?v=4bIYes-LHAQ">Guarda il Video</a>
+                </p>
             </div>
         </div>
 
