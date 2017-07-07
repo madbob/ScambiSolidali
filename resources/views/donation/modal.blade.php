@@ -46,37 +46,62 @@
                                     @include('donation.minilist', ['list' => $donation->receivers, 'print_object' => false])
                                 @endif
 
-                                @if($donation->status == 'pending')
+                                @if($donation->bookings->isEmpty() == false)
                                     <hr/>
-                                    <button class="btn btn-success" role="button" data-toggle="collapse" href="#assignPanel-{{ $donation->id }}" aria-expanded="false" aria-controls="assignPanel-{{ $donation->id }}">Oggetto Assegnato</button> <button class="btn btn-danger" role="button" data-toggle="collapse" href="#removePanel-{{ $donation->id }}" aria-expanded="false" aria-controls="removePanel-{{ $donation->id }}">Elimina</button>
+
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Data</th>
+                                                <th>Operatore</th>
+                                                <th>Stato</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($donation->bookings as $item)
+                                                <tr>
+                                                    <td>{{ ucwords(strftime('%d/%m/%G', strtotime($item->pivot->created_at))) }}</td>
+                                                    <td>{{ $item->printableName() }}</td>
+                                                    <td>Prenotato</td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
                                 @endif
 
-                                <div class="collapse" id="assignPanel-{{ $donation->id }}">
-                                    <div class="well">
-                                        @include('donation.assign', ['donation' => $donation])
-                                    </div>
-                                </div>
+                                @if($donation->status == 'pending')
+                                    <hr/>
+                                    <button class="btn btn-success booking-button" data-donation-id="{{ $donation->id }}">{{ $donation->booked() ? 'Revoca Prenotazione' : 'Marca come Prenotato' }}</button>
+                                    <button class="btn btn-success" role="button" data-toggle="collapse" href="#assignPanel-{{ $donation->id }}" aria-expanded="false" aria-controls="assignPanel-{{ $donation->id }}">Oggetto Assegnato</button>
+                                    <button class="btn btn-danger" role="button" data-toggle="collapse" href="#removePanel-{{ $donation->id }}" aria-expanded="false" aria-controls="removePanel-{{ $donation->id }}">Elimina</button>
 
-                                <div class="collapse" id="removePanel-{{ $donation->id }}">
-                                    <div class="well">
-                                        <form class="form-vertical" method="POST" action="{{ url('celo/' . $donation->id) }}">
-                                            <input type="hidden" name="_method" value="delete">
-                                            {{ csrf_field() }}
-
-                                            <div class="form-group">
-                                                <label for="holder" class="control-label">Motivo</label>
-                                                <select class="form-control" name="reason">
-                                                    @foreach(App\Donation::declineReasons() as $identifier => $reason)
-                                                    <option value="{{ $identifier }}">{{ $reason->text }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <button type="submit" class="btn btn-default">Elimina</button>
-                                            </div>
-                                        </form>
+                                    <div class="collapse" id="assignPanel-{{ $donation->id }}">
+                                        <div class="well">
+                                            @include('donation.assign', ['donation' => $donation])
+                                        </div>
                                     </div>
-                                </div>
+
+                                    <div class="collapse" id="removePanel-{{ $donation->id }}">
+                                        <div class="well">
+                                            <form class="form-vertical" method="POST" action="{{ url('celo/' . $donation->id) }}">
+                                                <input type="hidden" name="_method" value="delete">
+                                                {{ csrf_field() }}
+
+                                                <div class="form-group">
+                                                    <label for="holder" class="control-label">Motivo</label>
+                                                    <select class="form-control" name="reason">
+                                                        @foreach(App\Donation::declineReasons() as $identifier => $reason)
+                                                        <option value="{{ $identifier }}">{{ $reason->text }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <button type="submit" class="btn btn-default">Elimina</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     @endif

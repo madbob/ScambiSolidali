@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use Auth;
 use App\User;
 
 class Donation extends Model
@@ -16,6 +17,11 @@ class Donation extends Model
 	public function category()
     {
         return $this->belongsTo('App\Category');
+    }
+
+    public function bookings()
+    {
+        return $this->belongsToMany('App\User', 'donation_booking')->orderBy('donation_booking.created_at', 'desc')->withPivot(['created_at']);
     }
 
     public function receivers()
@@ -38,6 +44,14 @@ class Donation extends Model
         $path = Donation::photosPath();
         $files = glob($path . $this->id . '_*');
         return count($files);
+    }
+
+    public function booked($user = null)
+    {
+        if ($user == null)
+            $user = Auth::user();
+
+        return ($this->bookings()->where('user_id', $user->id)->count() != 0);
     }
 
     static public function photosPath()
