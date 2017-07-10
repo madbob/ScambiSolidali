@@ -71,7 +71,7 @@ class UserController extends Controller
         Mail::to($user)->send(new NewUserCreated($user, $password));
 
         Session::flash('message', 'Nuovo utente salvato. Gli è stata inviata una mail con la password');
-        return redirect(url('utente'));
+        return redirect(url('giocatori'));
     }
 
     public function show($id)
