@@ -21,12 +21,12 @@ class Donation extends Model
 
     public function bookings()
     {
-        return $this->belongsToMany('App\User', 'donation_booking')->orderBy('donation_booking.created_at', 'desc')->withPivot(['created_at']);
+        return $this->belongsToMany('App\User', 'donation_booking')->orderBy('donation_booking.created_at', 'desc')->withPivot(['id', 'created_at']);
     }
 
     public function receivers()
     {
-        return $this->belongsToMany('App\Receiver')->orderBy('donation_receiver.updated_at', 'desc')->withPivot(['receiver_id', 'donation_id', 'operator_id', 'updated_at', 'notes', 'status']);
+        return $this->belongsToMany('App\Receiver')->orderBy('donation_receiver.updated_at', 'desc')->withPivot(['id', 'receiver_id', 'donation_id', 'operator_id', 'updated_at', 'notes', 'status']);
     }
 
     public function call()

@@ -31,6 +31,7 @@ Route::get('/donazione/mie', 'DonationController@myIndex');
 Route::get('/donazione/mio/{id}', 'DonationController@getMyEdit');
 Route::post('/donazione/assegna/{id}', 'DonationController@postAssign');
 Route::post('/donazione/prenota/{id}', 'DonationController@postBook');
+Route::post('/donazione/detach/{type}/{donation_id}/{interaction_id}', 'DonationController@postDetach');
 Route::post('/donazione/recuperato/{id}', 'DonationController@postRecovered');
 Route::get('/register/activate/{token}', 'Auth\RegisterController@activate');
 Route::get('/register/operator', 'Auth\RegisterController@registerOp');

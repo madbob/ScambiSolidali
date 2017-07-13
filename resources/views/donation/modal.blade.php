@@ -55,14 +55,25 @@
                                                 <th>Data</th>
                                                 <th>Operatore</th>
                                                 <th>Stato</th>
+                                                @if($role == 'admin')
+                                                    <th></th>
+                                                @endif
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach($donation->bookings as $item)
                                                 <tr>
                                                     <td>{{ ucwords(strftime('%d/%m/%G', strtotime($item->pivot->created_at))) }}</td>
-                                                    <td>{{ $item->printableName() }}</td>
+                                                    <td>{{ $item->printableOperatorName() }}</td>
                                                     <td>Prenotato</td>
+
+                                                    @if($role == 'admin')
+                                                        <td>
+                                                            <button class="btn btn-default async-delete-interaction booking" data-donation-id="{{ $donation->id }}" data-item-id="{{ $item->id }}">
+                                                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                                            </button>
+                                                        </td>
+                                                    @endif
                                                 </tr>
                                             @endforeach
                                         </tbody>

@@ -39,6 +39,15 @@ class User extends Authenticatable
 		return $this->name . ' ' . $this->surname;
 	}
 
+    public function printableOperatorName()
+	{
+        $institutes = [];
+        foreach($this->institutes as $i)
+            $institutes[] = $i->name;
+
+		return sprintf('%s %s (%s)', $this->name, $this->surname, join(', ', $institutes));
+	}
+
     public function getRoleNameAttribute()
     {
         switch($this->role) {

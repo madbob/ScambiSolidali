@@ -177,7 +177,7 @@ class DonationController extends Controller
 
         if ($donation->call_id != null) {
             $call = Call::find($donation->call_id);
-            Mail::to($call->user->email)->send(new CallResponded($donation));
+            Mail::to($call->user->email)->send(new CallResponded($donation, $call));
         }
 
         return view('donation.thanks');
@@ -382,6 +382,37 @@ class DonationController extends Controller
         }
 
         return redirect(url('celo'));
+    }
+
+    public function postDetach(Request $request, $type, $donation_id, $interaction_id)
+    {
+        $user = Auth::user();
+        if ($user->role != 'admin') {
+            return redirect(url('/'));
+        }
+
+        $donation = Donation::find($donation_id);
+
+        switch($type) {
+            case 'booking':
+                $donation->bookings()->detach($interaction_id);
+                break;
+
+            case 'assignation':
+                $donation->receivers()->detach($interaction_id);
+
+                $rec = Receiver::find($interaction_id);
+                $rec->delete();
+
+                if ($donation->receivers->isEmpty()) {
+                    $donation->status = 'pending';
+                    $donation->save();
+                }
+
+                break;
+        }
+
+        return 'ok';
     }
 
     public function postRecovered(Request $request, $id)

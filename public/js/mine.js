@@ -125,6 +125,30 @@ $(document).ready(function() {
         });
     });
 
+    $('body').on('click', '.async-delete-interaction', function(e) {
+        e.preventDefault();
+        var id = $(this).attr('data-item-id');
+        var donation = $(this).attr('data-donation-id');
+        var url = '';
+
+        if ($(this).hasClass('booking'))
+            url = '/donazione/detach/booking/' + donation + '/' + id;
+        else
+            url = '/donazione/detach/assignation/' + donation + '/' + id;
+
+        var row = $(this).closest('tr').first();
+
+        $.ajax(url, {
+            method: 'POST',
+            data: {
+                _token: window.Laravel.csrfToken
+            },
+            success: function(data) {
+                row.remove();
+            }
+        });
+    });
+
     $('body').on('change', '.single-saving-notice-toggle', function() {
         var endpoint = $(this).attr('data-endpoint');
         var status = $(this).prop('checked');
