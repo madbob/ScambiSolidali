@@ -76,6 +76,11 @@ class DonationController extends Controller
 
         $data['donations'] = Donation::where('user_id', $user->id)->where('status', '!=', 'voided')->orderBy('created_at', 'desc')->get();
 
+        if ($user->role == 'admin' || $user->role == 'operator')
+            $data['calls'] = Call::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
+        else
+            $data['calls'] = [];
+
         if ($request->has('show'))
             $data['current_show'] = $request->input('show');
         else

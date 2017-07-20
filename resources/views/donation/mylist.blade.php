@@ -44,5 +44,36 @@
                 @endif
             </div>
         </div>
+
+        @if(!empty($calls))
+            <div class="row">
+                <div class="pagetitle">
+                    <span>I MIEI APPELLI</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+					@foreach($calls as $index => $call)
+                        @if($index % 2 == 0 && $index != 0)
+                            <div class="clearfix"></div>
+                        @endif
+
+                        <div class="col-md-6 mydonation">
+                            <p>{{ date('d.m.Y', strtotime($call->created_at)) }}</p>
+                            <h2>{{ $call->title }}</h2>
+
+                            @if($call->status == 'open')
+                                <p>
+                                    <a class="button" href="{{ url('manca/?show=' . $call->id) }}">
+                                        <span>Modifica</span>
+                                    </a>
+                                </p>
+                            @endif
+                        </div>
+					@endforeach
+                </div>
+            </div>
+        @endif
     </div>
 @endsection

@@ -3,6 +3,8 @@
 @section('title', 'Manca')
 
 @section('content')
+    <input type="hidden" name="trigger-show-details" data-endpoint="manca" data-item-id="{{ $current_show }}">
+
     <div class="manca primary-2">
     	<div class="row">
     		<div class="col-md-2">

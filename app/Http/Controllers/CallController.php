@@ -46,7 +46,12 @@ class CallController extends Controller
 
         $calls = $query->paginate(50);
 
-        return view('call.list', ['calls' => $calls, 'edit_enabled' => $edit_enabled, 'filter' => $filter]);
+        if ($request->has('show'))
+            $current_show = $request->input('show');
+        else
+            $current_show = -1;
+
+        return view('call.list', ['calls' => $calls, 'edit_enabled' => $edit_enabled, 'current_show' => $current_show, 'filter' => $filter]);
     }
 
     private function requestInCall($call, $request)
