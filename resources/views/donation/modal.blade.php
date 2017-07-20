@@ -41,6 +41,8 @@
                     @if($role == 'admin' || $role == 'operator')
                         <div class="row">
                             <div class="col-md-12">
+                                @include('donation.sameuser', ['donation' => $donation])
+
                                 @if($donation->receivers->isEmpty() == false)
                                     <hr/>
                                     @include('donation.minilist', ['list' => $donation->receivers, 'print_object' => false])
