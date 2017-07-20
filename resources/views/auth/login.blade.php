@@ -17,6 +17,7 @@
                 </div>
             </div>
 
+            <a class="btn btn-link pull-right" href="{{ url('/register') }}">Registrati Qui!</a>
             <a class="btn btn-link" href="{{ url('/password/reset') }}">Password Dimenticata?</a>
         {!! BootForm::close() !!}
     </div>
