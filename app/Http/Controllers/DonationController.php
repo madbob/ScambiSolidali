@@ -392,7 +392,7 @@ class DonationController extends Controller
     public function postDetach(Request $request, $type, $donation_id, $interaction_id)
     {
         $user = Auth::user();
-        if ($user->role != 'admin') {
+        if ($user->role != 'admin' && $user->role != 'operator') {
             return redirect(url('/'));
         }
 

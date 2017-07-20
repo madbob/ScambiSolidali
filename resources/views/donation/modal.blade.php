@@ -51,6 +51,7 @@
                                 @if($donation->bookings->isEmpty() == false)
                                     <hr/>
 
+                                    <h4>Prenotazioni</h4>
                                     <table class="table">
                                         <thead>
                                             <tr>

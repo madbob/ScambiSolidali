@@ -1,10 +1,9 @@
-<?php $role = Auth::user()->role ?>
-
 @if($list->isEmpty())
     <div class="alert alert-info">
         <p>Elenco vuoto</p>
     </div>
 @else
+    <h4>Assegnazioni</h4>
     <table class="table">
         <thead>
             <tr>
@@ -17,10 +16,7 @@
                 @endif
 
                 <th>Stato</th>
-
-                @if($role == 'admin')
-                    <th></th>
-                @endif
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -48,7 +44,7 @@
                         @endif
                     </td>
 
-                    @if($role == 'admin')
+                    @if($item->pivot->operator_id == Auth::user()->id)
                         <td>
                             <button class="btn btn-default async-delete-interaction assignation" data-donation-id="{{ $donation->id }}" data-item-id="{{ $item->id }}">
                                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>

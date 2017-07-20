@@ -7,7 +7,7 @@ $others = $user->donations()->where('status', 'pending')->where('donations.id', 
 
 @if($others->isEmpty() == false)
     <hr/>
-    <h3>Donazioni dello stesso utente</h3>
+    <h4>Donazioni dello stesso utente</h4>
     <table class="table">
         <thead>
             <tr>
