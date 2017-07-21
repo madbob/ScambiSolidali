@@ -15,7 +15,7 @@ class CallController extends Controller
     public function index(Request $request)
     {
         $user = Auth::user();
-        $edit_enabled = ($user != null && ($user->role == 'admin' || $user->role == 'operator'));
+        $data['edit_enabled'] = ($user != null && ($user->role == 'admin' || $user->role == 'operator'));
 
         $query = Call::orderBy('updated_at', 'desc');
 
@@ -40,18 +40,24 @@ class CallController extends Controller
                 }
             }
         }
+        $data['filter'] = $filter;
 
-        if ($edit_enabled == false)
+        if ($data['edit_enabled'] == false)
             $query->whereIn('status', ['open', 'closed']);
 
-        $calls = $query->paginate(50);
+        $data['calls'] = $query->paginate(50);
 
-        if ($request->has('show'))
-            $current_show = $request->input('show');
-        else
-            $current_show = -1;
+        $data['current_show'] = -1;
+        if ($request->has('show')) {
+            $show = $request->input('show');
+            $showing = Call::find($show);
+            if ($showing != null && $showing->status != 'archived') {
+                $data['current_show'] = $show;
+                $data['pagetitle'] = $showing->title;
+            }
+        }
 
-        return view('call.list', ['calls' => $calls, 'edit_enabled' => $edit_enabled, 'current_show' => $current_show, 'filter' => $filter]);
+        return view('call.list', $data);
     }
 
     private function requestInCall($call, $request)

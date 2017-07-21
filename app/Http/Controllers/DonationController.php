@@ -11,6 +11,8 @@ use diversen\imageRotate;
 
 use App\Mail\CallResponded;
 use App\Mail\DonationAssigned;
+use App\Mail\DonationTransport;
+use App\User;
 use App\Donation;
 use App\Category;
 use App\Receiver;
@@ -381,6 +383,12 @@ class DonationController extends Controller
                 $donation->status = 'assigned';
                 Mail::to($donation->email)->send(new DonationAssigned($donation, $user->institutes->first()));
                 Session::flash('message', 'Donazione assegnata. È stata inviata una mail al donatore per avere informazioni sul ritiro.');
+
+                if ($request->has('shipping')) {
+                    $carriers = User::where('role', 'carrier')->get();
+                    foreach($carriers as $carrier)
+                        Mail::to($carrier->email)->send(new DonationTransport($donation, $user));
+                }
             }
 
             $donation->save();

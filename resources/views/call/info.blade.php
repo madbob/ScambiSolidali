@@ -15,9 +15,13 @@
                             <p class="form-control-static">{{ $call->whom }}</p>
                             <p class="form-control-static">{{ printableDate($call->when) }}</p>
 
-                            <a href="{{ url('celo/nuovo/' . ($call->type == 'service' ? 'servizio' : 'oggetto') . '?call=' . $call->id) }}" class="btn btn-default button">
-                                <span>Celo!</span>
-                            </a>
+                            <br/>
+
+                            @if($call->status == 'open')
+                                <a href="{{ url('celo/nuovo/' . ($call->type == 'service' ? 'servizio' : 'oggetto') . '?call=' . $call->id) }}" class="btn btn-default button">
+                                    <span>Celo!</span>
+                                </a>
+                            @endif
                         {!! BootForm::close() !!}
                     </div>
                 </div>

@@ -7,7 +7,7 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'CeloCelo') }}</title>
+    <title>{{ $pagetitle }}</title>
 
     <link href="/css/chosen.min.css" rel="stylesheet">
     <link href="/css/bootstrap-chosen.css" rel="stylesheet">
@@ -17,14 +17,13 @@
     {!! Minify::stylesheet('/css/app.css') !!}
 
     <meta property="og:site_name" content="{{ env('APP_NAME') }}" />
-    <meta property="og:title" content="{{ env('APP_NAME') }}" />
-    <meta property="og:url" content="{{ env('APP_URL') }}" />
+    <meta property="og:title" content="{{ $pagetitle }}" />
     <meta property="og:image" content="{{ env('APP_URL') }}/images/fb.png" />
     <meta property="og:type" content="website" />
     <meta property="og:country-name" content="Italy" />
     <meta property="og:email" content="{{ env('MAIL_FROM_ADDRESS') }}" />
     <meta property="og:locale" content="it_IT" />
-    <meta property="og:description" content="Non si butta via niente: quello che non serve a te puoi darlo a {{ env('APP_NAME') }}. Mettiamo in contatto chi opera nel sociale con chi ha qualcosa da regalare!" />
+    <meta property="og:description" content="{{ $pagedescription }}" />
 
     <meta name="twitter:title" content="{{ env('APP_NAME') }}" />
     <meta name="twitter:card" content="summary" />

@@ -115,11 +115,11 @@
 
     @if ($donation->type == 'object')
         <div class="form-group">
-            <label for="receiver-country" class="col-sm-4 control-label">Richiedi Trasporto</label>
+            <label for="shipping" class="col-sm-4 control-label">Richiedi Trasporto</label>
             <div class="col-sm-8">
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" name="shipping">
+                        <input type="checkbox" name="shipping" value="1">
                     </label>
                 </div>
             </div>
