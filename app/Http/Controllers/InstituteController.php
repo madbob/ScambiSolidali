@@ -93,6 +93,15 @@ class InstituteController extends Controller
 
     public function destroy($id)
     {
-        //
+        $user = Auth::user();
+        if ($user->role != 'admin') {
+            return redirect(url('/'));
+        }
+
+        $institute = Institute::find($id);
+        $institute->delete();
+
+        Session::flash('message', 'Ente eliminato');
+        return redirect(url('giocatori'));
     }
 }

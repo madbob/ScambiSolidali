@@ -38,6 +38,29 @@
                                 </div>
                             </div>
                         {!! BootForm::close() !!}
+
+                        @if($institute)
+                            <div class="form-group">
+                                <button class="btn btn-danger" role="button" data-toggle="collapse" href="#destroyUser-{{ $institute->id }}" aria-expanded="false" aria-controls="#destroyUser-{{ $institute->id }}">Elimina</button>
+
+                                <div class="collapse" id="destroyUser-{{ $institute->id }}">
+                                    <div class="well">
+                                        <form class="form-vertical" method="POST" action="{{ url('ente/' . $institute->id) }}">
+                                            <input type="hidden" name="_method" value="delete">
+                                            {{ csrf_field() }}
+
+                                            <div class="alert alert-danger">
+                                                Sei sicuro di voler eliminare questa associazione?
+                                            </div>
+
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-default">Si, elimina</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

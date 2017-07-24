@@ -120,6 +120,16 @@ class UserController extends Controller
 
     public function destroy($id)
     {
-        //
+        $user = Auth::user();
+        if ($user->role != 'admin') {
+            return redirect(url('/'));
+        }
+
+        $user = User::find($id);
+        $user->donations()->delete();
+        $user->delete();
+
+        Session::flash('message', 'Utente eliminato');
+        return redirect(url('giocatori'));
     }
 }

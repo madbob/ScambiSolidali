@@ -43,6 +43,29 @@
                                 </div>
                             </div>
                         {!! BootForm::close() !!}
+
+                        @if($user)
+                            <div class="form-group">
+                                <button class="btn btn-danger" role="button" data-toggle="collapse" href="#destroyUser-{{ $user->id }}" aria-expanded="false" aria-controls="#destroyUser-{{ $user->id }}">Elimina</button>
+
+                                <div class="collapse" id="destroyUser-{{ $user->id }}">
+                                    <div class="well">
+                                        <form class="form-vertical" method="POST" action="{{ url('giocatori/' . $user->id) }}">
+                                            <input type="hidden" name="_method" value="delete">
+                                            {{ csrf_field() }}
+
+                                            <div class="alert alert-danger">
+                                                Sei sicuro di voler eliminare questo utente? Tutte le sue donazioni saranno eliminate.
+                                            </div>
+
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-default">Si, elimina</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

@@ -24,7 +24,7 @@ $(document).ready(function() {
                     Questo è per forzare l'attributo "required" nel campo di testo dove
                     mettere l'indirizzo
                 */
-                $('.mapboxgl-ctrl-geocoder input:text').attr('required', 'required');
+                $('.mapboxgl-ctrl-geocoder input:text').prop('required', true);
             }
 
             geocoder.on('result', function(ev) {
