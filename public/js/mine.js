@@ -18,14 +18,8 @@ $(document).ready(function() {
             map.addControl(geocoder);
 
             var form = $(this).closest('form');
-
-            if (form.find('input[name=address]').val() == '') {
-                /*
-                    Questo è per forzare l'attributo "required" nel campo di testo dove
-                    mettere l'indirizzo
-                */
-                $('.mapboxgl-ctrl-geocoder input:text').prop('required', true);
-            }
+            $('.mapboxgl-ctrl-geocoder input:text').prop('required', true);
+            $('.mapboxgl-ctrl-geocoder input:text').val(form.find('input[name=address]').val());
 
             geocoder.on('result', function(ev) {
                 $('input[name=address]', form).val(ev.result.place_name);
