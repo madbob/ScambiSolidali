@@ -236,7 +236,7 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
-    $('.show-details').click(function(e) {
+    $('body').on('click', '.show-details', function(e) {
         e.preventDefault();
         var endpoint = $(this).attr('data-endpoint');
         var id = $(this).attr('data-item-id');
