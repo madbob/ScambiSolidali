@@ -110,32 +110,34 @@ class CallController extends Controller
         $call = Call::find($id);
 
         $user = Auth::user();
-        if ($user == null || ($user->role != 'admin' && $user->role != 'operator'))
-            return view('call.info', ['call' => $call]);
-        else
+        if ($user && ($user->role == 'admin' || ($user->role == 'operator' && $call->user_id == $user->id)))
             return view('call.modal', ['call' => $call]);
+        else
+            return view('call.info', ['call' => $call]);
     }
 
     public function update(Request $request, $id)
     {
         $user = Auth::user();
-        if ($user->role != 'admin' && $user->role != 'operator') {
+        $call = Call::find($id);
+
+        if ($user && ($user->role == 'admin' || ($user->role == 'operator' && $call->user_id == $user->id))) {
+            $this->validate($request, [
+                'title' => 'required|max:255',
+                'who' => 'required',
+                'what' => 'required',
+                'whom' => 'required',
+                'status' => 'required',
+            ]);
+
+            $this->requestInCall($call, $request);
+            $call->save();
+
+            Session::flash('message', 'Appello salvato');
+            return redirect(url('manca'));
+        }
+        else {
             return redirect(url('/'));
         }
-
-        $this->validate($request, [
-            'title' => 'required|max:255',
-            'who' => 'required',
-            'what' => 'required',
-            'whom' => 'required',
-            'status' => 'required',
-        ]);
-
-        $call = Call::find($id);
-        $this->requestInCall($call, $request);
-        $call->save();
-
-        Session::flash('message', 'Appello salvato');
-        return redirect(url('manca'));
     }
 }
