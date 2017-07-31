@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use DB;
 use Session;
 use Mail;
 use Log;
@@ -28,7 +29,7 @@ class DonationController extends Controller
     public function index(Request $request)
     {
         $user = Auth::user();
-        $query = Donation::orderBy('created_at', 'desc');
+        $query = Donation::orderByRaw(DB::raw("FIELD(status, 'pending', 'assigned', 'recovered')"))->orderBy('created_at', 'desc');
 
         if ($user && $user->role == 'carrier')
             $query->where('recoverable', true)->whereIn('status', ['expired', 'recovered']);
