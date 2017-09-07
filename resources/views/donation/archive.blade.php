@@ -20,6 +20,7 @@
                                     <td>{{ $donation->title }}</td>
                                     <td>{{ printableDate($donation->created_at) }}</td>
                                     <td>{{ $donation->printableStatus() }}</td>
+                                    <td><button class="btn btn-default show-details" data-endpoint="celo" data-item-id="{{ $donation->id }}"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button></td>
                                 </tr>
             				@endforeach
                         </tbody>
