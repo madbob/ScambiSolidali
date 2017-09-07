@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use DB;
 use Auth;
 use Session;
 
@@ -17,7 +18,7 @@ class CallController extends Controller
         $user = Auth::user();
         $data['edit_enabled'] = ($user != null && ($user->role == 'admin' || $user->role == 'operator'));
 
-        $query = Call::orderBy('updated_at', 'desc');
+        $query = Call::orderByRaw(DB::raw("FIELD(status, 'draft', 'open', 'closed', 'archived')"))->orderBy('updated_at', 'desc');
 
         $filter = $request->input('filter', null);
         if ($filter != null) {
