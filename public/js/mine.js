@@ -219,6 +219,22 @@ $(document).ready(function() {
         }
     });
 
+    $('.new-donation-form').submit(function(e) {
+        e.preventDefault();
+        var photo_set = false;
+
+        $(this).find('input:file[name^=photo]').each(function() {
+            photo_set = photo_set || $(this).val() != '';
+        });
+
+        if (photo_set == false) {
+            alert('Devi caricare almeno una foto!');
+        }
+        else {
+            $(this).unbind('submit').submit();
+        }
+    });
+
     $('input[name=role-filter]').change(function() {
         if ($(this).prop('checked')) {
             var role = $(this).attr('data-role');

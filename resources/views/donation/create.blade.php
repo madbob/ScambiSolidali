@@ -48,7 +48,7 @@ else
                     </p>
                 </div>
 
-                <input type="file" name="photo[]" class="hidden" {{ $donation ? '' : 'required' }}>
+                <input type="file" name="photo[]" class="hidden">
             </div>
         </div>
 
