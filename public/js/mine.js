@@ -221,18 +221,22 @@ $(document).ready(function() {
 
     $('.new-donation-form').submit(function(e) {
         e.preventDefault();
+
         var photo_set = false;
-
-        $(this).find('input:file[name^=photo]').each(function() {
-            photo_set = photo_set || $(this).val() != '';
-        });
-
-        if (photo_set == false) {
-            alert('Devi caricare almeno una foto!');
+        var photo_slots = $(this).find('input:file[name^=photo]');
+        if (photo_slots.length > 0) {
+            $(this).find('input:file[name^=photo]').each(function() {
+                photo_set = photo_set || $(this).val() != '';
+            });
         }
         else {
-            $(this).unbind('submit').submit();
+            photo_set = true;
         }
+
+        if (photo_set == false)
+            alert('Devi caricare almeno una foto!');
+        else
+            $(this).unbind('submit').submit();
     });
 
     $('input[name=role-filter]').change(function() {
