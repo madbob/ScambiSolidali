@@ -28,6 +28,11 @@ php artisan key:generate
 
 Le credenziali di default sono username: info@example.it, password: cippalippa
 
+Molti testi descrittivi sono immessi direttamente nel template, altri (di natura
+più dipendente dall'istanza) sono cercati nel database: si veda il seeder in
+`database/seeds/TorinoTableSeeder.php` per vedere quali sono i parametri attesi
+nella tabella `configs`.
+
 # Storia
 
 **Scambi Solidali** è parte dell'omonimo progetto ideato e realizzato

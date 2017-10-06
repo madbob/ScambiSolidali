@@ -27,10 +27,10 @@
                                         type: 'Feature',
                                         geometry: {
                                             type: "Point",
-                                            coordinates: [7.67824, 45.05408]
+                                            coordinates: [{{ App\Config::getConf('contact_map_coordinates') }}]
                                         },
                                         properties: {
-                                            title: "Casa del Quartiere"
+                                            title: "{{ App\Config::getConf('contact_map_title') }}"
                                         }
                                     }
                                 ]
@@ -50,12 +50,10 @@
 
             <div class="col-md-6 left-p">
                 <div class="bordered-spaced">
-                    Ass. Agenzia per lo sviluppo di San Salvario onlus<br/>c/o Casa del Quartiere San Salvario
+                    {!! nl2br(App\Config::getConf('contact_main')) !!}
                 </div>
                 <div>
-                    via Morgari 14 - 10125 Torino<br/>
-                    segreteria@agenzia.sansalvario.org<br/>
-                    T 011 6686772
+                    {!! nl2br(App\Config::getConf('contact_contents')) !!}
                 </div>
             </div>
         </div>

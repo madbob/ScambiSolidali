@@ -13,9 +13,11 @@
                 <p class="small-link">
                     <a class="other-arrowlink" href="{{ url('come-funziona') }}">Come funziona</a>
                 </p>
-                <p class="small-link">
-                    <a class="other-arrowlink" href="https://www.youtube.com/watch?v=4bIYes-LHAQ">Guarda il Video</a>
-                </p>
+                @if(!empty(App\Config::getConf('video_link')))
+                    <p class="small-link">
+                        <a class="other-arrowlink" href="{!! App\Config::getConf('video_link') !!}">Guarda il Video</a>
+                    </p>
+                @endif
             </div>
         </div>
 

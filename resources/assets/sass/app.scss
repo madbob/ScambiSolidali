@@ -209,6 +209,11 @@ $colors: $primary-color-1 $primary-color-2 $secondary-color-1 $gray-color-1 $bla
             margin-top: 30px;
             margin-bottom: 30px;
         }
+
+        .left-border {
+            border-left: 1px solid $color;
+            padding-left: 10px;
+        }
     }
 }
 
@@ -463,7 +468,6 @@ textarea.form-control {
 .navbar-right {
     margin-top: 20px;
     padding-top: 10px;
-    border-top: 2px solid $primary-color-2;
     text-transform: uppercase;
 
     .row {
@@ -472,6 +476,13 @@ textarea.form-control {
 
     span {
         text-transform: none;
+    }
+
+    .city-name {
+        font-size: 30px;
+        font-weight: bold;
+        color: $primary-color-2;
+        text-transform: uppercase;
     }
 }
 

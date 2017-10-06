@@ -57,17 +57,27 @@
                         &nbsp;
                     </ul>
 
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav navbar-right primary-2">
                         <li>
                             @if (Auth::guest())
-                                <a href="{{ url('/register') }}">Registrati</a>
-                                <a href="{{ url('/login') }}">Login</a>
-                            @else
                                 <div class="row">
                                     <div class="col-md-6">
+                                        <span class="city-name">{{ App\Config::getConf('instance_city') }}</span>
+                                    </div>
+                                    <div class="col-md-6 left-border">
+                                        <a href="{{ url('/register') }}">Registrati</a>
+                                        <a href="{{ url('/login') }}">Login</a>
+                                    </div>
+                                </div>
+                            @else
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <span class="city-name">{{ App\Config::getConf('instance_city') }}</span>
+                                    </div>
+                                    <div class="col-md-4">
                                         <span>Ciao, {{ Auth::user()->name }}</span>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4 left-border">
                                         <a href="{{ url('/donazione/mie') }}">Mie Donazioni</a>
                                         <a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
 
