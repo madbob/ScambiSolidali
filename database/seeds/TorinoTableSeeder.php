@@ -31,6 +31,13 @@ Il progetto è sostenuto dalla Compagnia di San Paolo nell’ambito del Bando Fa
             $c->save();
         }
 
+        if (Config::where('name', 'patronages')->first() == null) {
+            $c = new Config();
+            $c->name = 'patronages';
+            $c->value = '<img src="/images/circ2.jpg">';
+            $c->save();
+        }
+
         if (Config::where('name', 'video_link')->first() == null) {
             $c = new Config();
             $c->name = 'video_link';

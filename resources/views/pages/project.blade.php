@@ -66,6 +66,12 @@
                         <p>
                             {!! nl2br(App\Config::getConf('partners')) !!}
                         </p>
+                        <p class="intro">
+                            Con il patrocinio di
+                        </p>
+                        <p>
+                            {!! nl2br(App\Config::getConf('patronages')) !!}
+                        </p>
                     </div>
                 </div>
             </div>
