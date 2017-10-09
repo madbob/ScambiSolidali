@@ -6688,6 +6688,27 @@ textarea.form-control {
         font-weight: bold;
         font-size: 50px; }
 
+.story-cell {
+  background-size: cover;
+  text-align: left;
+  font-size: 30px !important;
+  font-weight: bold !important; }
+  .story-cell span {
+    padding: 20px !important;
+    background-color: transparent !important; }
+  .story-cell .index {
+    color: #00DDB2 !important; }
+  .story-cell .title {
+    color: #FFF !important; }
+    .story-cell .title:after {
+      text-align: right;
+      font-weight: initial;
+      font-family: "Work Sans", sans-serif;
+      content: "\2192  ";
+      position: absolute;
+      right: 37px;
+      bottom: 37px; }
+
 .progress-0 {
   background-image: linear-gradient(-270deg, #00BFE3 50%, transparent 50%, transparent), linear-gradient(270deg, #00BFE3 50%, #FFF 50%, #FFF); }
 

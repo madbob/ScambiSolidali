@@ -73,4 +73,62 @@
             @endif
         </div>
     </div>
+
+    @if(App\Story::count() > 0 || $edit_enabled)
+        <br>
+
+        <div class="stories primary-3">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="pagetitle">
+                        <span>STORIE DI SUCCESSO</span>
+                    </div>
+                </div>
+            </div>
+
+            @if($edit_enabled)
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-default" data-toggle="modal" data-target="#story-new">Crea Nuovo Riferimento</button>
+                        @include('story.modal', ['story' => null])
+                    </div>
+                </div>
+            @endif
+
+            <div class="row">
+                @foreach(App\Story::orderBy('created_at', 'desc')->get() as $index => $story)
+                    <div class="col-md-4">
+                        <button data-toggle="modal" data-target="#story-{{ $story->id }}" class="button">
+                            <div class="story-cell" style="background-image: url('{{ $story->cover_url }}')">
+                                <span class="index">{{ $index + 1 }}.</span>
+                                <span class="title">{{ $story->title }}<br><br></span>
+                            </div>
+                        </button>
+                    </div>
+
+                    @if($edit_enabled)
+                        @include('story.modal', ['story' => $story])
+                    @else
+                        <div class="modal fade primary-3" id="story-{{ $story->id }}" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                {!! nl2br($story->contents) !!}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                @endforeach
+            </div>
+        </div>
+    @endif
 @endsection

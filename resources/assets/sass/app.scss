@@ -787,6 +787,36 @@ textarea.form-control {
     }
 }
 
+.story-cell {
+    background-size: cover;
+    text-align: left;
+    font-size: 30px !important;
+    font-weight: bold !important;
+
+    span {
+        padding: 20px !important;
+        background-color: transparent !important;
+    }
+
+    .index {
+        color: $secondary-color-1 !important;
+    }
+
+    .title {
+        color: #FFF !important;
+
+        &:after {
+            text-align: right;
+            font-weight: initial;
+            font-family: "Work Sans", sans-serif;
+            content: "\2192  ";
+            position: absolute;
+            right: 37px;
+            bottom: 37px;
+        }
+    }
+}
+
 $step: 1;
 $loops: 100;
 $increment: (360 / $loops);

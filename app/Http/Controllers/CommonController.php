@@ -6,6 +6,7 @@ use Auth;
 
 use App\Donation;
 use App\Category;
+use App\Story;
 
 class CommonController extends Controller
 {
@@ -43,7 +44,16 @@ class CommonController extends Controller
             $categories[$p->name] = $count;
         }
 
-        return view('pages.numbers', ['categories' => $categories]);
+        $stories = Story::orderBy('created_at', 'desc')->get();
+
+        $user = Auth::user();
+        $edit_enabled = ($user && $user->role == 'admin');
+
+        return view('pages.numbers', [
+            'stories' => $stories,
+            'categories' => $categories,
+            'edit_enabled' => $edit_enabled
+        ]);
     }
 
     public function contacts()
