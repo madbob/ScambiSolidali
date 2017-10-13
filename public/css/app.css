@@ -6699,7 +6699,8 @@ textarea.form-control {
   .story-cell .index {
     color: #00DDB2 !important; }
   .story-cell .title {
-    color: #FFF !important; }
+    color: #FFF !important;
+    text-shadow: 0 0 10px black; }
     .story-cell .title:after {
       text-align: right;
       font-weight: initial;

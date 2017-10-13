@@ -108,24 +108,6 @@
 
                     @if($edit_enabled)
                         @include('story.modal', ['story' => $story])
-                    @else
-                        <div class="modal fade primary-3" id="story-{{ $story->id }}" tabindex="-1" role="dialog">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    </div>
-
-                                    <div class="modal-body">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                {!! nl2br($story->contents) !!}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     @endif
                 @endforeach
             </div>
