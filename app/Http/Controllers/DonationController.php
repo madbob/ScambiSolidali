@@ -386,7 +386,7 @@ class DonationController extends Controller
                 Session::flash('message', 'Donazione assegnata. È stata inviata una mail al donatore per avere informazioni sul ritiro.');
 
                 if ($request->has('shipping')) {
-                    $carriers = User::where('role', 'carrier')->get();
+                    $carriers = User::where('role', 'admin')->get();
                     foreach($carriers as $carrier)
                         Mail::to($carrier->email)->send(new DonationTransport($donation, $user));
                 }
