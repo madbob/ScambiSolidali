@@ -774,6 +774,7 @@ textarea.form-control {
                 .title {
                     color: #FFF !important;
                     text-shadow: 0 0 10px black;
+                    position: relative;
 
                     &:after {
                         text-align: right;

@@ -6662,7 +6662,7 @@ textarea.form-control {
   .stories .cells li {
     list-style: none;
     flex: 0 1 auto;
-    width: 30%; }
+    width: 32%; }
     .stories .cells li .story-cell {
       background-size: cover;
       text-align: left;
@@ -6675,7 +6675,8 @@ textarea.form-control {
         color: #00DDB2 !important; }
       .stories .cells li .story-cell .title {
         color: #FFF !important;
-        text-shadow: 0 0 10px black; }
+        text-shadow: 0 0 10px black;
+        position: relative; }
         .stories .cells li .story-cell .title:after {
           text-align: right;
           font-weight: initial;
