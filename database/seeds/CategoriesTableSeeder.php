@@ -16,6 +16,7 @@ class CategoriesTableSeeder extends Seeder
             ],
             'Casa' => [
                 'Arredamento',
+                'Biancheria',
                 'Elettrodomestici',
                 'Elettronica',
                 'Utensili'
