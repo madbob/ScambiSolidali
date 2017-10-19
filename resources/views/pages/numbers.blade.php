@@ -95,22 +95,22 @@
                 </div>
             @endif
 
-            <div class="row">
+            <ul class="cells">
                 @foreach(App\Story::orderBy('created_at', 'desc')->get() as $index => $story)
-                    <div class="col-md-4">
+                    <li>
                         <button data-toggle="modal" data-target="#story-{{ $story->id }}" class="button">
                             <div class="story-cell" style="background-image: url('{{ $story->cover_url }}')">
                                 <span class="index">{{ $index + 1 }}.</span>
                                 <span class="title">{{ $story->title }}<br><br></span>
                             </div>
                         </button>
-                    </div>
+                    </li>
 
                     @if($edit_enabled)
                         @include('story.modal', ['story' => $story])
                     @endif
                 @endforeach
-            </div>
+            </ul>
         </div>
     @endif
 @endsection

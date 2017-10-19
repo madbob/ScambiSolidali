@@ -6654,6 +6654,37 @@ textarea.form-control {
       font-size: 40px;
       display: inline-block; }
 
+.stories .cells {
+  padding: 0;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between; }
+  .stories .cells li {
+    list-style: none;
+    flex: 0 1 auto;
+    width: 30%; }
+    .stories .cells li .story-cell {
+      background-size: cover;
+      text-align: left;
+      font-size: 30px !important;
+      font-weight: bold !important; }
+      .stories .cells li .story-cell span {
+        padding: 20px !important;
+        background-color: transparent !important; }
+      .stories .cells li .story-cell .index {
+        color: #00DDB2 !important; }
+      .stories .cells li .story-cell .title {
+        color: #FFF !important;
+        text-shadow: 0 0 10px black; }
+        .stories .cells li .story-cell .title:after {
+          text-align: right;
+          font-weight: initial;
+          font-family: "Work Sans", sans-serif;
+          content: "\2192  ";
+          position: absolute;
+          right: 37px;
+          bottom: 37px; }
+
 .item {
   margin: 20px;
   position: relative;
@@ -6687,28 +6718,6 @@ textarea.form-control {
       .item .radial-inner-bg div .percentage {
         font-weight: bold;
         font-size: 50px; }
-
-.story-cell {
-  background-size: cover;
-  text-align: left;
-  font-size: 30px !important;
-  font-weight: bold !important; }
-  .story-cell span {
-    padding: 20px !important;
-    background-color: transparent !important; }
-  .story-cell .index {
-    color: #00DDB2 !important; }
-  .story-cell .title {
-    color: #FFF !important;
-    text-shadow: 0 0 10px black; }
-    .story-cell .title:after {
-      text-align: right;
-      font-weight: initial;
-      font-family: "Work Sans", sans-serif;
-      content: "\2192  ";
-      position: absolute;
-      right: 37px;
-      bottom: 37px; }
 
 .progress-0 {
   background-image: linear-gradient(-270deg, #00BFE3 50%, transparent 50%, transparent), linear-gradient(270deg, #00BFE3 50%, #FFF 50%, #FFF); }
