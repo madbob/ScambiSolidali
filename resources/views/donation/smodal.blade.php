@@ -32,7 +32,7 @@
 
                                 <div class="collapse" id="assignPanel-{{ $donation->id }}">
                                     <div class="well">
-                                        @include('donation.assign', ['donation' => $donation])
+                                        @include('donation.assign_user', ['donation' => $donation])
                                     </div>
                                 </div>
 

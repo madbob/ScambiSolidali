@@ -351,18 +351,29 @@ class DonationController extends Controller
 
         $donation = Donation::find($id);
         if ($donation != null) {
+            $receiver_type = $request->input('receiver-type');
             $receiver = new Receiver();
-            $receiver->age = $request->input('receiver-age', 0);
-            if (empty($receiver->age))
-                $receiver->age = null;
-            $receiver->gender = $request->input('receiver-gender');
-            $receiver->status = $request->input('receiver-status');
-            $receiver->children = $request->input('receiver-children');
+            $receiver->type = $receiver_type;
+
+            if ($receiver_type == 'individual') {
+                $receiver->age = $request->input('receiver-age', 0);
+                if (empty($receiver->age))
+                    $receiver->age = null;
+                $receiver->gender = $request->input('receiver-gender');
+                $receiver->status = $request->input('receiver-status');
+                $receiver->children = $request->input('receiver-children');
+                $receiver->country = $request->input('receiver-country');
+            }
+            else {
+                $receiver->organization = $request->input('receiver-organization');
+                $receiver->receivers = $request->input('receiver-receivers');
+            }
+
             $receiver->area = $request->input('receiver-area');
-            $receiver->country = $request->input('receiver-country');
             $receiver->past = $request->input('receiver-past', 0);
             if (empty($receiver->past))
                 $receiver->past = 0;
+
             $receiver->save();
 
             $donation->receivers()->attach($receiver, [

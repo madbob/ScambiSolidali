@@ -1,10 +1,11 @@
 <form class="form-horizontal" method="POST" action="{{ url('donazione/assegna/' . $donation->id) }}">
     {{ csrf_field() }}
+    <input type="hidden" name="assignation_type" value="individual">
 
     <div class="form-group">
         <label for="receiver-age" class="col-sm-4 control-label">Età</label>
         <div class="col-sm-8">
-            <input type="number" name="receiver-age" class="form-control">
+            <input type="number" name="receiver-age" class="form-control" required>
         </div>
     </div>
 
@@ -13,12 +14,12 @@
         <div class="col-sm-8">
             <div class="checkbox">
                 <label>
-                    <input type="radio" name="receiver-gender" value="M"> Maschile
+                    <input type="radio" name="receiver-gender" value="M" required> Maschile
                 </label>
             </div>
             <div class="checkbox">
                 <label>
-                    <input type="radio" name="receiver-gender" value="F"> Femminile
+                    <input type="radio" name="receiver-gender" value="F" required> Femminile
                 </label>
             </div>
         </div>
@@ -29,12 +30,12 @@
         <div class="col-sm-8">
             <div class="checkbox">
                 <label>
-                    <input type="radio" name="receiver-status" value="employed"> Occupato
+                    <input type="radio" name="receiver-status" value="employed" required> Occupato
                 </label>
             </div>
             <div class="checkbox">
                 <label>
-                    <input type="radio" name="receiver-status" value="unemployed"> Non occupato
+                    <input type="radio" name="receiver-status" value="unemployed" required> Non occupato
                 </label>
             </div>
         </div>
@@ -45,12 +46,12 @@
         <div class="col-sm-8">
             <div class="checkbox">
                 <label>
-                    <input type="radio" name="receiver-children" value="children"> Ha figli
+                    <input type="radio" name="receiver-children" value="children" required> Ha figli
                 </label>
             </div>
             <div class="checkbox">
                 <label>
-                    <input type="radio" name="receiver-children" value="nochildren"> Non ha figli
+                    <input type="radio" name="receiver-children" value="nochildren" required> Non ha figli
                 </label>
             </div>
         </div>
@@ -62,7 +63,7 @@
             @for($i = 1; $i < 6; $i++)
                 <div class="checkbox">
                     <label>
-                        <input type="radio" name="receiver-area" value="circ{{ $i }}"> Circoscrizione {{ $i }}
+                        <input type="radio" name="receiver-area" value="circ{{ $i }}" required> Circoscrizione {{ $i }}
                     </label>
                 </div>
             @endfor
@@ -71,13 +72,13 @@
             @for(; $i < 9; $i++)
                 <div class="checkbox">
                     <label>
-                        <input type="radio" name="receiver-area" value="circ{{ $i }}"> Circoscrizione {{ $i }}
+                        <input type="radio" name="receiver-area" value="circ{{ $i }}" required> Circoscrizione {{ $i }}
                     </label>
                 </div>
             @endfor
             <div class="checkbox">
                 <label>
-                    <input type="radio" name="receiver-area" value="other"> Altro
+                    <input type="radio" name="receiver-area" value="other" required> Altro
                 </label>
             </div>
         </div>
@@ -88,12 +89,12 @@
         <div class="col-sm-8">
             <div class="checkbox">
                 <label>
-                    <input type="radio" name="receiver-country" value="italian"> Italiana
+                    <input type="radio" name="receiver-country" value="italian" required> Italiana
                 </label>
             </div>
             <div class="checkbox">
                 <label>
-                    <input type="radio" name="receiver-country" value="nonitalian"> Straniera
+                    <input type="radio" name="receiver-country" value="nonitalian" required> Straniera
                 </label>
             </div>
         </div>
@@ -102,7 +103,7 @@
     <div class="form-group">
         <label for="receiver-past" class="col-sm-4 control-label">Quante volte ha fruito di {{ env('APP_NAME') }}?</label>
         <div class="col-sm-8">
-            <input type="number" name="receiver-past" class="form-control">
+            <input type="number" name="receiver-past" class="form-control" value="0" required>
         </div>
     </div>
 
