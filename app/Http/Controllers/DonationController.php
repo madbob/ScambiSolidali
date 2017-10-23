@@ -467,4 +467,63 @@ class DonationController extends Controller
         else
             return view('donation.create', ['user' => $user, 'donation' => $donation]);
     }
+
+    public function getReport()
+    {
+        $user = Auth::user();
+
+        if ($user && $user->role == 'admin') {
+            header("Content-type: text/csv");
+            header('Content-Disposition: attachment; filename="report_celocelo.csv";');
+
+            echo sprintf('"OGGETTO DONATO";"NOTE";"APPELLO";"TIPO";"NOME";"ETÀ";"SESSO";"LAVORO";"FIGLI";"AREA";"NAZIONALITÀ";"OCCORRENZE";"BENEFICIARI"' . "\n");
+            $donations = Donation::where('status', 'assigned')->get();
+            foreach($donations as $donation) {
+                $receivers = $donation->receivers()->wherePivot('status', 'assigned')->get();
+
+                foreach($receivers as $receiver) {
+                    $row = [];
+                    $row[] = $donation->title;
+                    $row[] = $receiver->notes;
+
+                    $call = $donation->call;
+                    if ($call)
+                        $row[] = $call->title;
+                    else
+                        $row[] = '';
+
+                    switch($receiver->type) {
+                        case 'individual':
+                            $row[] = 'Persona';
+                            $row[] = '';
+                            $row[] = $receiver->age;
+                            $row[] = $receiver->gender;
+                            $row[] = $receiver->status;
+                            $row[] = $receiver->children;
+                            $row[] = $receiver->area;
+                            $row[] = $receiver->country;
+                            $row[] = $receiver->past;
+                            $row[] = 1;
+                            break;
+                        case 'organization':
+                            $row[] = 'Ente';
+                            $row[] = $receiver->organization;
+                            $row[] = '';
+                            $row[] = '';
+                            $row[] = '';
+                            $row[] = '';
+                            $row[] = $receiver->area;
+                            $row[] = '';
+                            $row[] = $receiver->past;
+                            $row[] = $receiver->receivers;
+                            break;
+                        default:
+                            break;
+                    }
+
+                    echo sprintf("%s\n", join(';', $row));
+                }
+            }
+        }
+    }
 }

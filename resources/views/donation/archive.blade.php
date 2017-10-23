@@ -3,6 +3,14 @@
 @section('title', 'Archivio')
 
 @section('content')
+    <div class="row">
+        <div class="col-md-12">
+            <a class="btn btn-default" href="{{ url('donazione/report') }}">Scarica Report Donazioni</a>
+        </div>
+    </div>
+
+    <br>
+
     <div class="celo primary-1">
     	<div class="row">
             <div class="col-md-12">
