@@ -105,7 +105,7 @@
                                                     <br>
                                                     @include('donation.assign_user', ['donation' => $donation])
                                                 </div>
-                                                <div role="tabpanel" class="tab-pane active" id="assign-organization-{{ $donation->id }}">
+                                                <div role="tabpanel" class="tab-pane" id="assign-organization-{{ $donation->id }}">
                                                     <br>
                                                     @include('donation.assign_org', ['donation' => $donation])
                                                 </div>
