@@ -1,6 +1,6 @@
 <form class="form-horizontal" method="POST" action="{{ url('donazione/assegna/' . $donation->id) }}">
     {{ csrf_field() }}
-    <input type="hidden" name="receiver-type" value="organization">
+    <input type="hidden" name="assignation_type" value="organization">
 
     <div class="form-group">
         <label for="receiver-organization" class="col-sm-4 control-label">Nome</label>
