@@ -113,6 +113,7 @@ class DonationController extends Controller
         $donation->title = $request->input('title');
         $donation->category_id = $request->input('category_id', -1);
         $donation->description = $request->input('description');
+        $donation->size = $request->input('size', '');
         $donation->name = $request->input('name');
         $donation->surname = $request->input('surname');
         $donation->address = $request->input('address', '');

@@ -74,6 +74,7 @@ else
             </div>
 
             {!! BootForm::textarea('description', 'Descrizione', null, ['required' => 'required']) !!}
+            {!! BootForm::text('size', 'Dimensioni', null) !!}
 
             <?php $last = $donation ? $donation : Auth::user()->lastDonation() ?>
 

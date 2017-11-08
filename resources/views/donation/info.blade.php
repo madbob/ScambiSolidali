@@ -29,4 +29,8 @@
     @endif
 
     <p class="form-control-static">Ascensore: {{ $donation->elevator ? 'Si' : 'No' }}</p>
+
+    @if(!empty($donation->size))
+        <p class="form-control-static">Dimensioni: {{ $donation->size }}</p>
+    @endif
 @endif
