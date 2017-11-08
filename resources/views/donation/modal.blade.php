@@ -73,7 +73,7 @@
                                                     <br>
                                                     @include('donation.assign_org', ['donation' => $donation])
                                                 </div>
-                                            </duv>
+                                            </div>
                                         </div>
                                     </div>
 
