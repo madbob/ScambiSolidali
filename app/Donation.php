@@ -19,11 +19,6 @@ class Donation extends Model
         return $this->belongsTo('App\Category');
     }
 
-    public function bookings()
-    {
-        return $this->belongsToMany('App\User', 'donation_booking')->orderBy('donation_booking.created_at', 'desc')->withPivot(['id', 'created_at']);
-    }
-
     public function receivers()
     {
         return $this->belongsToMany('App\Receiver')->orderBy('donation_receiver.updated_at', 'desc')->withPivot(['id', 'receiver_id', 'donation_id', 'operator_id', 'updated_at', 'notes', 'status']);
@@ -44,14 +39,6 @@ class Donation extends Model
         $path = Donation::photosPath();
         $files = glob($path . $this->id . '_*');
         return count($files);
-    }
-
-    public function booked($user = null)
-    {
-        if ($user == null)
-            $user = Auth::user();
-
-        return ($this->bookings()->where('user_id', $user->id)->first() != null);
     }
 
     static public function photosPath()

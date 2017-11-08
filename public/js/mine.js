@@ -102,23 +102,6 @@ $(document).ready(function() {
         }
     });
 
-    $('body').on('click', '.booking-button', function() {
-        var button = $(this);
-        var id = button.attr('data-donation-id');
-        button.prop('disabled', true);
-
-        $.ajax('/donazione/prenota/' + id, {
-            method: 'POST',
-            data: {
-                _token: window.Laravel.csrfToken
-            },
-            success: function(data) {
-                button.text(data.antitext);
-                button.prop('disabled', false);
-            }
-        });
-    });
-
     $('body').on('click', '.async-delete-interaction', function(e) {
         e.preventDefault();
         var id = $(this).attr('data-item-id');

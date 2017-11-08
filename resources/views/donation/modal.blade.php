@@ -48,44 +48,8 @@
                                     @include('donation.minilist', ['list' => $donation->receivers, 'print_object' => false])
                                 @endif
 
-                                @if($donation->bookings->isEmpty() == false)
-                                    <hr/>
-
-                                    <h4>Prenotazioni</h4>
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>Data</th>
-                                                <th>Operatore</th>
-                                                <th>Stato</th>
-                                                @if($role == 'admin')
-                                                    <th></th>
-                                                @endif
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach($donation->bookings as $item)
-                                                <tr>
-                                                    <td>{{ ucwords(strftime('%d/%m/%G', strtotime($item->pivot->created_at))) }}</td>
-                                                    <td>{{ $item->printableOperatorName() }}</td>
-                                                    <td>Prenotato</td>
-
-                                                    @if($role == 'admin')
-                                                        <td>
-                                                            <button class="btn btn-default async-delete-interaction booking" data-donation-id="{{ $donation->id }}" data-item-id="{{ $item->id }}">
-                                                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                                                            </button>
-                                                        </td>
-                                                    @endif
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                @endif
-
                                 @if($donation->status == 'pending')
                                     <hr/>
-                                    <button class="btn btn-success booking-button" data-donation-id="{{ $donation->id }}">{{ $donation->booked() ? 'Revoca Prenotazione' : 'Marca come Prenotato' }}</button>
                                     <button class="btn btn-success" role="button" data-toggle="collapse" href="#assignPanel-{{ $donation->id }}" aria-expanded="false" aria-controls="assignPanel-{{ $donation->id }}">Oggetto Assegnato</button>
                                     <button class="btn btn-danger" role="button" data-toggle="collapse" href="#removePanel-{{ $donation->id }}" aria-expanded="false" aria-controls="removePanel-{{ $donation->id }}">Elimina</button>
 

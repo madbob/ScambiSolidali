@@ -31,9 +31,7 @@
                     @endif
 
                     <td>
-                        @if($item->pivot->status == 'booked')
-                            Prenotato
-                        @elseif($item->pivot->status == 'assigned')
+                        @if($item->pivot->status == 'assigned')
                             Assegnato
                         @elseif($item->pivot->status == 'shipping_needed')
                             Trasporto

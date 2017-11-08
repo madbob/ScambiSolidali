@@ -320,28 +320,6 @@ class DonationController extends Controller
         return view('donation.archive', $data);
     }
 
-    public function postBook(Request $request, $id)
-    {
-        $user = Auth::user();
-        if ($user->role != 'admin' && $user->role != 'operator') {
-            return redirect(url('/'));
-        }
-
-        $donation = Donation::find($id);
-        if ($donation != null) {
-            if ($donation->booked($user)) {
-                $donation->bookings()->detach($user->id);
-                $antitext = 'Marca come Prenotato';
-            }
-            else {
-                $donation->bookings()->attach($user->id);
-                $antitext = 'Revoca Prenotazione';
-            }
-        }
-
-        return response()->json((object) ['antitext' => $antitext]);
-    }
-
     public function postAssign(Request $request, $id)
     {
         $user = Auth::user();
@@ -419,10 +397,6 @@ class DonationController extends Controller
         $donation = Donation::find($donation_id);
 
         switch($type) {
-            case 'booking':
-                $donation->bookings()->detach($interaction_id);
-                break;
-
             case 'assignation':
                 $donation->receivers()->detach($interaction_id);
 
