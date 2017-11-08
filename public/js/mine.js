@@ -205,12 +205,17 @@ $(document).ready(function() {
     $('.new-donation-form').submit(function(e) {
         e.preventDefault();
 
-        var photo_set = false;
-        var photo_slots = $(this).find('input:file[name^=photo]');
-        if (photo_slots.length > 0) {
-            $(this).find('input:file[name^=photo]').each(function() {
-                photo_set = photo_set || $(this).val() != '';
-            });
+        if ($(this).find('input:hidden[name^=keep_photo]').length == 0) {
+            var photo_set = false;
+            var photo_slots = $(this).find('input:file[name^=photo]');
+            if (photo_slots.length > 0) {
+                $(this).find('input:file[name^=photo]').each(function() {
+                    photo_set = photo_set || $(this).val() != '';
+                });
+            }
+            else {
+                photo_set = true;
+            }
         }
         else {
             photo_set = true;
