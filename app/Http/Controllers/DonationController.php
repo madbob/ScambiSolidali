@@ -307,7 +307,9 @@ class DonationController extends Controller
 
     public function getImage(Request $request, $id, $index)
     {
-        return response()->download(Donation::photosPath() . '/' . $id . '_' . $index);
+        $path = Donation::photosPath() . '/' . $id . '_' . $index;
+        if (file_exists($path))
+            return response()->download($path);
     }
 
     public function getArchive()
