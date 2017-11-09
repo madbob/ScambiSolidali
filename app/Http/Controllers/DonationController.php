@@ -461,7 +461,7 @@ class DonationController extends Controller
                 foreach($receivers as $receiver) {
                     $row = [];
                     $row[] = $donation->title;
-                    $row[] = $receiver->notes;
+                    $row[] = sprintf('"%s"', $receiver->pivot->notes);
 
                     $call = $donation->call;
                     if ($call)
