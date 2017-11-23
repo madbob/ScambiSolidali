@@ -97,19 +97,29 @@
 
             <ul class="cells">
                 @foreach(App\Story::orderBy('created_at', 'desc')->get() as $index => $story)
-                    <li>
-                        <button data-toggle="modal" data-target="#story-{{ $story->id }}" class="button">
-                            <div class="story-cell" style="background-image: url('{{ $story->cover_url }}')">
-                                <span class="index">{{ $index + 1 }}.</span>
-                                <span class="title">{{ $story->title }}<br><br></span>
-                            </div>
-                        </button>
-                    </li>
-
-                    @if($edit_enabled)
-                        @include('story.modal', ['story' => $story])
+                    @if($index % 3 == 0)
+                    </ul>
+                    <p class="clearfix">&nbsp;</p>
+                    <ul class="cells">
                     @endif
+                        <li>
+                            <button data-toggle="modal" data-target="#story-{{ $story->id }}" class="button">
+                                <div class="story-cell" style="background-image: url('{{ $story->cover_url }}')">
+                                    <span class="index">{{ $index + 1 }}.</span>
+                                    <span class="title">{{ $story->title }}<br><br></span>
+                                </div>
+                            </button>
+                        </li>
+
+                        @if($edit_enabled)
+                            @include('story.modal', ['story' => $story])
+                        @endif
                 @endforeach
+
+                @while(++$index % 3 != 0)
+                   <li>
+                   </li>
+                @endwhile
             </ul>
         </div>
     @endif
