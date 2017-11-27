@@ -87,7 +87,7 @@
                                                     <label for="holder" class="control-label">Motivo</label>
                                                     <select class="form-control" name="reason">
                                                         @foreach(App\Donation::declineReasons() as $identifier => $reason)
-                                                        <option value="{{ $identifier }}">{{ $reason->text }}</option>
+                                                            <option value="{{ $identifier }}">{{ $reason->text }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
