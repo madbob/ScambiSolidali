@@ -13,11 +13,8 @@
                 <p class="small-link">
                     <a class="other-arrowlink" href="{{ url('come-funziona') }}">Come funziona</a>
                 </p>
-                @if(!empty(App\Config::getConf('video_link')))
-                    <p class="small-link">
-                        <a class="other-arrowlink" href="{!! App\Config::getConf('video_link') !!}">Guarda il Video</a>
-                    </p>
-                @endif
+
+                <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/4bIYes-LHAQ?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
 
