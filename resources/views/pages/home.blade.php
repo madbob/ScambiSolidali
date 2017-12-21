@@ -125,8 +125,9 @@
                         <img src="{{ url('images/agenziasansalvario.jpg') }}" alt="Agenzia per lo Sviluppo Locale di San Salvario">
                     </span>
                     <span>
-                        Con il sostegno della<br/>
-                        <img src="{{ url('images/csp.png') }}" alt="Compagnia di San Paolo" height="50px">
+                        Con il sostegno di<br/>
+                        <img src="{{ url('images/csp.png') }}" alt="Compagnia di San Paolo" height="50px">&nbsp;&nbsp;&nbsp;
+                        <img src="{{ url('images/iren.jpg') }}" alt="Iren" height="50px">
                     </span>
                 </div>
             </div>
