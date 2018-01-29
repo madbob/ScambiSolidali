@@ -26,14 +26,12 @@ class UserController extends Controller
             $admins_count = User::where('role', 'admin')->count();
             $users_count = User::where('role', 'user')->count();
             $operators_count = User::where('role', 'operator')->count();
-            $carriers_count = User::where('role', 'carrier')->count();
         }
         else {
             $users = [];
             $admins_count = 0;
             $users_count = 0;
             $operators_count = 0;
-            $carriers_count = 0;
         }
 
         return view('pages.players', [
@@ -43,7 +41,6 @@ class UserController extends Controller
             'admins_count' => $admins_count,
             'users_count' => $users_count,
             'operators_count' => $operators_count,
-            'carriers_count' => $carriers_count,
         ]);
     }
 

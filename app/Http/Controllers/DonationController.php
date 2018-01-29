@@ -29,13 +29,7 @@ class DonationController extends Controller
     public function index(Request $request)
     {
         $user = Auth::user();
-        $query = Donation::orderByRaw(DB::raw("FIELD(status, 'pending', 'assigned', 'recovered')"))->orderBy('created_at', 'desc');
-
-        if ($user && $user->role == 'carrier')
-            $query->where('recoverable', true)->whereIn('status', ['expired', 'recovered']);
-        else
-            $query->whereIn('status', ['pending', 'assigned']);
-
+        $query = Donation::orderByRaw(DB::raw("FIELD(status, 'pending', 'assigned')"))->orderBy('created_at', 'desc')->whereIn('status', ['pending', 'assigned']);
         $data['user'] = $user;
 
         $filter = $request->input('filter', null);
@@ -68,7 +62,7 @@ class DonationController extends Controller
         else
             $data['current_show'] = -1;
 
-        $data['edit_enabled'] = ($user != null && ($user->role == 'admin' || $user->role == 'operator' || $user->role == 'carrier'));
+        $data['edit_enabled'] = ($user != null && ($user->role == 'admin' || $user->role == 'operator'));
 
         return view('donation.list', $data);
     }
@@ -124,7 +118,6 @@ class DonationController extends Controller
         $donation->elevator = $request->has('elevator');
         $donation->shipping_notes = $request->input('shipping_notes', '');
         $donation->autoship = $request->has('autoship');
-        $donation->recoverable = $request->has('recoverable');
     }
 
     private function savePhotos($request, $donation, $index)
@@ -249,7 +242,7 @@ class DonationController extends Controller
     public function show($id)
     {
         $user = Auth::user();
-        if ($user->role != 'admin' && $user->role != 'operator' && $user->role != 'carrier') {
+        if ($user->role != 'admin' && $user->role != 'operator') {
             return redirect(url('/'));
         }
 
@@ -376,12 +369,6 @@ class DonationController extends Controller
                 $donation->status = 'assigned';
                 Mail::to($donation->email)->send(new DonationAssigned($donation, $user->institutes->first()));
                 Session::flash('message', 'Donazione assegnata. È stata inviata una mail al donatore per avere informazioni sul ritiro.');
-
-                if ($request->has('shipping')) {
-                    $carriers = User::where('role', 'admin')->get();
-                    foreach($carriers as $carrier)
-                        Mail::to($carrier->email)->send(new DonationTransport($donation, $user));
-                }
             }
 
             $donation->save();
@@ -414,20 +401,6 @@ class DonationController extends Controller
                 break;
         }
 
-        return 'ok';
-    }
-
-    public function postRecovered(Request $request, $id)
-    {
-        $user = Auth::user();
-        if ($user->role != 'carrier') {
-            return redirect(url('/'));
-        }
-
-        $donation = Donation::find($id);
-        $donation->timestamps = false;
-        $donation->status = ($request->input('status') == 'true') ? 'recovered' : 'expired';
-        $donation->save();
         return 'ok';
     }
 

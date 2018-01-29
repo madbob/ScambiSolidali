@@ -57,8 +57,6 @@ class User extends Authenticatable
                 return 'Operatore';
             case 'admin':
                 return 'Amministratore';
-            case 'carrier':
-                return 'Trasporto';
         }
 
         return '???';

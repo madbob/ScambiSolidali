@@ -83,8 +83,7 @@ if (isset($donation) == false)
     {!! BootForm::text('floor', 'Piano', $last ? $last->floor : '') !!}
     {!! BootForm::checkbox('elevator', 'Ascensore', $last ? $last->elevator : false) !!}
     {!! BootForm::textarea('shipping_notes', 'Note') !!}
-    {!! BootForm::checkbox('autoship', 'Lo posso trasportare io', 'autoship', null, ['help_text' => 'Bla Bla Bla se puoi consegnarlo tu Bla Bla Bla']) !!}
-    {!! BootForm::checkbox('recoverable', 'Recupera Oggetto', 'recoverable', null, ['help_text' => 'Bla Bla Bla Cooperativa Triciclo Bla Bla Bla']) !!}
+    {!! BootForm::checkbox('autoship', 'Lo posso trasportare io', 'autoship', null) !!}
 
     @if($donation)
         {!! BootForm::submit('Salva Annuncio') !!}

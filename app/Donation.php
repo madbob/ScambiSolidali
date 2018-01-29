@@ -71,9 +71,6 @@ class Donation extends Model
             case 'assigned':
                 return 'Assegnato';
 
-            case 'recovered':
-                return 'Recuperato';
-
             case 'expiring':
                 return 'In Scadenza';
 

@@ -87,7 +87,6 @@ else
             {!! BootForm::checkbox('elevator', 'Ascensore', $last ? $last->elevator : false) !!}
             {!! BootForm::textarea('shipping_notes', 'Note') !!}
             {!! BootForm::checkbox('autoship', 'Lo posso trasportare io', 'autoship', null) !!}
-            {!! BootForm::checkbox('recoverable', "Se l'oggetto che hai inserito non viene richiesto da nessun operatore, passato un mese puoi scegliere di farlo valutare dalla cooperativa sociale Triciclo, nel caso in cui fossero interessati al tuo oggetto verrà preso in carico da loro.", 'recoverable', null) !!}
 
             <br/>
 

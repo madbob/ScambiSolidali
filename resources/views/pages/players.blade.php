@@ -129,9 +129,6 @@
                                 <label class="btn btn-default">
                                     <input type="radio" name="role-filter" data-role="operator" autocomplete="off"> {{ $operators_count }} Operatori
                                 </label>
-                                <label class="btn btn-default">
-                                    <input type="radio" name="role-filter" data-role="carrier" autocomplete="off"> {{ $carriers_count }} Recupero
-                                </label>
                             </div>
                         </div>
                     </div>

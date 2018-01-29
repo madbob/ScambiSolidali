@@ -18,7 +18,6 @@
                             {!! BootForm::radios('role', 'Ruolo', [
                                 'admin' => 'Amministratore',
                                 'operator' => 'Operatore',
-                                'carrier' => 'Trasporto',
                                 'user' => 'Utente'
                             ]) !!}
 

@@ -17,24 +17,6 @@
                     <div class="col-md-offset-1 col-md-6">
                         <form class="form-horizontal">
                             @include('donation.info', ['donation' => $donation])
-
-                            @if($role == 'admin' || $role == 'operator')
-                                @if($donation->recoverable)
-                                    <div class="alert alert-info">Marcato per il possibile recupero di Triciclo</div>
-                                @else
-                                    <div class="alert alert-info">Non marcato per il recupero di Triciclo</div>
-                                @endif
-                            @elseif($role == 'carrier')
-                                @if($donation->recoverable && ($donation->status == 'expired' || $donation->status == 'recovered'))
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" class="single-saving-notice-toggle" data-endpoint="{{ url('donazione/recuperato/' . $donation->id) }}" {{ $donation->status == 'recovered' ? 'checked="checked"' : '' }}> Recuperato da Triciclo <span class="single-saving-notice"></span>
-                                        </label>
-                                    </div>
-                                @else
-                                    <div class="alert alert-info">Non marcato per il possibile recupero alla scadenza</div>
-                                @endif
-                            @endif
                         </form>
                     </div>
 

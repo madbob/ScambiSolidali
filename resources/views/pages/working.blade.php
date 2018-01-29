@@ -84,9 +84,6 @@
                 <p>
                     Potrai consegnare direttamente il bene oppure verremo noi da te a ritirarlo.
                 </p>
-                <p>
-                    Se l'oggetto che hai inserito non viene richiesto da nessun operatore, passato un mese puoi scegliere di farlo valutare dalla cooperativa sociale <a href="http://www.triciclo.com/">Triciclo</a>, nel caso in cui fossero interessati al tuo oggetto verrà preso in carico da loro.
-                </p>
             </div>
         </div>
     </div>
