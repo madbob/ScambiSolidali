@@ -106,4 +106,10 @@ class Donation extends Model
             ],
         ];
     }
+
+    public function renew()
+    {
+        $this->status = 'pending';
+        $this->save();
+    }
 }

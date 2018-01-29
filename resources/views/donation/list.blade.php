@@ -65,6 +65,7 @@
                         </div>
     				@endforeach
 
+                    <p class="clearfix">&nbsp;</p>
         			{{ $donations->links() }}
                 @endif
     		</div>

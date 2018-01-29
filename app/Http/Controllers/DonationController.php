@@ -55,7 +55,7 @@ class DonationController extends Controller
         }
 
         $data['filter'] = $filter;
-        $data['donations'] = $query->paginate(50);
+        $data['donations'] = $query->paginate(60);
 
         if ($request->has('show'))
             $data['current_show'] = $request->input('show');
@@ -291,11 +291,22 @@ class DonationController extends Controller
         if ($donation->user_id != $user_id)
             abort(404);
 
-        $donation->status = 'pending';
-        $donation->save();
+        $donation->renew();
 
         Session::flash('message', 'La donazione è stata rinnovata per altri due mesi. Grazie!');
         return redirect(url('celo'));
+    }
+
+    public function adminRenew(Request $request, $id)
+    {
+        $user = Auth::user();
+        if ($user->role != 'admin' && $user->role != 'operator') {
+            return redirect(url('/'));
+        }
+
+        $donation = Donation::find($id);
+        $donation->renew();
+        return redirect(url('celo/archivio'));
     }
 
     public function getImage(Request $request, $id, $index)

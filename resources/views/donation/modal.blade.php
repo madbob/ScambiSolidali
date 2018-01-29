@@ -79,6 +79,12 @@
                                             </form>
                                         </div>
                                     </div>
+                                @elseif($donation->status == 'expiring' || $donation->status == 'expired')
+                                    <hr/>
+                                    <form class="form-vertical" method="POST" action="{{ url('celo/arenew/' . $donation->id) }}">
+                                        {{ csrf_field() }}
+                                        <button type="submit" class="btn btn-success" role="button">Rinnova</button>
+                                    </form>
                                 @endif
                             </div>
                         </div>
