@@ -294,7 +294,7 @@ class DonationController extends Controller
         $donation->status = 'pending';
         $donation->save();
 
-        Session::flash('message', 'La donazione è stata rinnovata per un altro mese. Grazie!');
+        Session::flash('message', 'La donazione è stata rinnovata per altri due mesi. Grazie!');
         return redirect(url('celo'));
     }
 

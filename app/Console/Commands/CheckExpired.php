@@ -24,7 +24,7 @@ class CheckExpired extends Command
 
     public function handle()
     {
-        $limit_notification = strtotime('-1 months');
+        $limit_notification = strtotime('-2 months');
 
         $limit_deletion = $limit_notification - (60 * 60 * 24 * 7);
         $limit_date = date('Y-m-d H:i:s', $limit_notification);
