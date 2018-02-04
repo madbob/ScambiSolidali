@@ -73,10 +73,21 @@ class DonationController extends Controller
 
         $data['donations'] = Donation::where('user_id', $user->id)->where('status', '!=', 'voided')->orderBy('created_at', 'desc')->get();
 
-        if ($user->role == 'admin' || $user->role == 'operator')
+        if ($user->role == 'admin' || $user->role == 'operator') {
             $data['calls'] = Call::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
-        else
+
+            /*
+                Questo può essere migliorato per togliere il nome esplicito
+                della tabella pivot
+            */
+            $data['assigned'] = Donation::whereHas('receivers', function($query) use ($user) {
+                $query->where('operator_id', $user->id)->where('donation_receiver.status', 'assigned');
+            })->get();
+        }
+        else {
             $data['calls'] = [];
+            $data['assigned'] = [];
+        }
 
         if ($request->has('show'))
             $data['current_show'] = $request->input('show');

@@ -75,5 +75,36 @@
                 </div>
             </div>
         @endif
+
+        @if(!empty($assigned))
+            <div class="row">
+                <div class="pagetitle">
+                    <span>DONAZIONI ASSEGNATE</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    @foreach($assigned as $index => $ass)
+                        @if($index % 2 == 0 && $index != 0)
+                            <div class="clearfix"></div>
+                        @endif
+
+                        <div class="col-md-6 mydonation">
+                            <p>{{ date('d.m.Y', strtotime($ass->created_at)) }}</p>
+                            <h2>{{ $ass->title }}</h2>
+
+                            @if($call->status == 'open')
+                                <p>
+                                    <a class="button" href="{{ url('celo/?show=' . $ass->id) }}">
+                                        <span>Modifica</span>
+                                    </a>
+                                </p>
+                            @endif
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        @endif
     </div>
 @endsection
