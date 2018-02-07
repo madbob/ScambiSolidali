@@ -19,11 +19,7 @@
                         </p>
                     </div>
                 @else
-					@foreach($donations as $index => $donation)
-                        @if($index % 2 == 0 && $index != 0)
-                            <div class="clearfix"></div>
-                        @endif
-
+                    @foreach($donations as $index => $donation)
                         <div class="col-md-6 mydonation">
                             <p>{{ date('d.m.Y', strtotime($donation->created_at)) }}</p>
                             <h2>{{ $donation->title }}</h2>
@@ -54,11 +50,7 @@
 
             <div class="row">
                 <div class="col-md-12">
-					@foreach($calls as $index => $call)
-                        @if($index % 2 == 0 && $index != 0)
-                            <div class="clearfix"></div>
-                        @endif
-
+                    @foreach($calls as $index => $call)
                         <div class="col-md-6 mydonation">
                             <p>{{ date('d.m.Y', strtotime($call->created_at)) }}</p>
                             <h2>{{ $call->title }}</h2>
@@ -86,10 +78,6 @@
             <div class="row">
                 <div class="col-md-12">
                     @foreach($assigned as $index => $ass)
-                        @if($index % 2 == 0 && $index != 0)
-                            <div class="clearfix"></div>
-                        @endif
-
                         <div class="col-md-6 mydonation">
                             <p>{{ date('d.m.Y', strtotime($ass->created_at)) }}</p>
                             <h2>{{ $ass->title }}</h2>
