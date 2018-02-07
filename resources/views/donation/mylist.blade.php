@@ -11,34 +11,42 @@
         </div>
 
         <div class="row">
-            <div class="col-md-12">
-                @if($donations->isEmpty())
+            @if($donations->isEmpty())
+                <div class="col-md-12">
                     <div class="alert alert-info">
                         <p>
                             Non hai ancora effettuato donazioni.
                         </p>
                     </div>
-                @else
-                    @foreach($donations as $index => $donation)
-                        <div class="col-md-6 mydonation">
-                            <p>{{ date('d.m.Y', strtotime($donation->created_at)) }}</p>
-                            <h2>{{ $donation->title }}</h2>
-                            <p>
-                                <br/>
-                                {{ nl2br($donation->description) }}
-                            </p>
-
-                            @if($donation->status == 'pending')
-                                <p>
-                                    <a class="button" href="{{ url('donazione/mio/' . $donation->id) }}">
-                                        <span>Modifica</span>
-                                    </a>
-                                </p>
-                            @endif
+                </div>
+            @else
+                <div>
+                @foreach($donations as $index => $donation)
+                    @if($index % 2 == 0)
                         </div>
-					@endforeach
-                @endif
-            </div>
+                        <div class="col-md-12">
+                    @endif
+
+                    <div class="col-md-6 mydonation">
+                        <p>{{ date('d.m.Y', strtotime($donation->created_at)) }}</p>
+                        <h2>{{ $donation->title }}</h2>
+                        <p>
+                            <br/>
+                            {{ nl2br($donation->description) }}
+                        </p>
+
+                        @if($donation->status == 'pending')
+                            <p>
+                                <a class="button" href="{{ url('donazione/mio/' . $donation->id) }}">
+                                    <span>Modifica</span>
+                                </a>
+                            </p>
+                        @endif
+                    </div>
+				@endforeach
+
+                </div>
+            @endif
         </div>
 
         @if(!empty($calls))
@@ -49,8 +57,13 @@
             </div>
 
             <div class="row">
-                <div class="col-md-12">
+                <div>
                     @foreach($calls as $index => $call)
+                        @if($index % 2 == 0)
+                            </div>
+                            <div class="col-md-12">
+                        @endif
+
                         <div class="col-md-6 mydonation">
                             <p>{{ date('d.m.Y', strtotime($call->created_at)) }}</p>
                             <h2>{{ $call->title }}</h2>
@@ -76,8 +89,13 @@
             </div>
 
             <div class="row">
-                <div class="col-md-12">
+                <div>
                     @foreach($assigned as $index => $ass)
+                        @if($index % 2 == 0)
+                            </div>
+                            <div class="col-md-12">
+                        @endif
+
                         <div class="col-md-6 mydonation">
                             <p>{{ date('d.m.Y', strtotime($ass->created_at)) }}</p>
                             <h2>{{ $ass->title }}</h2>

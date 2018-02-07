@@ -9,14 +9,23 @@
 
 	<h5>{{ $cat->name }}</h5>
 
-	@foreach($cat->children as $sub)
+	@if($cat->children->count() == 0)
 		<div class="radio">
 			<label>
-				<input type="radio" name="category_id" value="{{ $sub->id }}" {{ $selected == $sub->id ? 'checked' : '' }} required>
-				{{ $sub->name }}
+				<input type="radio" name="category_id" value="{{ $cat->id }}" {{ $selected == $cat->id ? 'checked' : '' }} required>
+				{{ $cat->name }}
 			</label>
 		</div>
-	@endforeach
+	@else
+		@foreach($cat->children as $sub)
+			<div class="radio">
+				<label>
+					<input type="radio" name="category_id" value="{{ $sub->id }}" {{ $selected == $sub->id ? 'checked' : '' }} required>
+					{{ $sub->name }}
+				</label>
+			</div>
+		@endforeach
+	@endif
 
 	</div>
 @endforeach
