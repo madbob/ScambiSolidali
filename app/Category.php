@@ -19,6 +19,9 @@ class Category extends Model
     public function getIconAttribute()
     {
         $parent = $this->parent;
+        if ($parent == null)
+            $parent = $this;
+
         return url(sprintf('images/categories/%s_%s.svg',
             str_replace(' ', '_', strtolower($parent->name)),
             str_replace(' ', '_', strtolower($this->name))));
