@@ -35,9 +35,12 @@ Route::post('/donazione/prenota/{id}', 'DonationController@postBook');
 Route::post('/donazione/detach/{type}/{donation_id}/{interaction_id}', 'DonationController@postDetach');
 Route::post('/donazione/recuperato/{id}', 'DonationController@postRecovered');
 Route::get('/donazione/report', 'DonationController@getReport');
+
 Route::get('/register/activate/{token}', 'Auth\RegisterController@activate');
 Route::get('/register/operator', 'Auth\RegisterController@registerOp');
 Route::post('/register/operator', 'Auth\RegisterController@postRegisterOp');
+
+Route::post('/giocatori/mail', 'UserController@massiveMail')->name('giocatori.mail');
 
 Route::resource('/celo', 'DonationController');
 Route::resource('/giocatori', 'UserController');

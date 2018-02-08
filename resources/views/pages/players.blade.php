@@ -108,11 +108,51 @@
             @if($user && $user->role == 'admin')
                 <div role="tabpanel" class="tab-pane" id="users">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <button class="btn btn-default button" data-toggle="modal" data-target="#user-new">
                                 <span>Crea Nuovo Utente</span>
                             </button>
                             @include('user.modal', ['user' => null])
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn btn-default button" data-toggle="modal" data-target="#massive-mail">
+                                <span>Invia Mail</span>
+                            </button>
+                            <div class="modal fade primary-1" id="massive-mail" tabindex="-1" role="dialog">
+                                <div class="modal-dialog mnodal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title">Invia Mail</h4>
+                                        </div>
+
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    {!! BootForm::vertical(['model' => null, 'store' => 'giocatori.mail']) !!}
+                                                        {!! BootForm::radios('recipients', 'Destinatari', [
+                                                            'admin' => 'Tutti gli Amministratori',
+                                                            'operator' => 'Tutti gli Operatori',
+                                                            'user' => 'Tutti gli Utenti'
+                                                        ]) !!}
+
+                                                        {!! BootForm::text('subject', 'Oggetto') !!}
+                                                        {!! BootForm::textarea('body', 'Testo') !!}
+
+                                                        <div class="form-group">
+                                                            <div>
+                                                                <button class="button" type="submit">
+                                                                    <span>Salva</span>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    {!! BootForm::close() !!}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="col-md-6">

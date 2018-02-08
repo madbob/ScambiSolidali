@@ -65,6 +65,7 @@
                         @endif
     				@endforeach
 
+                    <p class="clearfix">&nbsp;</p>
         			{{ $calls->links() }}
                 @endif
     		</div>

@@ -46,7 +46,7 @@ class CallController extends Controller
         if ($data['edit_enabled'] == false)
             $query->whereIn('status', ['open', 'closed']);
 
-        $data['calls'] = $query->paginate(50);
+        $data['calls'] = $query->paginate(60);
 
         $data['current_show'] = -1;
         if ($request->has('show')) {

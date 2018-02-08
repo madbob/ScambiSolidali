@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Session;
 use Mail;
+use Log;
 
 use App\Mail\NewUserCreated;
 use App\User;
@@ -127,6 +128,34 @@ class UserController extends Controller
         $user->delete();
 
         Session::flash('message', 'Utente eliminato');
+        return redirect(url('giocatori'));
+    }
+
+    public function massiveMail(Request $request)
+    {
+        $recipients = $request->input('recipients');
+        $subject = $request->input('subject');
+        $body = $request->input('body');
+
+        $users = User::where('role', $recipients)->get();
+        $count = 0;
+
+        foreach($users as $user) {
+            try {
+                Mail::send('mails.generic', ['text' => $body], function($message) use ($user, $subject){
+                    $message->to($user->email);
+                    $message->subject(env('APP_NAME') . ': ' . $subject);
+                });
+
+                $count++;
+                usleep(100000);
+            }
+            catch(\Exception $e) {
+                Log::error('Impossibile inviare mail a ' . $user->email . ': ' . $e->getMessage());
+            }
+        }
+
+        Session::flash('message', sprintf('Mail inviata a %d destinatari', $count));
         return redirect(url('giocatori'));
     }
 }
