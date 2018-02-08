@@ -45,7 +45,7 @@
                     @if(Auth::user()->role == 'admin' || $item->pivot->operator_id == Auth::user()->id)
                         <td>
                             <button class="btn btn-default async-delete-interaction assignation" data-donation-id="{{ $donation->id }}" data-item-id="{{ $item->id }}">
-                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                <small>Rimuovi Assegnazione</small>
                             </button>
                         </td>
                     @endif
