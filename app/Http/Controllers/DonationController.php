@@ -12,7 +12,9 @@ use diversen\imageRotate;
 
 use App\Mail\CallResponded;
 use App\Mail\DonationAssigned;
+use App\Mail\DonationRevoked;
 use App\Mail\DonationTransport;
+
 use App\User;
 use App\Donation;
 use App\Category;
@@ -425,6 +427,8 @@ class DonationController extends Controller
                 if ($donation->receivers->isEmpty()) {
                     $donation->status = 'pending';
                     $donation->save();
+
+                    Mail::to($donation->email)->send(new DonationRevoked($donation));
                 }
 
                 break;
