@@ -330,14 +330,32 @@ class DonationController extends Controller
             return response()->download($path);
     }
 
-    public function getArchive()
+    public function getArchive(Request $request)
     {
         $user = Auth::user();
         if ($user->role != 'admin') {
             return redirect(url('/'));
         }
 
-        $data['donations'] = Donation::orderBy('created_at', 'desc')->paginate(50);
+        $data['search'] = '';
+        $data['status'] = '';
+
+        $query = Donation::orderBy('created_at', 'desc');
+
+        $search = $request->input('search');
+        if (!empty($search)) {
+            $query->where('title', 'like', '%' . $search . '%');
+            $data['search'] = $search;
+        }
+
+        $status = $request->input('status');
+        if (!empty($status)) {
+            $query->where('status', '=', $status);
+            $data['status'] = $status;
+        }
+
+        $data['donations'] = $query->paginate(50);
+
         return view('donation.archive', $data);
     }
 
