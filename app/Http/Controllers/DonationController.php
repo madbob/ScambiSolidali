@@ -31,7 +31,7 @@ class DonationController extends Controller
     public function index(Request $request)
     {
         $user = Auth::user();
-        $query = Donation::orderBy('created_at', 'desc')->whereIn('status', ['pending', 'assigned']);
+        $query = Donation::orderByRaw(DB::raw("FIELD(status, 'pending', 'assigned')"))->orderBy('created_at', 'desc')->whereIn('status', ['pending', 'assigned']);
         $data['user'] = $user;
 
         $filter = $request->input('filter', null);
