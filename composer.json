@@ -13,7 +13,8 @@
         "aws/aws-sdk-php": "^3.20",
         "devfactory/minify": "^1.0",
         "diversen/image-auto-rotate": "^1.0",
-        "barryvdh/laravel-debugbar": "^2.4"
+        "barryvdh/laravel-debugbar": "^2.4",
+        "madbob/laravel-log2rss": "^0.1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

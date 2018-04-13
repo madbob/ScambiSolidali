@@ -15,6 +15,8 @@ Route::get('/', function () {
     return redirect(url('/home'));
 });
 
+Route::get(substr(env('APP_KEY'), -5) . '/logs', '\MadBob\LaravelLog2Rss\Log2RssController@index');
+
 Route::get('/home', 'CommonController@home');
 Route::get('/progetto', 'CommonController@project');
 Route::get('/come-funziona', 'CommonController@working');
