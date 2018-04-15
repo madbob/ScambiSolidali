@@ -136,6 +136,7 @@ class DonationController extends Controller
 
     private function savePhotos($request, $donation, $index)
     {
+        ini_set('gd.jpeg_ignore_warning', 1);
         $rotate = new imageRotate();
 
         foreach ($request->file('photo') as $op) {
