@@ -32,7 +32,25 @@
 
                                 <div class="collapse" id="assignPanel-{{ $donation->id }}">
                                     <div class="well">
-                                        @include('donation.assign_user', ['donation' => $donation])
+                                        <div class="alert alert-info">
+                                            Indica qui alcuni dati relativi al beneficiario della donazione, a seconda che sia una persona o un ente.
+                                        </div>
+
+                                        <ul class="nav nav-tabs" role="tablist">
+                                            <li role="presentation" class="active"><a href="#assign-user-{{ $donation->id }}" aria-controls="assign-user-{{ $donation->id }}" role="tab" data-toggle="tab">Persona</a></li>
+                                            <li role="presentation"><a href="#assign-organization-{{ $donation->id }}" aria-controls="assign-organization-{{ $donation->id }}" role="tab" data-toggle="tab">Ente</a></li>
+                                        </ul>
+
+                                        <div class="tab-content">
+                                            <div role="tabpanel" class="tab-pane active" id="assign-user-{{ $donation->id }}">
+                                                <br>
+                                                @include('donation.assign_user', ['donation' => $donation])
+                                            </div>
+                                            <div role="tabpanel" class="tab-pane" id="assign-organization-{{ $donation->id }}">
+                                                <br>
+                                                @include('donation.assign_org', ['donation' => $donation])
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
