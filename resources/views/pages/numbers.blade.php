@@ -110,10 +110,6 @@
                                 </div>
                             </button>
                         </li>
-
-                        @if($edit_enabled)
-                            @include('story.modal', ['story' => $story])
-                        @endif
                 @endforeach
 
                 @while(++$index % 3 != 0)
@@ -121,6 +117,31 @@
                    </li>
                 @endwhile
             </ul>
+
+            @foreach(App\Story::orderBy('created_at', 'desc')->get() as $story)
+                @if($edit_enabled)
+                    @include('story.modal', ['story' => $story])
+                @else
+                    <div class="modal fade primary-2" id="story-{{ $story->id }}" tabindex="-1" role="dialog">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title">{{ $story->title }}</h4>
+                                </div>
+
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            {!! nl2br($story->contents) !!}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+            @endforeach
         </div>
     @endif
 @endsection
