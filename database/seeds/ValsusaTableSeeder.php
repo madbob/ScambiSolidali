@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 
 use App\Config;
 
-class TorinoTableSeeder extends Seeder
+class ValsusaTableSeeder extends Seeder
 {
     public function run()
     {
