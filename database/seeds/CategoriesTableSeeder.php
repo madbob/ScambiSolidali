@@ -19,6 +19,7 @@ class CategoriesTableSeeder extends Seeder
                 'Biancheria',
                 'Elettrodomestici',
                 'Elettronica',
+                'Stoviglie',
                 'Utensili'
             ],
             'Abbigliamento' => [
@@ -31,6 +32,8 @@ class CategoriesTableSeeder extends Seeder
                 'Attrezzatura Sportiva',
                 'Biciclette',
                 'Altro'
+            ],
+            'Attrezzatura Sanitaria' => [
             ]
         ];
 
