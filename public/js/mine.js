@@ -262,16 +262,12 @@ $(document).ready(function() {
 
     if ($('#mapid').length > 0) {
         var markers = new Array();
-
         $('#mapid').css('height', $(window).height() - 300);
 
-        var coords = [7.6700, 45.0516];
-        var zoom = 12;
-
-        if ($('#mapid').hasClass('contact-map')) {
-            coords = [7.67824, 45.05408];
-            zoom = 15;
-        }
+        /*
+            I parametri "coords" e "zoom" sono inizializzati nel DOM della
+            pagina, essendo letti dalle configurazioni sul DB
+        */
 
         mapboxgl.accessToken = 'pk.eyJ1IjoibWFkYm9iIiwiYSI6ImNpdzE5MHN2ajAwMXYydG8xejBvbHdzOWwifQ.Lk5hnbjb720Z4C_jfqzBNg';
         var map = new mapboxgl.Map({

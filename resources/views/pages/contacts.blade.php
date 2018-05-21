@@ -45,6 +45,9 @@
                             "text-anchor": "top"
                         }
                     };
+
+                    var coords = [{{ App\Config::getConf('contact_map_coordinates') }}];
+                    var zoom = 15;
                 </script>
             </div>
 

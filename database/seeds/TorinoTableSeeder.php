@@ -41,7 +41,21 @@ Il progetto è sostenuto dalla Compagnia di San Paolo nell’ambito del Bando Fa
         if (Config::where('name', 'video_link')->first() == null) {
             $c = new Config();
             $c->name = 'video_link';
-            $c->value = 'https://www.youtube.com/watch?v=4bIYes-LHAQ';
+            $c->value = 'https://www.youtube-nocookie.com/embed/pGZURLZQZ7w?rel=0&amp;controls=0&amp;showinfo=0';
+            $c->save();
+        }
+
+        if (Config::where('name', 'players_map_coordinates')->first() == null) {
+            $c = new Config();
+            $c->name = 'players_map_coordinates';
+            $c->value = '7.67824, 45.05408';
+            $c->save();
+        }
+
+        if (Config::where('name', 'players_map_zoom')->first() == null) {
+            $c = new Config();
+            $c->name = 'players_map_zoom';
+            $c->value = '12';
             $c->save();
         }
 

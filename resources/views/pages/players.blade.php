@@ -31,6 +31,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="map" id="mapid"></div>
+
                         <script>
                             var geoJson = {
                                 id: "points",
@@ -65,6 +66,9 @@
                                     "text-anchor": "top"
                                 }
                             };
+
+                            var coords = [{{ App\Config::getConf('players_map_coordinates') }}];
+                            var zoom = {{ App\Config::getConf('players_map_zoom') }};
                         </script>
                     </div>
                     <div class="col-md-5 col-md-offset-1">
