@@ -95,7 +95,7 @@
 
 		<div class="container">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 primary-2">
                     <span class="tagline">
                         mettiamo in contatto chi opera nel sociale con chi ha qualcosa da regalare!
                         <span class="pull-right"><a href="https://www.facebook.com/celocelo-190331531485606/">seguici su <img src="{{ url('images/facebook_icon.png') }}" alt="Facebook"></a></span>
