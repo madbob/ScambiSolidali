@@ -478,11 +478,20 @@ textarea.form-control {
         text-transform: none;
     }
 
-    .city-name {
-        font-size: 30px;
-        font-weight: bold;
-        color: $primary-color-2;
-        text-transform: uppercase;
+    .city-title {
+        padding-right: 5px;
+        font-size: 20px;
+
+        a {
+            color: $primary-color-2 !important;
+        }
+
+        .city-name {
+            font-size: 30px;
+            font-weight: bold;
+            color: $primary-color-2;
+            text-transform: uppercase;
+        }
     }
 }
 

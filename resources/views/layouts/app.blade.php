@@ -61,8 +61,13 @@
                         <li>
                             @if (Auth::guest())
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <span class="city-name">{{ App\Config::getConf('instance_city') }}</span>
+                                    <div class="col-md-6 text-right city-title">
+                                        <span class="city-name">{{ App\Config::getConf('instance_city') }}</span><br>
+                                        <small>passa a
+                                            @foreach(json_decode(App\Config::getConf('other_instance_cities')) as $city)
+                                                <a href="{{ $city->url }}">{{ $city->name }}</a>
+                                            @endforeach
+                                        </small>
                                     </div>
                                     <div class="col-md-6 left-border">
                                         <a href="{{ url('/register') }}">Registrati</a>

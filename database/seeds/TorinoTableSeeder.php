@@ -15,6 +15,13 @@ class TorinoTableSeeder extends Seeder
             $c->save();
         }
 
+        if (Config::where('name', 'other_instance_cities')->first() == null) {
+            $c = new Config();
+            $c->name = 'other_instance_cities';
+            $c->value = '[{"name":"Val Susa", "url":"https://valsusa.celocelo.it/"}]';
+            $c->save();
+        }
+
         if (Config::where('name', 'powered_by')->first() == null) {
             $c = new Config();
             $c->name = 'powered_by';

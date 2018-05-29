@@ -6599,11 +6599,16 @@ textarea.form-control {
     margin-left: 0; }
   .navbar-right span {
     text-transform: none; }
-  .navbar-right .city-name {
-    font-size: 30px;
-    font-weight: bold;
-    color: #00BFE3;
-    text-transform: uppercase; }
+  .navbar-right .city-title {
+    padding-right: 5px;
+    font-size: 20px; }
+    .navbar-right .city-title a {
+      color: #00BFE3 !important; }
+    .navbar-right .city-title .city-name {
+      font-size: 30px;
+      font-weight: bold;
+      color: #00BFE3;
+      text-transform: uppercase; }
 
 .navbar-nav > li a {
   padding: 3px 0;

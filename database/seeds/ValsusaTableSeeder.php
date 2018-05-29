@@ -15,6 +15,13 @@ class ValsusaTableSeeder extends Seeder
             $c->save();
         }
 
+        if (Config::where('name', 'other_instance_cities')->first() == null) {
+            $c = new Config();
+            $c->name = 'other_instance_cities';
+            $c->value = '[{"name":"Torino", "url":"https://celocelo.it/"}]';
+            $c->save();
+        }
+
         if (Config::where('name', 'video_link')->first() == null) {
             $c = new Config();
             $c->name = 'video_link';
