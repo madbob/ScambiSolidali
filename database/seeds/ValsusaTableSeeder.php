@@ -42,5 +42,36 @@ class ValsusaTableSeeder extends Seeder
             $c->value = '10';
             $c->save();
         }
+
+        if (Config::where('name', 'contact_main')->first() == null) {
+            $c = new Config();
+            $c->name = 'contact_main';
+            $c->value = 'Consorzio Intercomunale Socio-Assistenziale
+Valle di Susa';
+            $c->save();
+        }
+
+        if (Config::where('name', 'contact_contents')->first() == null) {
+            $c = new Config();
+            $c->name = 'contact_contents';
+            $c->value = 'piazza San Francesco 4 - 10059 Susa (TO)
+celocelo@conisa.it
+T 011 9311392';
+            $c->save();
+        }
+
+        if (Config::where('name', 'contact_map_coordinates')->first() == null) {
+            $c = new Config();
+            $c->name = 'contact_map_coordinates';
+            $c->value = '7.04585, 45.13409';
+            $c->save();
+        }
+
+        if (Config::where('name', 'contact_map_title')->first() == null) {
+            $c = new Config();
+            $c->name = 'contact_map_title';
+            $c->value = 'Con.I.S.A.';
+            $c->save();
+        }
     }
 }
