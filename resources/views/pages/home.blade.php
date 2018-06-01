@@ -120,15 +120,7 @@
         <div class="row footer-credits">
             <div class="col-md-12">
                 <div class="text-center">
-                    <span>
-                        Un progetto di<br/>
-                        <img src="{{ url('images/agenziasansalvario.jpg') }}" alt="Agenzia per lo Sviluppo Locale di San Salvario">
-                    </span>
-                    <span>
-                        Con il sostegno di<br/>
-                        <img src="{{ url('images/csp.png') }}" alt="Compagnia di San Paolo" height="50px">&nbsp;&nbsp;&nbsp;
-                        <img src="{{ url('images/iren.jpg') }}" alt="Iren" height="50px">
-                    </span>
+                    {!! App\Config::getConf('credits') !!}
                 </div>
             </div>
         </div>

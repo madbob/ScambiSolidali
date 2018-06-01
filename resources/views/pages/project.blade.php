@@ -60,18 +60,24 @@
                         <p>
                             {{ App\Config::getConf('powered_by') }}
                         </p>
-                        <p class="intro">
-                            Partner
-                        </p>
-                        <p>
-                            {!! nl2br(App\Config::getConf('partners')) !!}
-                        </p>
-                        <p class="intro">
-                            Con il patrocinio di
-                        </p>
-                        <p>
-                            {!! nl2br(App\Config::getConf('patronages')) !!}
-                        </p>
+
+                        @if(!empty(App\Config::getConf('partners')))
+                            <p class="intro">
+                                Partner
+                            </p>
+                            <p>
+                                {!! nl2br(App\Config::getConf('partners')) !!}
+                            </p>
+                        @endif
+
+                        @if(!empty(App\Config::getConf('patronages')))
+                            <p class="intro">
+                                Con il patrocinio di
+                            </p>
+                            <p>
+                                {!! nl2br(App\Config::getConf('patronages')) !!}
+                            </p>
+                        @endif
                     </div>
                 </div>
             </div>

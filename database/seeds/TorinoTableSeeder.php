@@ -45,6 +45,13 @@ Il progetto è sostenuto dalla Compagnia di San Paolo nell’ambito del Bando Fa
             $c->save();
         }
 
+        if (Config::where('name', 'credits')->first() == null) {
+            $c = new Config();
+            $c->name = 'credits';
+            $c->value = sprintf('<span>Un progetto di<br/><img src="%s" alt="Agenzia per lo Sviluppo Locale di San Salvario"></span><span>Con il sostegno di<br/><img src="%s" alt="Compagnia di San Paolo" height="50px">&nbsp;&nbsp;&nbsp;<img src="%s" alt="Iren" height="50px"></span>', url('images/agenziasansalvario.jpg'), url('images/csp.png'), url('images/iren.jpg'));
+            $c->save();
+        }
+
         if (Config::where('name', 'video_link')->first() == null) {
             $c = new Config();
             $c->name = 'video_link';

@@ -9,6 +9,7 @@ class Kernel extends ConsoleKernel
 {
     protected $commands = [
         \App\Console\Commands\CheckExpired::class,
+        \App\Console\Commands\CleanConfig::class
     ];
 
     protected function schedule(Schedule $schedule)

@@ -38,7 +38,7 @@
              
             <h3>Natura del conferimento</h3>
             <p>
-                I dati personali dell’utente saranno trattati dai dipendenti che operano sotto la diretta autorità del rispettivo "Responsabile del trattamento" e che sono stati designati Incaricati del trattamento ed hanno ricevuto, al riguardo, adeguate istruzioni operative, con particolare riferimento all´adozione delle misure minime di sicurezza, al fine di poter garantire la riservatezza e la sicurezza dei dati. Presso la nostra sede è possibile acquisire l´elenco dei responsabili del trattamento nominati. L’Ass. Agenzia per lo sviluppo locale di San Salvario ONLUS adotta ed osserva specifiche misure di sicurezza al fine di prevenire la perdita dei dati conferiti, eventuali usi illeciti o non corretti dei medesimi ed accessi non autorizzati. Salvi i limiti di Legge, l’Ass. Agenzia per lo sviluppo locale di San Salvario ONLUS non è in alcun modo responsabile delle perdite economiche, nè dei danni diretti od indiretti eventualmente subiti dall´Utente o da terzi in conseguenza dell´utilizzo del sito o del proprio servizio.
+                I dati personali dell’utente saranno trattati dai dipendenti che operano sotto la diretta autorità del rispettivo "Responsabile del trattamento" e che sono stati designati Incaricati del trattamento ed hanno ricevuto, al riguardo, adeguate istruzioni operative, con particolare riferimento all´adozione delle misure minime di sicurezza, al fine di poter garantire la riservatezza e la sicurezza dei dati. Presso la nostra sede è possibile acquisire l´elenco dei responsabili del trattamento nominati. {{ App\Config::getConf('powered_by') }} adotta ed osserva specifiche misure di sicurezza al fine di prevenire la perdita dei dati conferiti, eventuali usi illeciti o non corretti dei medesimi ed accessi non autorizzati. Salvi i limiti di Legge, {{ App\Config::getConf('powered_by') }} non è in alcun modo responsabile delle perdite economiche, nè dei danni diretti od indiretti eventualmente subiti dall´Utente o da terzi in conseguenza dell´utilizzo del sito o del proprio servizio.
             </p>
              
             <h3>Diritti degli interessati</h3>
@@ -67,10 +67,10 @@
                 L'Utente prende atto che celocelo.it non effettuerà alcun controllo preventivo sul contenuto degli annunci immessi in rete, né svolgerà alcuna attività di intermediazione sugli eventuali accordi intercorrenti tra gli Utenti medesimi per il conferimento del bene donato.<br/>
                 Questi ultimi si assumono, pertanto, la piena ed esclusiva responsabilità, verso Celocelo e verso i terzi, del comportamento tenuto.<br/>
                 L'Utente fa uso del servizio messo a disposizione da celocelo.it nella consapevolezza che quest'ultima non garantisce alcunché in ordine alla veridicità del contenuto degli annunci o al buon esito delle donazioni.<br/>
-                Pubblicando il proprio annuncio su celocelo.it l'utente autorizza l’ass. Agenzia per lo sviluppo locale di San Salvario ONLUS e le organizzazioni partner ad adoperarsi affinché il contenuto dell'annuncio venga reso visibile ed accessibile agli utenti della rete anche mediante successiva indicizzazione su motori di ricerca, mediante pubblicazione su altri siti e social network, al fine di promuovere con più efficacia le inserzioni dei propri utenti e facilitare la buona riuscita della donazione.
+                Pubblicando il proprio annuncio su celocelo.it l'utente autorizza {{ App\Config::getConf('powered_by') }} e le organizzazioni partner ad adoperarsi affinché il contenuto dell'annuncio venga reso visibile ed accessibile agli utenti della rete anche mediante successiva indicizzazione su motori di ricerca, mediante pubblicazione su altri siti e social network, al fine di promuovere con più efficacia le inserzioni dei propri utenti e facilitare la buona riuscita della donazione.
             </p>
             <p>
-                L’Utente si impegna a non fruire dei servizi fornitigli da Ass. Agenzia per lo sviluppo locale di San Salvario ONLUS e/o dal sito www.celicelo.it in modo improprio o contrario alle disposizioni di Legge e regolamentari ed alle norme di Etica e di Buon uso dei servizi di rete.<br/>
+                L’Utente si impegna a non fruire dei servizi fornitigli da {{ App\Config::getConf('powered_by') }} e/o dal sito www.celicelo.it in modo improprio o contrario alle disposizioni di Legge e regolamentari ed alle norme di Etica e di Buon uso dei servizi di rete.<br/>
                 In particolare, l’Utente si impegna a non trasmettere, tramite celocelo.it, materiale di natura offensiva, calunniosa, diffamatoria, pornografica, pedopornografica, volgare, oscena, blasfema, o comunque contraria ai principi dell’ordine pubblico e del buon costume.<br/>
                 L'Utente è consapevole che l'indirizzo di posta elettronica reso noto su celocelo.it potrà valere quale mezzo di comunicazione a distanza.<br/>
                 L'Utente si impegna ad inoltrare annunci redatti in maniera accurata e veritiera, in particolare avendo riguardo alle caratteristiche pericolose/difettose degli oggetti in vendita, specialmente se in grado di procurare un pregiudizio a chi ne facesse uso.<br/>
@@ -81,7 +81,7 @@
                 Mediante l’utilizzo delle risorse offerte da celocelo.it, l'Utente si obbliga a non riprodurre, trascrivere, duplicare, distribuire, modificare o comunicare, senza averne diritto, materiale protetto dal diritto di autore ed a rispettare, in generale, qualsivoglia disposizione di cui alla L. n. 633/1941 e succ. modd. <br/>
                 L’Utente si impegna a non richiedere la pubblicazione di annunci mendaci o aventi ad oggetto beni di provenienza illecita e/o, a qualsiasi titolo.<br/>
                 L’Utente dichiara, altresì, di astenersi dall’inviare a qualunque terzo materiale informativo e/o pubblicitario non richiesto.<br/>
-                Resta ferma l’insussistenza di qualsivoglia attività di intermediazione tra la domanda e l’offerta di lavoro da parte di celocelo.it, dell’Ass. Agenzia per lo sviluppo locale di San Salvario ONLUS e dei suoi partner.<br/>
+                Resta ferma l’insussistenza di qualsivoglia attività di intermediazione tra la domanda e l’offerta di lavoro da parte di celocelo.it, di {{ App\Config::getConf('powered_by') }} e dei suoi partner.<br/>
                 Celocelo.it si limita, infatti, ad offrire all’Utente uno spazio web per la pubblicazione dei propri annunci.<br/>
                 L’Utente si impegna a non pubblicare inserzioni aventi ad oggetto l’offerta di prestazioni a carattere sessuale in cambio di denaro, o facenti riferimento ad organi sessuali, ovvero recanti immagini oscene e/o inappropriate.<br/>
                 L’Utente sarà, pertanto, l’unico ed esclusivo responsabile del contenuto dei propri argomenti di discussione, i quali costituiscono espressione di libera manifestazione del pensiero, costituzionalmente tutelata, e dovranno svolgersi nel pieno rispetto dei limiti di Legge.<br/>
@@ -98,13 +98,13 @@
             <p>
                 celocelo.it è titolare di tutti i servizi ed i contenuti messi a disposizione dell’Utente tramite il proprio sito web.<br/>
                 E’, pertanto, vietata la riproduzione e/o l’utilizzazione, integrale o parziale, a titolo gratuito od o­neroso, di qualsivoglia risorsa del sito, della vesta grafica, di simboli, marchi, loghi o segni distintivi in genere, compreso il testo delle presenti condizioni di utilizzo.<br/>
-                Resta salvo il diritto discrezionale di ass. Agenzia per lo sviluppo locale di San Salvario ONLUS di concedere, su richiesta dell’Utente, la propria autorizzazione scritta all’utilizzo di uno o più servizi e per un uso strettamente personale.
+                Resta salvo il diritto discrezionale di {{ App\Config::getConf('powered_by') }} di concedere, su richiesta dell’Utente, la propria autorizzazione scritta all’utilizzo di uno o più servizi e per un uso strettamente personale.
             </p>
 
             <h2>5 – INFORMATIVA SULLA PRIVACY</h2>
             <p>
                 I dati personali forniti dall’Utente saranno raccolti ed utilizzati da celocelo.it nel pieno rispetto della normativa di cui al D.Lgs. n. 196 del 30 giugno 2003 ( c.d. “ Codice in materia di protezione dei dati personali “ ).<br/>
-                Ai sensi e per gli effetti di cui all’Art. 13 D.Lgs. n. 196/03, Ass. Agenzia per lo sviluppo locale di San Salvario ONLUS rende noto all’ Utente che :
+                Ai sensi e per gli effetti di cui all’Art. 13 D.Lgs. n. 196/03, {{ App\Config::getConf('powered_by') }} rende noto all’ Utente che :
             </p>
 
             <ul>
@@ -113,12 +113,12 @@
                 <li>I dati forniti dall'utente potranno essere condivisi con soggetti terzi esclusivamente previa autorizzazione dell'utente stesso.</li>
                 <li>i dati personali raccolti non verranno ceduti a terzi.</li>
                 <li>l’eventuale conoscenza di dati personali da parte di terzi (quali a titolo di esempio il nome, il numero telefonico o l’indirizzo) in seguito al trattamento dei medesimi, deriverà esclusivamente dalla scelta volontaria dell’Utente di inserire all’interno dell’annuncio elementi che consentano la propria identificazione.</li>
-                <li>il titolare e responsabile del trattamento e della custodia dei dati è Ass. Agenzia per lo sviluppo locale di San Salvario ONLUS.</li>
+                <li>il titolare e responsabile del trattamento e della custodia dei dati è {{ App\Config::getConf('powered_by') }}.</li>
             </ul>
 
             <p>
-                L’Utente, accettando le condizioni di utilizzo, autorizza Ass. Agenzia per lo sviluppo locale di San Salvario ONLUS al trattamento dei propri dati personali entro i limiti e per le finalità indicati nella presente informativa.<br/>
-                Al fine di prevenire violazioni dei diritti, delle libertà fondamentali e della dignità degli Interessati, Ass. Agenzia per lo sviluppo locale di San Salvario ONLUS dichiara di astenersi dal trattare dati sensibili conferiti dall’Utente.<br/>
+                L’Utente, accettando le condizioni di utilizzo, autorizza {{ App\Config::getConf('powered_by') }} al trattamento dei propri dati personali entro i limiti e per le finalità indicati nella presente informativa.<br/>
+                Al fine di prevenire violazioni dei diritti, delle libertà fondamentali e della dignità degli Interessati, {{ App\Config::getConf('powered_by') }} dichiara di astenersi dal trattare dati sensibili conferiti dall’Utente.<br/>
                 Per una adeguata comprensione delle definizioni sovra richiamate, si rammenta che, ai sensi dell’art. 4, comma 1, lett. b, D.Lgs. 196/2003, costituisce “dato personale “ qualunque informazione relativa a persona fisica, persona giuridica, ente od associazione, identificati o identificabili, anche indirettamente, mediante riferimento a qualsiasi altra informazione, ivi compreso un numero di identificazione personale.<br/>
                 Ex art. 4, comma 1, lett. d, D.Lgs. 196/2003, costituiscono “dati sensibili” i dati personali idonei a rivelare l’origine razziale ed etnica, le convinzioni religiose, filosofiche o di altro genere, le opinioni politiche, l’adesione a partiti, sindacati, associazioni od organizzazioni a carattere religioso, filosofico, politico o sindacale, nonché i dati personali idonei a rivelare lo stato di salute e la vita sessuale.<br/>
                 L’Utente potrà esercitare, in ogni momento, i propri diritti nei confronti del titolare del trattamento, ex Art. 7 D.Lgs. n. 196/2003, di seguito riportato integralmente.<br/>
@@ -155,7 +155,7 @@
             </ol>
 
             <p>
-                La presente informativa sulla Privacy è aggiornata al 26/06/2017. L’ Ass. Agenzia per lo sviluppo locale di San Salvario ONLUS si riserva il diritto di modificare la suddetta informativa previo avviso all’Utente, da effettuarsi mediante pubblicazione della versione aggiornata all’interno del sito.
+                La presente informativa sulla Privacy è aggiornata al 26/06/2017. {{ App\Config::getConf('powered_by') }} si riserva il diritto di modificare la suddetta informativa previo avviso all’Utente, da effettuarsi mediante pubblicazione della versione aggiornata all’interno del sito.
             </p>
              
             <h2>6 - REGOLE PER LA PUBBLICAZIONE DEGLI ANNUNCI</h2>
@@ -179,22 +179,22 @@
                     Non sono consentiti annunci riportanti testi diffamatori nei confronti di persone e/o società, testi razzisti e/o discriminanti o che siano solo commenti ad altri annunci pubblicati.
                 </li>
                 <li>
-                    L’Ass. Agenzia per lo sviluppo locale di San Salvario ONLUS si riserva il diritto di rimuovere immediatamente, senza alcun avviso, inserzioni lesive di cui ai precedenti punti. L'inserzionista esonera l’Ass. Agenzia per lo sviluppo locale di San Salvario ONLUS da qualsivoglia responsabilità, civile, amministrativa, penale conseguente dalla pubblicazione di annunci lesivi ai sensi delle presenti condizioni.
+                    {{ App\Config::getConf('powered_by') }} si riserva il diritto di rimuovere immediatamente, senza alcun avviso, inserzioni lesive di cui ai precedenti punti. L'inserzionista esonera {{ App\Config::getConf('powered_by') }} da qualsivoglia responsabilità, civile, amministrativa, penale conseguente dalla pubblicazione di annunci lesivi ai sensi delle presenti condizioni.
                 </li>
             </ol>
              
             <h2>7 – DISPOSIZIONI FINALI E FORO COMPETENTE</h2>
             <p>
-                L’Ass. Agenzia per lo sviluppo locale di San Salvario ONLUS si riserva, in ogni tempo, il diritto di revocare, disattivare o modificare, in via temporanea o definitiva, la fornitura del presente servizio nonché di cancellare ed editare le inserzioni degli utenti secondo criteri discrezionali ed insindacabili, senza preavviso all’Utente e senza indicarne le cause.<br/>
-                Quest’ultimo concorda, pertanto, che l’Ass. Agenzia per lo sviluppo locale di San Salvario ONLUS non sarà responsabile, verso lo stesso o verso terzi, della modifica, sospensione, revoca od interruzione del servizio nonché della cancellazione e modifica dei messaggi inoltrati, qualunque ne siano le modalità di realizzazione.<br/>
-                Le presenti condizioni generali ed i rapporti intercorrenti tra l’Ass. Agenzia per lo sviluppo locale di San Salvario ONLUS e l’Utente saranno regolati dalla Legge della Repubblica Italiana.<br/>
+                {{ App\Config::getConf('powered_by') }} si riserva, in ogni tempo, il diritto di revocare, disattivare o modificare, in via temporanea o definitiva, la fornitura del presente servizio nonché di cancellare ed editare le inserzioni degli utenti secondo criteri discrezionali ed insindacabili, senza preavviso all’Utente e senza indicarne le cause.<br/>
+                Quest’ultimo concorda, pertanto, che {{ App\Config::getConf('powered_by') }} non sarà responsabile, verso lo stesso o verso terzi, della modifica, sospensione, revoca od interruzione del servizio nonché della cancellazione e modifica dei messaggi inoltrati, qualunque ne siano le modalità di realizzazione.<br/>
+                Le presenti condizioni generali ed i rapporti intercorrenti tra {{ App\Config::getConf('powered_by') }} e l’Utente saranno regolati dalla Legge della Repubblica Italiana.<br/>
                 Per qualsiasi controversia inerente, derivante o connessa alle presenti condizioni e/o all’utilizzo del servizio sarà esclusivamente competente il Foro di Milano.
             </p>
 
             <h2>8 – ACCETTAZIONE DELLE CONDIZIONI DI UTILIZZO</h2>
             <p>
                 L’Utente, prima di usufruire di qualsivoglia servizio, è tenuto ad informarsi sulla eventuale sussistenza di modifiche e/o aggiornamenti apportati alle condizioni di utilizzo.<br/>
-                Tali modifiche e/o aggiornamenti formeranno, infatti, parte integrante delle presenti condizioni generali e costituiranno fonte di accordo tra l’Ass. Agenzia per lo sviluppo locale di San Salvario ONLUS e l’Utente.<br/>
+                Tali modifiche e/o aggiornamenti formeranno, infatti, parte integrante delle presenti condizioni generali e costituiranno fonte di accordo tra {{ App\Config::getConf('powered_by') }} e l’Utente.<br/>
                 Con la sottostante dichiarazione di accettazione l’Utente dichiara espressamente, ai sensi e per gli effetti di cui agli Artt. 1341, comma 2, e 1342 c.c. di aver letto attentamente e di approvare specificamente le pattuizioni contenute nelle clausole nn. 3 ) esonero da responsabilità e clausola di manleva; 6) regole per la pubblicazione degli annunci 7 ) disposizioni finali e Foro competente 8) accettazione delle condizioni di utilizzo.
             </p>
         </div>
