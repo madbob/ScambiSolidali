@@ -4,6 +4,10 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 
+use Hash;
+
+use App\User;
+
 class ResetPassword extends Command
 {
     protected $signature = 'reset:password {user_email} {password}';
