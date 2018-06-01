@@ -20,6 +20,11 @@ class ResetPassword extends Command
         $password = $this->argument('password');
 
         $user = User::where('email', $user_mail)->first();
+        if(is_null($user)) {
+            echo "Utente non trovato.\n";
+            exit();
+        }
+
         $user->password = Hash::make($password);
         $user->save();
         echo "Password resettata.\n";
