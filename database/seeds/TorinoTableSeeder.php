@@ -29,19 +29,10 @@ class TorinoTableSeeder extends Seeder
             $c->save();
         }
 
-        if (Config::where('name', 'partners')->first() == null) {
+        if (Config::where('name', 'owner_address')->first() == null) {
             $c = new Config();
-            $c->name = 'partners';
-            $c->value = 'Ufficio Pio della Compagnia di San Paolo, Città di Torino - Circoscrizione 8, Città di Torino- Assessorato alle Politiche Sociali, Ass. Asai, Oratorio San Luigi, Ass. Opportunanda, Ass. Mondo di Joele, Ass. Manzoni People, Parrocchia SS.Pietro e Paolo, Coop. Soc. Accomazzi, Ass. Manamanà, Ass. Officina Informatica Libera, Coop. Soc. Triciclo, SPI CGIL Lega 8, Società Cooperativa Sociale Lancillotto, Centro di Ascolto della Parrocchia Patrocinio di San Giuseppe, Centro di Ascolto della Parrocchia Assunzione di Maria Vergine - Lingotto Torino, Commissione Carità del Consiglio Pastorale della Parrocchia Immacolata Concezione e San Giovanni Battista, Istituto Comprensivo "Sandro Pertini", Associazione Articolo 47.
-
-Il progetto è sostenuto dalla Compagnia di San Paolo nell’ambito del Bando Fatto per Bene.';
-            $c->save();
-        }
-
-        if (Config::where('name', 'patronages')->first() == null) {
-            $c = new Config();
-            $c->name = 'patronages';
-            $c->value = '<img src="/images/circ2.jpg">';
+            $c->name = 'powered_by';
+            $c->value = 'via Morgari 14, 10125, Torino';
             $c->save();
         }
 
@@ -49,6 +40,13 @@ Il progetto è sostenuto dalla Compagnia di San Paolo nell’ambito del Bando Fa
             $c = new Config();
             $c->name = 'credits';
             $c->value = sprintf('<span>Un progetto di<br/><img src="%s" alt="Agenzia per lo Sviluppo Locale di San Salvario"></span><span>Con il sostegno di<br/><img src="%s" alt="Compagnia di San Paolo" height="50px">&nbsp;&nbsp;&nbsp;<img src="%s" alt="Iren" height="50px"></span>', url('images/agenziasansalvario.jpg'), url('images/csp.png'), url('images/iren.jpg'));
+            $c->save();
+        }
+
+        if (Config::where('name', 'full_credits')->first() == null) {
+            $c = new Config();
+            $c->name = 'full_credits';
+            $c->value = '<p class="intro">Un progetto di</p><p>Ass. Agenzia per lo sviluppo locale di San Salvario ONLUS</p><p class="intro">Partner</p><p>Ufficio Pio della Compagnia di San Paolo, Città di Torino - Circoscrizione 8, Città di Torino- Assessorato alle Politiche Sociali, Ass. Asai, Oratorio San Luigi, Ass. Opportunanda, Ass. Mondo di Joele, Ass. Manzoni People, Parrocchia SS.Pietro e Paolo, Coop. Soc. Accomazzi, Ass. Manamanà, Ass. Officina Informatica Libera, Coop. Soc. Triciclo, SPI CGIL Lega 8, Società Cooperativa Sociale Lancillotto, Centro di Ascolto della Parrocchia Patrocinio di San Giuseppe, Centro di Ascolto della Parrocchia Assunzione di Maria Vergine - Lingotto Torino, Commissione Carità del Consiglio Pastorale della Parrocchia Immacolata Concezione e San Giovanni Battista, Istituto Comprensivo "Sandro Pertini", Associazione Articolo 47.<br><br>Il progetto è sostenuto dalla Compagnia di San Paolo nell’ambito del Bando Fatto per Bene.</p><p class="intro">Con il patrocinio di</p><p><img src="/images/circ2.jpg"></p>';
             $c->save();
         }
 

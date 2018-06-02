@@ -54,30 +54,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12 credits">
-                        <p class="intro">
-                            Un progetto di
-                        </p>
-                        <p>
-                            {{ App\Config::getConf('powered_by') }}
-                        </p>
-
-                        @if(!empty(App\Config::getConf('partners')))
-                            <p class="intro">
-                                Partner
-                            </p>
-                            <p>
-                                {!! nl2br(App\Config::getConf('partners')) !!}
-                            </p>
-                        @endif
-
-                        @if(!empty(App\Config::getConf('patronages')))
-                            <p class="intro">
-                                Con il patrocinio di
-                            </p>
-                            <p>
-                                {!! nl2br(App\Config::getConf('patronages')) !!}
-                            </p>
-                        @endif
+                        {!! App\Config::getConf('full_credits') !!}
                     </div>
                 </div>
             </div>

@@ -29,12 +29,10 @@ class ValsusaTableSeeder extends Seeder
             $c->save();
         }
 
-        if (Config::where('name', 'partners')->first() == null) {
+        if (Config::where('name', 'owner_address')->first() == null) {
             $c = new Config();
-            $c->name = 'partners';
-            $c->value = 'Ass. Agenzia per lo sviluppo locale di San Salvario ONLUS.
-
-Il progetto è sostenuto dalla Compagnia di San Paolo nell’ambito del Bando Fatto per Bene.';
+            $c->name = 'powered_by';
+            $c->value = 'piazza San Francesco 4, 10059, Susa (TO)';
             $c->save();
         }
 
@@ -42,6 +40,13 @@ Il progetto è sostenuto dalla Compagnia di San Paolo nell’ambito del Bando Fa
             $c = new Config();
             $c->name = 'credits';
             $c->value = sprintf('<span>Un progetto di<br/><img src="%s" alt="Agenzia per lo Sviluppo Locale di San Salvario"></span><span>In collaborazione con<br/><img src="%s" alt="Con.I.S.A."></span><span>Con il sostegno di<br/><img src="%s" alt="Compagnia di San Paolo" height="50px">&nbsp;&nbsp;&nbsp;<img src="%s" alt="Iren" height="50px"></span>', url('images/agenziasansalvario.jpg'), url('images/conisa.jpg'), url('images/csp.png'), url('images/iren.jpg'));
+            $c->save();
+        }
+
+        if (Config::where('name', 'full_credits')->first() == null) {
+            $c = new Config();
+            $c->name = 'full_credits';
+            $c->value = '<p class="intro">Un progetto di</p><p>Ass. Agenzia per lo sviluppo locale di San Salvario ONLUS</p><p class="intro">Con la collaborazione di</p><p> Consorzio Intercomunale Socio-Assistenziale Val Susa</p><p class="intro">Partner</p><p>Il progetto è sostenuto dalla Compagnia di San Paolo nell’ambito del Bando Fatto per Bene.</p>';
             $c->save();
         }
 
