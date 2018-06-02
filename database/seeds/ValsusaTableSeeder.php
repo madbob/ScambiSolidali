@@ -31,7 +31,7 @@ class ValsusaTableSeeder extends Seeder
 
         if (Config::where('name', 'owner_address')->first() == null) {
             $c = new Config();
-            $c->name = 'powered_by';
+            $c->name = 'owner_address';
             $c->value = 'piazza San Francesco 4, 10059, Susa (TO)';
             $c->save();
         }
