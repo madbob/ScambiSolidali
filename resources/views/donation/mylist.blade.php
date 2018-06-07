@@ -99,14 +99,6 @@
                         <div class="col-md-6 mydonation">
                             <p>{{ date('d.m.Y', strtotime($ass->created_at)) }}</p>
                             <h2>{{ $ass->title }}</h2>
-
-                            @if($call->status == 'open')
-                                <p>
-                                    <a class="button" href="{{ url('celo/?show=' . $ass->id) }}">
-                                        <span>Modifica</span>
-                                    </a>
-                                </p>
-                            @endif
                         </div>
                     @endforeach
                 </div>
