@@ -81,8 +81,56 @@
                 <p>
                     I beni e il tempo donati andranno a favore di persone in difficoltà, potrai conoscere l’esito della donazione tramite l'Associazione che l'ha gestita.
                 </p>
+            </div>
+        </div>
+
+        <hr class="black">
+
+        <div class="row primary-2">
+            <div class="col-md-3">
+                <div class="button screaming-border">
+                    <span>TRASPORTO E SMONTAGGIO</span>
+                </div>
+            </div>
+
+            <div class="col-md-8 col-md-offset-1">
+                <h4>Trasporto</h4>
+
                 <p>
-                    Potrai consegnare direttamente il bene oppure verremo noi da te a ritirarlo.
+                    Ecco le possibili opzioni:
+                </p>
+                <ul>
+                    <li>il donatore è disponibile a consegnare il bene al beneficiario dopo aver preso accordi con l’Ente accreditato di riferimento</li>
+                    <li>l’Ente accreditato provvede al ritiro e alla consegna del bene</li>
+                    <li>il beneficiario provvede in modo autonomo al ritiro del bene previ accordi tra donatore e l’Ente accreditato</li>
+                    <li>il beneficiario o l’Ente accreditato sono in grado di sostenere la spesa di trasporto e possono chiedere un preventivo a un fornitore di loro fiducia oppure alla Cooperativa La Fonte, partner del nostro progetto (sotto i dettagli)</li>
+                    <li>nel caso di impossibilità ad effettuare il trasporto da parte dell’Ente accreditato o in caso  di gravi difficoltà economiche del beneficiario, il progetto celocelo può contribuire a sostenere le spese del trasporto richiesto, l’operatore dovrà richiedere il trasporto quando assegna il bene tramite il sito</li>
+                </ul>
+
+                <h4>Smontaggio</h4>
+
+                <p>
+                    Il progetto non sostiene le spese di smontaggio e montaggio.
+                </p>
+                <p>
+                    Chiediamo al donatore di far trovare i mobili smontati e a chi riceve di provvedere al montaggio.
+                </p>
+                <p>
+                    Nel caso di impossibilità a provvedere allo smontaggio e al montaggio di seguito trovate i contatti e le tariffe dei nostri fornitori di fiducia (in caso di gravi difficoltà il progetto celocelo può contribuire a sostenerne le spese).
+                </p>
+                <p>
+                    Cooperativa La Fonte Onlus<br>
+                    Società Cooperativa Sociale<br>
+                    Via San Marchese 26/2 – 10078 Venaria Reale (To)
+                </p>
+                <p>
+                    Per informazioni  e preventivi : lafonteonlus16@gmail.com<br>
+                    Tel. 351 2276924, Enzo Covito
+                </p>
+                <p>
+                    Tariffe:<br>
+                    17 euro all'ora a persona per la manodopera<br>
+                    80 centesimi al km per il trasporto (tenendo conto che la partenza è da Venaria)
                 </p>
             </div>
         </div>
