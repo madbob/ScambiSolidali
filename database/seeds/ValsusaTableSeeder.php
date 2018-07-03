@@ -67,7 +67,7 @@ class ValsusaTableSeeder extends Seeder
         if (Config::where('name', 'players_map_zoom')->first() == null) {
             $c = new Config();
             $c->name = 'players_map_zoom';
-            $c->value = '10';
+            $c->value = '9';
             $c->save();
         }
 

@@ -5,13 +5,13 @@ $(document).ready(function() {
             var map = new mapboxgl.Map({
                 container: $(this).attr('id'),
                 style: 'mapbox://styles/mapbox/light-v9',
-                center: [7.6700, 45.0516],
+                center: coords,
                 zoom: 12
             });
 
             var geocoder = new MapboxGeocoder({
-                proximity: {latitude: 45.0516, longitude: 7.6700},
-                bbox: [7.430458,44.907397,7.900369,45.194847],
+                proximity: {latitude: coords[1], longitude: coords[0]},
+                bbox: [coords[0] - 0.5, coords[1] - 0.5, coords[0] + 0.5, coords[1] + 0.5],
                 placeholder: 'Scrivi qui l\'indirizzo',
                 accessToken: mapboxgl.accessToken
             });
