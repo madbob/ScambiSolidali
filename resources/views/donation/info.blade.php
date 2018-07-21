@@ -4,6 +4,7 @@
     @if($donation->since && $donation->since > date('Y-m-d'))
         Disponibile da {{ printableDate($donation->since) }}
     @endif
+    Scade {{ printableDate(date('Y-m-d', strtotime($donation->updated_at . ' +2 months'))) }}
 </p>
 
 <hr/>
