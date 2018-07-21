@@ -76,7 +76,7 @@
                                 </div>
                             @else
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 city-title">
                                         <span class="city-name">{{ App\Config::getConf('instance_city') }}</span>
                                     </div>
                                     <div class="col-md-4">

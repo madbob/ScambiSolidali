@@ -75,6 +75,9 @@ else
 
             {!! BootForm::textarea('description', 'Descrizione', null, ['required' => 'required']) !!}
             {!! BootForm::text('size', 'Dimensioni', null) !!}
+            {!! BootForm::date('since', 'Disponibile da', date('Y-m-d')) !!}
+
+            <br><br><br>
 
             <?php $last = $donation ? $donation : Auth::user()->lastDonation() ?>
 

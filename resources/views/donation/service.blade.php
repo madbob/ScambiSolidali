@@ -32,6 +32,10 @@ else
 
             {!! BootForm::text('title', 'Cosa offro', null, ['required' => 'required']) !!}
             {!! BootForm::textarea('description', 'Descrizione', null, ['required' => 'required']) !!}
+            {!! BootForm::date('since', 'Disponibile da', date('Y-m-d')) !!}
+
+            <br><br><br>
+
             {!! BootForm::text('name', 'Nome', $user->name, ['required' => 'required']) !!}
             {!! BootForm::text('surname', 'Cognome', $user->surname, ['required' => 'required']) !!}
             {!! BootForm::text('address', 'Indirizzo') !!}

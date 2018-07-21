@@ -1,6 +1,9 @@
 <p class="form-control-static">
     Inserito da:<br/>{{ $donation->user->printableName() }} @include('user.rating', ['user' => $donation->user])<br>
-    {{ printableDate($donation->created_at) }}
+    {{ printableDate($donation->created_at) }}<br>
+    @if($donation->since && $donation->since > date('Y-m-d'))
+        Disponibile da {{ printableDate($donation->since) }}
+    @endif
 </p>
 
 <hr/>
