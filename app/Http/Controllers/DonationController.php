@@ -369,7 +369,7 @@ class DonationController extends Controller
         }
 
         $donation = Donation::find($id);
-        if ($donation != null) {
+        if ($donation != null && $donation->status != 'assigned') {
             $receiver_type = $request->input('assignation_type');
             $receiver = new Receiver();
             $receiver->type = $receiver_type;
