@@ -198,7 +198,7 @@ class DonationController extends Controller
             Mail::to($call->user->email)->send(new CallResponded($donation, $call));
         }
 
-        return view('donation.thanks');
+        return view('donation.thanks', ['donation' => $donation]);
     }
 
     public function edit(Request $request, $id)
