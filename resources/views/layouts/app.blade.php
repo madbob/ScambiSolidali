@@ -83,7 +83,7 @@
                                         <span>Ciao, {{ Auth::user()->name }}</span>
                                     </div>
                                     <div class="col-md-4 left-border">
-                                        <a href="{{ url('/donazione/mie') }}">Mie Donazioni</a>
+                                        <a href="{{ url('/donazione/mie') }}">Il Mio Profilo</a>
                                         <a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
 
                                         <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">

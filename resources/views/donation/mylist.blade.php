@@ -41,6 +41,12 @@
                                     <span>Modifica</span>
                                 </a>
                             </p>
+                        @else
+                            <p>
+                                <a class="button show-details" data-endpoint="celo" data-item-id="{{ $donation->id }}">
+                                    <span>Visualizza</span>
+                                </a>
+                            </p>
                         @endif
                     </div>
 				@endforeach
@@ -68,13 +74,11 @@
                             <p>{{ date('d.m.Y', strtotime($call->created_at)) }}</p>
                             <h2>{{ $call->title }}</h2>
 
-                            @if($call->status == 'open')
-                                <p>
-                                    <a class="button" href="{{ url('manca/?show=' . $call->id) }}">
-                                        <span>Modifica</span>
-                                    </a>
-                                </p>
-                            @endif
+                            <p>
+                                <a class="button" href="{{ url('manca/?show=' . $call->id) }}">
+                                    <span>Modifica</span>
+                                </a>
+                            </p>
                         </div>
 					@endforeach
                 </div>
@@ -99,6 +103,12 @@
                         <div class="col-md-6 mydonation">
                             <p>{{ date('d.m.Y', strtotime($ass->created_at)) }}</p>
                             <h2>{{ $ass->title }}</h2>
+
+                            <p>
+                                <a class="button show-details" data-endpoint="celo" data-item-id="{{ $ass->id }}">
+                                    <span>Visualizza</span>
+                                </a>
+                            </p>
                         </div>
                     @endforeach
                 </div>
