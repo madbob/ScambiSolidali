@@ -17,6 +17,7 @@
 
                 <th>Stato</th>
                 <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -42,13 +43,19 @@
                         @endif
                     </td>
 
-                    @if(Auth::user()->role == 'admin' || $item->pivot->operator_id == Auth::user()->id)
-                        <td>
-                            <button class="btn btn-default async-delete-interaction assignation" data-donation-id="{{ $donation->id }}" data-item-id="{{ $item->id }}">
-                                <small>Rimuovi Assegnazione</small>
+                    <td>
+                        @if(Auth::user()->role == 'admin' || $item->pivot->operator_id == Auth::user()->id)
+                            {{ $item->pivot->notes }}
+                        @endif
+                    </td>
+
+                    <td>
+                        @if(Auth::user()->role == 'admin' || $item->pivot->operator_id == Auth::user()->id)
+                            <button class="btn btn-default btn-sm async-delete-interaction assignation" data-donation-id="{{ $donation->id }}" data-item-id="{{ $item->id }}">
+                                <small>Rimuovi</small>
                             </button>
-                        </td>
-                    @endif
+                        @endif
+                    </td>
                 </tr>
             @endforeach
         </tbody>
