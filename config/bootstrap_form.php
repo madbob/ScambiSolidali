@@ -42,6 +42,8 @@ return [
     |
     */
 
-    'show_all_errors' => false
+    'show_all_errors' => false,
+
+    'error_bag' => null
 
 ];
