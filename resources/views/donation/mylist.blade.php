@@ -63,25 +63,35 @@
             </div>
 
             <div class="row">
-                <div>
-                    @foreach($calls as $index => $call)
-                        @if($index % 2 == 0)
-                            </div>
-                            <div class="col-md-12">
-                        @endif
-
-                        <div class="col-md-6 mydonation">
-                            <p>{{ date('d.m.Y', strtotime($call->created_at)) }}</p>
-                            <h2>{{ $call->title }}</h2>
-
+                @if($calls->isEmpty())
+                    <div class="col-md-12">
+                        <div class="alert alert-info">
                             <p>
-                                <a class="button" href="{{ url('manca/?show=' . $call->id) }}">
-                                    <span>Modifica</span>
-                                </a>
+                                Non hai ancora effettuato appelli.
                             </p>
                         </div>
-					@endforeach
-                </div>
+                    </div>
+                @else
+                    <div>
+                        @foreach($calls as $index => $call)
+                            @if($index % 2 == 0)
+                                </div>
+                                <div class="col-md-12">
+                            @endif
+
+                            <div class="col-md-6 mydonation">
+                                <p>{{ date('d.m.Y', strtotime($call->created_at)) }}</p>
+                                <h2>{{ $call->title }}</h2>
+
+                                <p>
+                                    <a class="button" href="{{ url('manca/?show=' . $call->id) }}">
+                                        <span>Modifica</span>
+                                    </a>
+                                </p>
+                            </div>
+    					@endforeach
+                    </div>
+                @endif
             </div>
         @endif
 
@@ -93,25 +103,35 @@
             </div>
 
             <div class="row">
-                <div>
-                    @foreach($assigned as $index => $ass)
-                        @if($index % 2 == 0)
-                            </div>
-                            <div class="col-md-12">
-                        @endif
-
-                        <div class="col-md-6 mydonation">
-                            <p>{{ date('d.m.Y', strtotime($ass->created_at)) }}</p>
-                            <h2>{{ $ass->title }}</h2>
-
+                @if($assigned->isEmpty())
+                    <div class="col-md-12">
+                        <div class="alert alert-info">
                             <p>
-                                <a class="button show-details" data-endpoint="celo" data-item-id="{{ $ass->id }}">
-                                    <span>Visualizza</span>
-                                </a>
+                                Non hai ancora effettuato assegnazioni.
                             </p>
                         </div>
-                    @endforeach
-                </div>
+                    </div>
+                @else
+                    <div>
+                        @foreach($assigned as $index => $ass)
+                            @if($index % 2 == 0)
+                                </div>
+                                <div class="col-md-12">
+                            @endif
+
+                            <div class="col-md-6 mydonation">
+                                <p>{{ date('d.m.Y', strtotime($ass->created_at)) }}</p>
+                                <h2>{{ $ass->title }}</h2>
+
+                                <p>
+                                    <a class="button show-details" data-endpoint="celo" data-item-id="{{ $ass->id }}">
+                                        <span>Visualizza</span>
+                                    </a>
+                                </p>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
             </div>
         @endif
     </div>
