@@ -35,7 +35,7 @@ class DonationController extends Controller
         $data['user'] = $user;
 
         $filter = $request->input('filter', null);
-        if ($filter != null) {
+        if (!empty($filter)) {
             if ($filter == 'service') {
                 $query->where('type', 'service');
             }
@@ -43,16 +43,21 @@ class DonationController extends Controller
                 $query->where('type', 'object');
 
                 $category = Category::find($filter);
-                if ($category->parent_id == 0) {
-                    $subs = [$category->id];
-
-                    foreach($category->children as $children)
-                        $subs[] = $children->id;
-
-                    $query->whereIn('category_id', $subs);
+                if ($category == null) {
+                    Log::error('Richiesta categoria non esistente: ' . $filter);
                 }
                 else {
-                    $query->where('category_id', $category->id);
+                    if ($category->parent_id == 0) {
+                        $subs = [$category->id];
+
+                        foreach($category->children as $children)
+                            $subs[] = $children->id;
+
+                        $query->whereIn('category_id', $subs);
+                    }
+                    else {
+                        $query->where('category_id', $category->id);
+                    }
                 }
             }
         }
