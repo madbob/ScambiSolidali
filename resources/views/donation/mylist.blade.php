@@ -38,7 +38,7 @@
                         @if($donation->status == 'pending')
                             <p>
                                 <a class="button" href="{{ url('donazione/mio/' . $donation->id) }}">
-                                    <span>Modifica</span>
+                                    <span>Modifica o Elimina</span>
                                 </a>
                             </p>
                         @else
