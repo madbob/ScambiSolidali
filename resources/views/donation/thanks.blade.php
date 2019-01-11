@@ -12,7 +12,7 @@
 
             @if($donation->type == 'object')
                 <p>
-                    Se nel frattempo trovi un altro destinatario, ricorda di annullare l'annuncio dal pannello delle tue donazioni!
+                    Se nel frattempo trovi un altro destinatario, ricorda di annullare l'annuncio <a href="{{ url('donazione/mie') }}">dal pannello delle tue donazioni</a>!
                 </p>
             @endif
 

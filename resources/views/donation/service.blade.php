@@ -16,6 +16,31 @@ else
 
 ?>
 
+@if($donation)
+    <div class="row new-donation-form primary-1">
+        <form method="POST" action="{{ url('celo/' . $donation->id) }}">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="hidden" name="reason" value="user-deleted">
+            {!! csrf_field() !!}
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    <p class="text-center">
+                        (HAI CAMBIATO IDEA?)
+                    </p>
+                    <div>
+                        <button class="button" type="submit">
+                            <span>Clicca qui per eliminare la tua donazione</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <br/>
+    <br/>
+@endif
+
 <div class="row new-donation-form primary-1">
     {!! BootForm::vertical(['model' => $donation, 'store' => 'DonationController@store', 'update' => 'DonationController@update', 'enctype' => 'multipart/form-data']) !!}
         <div class="col-md-12">
@@ -55,29 +80,5 @@ else
         </div>
     {!! BootForm::close() !!}
 </div>
-
-@if($donation)
-    <br/>
-    <div class="row new-donation-form primary-1">
-        <form method="POST" action="{{ url('celo/' . $donation->id) }}">
-            <input type="hidden" name="_method" value="DELETE">
-            <input type="hidden" name="reason" value="user-deleted">
-            {!! csrf_field() !!}
-
-            <div class="col-md-12">
-                <div class="form-group">
-                    <p class="text-center">
-                        (HAI CAMBIATO IDEA?)
-                    </p>
-                    <div>
-                        <button class="button" type="submit">
-                            <span>Clicca qui per eliminare la tua donazione</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-@endif
 
 @endsection

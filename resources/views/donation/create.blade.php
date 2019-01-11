@@ -16,6 +16,31 @@ else
 
 ?>
 
+@if($donation)
+    <div class="row new-donation-form primary-1">
+        <form method="POST" action="{{ url('celo/' . $donation->id) }}">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="hidden" name="reason" value="user-deleted">
+            {!! csrf_field() !!}
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    <p class="text-center">
+                        (HAI CAMBIATO IDEA?)
+                    </p>
+                    <div>
+                        <button class="button" type="submit">
+                            <span>Clicca qui per eliminare la tua donazione</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <br/>
+    <br/>
+@endif
+
 <div class="row new-donation-form primary-1">
     {!! BootForm::vertical(['model' => $donation, 'store' => 'DonationController@store', 'update' => 'DonationController@update', 'enctype' => 'multipart/form-data']) !!}
         <div class="col-md-3">
@@ -53,13 +78,35 @@ else
         </div>
 
         <div class="col-md-8 col-md-offset-1">
-            @if($call != null)
+            @if(App\Call::where('status', 'open')->count() > 0)
                 <br/>
-                <div class="alert alert-info">
-                    <input type="hidden" name="call_id" value="{{ $call->id }}">
-                    <p>Stai rispondendo all'appello "{{ $call->title }}" di {{ printableDate($call->created_at) }}</p>
+                <p>Seleziona, eventualmente, l'appello a cui stai rispondendo con questa donazione:</p>
+
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="call_id" value="-1" {{ $call == null ? 'checked' : '' }}>
+                        Nessun appello specifico
+                    </label>
                 </div>
+
+                @foreach(App\Call::where('status', 'open')->get() as $iter_call)
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="call_id" value="{{ $iter_call->id }}" {{ $call && $call->id == $iter_call->id ? 'checked' : '' }}>
+                            {{ $iter_call->title }}
+                        </label>
+                    </div>
+                @endforeach
+
+                <p>
+                    Puoi consultare l'elenco completo degli appelli, con i relativi dettagli, su <a href="{{ url('manca') }}">questa pagina</a>.
+                </p>
+
                 <br/>
+                <br/>
+                <br/>
+            @else
+                <input type="hidden" name="call_id" value="{{ $call ? $call->id : -1 }}">
             @endif
 
             <input type="hidden" name="type" value="object">
@@ -107,29 +154,5 @@ else
         </div>
     {!! BootForm::close() !!}
 </div>
-
-@if($donation)
-    <br/>
-    <div class="row new-donation-form primary-1">
-        <form method="POST" action="{{ url('celo/' . $donation->id) }}">
-            <input type="hidden" name="_method" value="DELETE">
-            <input type="hidden" name="reason" value="user-deleted">
-            {!! csrf_field() !!}
-
-            <div class="col-md-8 col-md-offset-4">
-                <div class="form-group">
-                    <p class="text-center">
-                        (HAI CAMBIATO IDEA?)
-                    </p>
-                    <div>
-                        <button class="button" type="submit">
-                            <span>Clicca qui per eliminare la tua donazione</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-@endif
 
 @endsection

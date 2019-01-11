@@ -131,7 +131,7 @@ class DonationController extends Controller
         $donation->name = $request->input('name');
         $donation->surname = $request->input('surname');
         $donation->address = $request->input('address', '');
-        $donation->call_id = $request->input('call_id', null);
+        $donation->call_id = $request->input('call_id', -1);
         $donation->phone = $request->input('phone');
         $donation->email = $request->input('email');
         $donation->floor = $request->input('floor', -1);
@@ -198,9 +198,10 @@ class DonationController extends Controller
             $this->savePhotos($request, $donation, 1);
         }
 
-        if ($donation->call_id != null) {
+        if ($donation->call_id != -1) {
             $call = Call::find($donation->call_id);
-            Mail::to($call->user->email)->send(new CallResponded($donation, $call));
+            if ($call)
+                Mail::to($call->user->email)->send(new CallResponded($donation, $call));
         }
 
         return view('donation.thanks', ['donation' => $donation]);
@@ -224,6 +225,8 @@ class DonationController extends Controller
     {
         $user = Auth::user();
         $donation = Donation::find($id);
+
+        $original_call = $donation->call_id;
 
         if ($donation->user_id != $user->id)
             return redirect(url('/'));
@@ -255,6 +258,12 @@ class DonationController extends Controller
         if (!empty($request->file('photo', null))) {
             $index = $donation->imagesNum() + 1;
             $this->savePhotos($request, $donation, $index);
+        }
+
+        if ($donation->call_id != -1 && $original_call != $donation->call_id) {
+            $call = Call::find($donation->call_id);
+            if ($call)
+                Mail::to($call->user->email)->send(new CallResponded($donation, $call));
         }
 
         return redirect(url('donazione/mie'));
