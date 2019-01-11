@@ -93,7 +93,7 @@ else
                     <div class="radio">
                         <label>
                             <input type="radio" name="call_id" value="{{ $iter_call->id }}" {{ $call && $call->id == $iter_call->id ? 'checked' : '' }}>
-                            {{ $iter_call->title }}
+                            {{ $iter_call->title }} <a class="show-details" data-endpoint="manca" data-item-id="{{ $iter_call->id }}">(dettagli)</a>
                         </label>
                     </div>
                 @endforeach
