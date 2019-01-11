@@ -7,44 +7,142 @@
         <div class="col-md-12">
             <h1>INFORMATIVA SULLA PRIVACY</h1>
 
+            <h3>TITOLARE</h3>
             <p>
-                La presente informativa viene resa ai sensi dell´art. 13 della D.lgs. n. 196/2003
+                Il titolare del trattamento dei tuoi dati è {{ App\Config::getConf('powered_by') }}.
+            </p>
+            <p>
+                Per ogni necessità puoi contattare il titolare all’indirizzo {{ App\Config::getConf('owner_address') }} o all'email {{ env('MAIL_FROM_ADDRESS') }}.
+            </p>
+            <p>
+                Il titolare tratterà i tuoi dati con liceità e correttezza nel rispetto dei tuoi diritti ed in particolare della tua riservatezza ai sensi del Regolamento (UE) 2016/679 (di seguito “Regolamento”) e delle altre norme applicabili.
             </p>
 
-            <h3>Titolare del trattamento</h3>
-            <p>
-                L´interessato potrà rivolgersi, in ogni tempo, al titolare del trattamento dei dati, indirizzando le proprie richieste a: {{ App\Config::getConf('powered_by') }} – {{ App\Config::getConf('owner_address') }}.
-            </p>
-             
-            <h3>Tipi di dati trattati e finalità del relativo trattamento</h3>
-            <ol>
-                <li>
-                    Dati di navigazione: Durante la navigazione sul sito {{ env('APP_URL') }} i sistemi informatici e le procedure software che presiedono al funzionamento del sito raccolgono alcuni dati personali la cui trasmissione è implicita nell´uso dei protocolli di comunicazione Internet. Esempi di questa tipologia di dati sono gli indirizzi IP o i nomi a dominio dei computer utilizzati dagli utenti che si collegano al sito, gli indirizzi URI (Uniform Resource Identifier) delle risorse richieste, l´orario della richiesta, il metodo utilizzato nel sottoporre la richiesta al server, la dimensione del file ottenuto in risposta, il codice numerico che indica la risposta data dal server (buon fine, errore, ecc.) ed altre informazioni relative al sistema operativo e all´ambiente informatico dell´utente. I dati di cui sopra, pur non essendo di per sé soli riconducibili ad utenti identificati, potrebbero permettere di identificare gli utenti a cui si riferiscono attraverso rielaborazioni con dati in possesso di terzi. Essi vengono tuttavia utilizzati dalla associazione al solo fine di controllare il corretto funzionamento di quest´ultimo e vengono cancellati immediatamente dopo l´elaborazione. Tali dati potrebbero inoltre essere utilizzati per l´accertamento di responsabilità in caso di ipotetici reati informatici ai danni del sito. A parte questa ipotesi, di regola essi vengono conservati per non più di sette giorni.
-                </li>
-                <li>
-                    Cookies: il sito {{ env('APP_URL') }} fa uso di cookies, che vengono memorizzati sul computer dell´utente che l´Utente potrà, in ogni momento disattivare, tale disattivazione potrebbe comportare, tuttavia, l´impossibilità di utilizzare alcuni servizi. L´uso di tali cookies è legato alla trasmissione di identificativi di sessione (costituiti da numeri casuali generati dal server) necessari per consentire la navigazione sicura ed efficiente del sito e permette di evitare il ricorso ad altre tecniche informatiche potenzialmente pregiudizievoli per la riservatezza della navigazione degli utenti. Tali cookies non consentono l´acquisizione di dati personali identificativi dell´utente.
-                </li>
-            </ol>
+            <h3>DATI</h3>
 
-            <h3>Dati forniti per la fruizione e l´iscrizione ai servizi gratuiti del sito</h3>
             <p>
-                L’utente, iscrivendosi al sito {{ env('APP_URL') }} dovrà confermare di aver preso visione delle condizioni d’uso e dell’informativa privacy per il trattamento dei propri dati aventi finalità connesse alla fornitura del servizio. L’utente potrà inoltre esprimere liberamente i consensi all’utilizzo dei propri dati. I dati dell’utente verranno utilizzati esclusivamente per le finalità socio-assistenziali previste dal sito e per elaborazioni anonime dei dati, utili all’implementazione del servizio.
+                Il titolare tratterà i seguenti dati:
             </p>
-             
-            <h3>Modalità del trattamento</h3>
             <p>
-                I trattamenti potranno essere eseguiti con modalità informatiche o manuali con procedure tali da garantirne la conformità alle disposizioni normative vigenti in materia. Specifiche misure di sicurezza sono adottate per prevenire la perdita dei dati, l´usi illecito o non corretto e l´accesso non autorizzato agli stessi.
+                <strong>Dati del profilo</strong> - Quando ti registri, aggiungi nuovi dati al tuo profilo, o modifichi quelli esistenti,  acquisiamo i tuoi dati personali (nome, indirizzo, e-mail, telefono, ecc.).
             </p>
-             
-            <h3>Natura del conferimento</h3>
             <p>
-                I dati personali dell’utente saranno trattati dai dipendenti che operano sotto la diretta autorità del rispettivo "Responsabile del trattamento" e che sono stati designati Incaricati del trattamento ed hanno ricevuto, al riguardo, adeguate istruzioni operative, con particolare riferimento all´adozione delle misure minime di sicurezza, al fine di poter garantire la riservatezza e la sicurezza dei dati. Presso la nostra sede è possibile acquisire l´elenco dei responsabili del trattamento nominati. {{ App\Config::getConf('powered_by') }} adotta ed osserva specifiche misure di sicurezza al fine di prevenire la perdita dei dati conferiti, eventuali usi illeciti o non corretti dei medesimi ed accessi non autorizzati. Salvi i limiti di Legge, {{ App\Config::getConf('powered_by') }} non è in alcun modo responsabile delle perdite economiche, nè dei danni diretti od indiretti eventualmente subiti dall´Utente o da terzi in conseguenza dell´utilizzo del sito o del proprio servizio.
+                <strong>Dati delle attività</strong> - Quando usi i nostri servizi, registriamo le tue attività.
             </p>
-             
-            <h3>Diritti degli interessati</h3>
             <p>
-                Ai sensi dell´art. 7 del D.lgs 196/2003 (e successive modifiche), gli utenti cui si riferiscono i dati personali hanno il diritto in qualunque momento di ottenere la conferma dell´esistenza o meno dei medesimi dati e di conoscerne il contenuto e l´origine, anche per verificarne l´esattezza o chiederne l´integrazione o l´aggiornamento, oppure la rettificazione. Ai sensi del medesimo articolo gli utenti hanno inoltre il diritto di chiedere la cancellazione, la trasformazione in forma anonima o il blocco dei dati trattati in violazione di legge nonchè di opporsi in ogni caso, per motivi legittimi, al loro trattamento. Le richieste vanno inviate a {{ App\Config::getConf('powered_by') }}, {{ App\Config::getConf('owner_address') }}, email: {{ env('MAIL_FROM_ADDRESS') }}.
+                <strong>Dati di navigazione</strong> - Quando ti colleghi al nostro sistema, questo registra automaticamente le informazioni che il tuo dispositivo ci invia. Queste informazioni possono riguardare le operazioni svolte, l'indirizzo IP ed il MAC Address dai quali ti colleghi, il sistema operativo e la lingua del tuo dispositivo, la data e l’ora della tua richiesta, la tua posizione.
             </p>
+            <p>
+                <strong>Dati di contatto e comunicazioni</strong> - Quando ci invii i tuoi dati di contatto (email, ecc.) e un'email o un’altra comunicazione registriamo i tuoi dati di contatto e la comunicazione.
+            </p>
+            <p>
+                <strong>Cookie</strong> - Quando utilizzi i nostri servizi possiamo inviare al tuo dispositivo uno o più cookie (piccoli file di testo contenente una stringa di caratteri alfanumerici):
+            </p>
+            <ul>
+                <li>cookie tecnici, cioè di navigazione o sessione e strettamente necessari per il funzionamento del sito o per consentirti di usufruire dei contenuti e dei servizi da te richiesti;</li>
+                <li>cookie di terze parti, cioè cookie di siti o di web server diversi da quello che ospita il nostro servizio, utilizzati, con il tuo consenso, per finalità proprie di dette parti terze.</li>
+            </ul>
+
+            <h3>FINALITÀ E BASE GIURIDICA DEL TRATTAMENTO</h3>
+
+            <p>
+                I tuoi dati verranno trattati con le seguenti finalità:
+            </p>
+            <ul>
+                <li>fornirti i servizi ai sensi dell’articolo 6, paragrafo 1, lettera b), del Regolamento,</li>
+                <li>valutare e migliorare i servizi e svilupparne di nuovi perseguendo questo legittimo interesse ai sensi dell’articolo 6, paragrafo 1, lettera f), del Regolamento,</li>
+                <li>proteggere il funzionamento tecnico del sistema informatico perseguendo questo legittimo interesse ai sensi dell’articolo 6, paragrafo 1, lettera f), del Regolamento,</li>
+                <li>adempiere ad obblighi di legge e/o ottemperare ad ordini provenienti da pubbliche autorità, inclusa l’autorità giudiziaria ai sensi dell’articolo 6, paragrafo 1, lettera c), del Regolamento,</li>
+                <li>elaborare e diffondere analisi statistiche e rappresentazioni grafiche ma solo in forma aggregata ed anonima perseguendo questo legittimo interesse ai sensi dell’articolo 6, paragrafo 1, lettera f), del Regolamento.</li>
+            </ul>
+
+            <p>
+                I tuoi dati di contatto saranno anche trattati anche per informarti sui servizi e sulle novità disponibili, perseguendo questo legittimo interesse ai sensi dell’articolo 6, paragrafo 1, lettera f), del Regolamento.
+            </p>
+
+            <h3>COMUNICAZIONE A TERZI</h3>
+            <p>
+                Il titolare potrà comunicare i tuoi dati a:
+            </p>
+            <ul>
+                <li>soggetti terzi che collaborano con il titolare e provvedono a trattare fasi dei processi necessari al corretto espletamento delle sue attività,</li>
+                <li>soggetti terzi per adempiere ad obblighi di legge o per ottemperare ad ordini provenienti da pubbliche autorità, inclusa l’autorità giudiziaria, e/o per tutelare i diritti del titolare o dei terzi ai sensi di legge.</li>
+            </ul>
+
+            <h3>PERIODO DI CONSERVAZIONE</h3>
+            <p>
+                I tuoi dati del profilo e i tuoi dati delle attività saranno conservati per il tempo massimo entro il quale potranno essere fatti valere diritti in relazione alle attività da te svolte utilizzando i servizi e (se prima di questa scadenza verranno fatti valere tali diritti da te o da terzi) per l‘eventuale tempo ulteriore necessario per utilizzare i dati per tutelare i diritti tuoi, del titolare e/o di terzi.
+            </p>
+            <p>
+                I tuoi dati di contatto e le comunicazioni saranno conservati per il tempo necessario per far fronte alla tua richiesta e per l‘eventuale tempo ulteriore necessario per utilizzare i dati per tutelare i diritti tuoi, del titolare e/o di terzi.
+            </p>
+            <p>
+                I tuoi dati di navigazione saranno conservati per massimo 1 anno.
+            </p>
+
+            <h3>DIRITTI</h3>
+            <p>
+                Ti ricordiamo che, ai sensi del Regolamento, hai diritto:
+            </p>
+            <ul>
+                <li>di chiedere l’accesso ai tuoi dati personali ai sensi dell’articolo 15 del Regolamento,</li>
+                <li>di chiedere la rettifica dei tuoi dati personali ai sensi dell’articolo 16 del Regolamento,</li>
+                <li>di chiedere la cancellazione dei tuoi dati personali ai sensi dell’articolo 17 del Regolamento,</li>
+                <li>di chiedere la limitazione del trattamento dei tuoi dati personali ai sensi dell’articolo 18 del Regolamento,</li>
+                <li>di opporti al trattamento dei tuoi dati personali che sono trattati in base all’articolo  6, paragrafo 1, lettera f), del Regolamento ai sensi dell’articolo 21 del Regolamento ,</li>
+                <li>alla portabilità dei tuoi dati personali ai sensi dell’articolo 20 del Regolamento,</li>
+                <li>di proporre reclamo al Garante della Privacy italiano ai sensi dell’articolo 77 del Regolamento.</li>
+            </ul>
+
+            <h3>EFFETTI DELLA MANCATA COMUNICAZIONE AL TITOLARE</h3>
+            <p>
+                La comunicazione dei dati del profilo è un requisito necessario per concludere il contratto di registrazione e se non fornisci i dati del profilo non potrai registrarti.
+            </p>
+
+            <h3>INFORMAZIONI SUI COOKIE</h3>
+            <p>
+                Puoi controllare e/o sopprimere i cookie a piacimento – per saperne di più, consulta il sito http://www.allaboutcookies.org/.
+            </p>
+            <p>
+                Puoi selezionare quali cookie autorizzare attraverso l’apposita procedura di seguito prevista, nonchè  cancellare i cookie già presenti sul tuo dispositivo e impostare la maggior parte dei browser in modo da bloccarne l'installazione.
+            </p>
+            <p>
+                La maggior parte dei browser consente di:
+            </p>
+            <ul>
+                <li>visualizzare i cookie presenti e cancellarli singolarmente,</li>
+                <li>bloccare i cookie di terze parti,</li>
+                <li>bloccare i cookie di particolari siti,</li>
+                <li>bloccare l'installazione di tutti i cookie,</li>
+                <li>cancellare tutti i cookie alla chiusura del browser.</li>
+            </ul>
+            <p>
+                Per avere maggiori informazioni su come impostare le preferenze sull’uso dei cookie attraverso il tuo browser di navigazione, puoi consultare le relative istruzioni:
+            </p>
+            <ul>
+                <li><a href="https://support.google.com/chrome/answer/95647?hl=it&topic=14666&ctx=topic">Chrome</a></li>
+                <li><a href="https://support.mozilla.org/it/kb/Attivare%20e%20disattivare%20i%20cookie">Firefox</a></li>
+                <li><a href="https://support.microsoft.com/en-us/help/17442/windows-internet-explorer-delete-manage-cookies">Internet Explorer</a></li>
+                <li><a href="http://www.opera.com/help/tutorials/security/cookies/">Opera</a></li>
+                <li><a href="http://support.apple.com/kb/PH17191?viewlocale=it_IT">Safari</a></li>
+            </ul>
+            <p>
+                Se scegli di cancellare o non autorizzare
+            </p>
+            <ul>
+                <li>i cookie tecnici, ti potrebbe essere impossibile utilizzare il sito, visionarne i contenuti ed usufruire dei relativi servizi,</li>
+                <li>i cookie di terze parti alcuni servizi o determinate funzioni del sito potrebbero non esserti disponibili o non funzionare correttamente.</li>
+            </ul>
+
+            <h3>SERVIZI DI TERZI CHE INSTALLANO COOKIE</h3>
+            <p>
+                Utilizziamo i seguenti servizi che installano cookie per trattare i tuoi dati.
+            </p>
+            <p>
+                <strong>Servizio Mapbox</strong> - Servizio di visualizzazione di mappe fornito da Mapbox inc. che utilizza cookie e permette a Mapbox inc. di raccogliere, conservare e trattare dati d'utilizzo del servizio secondo i termini della sua Privacy Policy (https://www.mapbox.com/privacy/).
+            </p>
+
+            <br><br><br>
 
             <h1>CONDIZIONI DI UTILIZZO</h1>
 
@@ -182,7 +280,7 @@
                     {{ App\Config::getConf('powered_by') }} si riserva il diritto di rimuovere immediatamente, senza alcun avviso, inserzioni lesive di cui ai precedenti punti. L'inserzionista esonera {{ App\Config::getConf('powered_by') }} da qualsivoglia responsabilità, civile, amministrativa, penale conseguente dalla pubblicazione di annunci lesivi ai sensi delle presenti condizioni.
                 </li>
             </ol>
-             
+
             <h2>7 – DISPOSIZIONI FINALI E FORO COMPETENTE</h2>
             <p>
                 {{ App\Config::getConf('powered_by') }} si riserva, in ogni tempo, il diritto di revocare, disattivare o modificare, in via temporanea o definitiva, la fornitura del presente servizio nonché di cancellare ed editare le inserzioni degli utenti secondo criteri discrezionali ed insindacabili, senza preavviso all’Utente e senza indicarne le cause.<br/>
