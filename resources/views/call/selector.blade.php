@@ -1,4 +1,6 @@
-@if(App\Call::where('status', 'open')->where('type', $call_type)->count() > 0)
+<?php $call_query = App\Call::where('status', 'open')->where('type', $call_type)->where('when', '>=', date('Y-m-d')) ?>
+
+@if($call_query->count() > 0)
     <br/>
     <p>Seleziona, eventualmente, l'appello a cui stai rispondendo con questa donazione:</p>
 
@@ -9,7 +11,7 @@
         </label>
     </div>
 
-    @foreach(App\Call::where('status', 'open')->where('type', $call_type)->get() as $iter_call)
+    @foreach($call_query->get() as $iter_call)
         <div class="radio">
             <label>
                 <input type="radio" name="call_id" value="{{ $iter_call->id }}" {{ $call && $call->id == $iter_call->id ? 'checked' : '' }}>
