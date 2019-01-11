@@ -44,14 +44,7 @@ else
 <div class="row new-donation-form primary-1">
     {!! BootForm::vertical(['model' => $donation, 'store' => 'DonationController@store', 'update' => 'DonationController@update', 'enctype' => 'multipart/form-data']) !!}
         <div class="col-md-12">
-            @if($call != null)
-                <br/>
-                <div class="alert alert-info">
-                    <input type="hidden" name="call_id" value="{{ $call->id }}">
-                    <p>Stai rispondendo all'appello "{{ $call->title }}" di {{ printableDate($call->created_at) }}</p>
-                </div>
-                <br/>
-            @endif
+            @include('call.selector', ['call' => $call, 'donation' => $donation, 'call_type' => 'service'])
 
             <input type="hidden" name="type" value="service">
 
