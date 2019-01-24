@@ -426,7 +426,7 @@ class DonationController extends Controller
             */
             if ($donation->type == 'object') {
                 $donation->status = 'assigned';
-                Mail::to($donation->email)->send(new DonationAssigned($donation, $user->institutes->first()));
+                Mail::to($donation->email)->send(new DonationAssigned($donation, $user, $user->institutes->first()));
                 Session::flash('message', 'Donazione assegnata. È stata inviata una mail al donatore per avere informazioni sul ritiro.');
 
                 if ($request->has('shipping')) {

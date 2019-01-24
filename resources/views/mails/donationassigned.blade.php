@@ -6,5 +6,5 @@
     !
 </p>
 <p>
-    Verrai a breve contattato per avere maggiori informazioni sul recupero.
+    Verrai a breve contattato per avere maggiori informazioni sul recupero. Per informazioni e contatti, scrivi all'indirizzo {{ $user->email }}.
 </p>
