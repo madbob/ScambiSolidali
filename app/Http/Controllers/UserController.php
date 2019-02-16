@@ -12,15 +12,22 @@ use Log;
 use App\Mail\NewUserCreated;
 use App\User;
 use App\Institute;
+use App\Company;
 use App\Receiver;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index']);
+    }
+
     public function index()
     {
         $user = Auth::user();
 
         $institutes = Institute::orderBy('name', 'asc')->get();
+        $companies = Company::orderBy('name', 'asc')->get();
 
         if ($user && $user->role == 'admin') {
             $users = User::orderBy('surname', 'asc')->get();
@@ -38,6 +45,7 @@ class UserController extends Controller
         return view('pages.players', [
             'user' => $user,
             'institutes' => $institutes,
+            'companies' => $companies,
             'users' => $users,
             'admins_count' => $admins_count,
             'users_count' => $users_count,
@@ -47,6 +55,11 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
+        $user = Auth::user();
+        if ($user->role != 'admin') {
+            return redirect(url('/'));
+        }
+
         $this->validate($request, [
             'name' => 'required|max:255',
             'surname' => 'required|max:255',
@@ -111,6 +124,7 @@ class UserController extends Controller
         $user->save();
 
         $user->institutes()->sync($request->input('institutes', []));
+        $user->companies()->sync($request->input('companies', []));
 
         Session::flash('message', 'Utente salvato');
         return redirect(url('giocatori'));
@@ -133,6 +147,11 @@ class UserController extends Controller
 
     public function massiveMail(Request $request)
     {
+        $user = Auth::user();
+        if ($user->role != 'admin') {
+            return redirect(url('/'));
+        }
+
         $recipients = $request->input('recipients');
         $subject = $request->input('subject');
         $body = $request->input('body');

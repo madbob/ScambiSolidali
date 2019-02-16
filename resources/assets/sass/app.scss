@@ -850,3 +850,13 @@ $half: round($loops / 2);
         background-image: linear-gradient($nextdeg, #00BFE3 50%, transparent 50%, transparent), linear-gradient(270deg, #00BFE3 50%, #FFF 50%, #FFF);
     }
 }
+
+/********************************* FORM MOBILE */
+
+.mini-layout {
+    .list-group {
+        .list-group-item {
+            padding: 15px 25px;
+        }
+    }
+}

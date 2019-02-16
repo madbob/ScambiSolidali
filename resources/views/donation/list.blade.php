@@ -23,6 +23,10 @@
                     <a href="{{ url('/celo/archivio') }}" class="btn btn-default">
                         <span>Vedi Archivio Completo</span>
                     </a>
+
+                    <a href="{{ url('/periodico') }}" class="btn btn-default">
+                        <span>Donazioni Periodiche</span>
+                    </a>
                 @endif
 
                 @include('category.filter', ['filter' => $filter, 'endpoint' => 'celo'])

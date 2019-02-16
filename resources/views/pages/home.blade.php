@@ -3,6 +3,17 @@
 @section('title', 'Homepage')
 
 @section('content')
+    @if($currentuser)
+        @foreach($currentuser->companies as $company)
+            @foreach($company->recurrings()->where('closed', false)->where('filled', false)->get() as $recurring)
+                <div class="alert alert-info">
+                    Devi ancora compilare la scheda di donazione {{ $recurring->company->donation_frequency == 'weekly' ? 'settimanale' : 'mensile' }} per {{ $recurring->company->name }}!<br>
+                    <a href="{{ $recurring->link }}">Clicca qui per procedere!</a>.
+                </div>
+            @endforeach
+        @endforeach
+    @endif
+
     <div class="home">
         <div class="row primary-3">
             <div class="col-md-12 bg-color header-claim">

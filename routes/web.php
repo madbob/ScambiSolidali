@@ -50,6 +50,8 @@ Route::resource('/parlano-di-noi', 'MediaController');
 Route::resource('/storie', 'StoryController');
 Route::resource('/archivio', 'ArchiveController');
 Route::resource('/ente', 'InstituteController');
+Route::resource('/azienda', 'CompanyController');
 Route::resource('/manca', 'CallController');
+Route::resource('/periodico', 'RecurringController');
 
 Auth::routes();

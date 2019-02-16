@@ -29,6 +29,11 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Institute');
     }
 
+    public function companies()
+    {
+        return $this->belongsToMany('App\Company');
+    }
+
     public function lastDonation()
     {
         return $this->donations()->orderBy('created_at', 'desc')->first();
@@ -53,6 +58,10 @@ class User extends Authenticatable
         switch($this->role) {
             case 'user':
                 return 'Utente';
+            case 'weekly_donor':
+                return 'Donatore Settimanale';
+            case 'monthly_donor':
+                return 'Donatore Mensile';
             case 'operator':
                 return 'Operatore';
             case 'admin':

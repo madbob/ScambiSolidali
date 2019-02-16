@@ -164,18 +164,6 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
-         * Package Service Providers...
-         */
-
-        Collective\Html\HtmlServiceProvider::class,
-        Watson\BootstrapForm\BootstrapFormServiceProvider::class,
-        Jenssegers\Date\DateServiceProvider::class,
-        Devfactory\Minify\MinifyServiceProvider::class,
-        Barryvdh\Debugbar\ServiceProvider::class,
-
-        //
-
-        /*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
@@ -231,14 +219,6 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
-        'Form' => Collective\Html\FormFacade::class,
-        'HTML' => Collective\Html\HtmlFacade::class,
-        'BootForm' => Watson\BootstrapForm\Facades\BootstrapForm::class,
-        'Uuid' => Webpatser\Uuid\Uuid::class,
-        'Date' => Jenssegers\Date\Date::class,
-        'Minify' => Devfactory\Minify\Facades\MinifyFacade::class,
-        'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];

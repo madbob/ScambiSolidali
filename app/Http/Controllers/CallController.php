@@ -13,6 +13,11 @@ use App\Category;
 
 class CallController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+
     public function index(Request $request)
     {
         $user = Auth::user();

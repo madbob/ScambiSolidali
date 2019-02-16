@@ -7,12 +7,6 @@ use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
 {
-    protected $commands = [
-        \App\Console\Commands\CheckExpired::class,
-        \App\Console\Commands\CleanConfig::class,
-        \App\Console\Commands\ResetPassword::class
-    ];
-
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('check:expired')->daily();
@@ -20,6 +14,6 @@ class Kernel extends ConsoleKernel
 
     protected function commands()
     {
-        require base_path('routes/console.php');
+        $this->load(__DIR__.'/Commands');
     }
 }

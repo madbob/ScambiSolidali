@@ -1,17 +1,17 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
-    "license": "MIT",
+    "name": "madbob/ScambiSolidali",
+    "description": "CeloCelo",
+    "keywords": ["economia solidale", "donazioni"],
+    "license": "AGPL-3.0-or-later",
     "type": "project",
     "require": {
-        "php": ">=5.6.4",
-        "laravel/framework": "5.3.*",
-        "watson/bootstrap-form": "^1.0",
+        "php": ">=7.0.0",
+        "laravel/framework": "5.5.*",
+        "watson/bootstrap-form": "^1.1",
         "webpatser/laravel-uuid": "2.*",
-        "jenssegers/date": "^3.2",
+        "jenssegers/date": "^3.4",
         "aws/aws-sdk-php": "^3.20",
-        "devfactory/minify": "^1.0",
+        "nickdekruijk/minify": "1.1.*",
         "diversen/image-auto-rotate": "^1.0",
         "barryvdh/laravel-debugbar": "^2.4",
         "madbob/laravel-log2rss": "^0.1.0"
@@ -19,9 +19,10 @@
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~5.0",
+        "phpunit/phpunit": "~6.0",
         "symfony/css-selector": "3.1.*",
-        "symfony/dom-crawler": "3.1.*"
+        "symfony/dom-crawler": "3.1.*",
+        "filp/whoops": "~2.0"
     },
     "autoload": {
         "classmap": [
@@ -31,7 +32,8 @@
             "App\\": "app/"
         },
         "files": [
-            "app/Helpers/dates.php"
+            "app/Helpers/dates.php",
+            "app/Helpers/formats.php"
         ]
     },
     "autoload-dev": {
@@ -53,6 +55,10 @@
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
             "php artisan optimize"
+        ],
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover"
         ]
     },
     "config": {

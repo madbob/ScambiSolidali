@@ -22,13 +22,26 @@
                             ]) !!}
 
                             <?php
+
                                 $institutes = [];
                                 foreach(App\Institute::orderBy('name', 'asc')->get() as $institute)
-                                $institutes[$institute->id] = $institute->name;
+                                    $institutes[$institute->id] = $institute->name;
+
+                                $companies = [];
+                                foreach(App\Company::orderBy('name', 'asc')->get() as $company)
+                                    $companies[$company->id] = $company->name;
+
                             ?>
 
                             @if(!empty($institutes))
                                 {!! BootForm::checkboxes('institutes[]', 'Affiliazioni', $institutes, $user ? $user->institutes->reduce(function($carry, $item) {
+                                    $carry[] = $item->id;
+                                    return $carry;
+                                }, []) : []) !!}
+                            @endif
+
+                            @if(!empty($companies))
+                                {!! BootForm::checkboxes('companies[]', 'Aziende', $companies, $user ? $user->companies->reduce(function($carry, $item) {
                                     $carry[] = $item->id;
                                     return $carry;
                                 }, []) : []) !!}

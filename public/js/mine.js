@@ -295,5 +295,65 @@ $(document).ready(function() {
         });
     }
 
+    $('.checklist-filling-row.boolean-select').on('change', 'input:radio', function() {
+        var row = $(this).closest('li');
+        var button = $(this).closest('.btn');
+
+        var selected = $(this).val();
+        if (selected == 'true') {
+            row.removeClass('list-group-item-danger').addClass('list-group-item-success');
+            button.removeClass('btn-light').addClass('btn-success');
+            button.siblings('.btn').removeClass('btn-danger').addClass('btn-light');
+        }
+        else {
+            row.removeClass('list-group-item-success').addClass('list-group-item-danger');
+            button.removeClass('btn-light').addClass('btn-danger');
+            button.siblings('.btn').removeClass('btn-success').addClass('btn-light');
+        }
+    });
+
+    $('.checklist-filling-row.quantity-select').on('change', 'input:radio', function() {
+        $(this).closest('li').removeClass('list-group-item-danger').addClass('list-group-item-success');
+
+        var button = $(this).closest('.btn');
+        button.removeClass('btn-light').addClass('btn-success');
+        button.siblings('.btn').removeClass('btn-success').addClass('btn-light');
+    });
+
+    $('.checklist-filling-row.types-select').on('click', '.add-type', function(e) {
+        e.preventDefault();
+        var row = $(this).closest('li').find('.row').first();
+        row.find('.custom-quantity').empty();
+        row.find('select.type-select').find('option').first().prop('checked', true);
+        $(this).closest('.row').before(row);
+    })
+    .on('change', 'select.type-select', function() {
+        var selected = $(this).val();
+
+        var custom = $(this).closest('.row').find('.custom-quantity');
+        custom.empty();
+
+        var html = '';
+
+        /*
+            L'array selectable_categories deve essere nel template, generato a
+            partire dai contenuti di App\Recurring::categories()
+        */
+        for(var i = 0; i < selectable_categories.length; i++) {
+            var a = selectable_categories[i];
+            if (a.label == selected) {
+                if (a.quantity_type == 'numeric') {
+                    html = '<div class="input-group">\
+                        <input type="number" class="form-control" name="quantity[]">\
+                        <div class="input-group-addon">' + a.unit_measure + '</div>\
+                    </div>';
+                }
+                break;
+            }
+        }
+
+        custom.append(html);
+    });
+
     commonInit();
 });

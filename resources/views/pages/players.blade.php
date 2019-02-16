@@ -17,6 +17,12 @@
                         @if($user->role == 'admin')
                             <li role="presentation">
                                 <span>
+                                    <a href="#companies" aria-controls="companies" role="tab" data-toggle="tab">Aziende</a>
+                                </span>
+                            </li>
+
+                            <li role="presentation">
+                                <span>
                                     <a href="#users" aria-controls="users" role="tab" data-toggle="tab">Utenti</a>
                                 </span>
                             </li>
@@ -99,7 +105,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <button class="btn btn-default button" data-toggle="modal" data-target="#institute-new">
-                                        <span>Aggiungi Ente</span>
+                                        <span>Aggiungi Associazione</span>
                                     </button>
                                     @include('institute.modal', ['institute' => null])
                                 </div>
@@ -110,15 +116,50 @@
             </div>
 
             @if($user && $user->role == 'admin')
+                <div role="tabpanel" class="tab-pane" id="companies">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="btn btn-default button" data-toggle="modal" data-target="#company-new">
+                                <span>Crea Nuova Azienda</span>
+                            </button>
+                            @include('company.modal', ['company' => null])
+                        </div>
+                    </div>
+
+                    <table class="table users-list">
+        				<thead>
+        					<tr>
+        						<th>Nome</th>
+                                <th>Utenti</th>
+                                <th>Azioni</th>
+        					</tr>
+        				</thead>
+        				<tbody>
+        					@foreach($companies as $c)
+                                <tr>
+        							<td>{{ $c->name }}</td>
+                                    <td>
+                                        {{ join(', ', $c->users->reduce(function($carry, $item) {
+                                            $carry[] = $item->printableName();
+                                            return $carry;
+                                        }, [])) }}
+                                    </td>
+                                    <td><button class="btn btn-default show-details" data-endpoint="azienda" data-item-id="{{ $c->id }}"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button></td>
+        						</tr>
+        					@endforeach
+        				</tbody>
+        			</table>
+                </div>
+
                 <div role="tabpanel" class="tab-pane" id="users">
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-6">
                             <button class="btn btn-default button" data-toggle="modal" data-target="#user-new">
                                 <span>Crea Nuovo Utente</span>
                             </button>
                             @include('user.modal', ['user' => null])
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-6">
                             <button class="btn btn-default button" data-toggle="modal" data-target="#massive-mail">
                                 <span>Invia Mail</span>
                             </button>
@@ -159,7 +200,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="btn-group pull-right" role="group" data-toggle="buttons">
                                 <label class="btn btn-default active">
                                     <input type="radio" name="role-filter" data-role="all" autocomplete="off" checked> Tutti

@@ -11,19 +11,9 @@ use App\Institute;
 
 class InstituteController extends Controller
 {
-    private function normalizeUrl($input)
+    public function __construct()
     {
-        if (empty($input))
-            return $input;
-
-        $normalized = '';
-
-        $url = parse_url($input);
-        if (isset($url['scheme']) == false) {
-            $normalized = 'http://';
-        }
-
-        return $normalized . $input;
+        $this->middleware('auth');
     }
 
     public function store(Request $request)
@@ -43,7 +33,7 @@ class InstituteController extends Controller
         $institute = new Institute();
         $institute->name = $request->input('name');
         $institute->code = $request->input('code');
-        $institute->website = $this->normalizeUrl($request->input('website'));
+        $institute->website = normalizeUrl($request->input('website'));
         $institute->address = $request->input('address');
         $coordinates = explode(',', $request->input('coordinates'));
         $institute->lat = $coordinates[0];
@@ -80,7 +70,7 @@ class InstituteController extends Controller
 
         $institute = Institute::find($id);
         $institute->name = $request->input('name');
-        $institute->website = $this->normalizeUrl($request->input('website'));
+        $institute->website = normalizeUrl($request->input('website'));
         $institute->address = $request->input('address');
         $coordinates = explode(',', $request->input('coordinates'));
         $institute->lat = $coordinates[0];
