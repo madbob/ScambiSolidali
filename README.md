@@ -1,7 +1,7 @@
-## Scambi Solidali
+## CeloCelo
 
-**Scambi Solidali** è una piattaforma per la raccolta e l'assegnazione di
-donazioni di beni e servizi.
+**CeloCelo** è una piattaforma per la raccolta e l'assegnazione di donazioni di
+beni e servizi.
 
 Contrariamente a molte analoghe piattaforme, questa è pensata per collezionare
 donazioni e farle privatamente assegnare da operatori accreditati a persone in
@@ -9,7 +9,7 @@ difficoltà (la cui identità è mantenuta anonima).
 
 # Requisiti
 
-* PHP >= 5.6.4
+* PHP >= 7.0.0
 * composer ( https://getcomposer.org/ )
 * un webserver ed un database
 
@@ -35,12 +35,12 @@ nella tabella `configs`.
 
 # Storia
 
-**Scambi Solidali** è parte dell'omonimo progetto ideato e realizzato
-dall'Agenzia per lo Sviluppo Locale di San Salvario.
+**CeloCelo** è parte dell'omonimo progetto ideato e realizzato dall'Agenzia per
+lo Sviluppo Locale di San Salvario.
 
 # Licenza
 
-**Scambi Solidali** è distribuito in licenza AGPLv3.
+**CeloCelo** è distribuito in licenza AGPLv3.
 
 Copyright (C) 2016 Roberto Guido <info@madbob.org>.
 
