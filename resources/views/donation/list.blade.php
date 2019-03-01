@@ -87,10 +87,10 @@
                             <div class="col-md-5">
                                 <a href="{{ url('celo/nuovo/oggetto') }}">
                                     <div class="common-card">
-                                        <div class="card-main image-frame empty" style="background-image: url('{{ url('images/oggetti-filled.svg') }}')">
+                                        <div class="card-main image-frame" style="background-image: url('{{ url('images/oggetti.svg') }}')">
                                             &nbsp;
                                         </div>
-                                        <div class="card-footer vert-align">
+                                        <div class="card-footer vert-align filled">
                                             <p>
                                                 Dona un oggetto
                                             </p>

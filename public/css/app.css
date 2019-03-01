@@ -5943,7 +5943,8 @@ button.close {
   .primary-1 .common-card .card-main-filter {
     background-color: #00E4E4; }
   .primary-1 .common-card .card-footer.filled {
-    background-color: #00E4E4; }
+    background-color: #00E4E4;
+    font-weight: 600; }
     .primary-1 .common-card .card-footer.filled p {
       color: #FFF; }
 
@@ -6054,7 +6055,8 @@ button.close {
   .primary-2 .common-card .card-main-filter {
     background-color: #00BFE3; }
   .primary-2 .common-card .card-footer.filled {
-    background-color: #00BFE3; }
+    background-color: #00BFE3;
+    font-weight: 600; }
     .primary-2 .common-card .card-footer.filled p {
       color: #FFF; }
 
@@ -6165,7 +6167,8 @@ button.close {
   .primary-3 .common-card .card-main-filter {
     background-color: #00DDB2; }
   .primary-3 .common-card .card-footer.filled {
-    background-color: #00DDB2; }
+    background-color: #00DDB2;
+    font-weight: 600; }
     .primary-3 .common-card .card-footer.filled p {
       color: #FFF; }
 
@@ -6276,7 +6279,8 @@ button.close {
   .primary-4 .common-card .card-main-filter {
     background-color: #DDD; }
   .primary-4 .common-card .card-footer.filled {
-    background-color: #DDD; }
+    background-color: #DDD;
+    font-weight: 600; }
     .primary-4 .common-card .card-footer.filled p {
       color: #FFF; }
 
@@ -6387,7 +6391,8 @@ button.close {
   .primary-5 .common-card .card-main-filter {
     background-color: #000; }
   .primary-5 .common-card .card-footer.filled {
-    background-color: #000; }
+    background-color: #000;
+    font-weight: 600; }
     .primary-5 .common-card .card-footer.filled p {
       color: #FFF; }
 
