@@ -16,6 +16,18 @@ class InstituteController extends Controller
         $this->middleware('auth');
     }
 
+    private function fromRequest($institute, $request)
+    {
+        $institute->name = $request->input('name');
+        $institute->food = $request->has('food');
+        $institute->website = normalizeUrl($request->input('website'));
+        $institute->address = $request->input('address');
+        $coordinates = explode(',', $request->input('coordinates'));
+        $institute->lat = $coordinates[0];
+        $institute->lng = $coordinates[1];
+        return $institute;
+    }
+
     public function store(Request $request)
     {
         $user = Auth::user();
@@ -31,13 +43,8 @@ class InstituteController extends Controller
         ]);
 
         $institute = new Institute();
-        $institute->name = $request->input('name');
+        $institute = $this->fromRequest($institute, $request);
         $institute->code = $request->input('code');
-        $institute->website = normalizeUrl($request->input('website'));
-        $institute->address = $request->input('address');
-        $coordinates = explode(',', $request->input('coordinates'));
-        $institute->lat = $coordinates[0];
-        $institute->lng = $coordinates[1];
         $institute->save();
 
         Session::flash('message', 'Nuovo ente salvato. Gli operatori devono registrarsi usando il codice ' . $institute->code);
@@ -69,12 +76,7 @@ class InstituteController extends Controller
         ]);
 
         $institute = Institute::find($id);
-        $institute->name = $request->input('name');
-        $institute->website = normalizeUrl($request->input('website'));
-        $institute->address = $request->input('address');
-        $coordinates = explode(',', $request->input('coordinates'));
-        $institute->lat = $coordinates[0];
-        $institute->lng = $coordinates[1];
+        $institute = $this->fromRequest($institute, $request);
         $institute->save();
 
         Session::flash('message', 'Ente salvato');

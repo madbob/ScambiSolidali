@@ -3,7 +3,7 @@
 @section('content')
 
 <script>
-var selectable_categories = {{ json_encode(App\Recurring::categories()) }};
+var selectable_categories = {!! json_encode(App\Recurring::categories()) !!};
 </script>
 
 @if($call->filled)
@@ -15,7 +15,7 @@ var selectable_categories = {{ json_encode(App\Recurring::categories()) }};
 <form method="POST" action="{{ route('periodico.store') }}">
     {{ csrf_field() }}
     <input type="hidden" name="token" value="{{ $call->identifier }}">
-    <input type="hidden" name="type" value="{{ $call->company->donation_frequency }}">
+    <input type="hidden" name="recurring_type" value="{{ $call->company->donation_frequency }}">
 
     <ul class="list-group">
         <li class="list-group-item list-group-item-danger checklist-filling-row boolean-select">
@@ -56,21 +56,25 @@ var selectable_categories = {{ json_encode(App\Recurring::categories()) }};
         @elseif($call->company->donation_frequency == 'monthly')
             <li class="list-group-item list-group-item-danger checklist-filling-row types-select">
                 <div class="row">
-                    <div class="col-md-6">
-                        <select name="type[]" class="form-control type-select">
-                            <option value="no">Seleziona una Categoria</option>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th width="30%">Categoria</th>
+                                <th width="70%">Chili/Litri</th>
+                            </tr>
+                        </thead>
+                        <tbody>
                             @foreach(App\Recurring::categories() as $cat)
-                                <option value="{{ $cat->label }}">{{ $cat->label }}</option>
+                                <tr>
+                                    <td>{{ $cat->label }}</td>
+                                    <td>
+                                        <input type="hidden" name="type[]" value="{{ $cat->identifier }}">
+                                        <input type="number" class="form-control" name="quantity[]" value="0">
+                                    </td>
+                                </tr>
                             @endforeach
-                        </select>
-                    </div>
-                    <div class="col-md-6 custom-quantity">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <button class="btn btn-success add-type">Aggiungi</button>
-                    </div>
+                        </tbody>
+                    </table>
                 </div>
             </li>
         @endif

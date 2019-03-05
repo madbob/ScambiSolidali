@@ -44,6 +44,11 @@ Route::post('/register/operator', 'Auth\RegisterController@postRegisterOp');
 
 Route::post('/giocatori/mail', 'UserController@massiveMail')->name('giocatori.mail');
 
+Route::get('/periodico/prenota', 'RecurringController@booking')->name('periodico.prenota');
+Route::post('/periodico/prenota', 'RecurringController@saveBooking')->name('periodico.prenotazione');
+Route::post('/periodico/reset/weekly', 'RecurringController@resetWeekly')->name('periodico.reset_weekly');
+Route::post('/periodico/reset/monthly', 'RecurringController@resetMonthly')->name('periodico.reset_monthly');
+
 Route::resource('/celo', 'DonationController');
 Route::resource('/giocatori', 'UserController');
 Route::resource('/parlano-di-noi', 'MediaController');

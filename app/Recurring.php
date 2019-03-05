@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 use Log;
 
+use App\RecurringPick;
+
 class Recurring extends Model
 {
     private $obj_contents = null;
@@ -81,6 +83,10 @@ class Recurring extends Model
             $recurring->identifier = str_random(50);
             $recurring->contents = '';
             $recurring->save();
+
+            /*
+                TODO Inviare notifiche
+            */
         }
     }
 
@@ -101,20 +107,33 @@ class Recurring extends Model
         return [
             (object) [
                 'label' => 'Pasta',
+                'identifier' => 'pasta',
                 'quantity_type' => 'numeric',
                 'unit_measure' => 'Chili'
             ],
             (object) [
                 'label' => 'Zucchero',
+                'identifier' => 'zucchero',
                 'quantity_type' => 'numeric',
                 'unit_measure' => 'Chili'
             ],
             (object) [
                 'label' => 'Caffé',
+                'identifier' => 'caffe',
                 'quantity_type' => 'numeric',
                 'unit_measure' => 'Chili'
             ],
         ];
+    }
+
+    public static function categoriesLabels()
+    {
+        $ret = [];
+
+        foreach(self::categories() as $c)
+            $ret[$c->identifier] = $c->label;
+
+        return $ret;
     }
 
     public static function printableCategoryQuantity($product, $quantity)
@@ -122,13 +141,43 @@ class Recurring extends Model
         $cats = self::categories();
 
         foreach($cats as $c) {
-            if ($c->label == $product) {
-                if ($c->numeric)
+            if ($c->identifier == $product) {
+                if ($c->quantity_type == 'numeric')
                     return sprintf('%s %s', $quantity, $c->unit_measure);
             }
         }
 
         Log::error('Categoria donazione ricorrente non identificata: ' . $product);
         return '';
+    }
+
+    public static function buildMonthlyData()
+    {
+        $collective_month = [];
+        foreach(self::categories() as $cat) {
+            $collective_month[$cat->identifier] = (object) [
+                'label' => $cat->label,
+                'donated' => 0,
+                'required' => 0
+            ];
+        }
+
+        $monthly = Recurring::monthly()->where('closed', false)->get();
+        foreach($monthly as $donation) {
+            if ($donation->status == 'ok') {
+                foreach($donation->data->quantities as $q) {
+                    $collective_month[$q->type]->donated += $q->quantity;
+                }
+            }
+        }
+
+        $picks = RecurringPick::where('closed', false)->get();
+        foreach($picks as $request) {
+            foreach($request->data->quantities as $q) {
+                $collective_month[$q->type]->required += $q->quantity;
+            }
+        }
+
+        return $collective_month;
     }
 }

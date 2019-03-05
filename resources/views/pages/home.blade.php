@@ -4,14 +4,27 @@
 
 @section('content')
     @if($currentuser)
-        @foreach($currentuser->companies as $company)
-            @foreach($company->recurrings()->where('closed', false)->where('filled', false)->get() as $recurring)
-                <div class="alert alert-info">
-                    Devi ancora compilare la scheda di donazione {{ $recurring->company->donation_frequency == 'weekly' ? 'settimanale' : 'mensile' }} per {{ $recurring->company->name }}!<br>
-                    <a href="{{ $recurring->link }}">Clicca qui per procedere!</a>.
-                </div>
+        @if(env('HAS_FOOD', false))
+            @foreach($currentuser->companies as $company)
+                @foreach($company->recurrings()->where('closed', false)->where('filled', false)->get() as $recurring)
+                    <div class="alert alert-info">
+                        Devi ancora compilare la scheda di donazione {{ $recurring->company->donation_frequency == 'weekly' ? 'settimanale' : 'mensile' }} per {{ $recurring->company->name }}!<br>
+                        <a href="{{ $recurring->link }}">Clicca qui per procedere!</a>
+                    </div>
+                @endforeach
             @endforeach
-        @endforeach
+
+            @if(App\Recurring::monthly()->where('closed', false)->count() != 0)
+                @foreach($currentuser->institutes()->where('food', true)->get() as $institute)
+                    @if($institute->currentRecurringPick() == null)
+                        <div class="alert alert-info">
+                            Devi ancora compilare la scheda di prenotazione mensile per {{ $institute->name }}!<br>
+                            <a href="{{ route('periodico.prenota') }}">Clicca qui per procedere!</a>
+                        </div>
+                    @endif
+                @endforeach
+            @endif
+        @endif
     @endif
 
     <div class="home">

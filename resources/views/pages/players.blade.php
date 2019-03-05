@@ -15,11 +15,13 @@
                         </li>
 
                         @if($user->role == 'admin')
-                            <li role="presentation">
-                                <span>
-                                    <a href="#companies" aria-controls="companies" role="tab" data-toggle="tab">Aziende</a>
-                                </span>
-                            </li>
+                            @if(env('HAS_FOOD', false))
+                                <li role="presentation">
+                                    <span>
+                                        <a href="#companies" aria-controls="companies" role="tab" data-toggle="tab">Aziende</a>
+                                    </span>
+                                </li>
+                            @endif
 
                             <li role="presentation">
                                 <span>
@@ -116,40 +118,42 @@
             </div>
 
             @if($user && $user->role == 'admin')
-                <div role="tabpanel" class="tab-pane" id="companies">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <button class="btn btn-default button" data-toggle="modal" data-target="#company-new">
-                                <span>Crea Nuova Azienda</span>
-                            </button>
-                            @include('company.modal', ['company' => null])
+                @if(env('HAS_FOOD', false))
+                    <div role="tabpanel" class="tab-pane" id="companies">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button class="btn btn-default button" data-toggle="modal" data-target="#company-new">
+                                    <span>Crea Nuova Azienda</span>
+                                </button>
+                                @include('company.modal', ['company' => null])
+                            </div>
                         </div>
-                    </div>
 
-                    <table class="table users-list">
-        				<thead>
-        					<tr>
-        						<th>Nome</th>
-                                <th>Utenti</th>
-                                <th>Azioni</th>
-        					</tr>
-        				</thead>
-        				<tbody>
-        					@foreach($companies as $c)
-                                <tr>
-        							<td>{{ $c->name }}</td>
-                                    <td>
-                                        {{ join(', ', $c->users->reduce(function($carry, $item) {
-                                            $carry[] = $item->printableName();
-                                            return $carry;
-                                        }, [])) }}
-                                    </td>
-                                    <td><button class="btn btn-default show-details" data-endpoint="azienda" data-item-id="{{ $c->id }}"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button></td>
-        						</tr>
-        					@endforeach
-        				</tbody>
-        			</table>
-                </div>
+                        <table class="table users-list">
+            				<thead>
+            					<tr>
+            						<th>Nome</th>
+                                    <th>Utenti</th>
+                                    <th>Azioni</th>
+            					</tr>
+            				</thead>
+            				<tbody>
+            					@foreach($companies as $c)
+                                    <tr>
+            							<td>{{ $c->name }}</td>
+                                        <td>
+                                            {{ join(', ', $c->users->reduce(function($carry, $item) {
+                                                $carry[] = $item->printableName();
+                                                return $carry;
+                                            }, [])) }}
+                                        </td>
+                                        <td><button class="btn btn-default show-details" data-endpoint="azienda" data-item-id="{{ $c->id }}"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button></td>
+            						</tr>
+            					@endforeach
+            				</tbody>
+            			</table>
+                    </div>
+                @endif
 
                 <div role="tabpanel" class="tab-pane" id="users">
                     <div class="row">

@@ -24,9 +24,11 @@
                         <span>Vedi Archivio Completo</span>
                     </a>
 
-                    <a href="{{ url('/periodico') }}" class="btn btn-default">
-                        <span>Donazioni Periodiche</span>
-                    </a>
+                    @if(env('HAS_FOOD', false))
+                        <a href="{{ url('/periodico') }}" class="btn btn-default">
+                            <span>Donazioni Periodiche</span>
+                        </a>
+                    @endif
                 @endif
 
                 @include('category.filter', ['filter' => $filter, 'endpoint' => 'celo'])

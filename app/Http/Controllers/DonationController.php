@@ -123,9 +123,9 @@ class DonationController extends Controller
     private function requestInDonation($donation, $request)
     {
         $donation->type = $request->input('type');
-        $donation->title = $request->input('title');
+        $donation->title = strip_tags($request->input('title'));
         $donation->category_id = $request->input('category_id', -1);
-        $donation->description = $request->input('description');
+        $donation->description = strip_tags($request->input('description'));
         $donation->size = $request->input('size', '');
         $donation->since = $request->input('since', null);
         $donation->name = $request->input('name');

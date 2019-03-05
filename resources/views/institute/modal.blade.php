@@ -13,6 +13,10 @@
                             {!! BootForm::text('name', 'Nome') !!}
                             {!! BootForm::text('website', 'Sito Web') !!}
 
+                            @if(env('HAS_FOOD', false))
+                                {!! BootForm::checkbox('food', 'Abilitato per Food') !!}
+                            @endif
+
                             <div class="form-group">
                                 <label for="address" class="control-label">Indirizzo</label>
                                 <div>

@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 
 use App\Recurring;
+use App\RecurringPick;
 
 class MonthlyRecurring extends Command
 {
@@ -18,7 +19,10 @@ class MonthlyRecurring extends Command
 
     public function handle()
     {
-        Recurring::monthly()->where('closed', false)->update(['closed' => true]);
-        Recurring::generateMonthly();
+        if(env('HAS_FOOD', false)) {
+            Recurring::monthly()->where('closed', false)->update(['closed' => true]);
+            RecurringPick::where('closed', false)->update(['closed' => true]);
+            Recurring::generateMonthly();
+        }
     }
 }
