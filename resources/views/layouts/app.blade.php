@@ -40,66 +40,75 @@
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        <img src="{{ url('images/logo.png') }}" alt="{{ config('app.name', 'Laravel') }}" class="img-responsive">
-                    </a>
-                </div>
+                <div class="row">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+                            <span class="sr-only">Toggle Navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="{{ url('/') }}">
+                            <img src="{{ url('images/logo.png') }}" alt="{{ config('app.name', 'Laravel') }}" class="img-responsive">
+                        </a>
+                    </div>
 
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
+                    <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                        <ul class="nav navbar-nav navbar-right primary-2">
+                            <li>
+                                @if (Auth::guest())
+                                    <div class="row">
+                                        <div class="col-md-6 text-right city-title">
+                                            <span class="city-name">{{ App\Config::getConf('instance_city') }}</span><br>
+                                            <small>vai su
+                                                @foreach(json_decode(App\Config::getConf('other_instance_cities')) as $city)
+                                                    <a href="{{ $city->url }}">{{ $city->name }}</a>
+                                                @endforeach
+                                            </small>
+                                        </div>
+                                        <div class="col-md-6 left-border">
+                                            <a href="{{ url('/register') }}">Registrati</a>
+                                            <a href="{{ url('/login') }}">Login</a>
+                                        </div>
+                                    </div>
+                                @else
+                                    <div class="row">
+                                        <div class="col-md-4 city-title">
+                                            <span class="city-name">{{ App\Config::getConf('instance_city') }}</span>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <span>Ciao, {{ Auth::user()->name }}</span>
+                                        </div>
+                                        <div class="col-md-4 left-border">
+                                            <a href="{{ url('/donazione/mie') }}">Il Mio Profilo</a>
+                                            <a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
 
-                    <ul class="nav navbar-nav navbar-right primary-2">
-                        <li>
-                            @if (Auth::guest())
-                                <div class="row">
-                                    <div class="col-md-6 text-right city-title">
-                                        <span class="city-name">{{ App\Config::getConf('instance_city') }}</span><br>
-                                        <small>vai su
-                                            @foreach(json_decode(App\Config::getConf('other_instance_cities')) as $city)
-                                                <a href="{{ $city->url }}">{{ $city->name }}</a>
-                                            @endforeach
-                                        </small>
+                                            <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                                {{ csrf_field() }}
+                                            </form>
+                                        </div>
                                     </div>
-                                    <div class="col-md-6 left-border">
-                                        <a href="{{ url('/register') }}">Registrati</a>
-                                        <a href="{{ url('/login') }}">Login</a>
-                                    </div>
-                                </div>
-                            @else
-                                <div class="row">
-                                    <div class="col-md-4 city-title">
-                                        <span class="city-name">{{ App\Config::getConf('instance_city') }}</span>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <span>Ciao, {{ Auth::user()->name }}</span>
-                                    </div>
-                                    <div class="col-md-4 left-border">
-                                        <a href="{{ url('/donazione/mie') }}">Il Mio Profilo</a>
-                                        <a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
-
-                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </div>
-                                </div>
-                            @endif
-                        </li>
-                    </ul>
+                                @endif
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right primary-2 visible-xs visible-sm">
+                            <li><a href="{{ url('progetto') }}">Progetto</a></li>
+                            <li><a href="{{ url('come-funziona') }}">Regole</a></li>
+                            <li><a href="{{ url('celo') }}">Celo</a></li>
+                            <li><a href="{{ url('manca') }}">Manca</a></li>
+                            <li><a href="{{ url('giocatori') }}">Giocatori</a></li>
+                            <li><a href="{{ url('numeri') }}">Vincitori</a></li>
+                            <li><a href="{{ url('parlano-di-noi') }}">Parlano di Noi</a></li>
+                            <li><a href="{{ url('contatti') }}">Contatti</a></li>
+                            <li><a href="https://www.facebook.com/celocelo-190331531485606/">Seguici su <img src="{{ url('images/facebook_icon.png') }}" alt="Facebook"></a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </nav>
 
 		<div class="container">
-            <div class="row">
+            <div class="row visible-md visible-lg">
                 <div class="col-md-12 primary-2">
                     <span class="tagline">
                         mettiamo in contatto chi opera nel sociale con chi ha qualcosa da regalare!
@@ -108,7 +117,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row visible-md visible-lg">
                 <div class="col-md-12">
                     <ul class="main-menu">
                         <li><a href="{{ url('progetto') }}">Progetto</a></li>

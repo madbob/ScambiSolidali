@@ -7,7 +7,7 @@
 
     <div class="manca primary-2">
     	<div class="row">
-    		<div class="col-md-2">
+    		<div class="col-md-3 col-lg-2">
                 @if($edit_enabled)
                     <button class="dense-button" data-toggle="modal" data-target="#new-call">
                         <span>Manca!</span>
@@ -30,7 +30,7 @@
                 @include('category.filter', ['filter' => $filter, 'endpoint' => 'manca'])
             </div>
 
-            <div class="col-md-9 col-md-offset-1 primary-2">
+            <div class="col-md-8 col-md-offset-1 col-lg-9 col-lg-offset-1 primary-2">
                 @if($calls->isEmpty())
                     <div class="alert alert-info">
                         <p>
@@ -41,7 +41,7 @@
     				@foreach($calls as $call)
                         <?php $image = $call->image ?>
                         @if($image)
-                            <div class="col-md-4 right-p">
+                            <div class="col-md-6 col-lg-4 right-p">
                                 <div class="common-card">
                                     <div class="card-main image-frame" style="background-image: url('{{ $image }}')">
                                         &nbsp;

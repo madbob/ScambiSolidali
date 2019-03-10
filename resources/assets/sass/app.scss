@@ -457,6 +457,8 @@ textarea.form-control {
 @media (min-width: 1900px) {
     .container {
         width: 1350px;
+        padding-right: 0;
+        padding-left: 0;
     }
 }
 
@@ -464,6 +466,10 @@ textarea.form-control {
 
 .navbar-default {
     border: 0;
+
+    .navbar-brand {
+        float: none;
+    }
 }
 
 .navbar-right {
@@ -472,6 +478,7 @@ textarea.form-control {
     text-transform: uppercase;
 
     .row {
+        margin-right: 0;
         margin-left: 0;
     }
 
@@ -547,6 +554,14 @@ textarea.form-control {
             flex: 0 0 50%;
         }
     }
+
+    .right-p {
+        padding-right: 0 !important;
+    }
+
+    .left-p {
+        padding-left: 0 !important;
+    }
 }
 
 /********************************* HOMEPAGE */
@@ -589,16 +604,12 @@ textarea.form-control {
     padding: 40px 0;
     border-top: 1px solid #000;
     border-bottom: 1px solid #000;
+    font-weight: bold;
 
-    span {
-        text-align: left;
-        font-weight: bold;
-        display: inline-block;
-        margin: 0 30px;
-
-        img {
-            height: 70px;
-        }
+    img {
+        max-width: 90px;
+        height: auto;
+        margin-top: 10px;
     }
 }
 

@@ -38,18 +38,18 @@
                     <a class="other-arrowlink" href="{{ url('come-funziona') }}">Come funziona</a>
                 </p>
 
-                <iframe width="560" height="315" src="{{ App\Config::getConf('video_link') }}" frameborder="0" allowfullscreen></iframe>
+                <iframe width="100%" height="315" src="{{ App\Config::getConf('video_link') }}" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
 
         <div class="row spaced-below">
             <div class="col-md-6 primary-1">
-                <div class="col-md-4 tb-border vert-align">
+                <div class="col-md-4 tb-border vert-align hidden-xs hidden-sm">
                     <p class="txt-color">
                         quante cose hai, che non ti servono più?
                     </p>
                 </div>
-                <div class="col-md-offset-1 col-md-7 both-p">
+                <div class="col-md-offset-1 col-md-7 both-p spaced-below">
                     <div class="common-card">
                         <div class="card-main vert-align bg-color">
                             <p>
@@ -79,7 +79,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-offset-1 col-md-4 tb-border vert-align text-right">
+                <div class="col-md-offset-1 col-md-4 tb-border vert-align text-right hidden-xs hidden-sm">
                     <p class="txt-color">
                         ci servono delle cose, magari le hai tu?
                     </p>
@@ -93,20 +93,44 @@
                     <strong>{{ env('APP_NAME') }}</strong> è una piattaforma che migliora la vita<br/>delle persone in difficoltà che ti stanno attorno. Ti permette di:
                 </p>
 
-                <div class="double-side">
-                    <div class="col-md-4 text-right">
-                        donare un oggetto<br/>in buono stato ma<br/>che non utilizzi più
-                    </div>
-                    <div class="col-md-4 text-center">
-                        <div class="col-md-6 right-border">
-                            <img src="{{ url('images/oggetti.svg') }}">
+                <div class="visible-md-block visible-lg-block">
+                    <div class="double-side">
+                        <div class="col-md-4 text-right">
+                            donare un oggetto<br/>in buono stato ma<br/>che non utilizzi più
                         </div>
-                        <div class="col-md-6">
-                            <img src="{{ url('images/tempo.svg') }}">
+                        <div class="col-md-4 text-center">
+                            <div class="col-md-6 right-border">
+                                <img src="{{ url('images/oggetti.svg') }}">
+                            </div>
+                            <div class="col-md-6">
+                                <img src="{{ url('images/tempo.svg') }}">
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-left">
+                            offrire un po’ del tuo tempo<br/>o una tua competenza professionale
                         </div>
                     </div>
-                    <div class="col-md-4 text-left">
-                        offrire un po’ del tuo tempo<br/>o una tua competenza professionale
+                </div>
+                <div class="visible-xs-block visible-sm-block">
+                    <div class="row spaced-below">
+                        <div class="col-xs-6 vert-align">
+                            <p class="text-right">
+                                donare un oggetto<br/>in buono stato ma<br/>che non utilizzi più
+                            </p>
+                        </div>
+                        <div class="col-xs-5">
+                            <img class="img-responsive" src="{{ url('images/oggetti.svg') }}">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-5">
+                            <img class="img-responsive" src="{{ url('images/tempo.svg') }}">
+                        </div>
+                        <div class="col-xs-6 vert-align">
+                            <p class="text-left">
+                                offrire un po’ del tuo tempo<br/>o una tua competenza professionale
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>

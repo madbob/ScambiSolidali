@@ -6590,17 +6590,22 @@ textarea.form-control {
 
 @media (min-width: 1900px) {
   .container {
-    width: 1350px; } }
+    width: 1350px;
+    padding-right: 0;
+    padding-left: 0; } }
 
 /********************************* NAVIGAZIONE */
 .navbar-default {
   border: 0; }
+  .navbar-default .navbar-brand {
+    float: none; }
 
 .navbar-right {
   margin-top: 20px;
   padding-top: 10px;
   text-transform: uppercase; }
   .navbar-right .row {
+    margin-right: 0;
     margin-left: 0; }
   .navbar-right span {
     text-transform: none; }
@@ -6649,7 +6654,11 @@ textarea.form-control {
   .main-menu {
     flex-flow: row wrap; }
     .main-menu li {
-      flex: 0 0 50%; } }
+      flex: 0 0 50%; }
+  .right-p {
+    padding-right: 0 !important; }
+  .left-p {
+    padding-left: 0 !important; } }
 
 /********************************* HOMEPAGE */
 .header-claim {
@@ -6679,14 +6688,12 @@ textarea.form-control {
 .footer-credits {
   padding: 40px 0;
   border-top: 1px solid #000;
-  border-bottom: 1px solid #000; }
-  .footer-credits span {
-    text-align: left;
-    font-weight: bold;
-    display: inline-block;
-    margin: 0 30px; }
-    .footer-credits span img {
-      height: 70px; }
+  border-bottom: 1px solid #000;
+  font-weight: bold; }
+  .footer-credits img {
+    max-width: 90px;
+    height: auto;
+    margin-top: 10px; }
 
 /********************************* CELO/MANCA */
 .categories-select {

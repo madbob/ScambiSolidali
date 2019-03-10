@@ -7,7 +7,7 @@
 
     <div class="celo primary-1">
     	<div class="row">
-    		<div class="col-md-2">
+    		<div class="col-md-3 col-lg-2">
                 <button data-toggle="modal" data-target="#celo-select" class="dense-button">
                     <span>Celo!</span>
                 </button>
@@ -34,7 +34,7 @@
                 @include('category.filter', ['filter' => $filter, 'endpoint' => 'celo'])
             </div>
 
-            <div class="col-md-9 col-md-offset-1">
+            <div class="col-md-8 col-md-offset-1 col-lg-9 col-lg-offset-1">
                 @if($donations->isEmpty())
                     <div class="alert alert-info">
                         <p>
@@ -43,7 +43,7 @@
                     </div>
                 @else
     				@foreach($donations as $donation)
-                        <div class="col-md-4 right-p">
+                        <div class="col-md-6 col-lg-4 right-p">
                             <div class="common-card">
                                 <div class="card-main image-frame" style="background-image: url('{{ $donation->imageUrl(1) }}')">
                                     &nbsp;

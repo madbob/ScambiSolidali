@@ -81,36 +81,32 @@
                     </div>
                     <div class="col-md-5 col-md-offset-1">
                         @foreach($institutes as $institute)
-                            <div class="row border-bottom">
-                                <div class="col-md-12 spaced-middle">
-                                    @if($user && $user->role == 'admin')
-                                        <div class="pull-right">
-                                            <p class="show-details" data-endpoint="ente" data-item-id="{{ $institute->id }}">Edit</p>
-                                        </div>
+                            <div class="col-md-12 spaced-middle border-bottom">
+                                @if($user && $user->role == 'admin')
+                                    <div class="pull-right">
+                                        <p class="show-details" data-endpoint="ente" data-item-id="{{ $institute->id }}">Edit</p>
+                                    </div>
+                                @endif
+                                <p class="institute" data-institute-id="{{ $institute->id }}">
+                                    @if(!empty($institute->website))
+                                        <a href="{{ $institute->website }}">
                                     @endif
-                                    <p class="institute" data-institute-id="{{ $institute->id }}">
-                                        @if(!empty($institute->website))
-                                            <a href="{{ $institute->website }}">
-                                        @endif
-                                        {{ $institute->name }}
-                                        @if(!empty($institute->website))
-                                            </a>
-                                        @endif
-                                    </p>
-                                </div>
+                                    {{ $institute->name }}
+                                    @if(!empty($institute->website))
+                                        </a>
+                                    @endif
+                                </p>
                             </div>
                         @endforeach
 
                         <br/>
 
                         @if($user && $user->role == 'admin')
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <button class="btn btn-default button" data-toggle="modal" data-target="#institute-new">
-                                        <span>Aggiungi Associazione</span>
-                                    </button>
-                                    @include('institute.modal', ['institute' => null])
-                                </div>
+                            <div class="col-md-12">
+                                <button class="btn btn-default button" data-toggle="modal" data-target="#institute-new">
+                                    <span>Aggiungi Associazione</span>
+                                </button>
+                                @include('institute.modal', ['institute' => null])
                             </div>
                         @endif
                     </div>

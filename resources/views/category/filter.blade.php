@@ -1,4 +1,4 @@
-<ul class="categories-select">
+<ul class="categories-select visible-md visible-lg">
     @if($filter != null)
         <li class="border-top">
             <span><a href="{{ url($endpoint) }}">Elimina Filtro</a></span>
