@@ -105,9 +105,18 @@ else
             {!! BootForm::text('phone', 'Telefono', $last ? $last->phone : $user->phone, ['required' => 'required']) !!}
             {!! BootForm::email('email', 'E-Mail', $last ? $last->email : $user->email, ['required' => 'required']) !!}
             {!! BootForm::text('floor', 'Piano', $last ? $last->floor : '') !!}
-            {!! BootForm::checkbox('elevator', 'Ascensore', $last ? $last->elevator : false) !!}
+
+            <div class="checkbox checkbox-custom">
+				<input id="elevator" type="checkbox" name="elevator" {{ $last && $last->elevator ? 'checked' : '' }}>
+				<label for="elevator">C'è l'ascensore</label>
+			</div>
+
             {!! BootForm::textarea('shipping_notes', 'Note') !!}
-            {!! BootForm::checkbox('autoship', 'Lo posso trasportare io', 'autoship', null) !!}
+
+            <div class="checkbox checkbox-custom">
+				<input id="autoship" type="checkbox" name="autoship">
+				<label for="autoship">Lo posso trasportare io</label>
+			</div>
 
             <br/>
 

@@ -86,9 +86,9 @@
 
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-md-5">
+                            <div class="col-xs-6 col-md-5">
                                 <a href="{{ url('celo/nuovo/oggetto') }}">
-                                    <div class="common-card">
+                                    <div class="common-card visible-md visible-lg">
                                         <div class="card-main image-frame" style="background-image: url('{{ url('images/oggetti.svg') }}')">
                                             &nbsp;
                                         </div>
@@ -98,12 +98,16 @@
                                             </p>
                                         </div>
                                     </div>
+
+                                    <p class="visible-xs visible-sm">
+                                        Dona un oggetto
+                                    </p>
                                 </a>
                             </div>
 
-                            <div class="col-md-5 col-md-offset-2">
+                            <div class="col-xs-6 col-md-5 col-md-offset-2">
                                 <a href="{{ url('celo/nuovo/servizio') }}">
-                                    <div class="common-card">
+                                    <div class="common-card visible-md visible-lg">
                                         <div class="card-main image-frame" style="background-image: url('{{ url('images/tempo.svg') }}')">
                                             &nbsp;
                                         </div>
@@ -113,6 +117,10 @@
                                             </p>
                                         </div>
                                     </div>
+
+                                    <p class="visible-xs visible-sm">
+                                        Dona una competenza
+                                    </p>
                                 </a>
                             </div>
                         </div>

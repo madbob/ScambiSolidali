@@ -60,4 +60,14 @@ class CommonController extends Controller
     {
         return view('pages.contacts');
     }
+
+    public function food()
+    {
+        if (env('HAS_FOOD', false)) {
+            return view('pages.food');
+        }
+        else {
+            return redirect()->route('home');
+        }
+    }
 }

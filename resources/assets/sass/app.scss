@@ -48,7 +48,7 @@
 
 /********************************* COMMONS */
 
-$colors: $primary-color-1 $primary-color-2 $secondary-color-1 $gray-color-1 $black-1;
+$colors: $primary-color-1 $primary-color-2 $secondary-color-1 $gray-color-1 $black-1 $food-color;
 
 @each $color in $colors {
     $i: index($colors, $color);
@@ -214,6 +214,84 @@ $colors: $primary-color-1 $primary-color-2 $secondary-color-1 $gray-color-1 $bla
         .left-border {
             border-left: 1px solid $color;
             padding-left: 10px;
+        }
+
+        .radio-custom {
+            input {
+                opacity: 0;
+                position: absolute;
+            }
+
+            input, label {
+                display: inline-block;
+                vertical-align: middle;
+                margin: 5px;
+                cursor: pointer;
+            }
+
+            label {
+                position: relative;
+                padding-left: 0;
+            }
+
+            input + label:before {
+                content: '';
+                background: #FFF;
+                border: 2px solid $color;
+                display: inline-block;
+                vertical-align: middle;
+                width: 20px;
+                height: 20px;
+                padding: 2px;
+                margin-right: 10px;
+                text-align: center;
+            }
+
+            input + label:before {
+                border-radius: 50%;
+            }
+
+            input:checked + label:before {
+                background: $color;
+                box-shadow: inset 0px 0px 0px 4px #FFF;
+            }
+        }
+
+        .checkbox-custom {
+            input {
+                opacity: 0;
+                position: absolute;
+            }
+
+            input, label {
+                display: inline-block;
+                vertical-align: middle;
+                margin: 5px;
+                cursor: pointer;
+            }
+
+            label {
+                position: relative;
+                padding-left: 0;
+            }
+
+            input + label:before {
+                content: '';
+                background: #FFF;
+                border: 2px solid $color;
+                display: inline-block;
+                vertical-align: middle;
+                width: 20px;
+                height: 20px;
+                padding: 2px;
+                margin-right: 10px;
+                text-align: center;
+            }
+
+            input:checked + label:before {
+                background: $color;
+                box-shadow: inset 0px 0px 0px 4px #FFF;
+            }
         }
     }
 }
@@ -547,6 +625,11 @@ textarea.form-control {
 }
 
 @media (max-width: 768px) {
+    .container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
     .main-menu {
         flex-flow: row wrap;
 

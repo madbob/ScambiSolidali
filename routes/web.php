@@ -17,12 +17,13 @@ Route::get('/', function () {
 
 Route::get(substr(env('APP_KEY'), -5) . '/logs', '\MadBob\LaravelLog2Rss\Log2RssController@index');
 
-Route::get('/home', 'CommonController@home');
+Route::get('/home', 'CommonController@home')->name('home');
 Route::get('/progetto', 'CommonController@project');
 Route::get('/come-funziona', 'CommonController@working');
 Route::get('/privacy', 'CommonController@privacy');
 Route::get('/numeri', 'CommonController@numbers');
-Route::get('/contatti', 'CommonController@contacts');
+Route::get('/contatti', 'CommonController@contacts')->name('contacts');
+Route::get('/food', 'CommonController@food')->name('food');
 
 Route::get('/celo/nuovo/{type}', 'DonationController@create');
 Route::get('/celo/renew/{token}', 'DonationController@renew');

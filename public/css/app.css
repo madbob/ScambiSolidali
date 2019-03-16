@@ -5867,7 +5867,7 @@ button.close {
   color: #00E4E4;
   margin-top: 0; }
 
-.primary-1 .fancy-bg, .primary-1 .button, .primary-1 .pagetitle, .primary-1 .nav-tabs > li, .primary-1 .common-card, .primary-1 .primary-2 .nav-tabs > li, .primary-1 .primary-3 .nav-tabs > li, .primary-1 .primary-4 .nav-tabs > li, .primary-1 .primary-5 .nav-tabs > li {
+.primary-1 .fancy-bg, .primary-1 .button, .primary-1 .pagetitle, .primary-1 .nav-tabs > li, .primary-1 .common-card, .primary-1 .primary-2 .nav-tabs > li, .primary-1 .primary-3 .nav-tabs > li, .primary-1 .primary-4 .nav-tabs > li, .primary-1 .primary-5 .nav-tabs > li, .primary-1 .primary-6 .nav-tabs > li {
   background: repeating-linear-gradient(-45deg, #00E4E4, #00E4E4 2px, #FFF 2px, #FFF 12px); }
 
 .primary-1 .dense-fancy-bg, .primary-1 .dense-button {
@@ -5876,13 +5876,13 @@ button.close {
 .primary-1 .txt-color {
   color: #00E4E4 !important; }
 
-.primary-1 .button, .primary-1 .pagetitle, .primary-1 .nav-tabs > li, .primary-1 .primary-2 .nav-tabs > li, .primary-1 .primary-3 .nav-tabs > li, .primary-1 .primary-4 .nav-tabs > li, .primary-1 .primary-5 .nav-tabs > li {
+.primary-1 .button, .primary-1 .pagetitle, .primary-1 .nav-tabs > li, .primary-1 .primary-2 .nav-tabs > li, .primary-1 .primary-3 .nav-tabs > li, .primary-1 .primary-4 .nav-tabs > li, .primary-1 .primary-5 .nav-tabs > li, .primary-1 .primary-6 .nav-tabs > li {
   text-align: center;
   border: 0;
   padding: 10px;
   width: 100%;
   display: block; }
-  .primary-1 .button span, .primary-1 .pagetitle span, .primary-1 .nav-tabs > li span, .primary-1 .primary-2 .nav-tabs > li span, .primary-1 .primary-3 .nav-tabs > li span, .primary-1 .primary-4 .nav-tabs > li span, .primary-1 .primary-5 .nav-tabs > li span {
+  .primary-1 .button span, .primary-1 .pagetitle span, .primary-1 .nav-tabs > li span, .primary-1 .primary-2 .nav-tabs > li span, .primary-1 .primary-3 .nav-tabs > li span, .primary-1 .primary-4 .nav-tabs > li span, .primary-1 .primary-5 .nav-tabs > li span, .primary-1 .primary-6 .nav-tabs > li span {
     background-color: #00E4E4;
     color: #FFF;
     padding: 10px;
@@ -5972,6 +5972,69 @@ button.close {
   border-left: 1px solid #00E4E4;
   padding-left: 10px; }
 
+.primary-1 .radio-custom input {
+  opacity: 0;
+  position: absolute; }
+
+.primary-1 .radio-custom input, .primary-1 .radio-custom label {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 5px;
+  cursor: pointer; }
+
+.primary-1 .radio-custom label {
+  position: relative;
+  padding-left: 0; }
+
+.primary-1 .radio-custom input + label:before {
+  content: '';
+  background: #FFF;
+  border: 2px solid #00E4E4;
+  display: inline-block;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  padding: 2px;
+  margin-right: 10px;
+  text-align: center; }
+
+.primary-1 .radio-custom input + label:before {
+  border-radius: 50%; }
+
+.primary-1 .radio-custom input:checked + label:before {
+  background: #00E4E4;
+  box-shadow: inset 0px 0px 0px 4px #FFF; }
+
+.primary-1 .checkbox-custom input {
+  opacity: 0;
+  position: absolute; }
+
+.primary-1 .checkbox-custom input, .primary-1 .checkbox-custom label {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 5px;
+  cursor: pointer; }
+
+.primary-1 .checkbox-custom label {
+  position: relative;
+  padding-left: 0; }
+
+.primary-1 .checkbox-custom input + label:before {
+  content: '';
+  background: #FFF;
+  border: 2px solid #00E4E4;
+  display: inline-block;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  padding: 2px;
+  margin-right: 10px;
+  text-align: center; }
+
+.primary-1 .checkbox-custom input:checked + label:before {
+  background: #00E4E4;
+  box-shadow: inset 0px 0px 0px 4px #FFF; }
+
 .primary-2 a {
   color: #00BFE3; }
 
@@ -5979,7 +6042,7 @@ button.close {
   color: #00BFE3;
   margin-top: 0; }
 
-.primary-2 .fancy-bg, .primary-2 .button, .primary-2 .primary-1 .nav-tabs > li, .primary-2 .pagetitle, .primary-2 .nav-tabs > li, .primary-2 .common-card, .primary-2 .primary-3 .nav-tabs > li, .primary-2 .primary-4 .nav-tabs > li, .primary-2 .primary-5 .nav-tabs > li {
+.primary-2 .fancy-bg, .primary-2 .button, .primary-2 .primary-1 .nav-tabs > li, .primary-2 .pagetitle, .primary-2 .nav-tabs > li, .primary-2 .common-card, .primary-2 .primary-3 .nav-tabs > li, .primary-2 .primary-4 .nav-tabs > li, .primary-2 .primary-5 .nav-tabs > li, .primary-2 .primary-6 .nav-tabs > li {
   background: repeating-linear-gradient(-45deg, #00BFE3, #00BFE3 2px, #FFF 2px, #FFF 12px); }
 
 .primary-2 .dense-fancy-bg, .primary-2 .dense-button {
@@ -5988,13 +6051,13 @@ button.close {
 .primary-2 .txt-color {
   color: #00BFE3 !important; }
 
-.primary-2 .button, .primary-2 .primary-1 .nav-tabs > li, .primary-2 .pagetitle, .primary-2 .nav-tabs > li, .primary-2 .primary-3 .nav-tabs > li, .primary-2 .primary-4 .nav-tabs > li, .primary-2 .primary-5 .nav-tabs > li {
+.primary-2 .button, .primary-2 .primary-1 .nav-tabs > li, .primary-2 .pagetitle, .primary-2 .nav-tabs > li, .primary-2 .primary-3 .nav-tabs > li, .primary-2 .primary-4 .nav-tabs > li, .primary-2 .primary-5 .nav-tabs > li, .primary-2 .primary-6 .nav-tabs > li {
   text-align: center;
   border: 0;
   padding: 10px;
   width: 100%;
   display: block; }
-  .primary-2 .button span, .primary-2 .primary-1 .nav-tabs > li span, .primary-2 .pagetitle span, .primary-2 .nav-tabs > li span, .primary-2 .primary-3 .nav-tabs > li span, .primary-2 .primary-4 .nav-tabs > li span, .primary-2 .primary-5 .nav-tabs > li span {
+  .primary-2 .button span, .primary-2 .primary-1 .nav-tabs > li span, .primary-2 .pagetitle span, .primary-2 .nav-tabs > li span, .primary-2 .primary-3 .nav-tabs > li span, .primary-2 .primary-4 .nav-tabs > li span, .primary-2 .primary-5 .nav-tabs > li span, .primary-2 .primary-6 .nav-tabs > li span {
     background-color: #00BFE3;
     color: #FFF;
     padding: 10px;
@@ -6084,6 +6147,69 @@ button.close {
   border-left: 1px solid #00BFE3;
   padding-left: 10px; }
 
+.primary-2 .radio-custom input {
+  opacity: 0;
+  position: absolute; }
+
+.primary-2 .radio-custom input, .primary-2 .radio-custom label {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 5px;
+  cursor: pointer; }
+
+.primary-2 .radio-custom label {
+  position: relative;
+  padding-left: 0; }
+
+.primary-2 .radio-custom input + label:before {
+  content: '';
+  background: #FFF;
+  border: 2px solid #00BFE3;
+  display: inline-block;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  padding: 2px;
+  margin-right: 10px;
+  text-align: center; }
+
+.primary-2 .radio-custom input + label:before {
+  border-radius: 50%; }
+
+.primary-2 .radio-custom input:checked + label:before {
+  background: #00BFE3;
+  box-shadow: inset 0px 0px 0px 4px #FFF; }
+
+.primary-2 .checkbox-custom input {
+  opacity: 0;
+  position: absolute; }
+
+.primary-2 .checkbox-custom input, .primary-2 .checkbox-custom label {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 5px;
+  cursor: pointer; }
+
+.primary-2 .checkbox-custom label {
+  position: relative;
+  padding-left: 0; }
+
+.primary-2 .checkbox-custom input + label:before {
+  content: '';
+  background: #FFF;
+  border: 2px solid #00BFE3;
+  display: inline-block;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  padding: 2px;
+  margin-right: 10px;
+  text-align: center; }
+
+.primary-2 .checkbox-custom input:checked + label:before {
+  background: #00BFE3;
+  box-shadow: inset 0px 0px 0px 4px #FFF; }
+
 .primary-3 a {
   color: #00DDB2; }
 
@@ -6091,7 +6217,7 @@ button.close {
   color: #00DDB2;
   margin-top: 0; }
 
-.primary-3 .fancy-bg, .primary-3 .button, .primary-3 .primary-1 .nav-tabs > li, .primary-3 .primary-2 .nav-tabs > li, .primary-3 .pagetitle, .primary-3 .nav-tabs > li, .primary-3 .common-card, .primary-3 .primary-4 .nav-tabs > li, .primary-3 .primary-5 .nav-tabs > li {
+.primary-3 .fancy-bg, .primary-3 .button, .primary-3 .primary-1 .nav-tabs > li, .primary-3 .primary-2 .nav-tabs > li, .primary-3 .pagetitle, .primary-3 .nav-tabs > li, .primary-3 .common-card, .primary-3 .primary-4 .nav-tabs > li, .primary-3 .primary-5 .nav-tabs > li, .primary-3 .primary-6 .nav-tabs > li {
   background: repeating-linear-gradient(-45deg, #00DDB2, #00DDB2 2px, #FFF 2px, #FFF 12px); }
 
 .primary-3 .dense-fancy-bg, .primary-3 .dense-button {
@@ -6100,13 +6226,13 @@ button.close {
 .primary-3 .txt-color {
   color: #00DDB2 !important; }
 
-.primary-3 .button, .primary-3 .primary-1 .nav-tabs > li, .primary-3 .primary-2 .nav-tabs > li, .primary-3 .pagetitle, .primary-3 .nav-tabs > li, .primary-3 .primary-4 .nav-tabs > li, .primary-3 .primary-5 .nav-tabs > li {
+.primary-3 .button, .primary-3 .primary-1 .nav-tabs > li, .primary-3 .primary-2 .nav-tabs > li, .primary-3 .pagetitle, .primary-3 .nav-tabs > li, .primary-3 .primary-4 .nav-tabs > li, .primary-3 .primary-5 .nav-tabs > li, .primary-3 .primary-6 .nav-tabs > li {
   text-align: center;
   border: 0;
   padding: 10px;
   width: 100%;
   display: block; }
-  .primary-3 .button span, .primary-3 .primary-1 .nav-tabs > li span, .primary-3 .primary-2 .nav-tabs > li span, .primary-3 .pagetitle span, .primary-3 .nav-tabs > li span, .primary-3 .primary-4 .nav-tabs > li span, .primary-3 .primary-5 .nav-tabs > li span {
+  .primary-3 .button span, .primary-3 .primary-1 .nav-tabs > li span, .primary-3 .primary-2 .nav-tabs > li span, .primary-3 .pagetitle span, .primary-3 .nav-tabs > li span, .primary-3 .primary-4 .nav-tabs > li span, .primary-3 .primary-5 .nav-tabs > li span, .primary-3 .primary-6 .nav-tabs > li span {
     background-color: #00DDB2;
     color: #FFF;
     padding: 10px;
@@ -6196,6 +6322,69 @@ button.close {
   border-left: 1px solid #00DDB2;
   padding-left: 10px; }
 
+.primary-3 .radio-custom input {
+  opacity: 0;
+  position: absolute; }
+
+.primary-3 .radio-custom input, .primary-3 .radio-custom label {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 5px;
+  cursor: pointer; }
+
+.primary-3 .radio-custom label {
+  position: relative;
+  padding-left: 0; }
+
+.primary-3 .radio-custom input + label:before {
+  content: '';
+  background: #FFF;
+  border: 2px solid #00DDB2;
+  display: inline-block;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  padding: 2px;
+  margin-right: 10px;
+  text-align: center; }
+
+.primary-3 .radio-custom input + label:before {
+  border-radius: 50%; }
+
+.primary-3 .radio-custom input:checked + label:before {
+  background: #00DDB2;
+  box-shadow: inset 0px 0px 0px 4px #FFF; }
+
+.primary-3 .checkbox-custom input {
+  opacity: 0;
+  position: absolute; }
+
+.primary-3 .checkbox-custom input, .primary-3 .checkbox-custom label {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 5px;
+  cursor: pointer; }
+
+.primary-3 .checkbox-custom label {
+  position: relative;
+  padding-left: 0; }
+
+.primary-3 .checkbox-custom input + label:before {
+  content: '';
+  background: #FFF;
+  border: 2px solid #00DDB2;
+  display: inline-block;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  padding: 2px;
+  margin-right: 10px;
+  text-align: center; }
+
+.primary-3 .checkbox-custom input:checked + label:before {
+  background: #00DDB2;
+  box-shadow: inset 0px 0px 0px 4px #FFF; }
+
 .primary-4 a {
   color: #DDD; }
 
@@ -6203,7 +6392,7 @@ button.close {
   color: #DDD;
   margin-top: 0; }
 
-.primary-4 .fancy-bg, .primary-4 .button, .primary-4 .primary-1 .nav-tabs > li, .primary-4 .primary-2 .nav-tabs > li, .primary-4 .primary-3 .nav-tabs > li, .primary-4 .pagetitle, .primary-4 .nav-tabs > li, .primary-4 .common-card, .primary-4 .primary-5 .nav-tabs > li {
+.primary-4 .fancy-bg, .primary-4 .button, .primary-4 .primary-1 .nav-tabs > li, .primary-4 .primary-2 .nav-tabs > li, .primary-4 .primary-3 .nav-tabs > li, .primary-4 .pagetitle, .primary-4 .nav-tabs > li, .primary-4 .common-card, .primary-4 .primary-5 .nav-tabs > li, .primary-4 .primary-6 .nav-tabs > li {
   background: repeating-linear-gradient(-45deg, #DDD, #DDD 2px, #FFF 2px, #FFF 12px); }
 
 .primary-4 .dense-fancy-bg, .primary-4 .dense-button {
@@ -6212,13 +6401,13 @@ button.close {
 .primary-4 .txt-color {
   color: #DDD !important; }
 
-.primary-4 .button, .primary-4 .primary-1 .nav-tabs > li, .primary-4 .primary-2 .nav-tabs > li, .primary-4 .primary-3 .nav-tabs > li, .primary-4 .pagetitle, .primary-4 .nav-tabs > li, .primary-4 .primary-5 .nav-tabs > li {
+.primary-4 .button, .primary-4 .primary-1 .nav-tabs > li, .primary-4 .primary-2 .nav-tabs > li, .primary-4 .primary-3 .nav-tabs > li, .primary-4 .pagetitle, .primary-4 .nav-tabs > li, .primary-4 .primary-5 .nav-tabs > li, .primary-4 .primary-6 .nav-tabs > li {
   text-align: center;
   border: 0;
   padding: 10px;
   width: 100%;
   display: block; }
-  .primary-4 .button span, .primary-4 .primary-1 .nav-tabs > li span, .primary-4 .primary-2 .nav-tabs > li span, .primary-4 .primary-3 .nav-tabs > li span, .primary-4 .pagetitle span, .primary-4 .nav-tabs > li span, .primary-4 .primary-5 .nav-tabs > li span {
+  .primary-4 .button span, .primary-4 .primary-1 .nav-tabs > li span, .primary-4 .primary-2 .nav-tabs > li span, .primary-4 .primary-3 .nav-tabs > li span, .primary-4 .pagetitle span, .primary-4 .nav-tabs > li span, .primary-4 .primary-5 .nav-tabs > li span, .primary-4 .primary-6 .nav-tabs > li span {
     background-color: #DDD;
     color: #FFF;
     padding: 10px;
@@ -6308,6 +6497,69 @@ button.close {
   border-left: 1px solid #DDD;
   padding-left: 10px; }
 
+.primary-4 .radio-custom input {
+  opacity: 0;
+  position: absolute; }
+
+.primary-4 .radio-custom input, .primary-4 .radio-custom label {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 5px;
+  cursor: pointer; }
+
+.primary-4 .radio-custom label {
+  position: relative;
+  padding-left: 0; }
+
+.primary-4 .radio-custom input + label:before {
+  content: '';
+  background: #FFF;
+  border: 2px solid #DDD;
+  display: inline-block;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  padding: 2px;
+  margin-right: 10px;
+  text-align: center; }
+
+.primary-4 .radio-custom input + label:before {
+  border-radius: 50%; }
+
+.primary-4 .radio-custom input:checked + label:before {
+  background: #DDD;
+  box-shadow: inset 0px 0px 0px 4px #FFF; }
+
+.primary-4 .checkbox-custom input {
+  opacity: 0;
+  position: absolute; }
+
+.primary-4 .checkbox-custom input, .primary-4 .checkbox-custom label {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 5px;
+  cursor: pointer; }
+
+.primary-4 .checkbox-custom label {
+  position: relative;
+  padding-left: 0; }
+
+.primary-4 .checkbox-custom input + label:before {
+  content: '';
+  background: #FFF;
+  border: 2px solid #DDD;
+  display: inline-block;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  padding: 2px;
+  margin-right: 10px;
+  text-align: center; }
+
+.primary-4 .checkbox-custom input:checked + label:before {
+  background: #DDD;
+  box-shadow: inset 0px 0px 0px 4px #FFF; }
+
 .primary-5 a {
   color: #000; }
 
@@ -6315,7 +6567,7 @@ button.close {
   color: #000;
   margin-top: 0; }
 
-.primary-5 .fancy-bg, .primary-5 .button, .primary-5 .primary-1 .nav-tabs > li, .primary-5 .primary-2 .nav-tabs > li, .primary-5 .primary-3 .nav-tabs > li, .primary-5 .primary-4 .nav-tabs > li, .primary-5 .pagetitle, .primary-5 .nav-tabs > li, .primary-5 .common-card {
+.primary-5 .fancy-bg, .primary-5 .button, .primary-5 .primary-1 .nav-tabs > li, .primary-5 .primary-2 .nav-tabs > li, .primary-5 .primary-3 .nav-tabs > li, .primary-5 .primary-4 .nav-tabs > li, .primary-5 .pagetitle, .primary-5 .nav-tabs > li, .primary-5 .common-card, .primary-5 .primary-6 .nav-tabs > li {
   background: repeating-linear-gradient(-45deg, #000, #000 2px, #FFF 2px, #FFF 12px); }
 
 .primary-5 .dense-fancy-bg, .primary-5 .dense-button {
@@ -6324,13 +6576,13 @@ button.close {
 .primary-5 .txt-color {
   color: #000 !important; }
 
-.primary-5 .button, .primary-5 .primary-1 .nav-tabs > li, .primary-5 .primary-2 .nav-tabs > li, .primary-5 .primary-3 .nav-tabs > li, .primary-5 .primary-4 .nav-tabs > li, .primary-5 .pagetitle, .primary-5 .nav-tabs > li {
+.primary-5 .button, .primary-5 .primary-1 .nav-tabs > li, .primary-5 .primary-2 .nav-tabs > li, .primary-5 .primary-3 .nav-tabs > li, .primary-5 .primary-4 .nav-tabs > li, .primary-5 .pagetitle, .primary-5 .nav-tabs > li, .primary-5 .primary-6 .nav-tabs > li {
   text-align: center;
   border: 0;
   padding: 10px;
   width: 100%;
   display: block; }
-  .primary-5 .button span, .primary-5 .primary-1 .nav-tabs > li span, .primary-5 .primary-2 .nav-tabs > li span, .primary-5 .primary-3 .nav-tabs > li span, .primary-5 .primary-4 .nav-tabs > li span, .primary-5 .pagetitle span, .primary-5 .nav-tabs > li span {
+  .primary-5 .button span, .primary-5 .primary-1 .nav-tabs > li span, .primary-5 .primary-2 .nav-tabs > li span, .primary-5 .primary-3 .nav-tabs > li span, .primary-5 .primary-4 .nav-tabs > li span, .primary-5 .pagetitle span, .primary-5 .nav-tabs > li span, .primary-5 .primary-6 .nav-tabs > li span {
     background-color: #000;
     color: #FFF;
     padding: 10px;
@@ -6419,6 +6671,244 @@ button.close {
 .primary-5 .left-border {
   border-left: 1px solid #000;
   padding-left: 10px; }
+
+.primary-5 .radio-custom input {
+  opacity: 0;
+  position: absolute; }
+
+.primary-5 .radio-custom input, .primary-5 .radio-custom label {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 5px;
+  cursor: pointer; }
+
+.primary-5 .radio-custom label {
+  position: relative;
+  padding-left: 0; }
+
+.primary-5 .radio-custom input + label:before {
+  content: '';
+  background: #FFF;
+  border: 2px solid #000;
+  display: inline-block;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  padding: 2px;
+  margin-right: 10px;
+  text-align: center; }
+
+.primary-5 .radio-custom input + label:before {
+  border-radius: 50%; }
+
+.primary-5 .radio-custom input:checked + label:before {
+  background: #000;
+  box-shadow: inset 0px 0px 0px 4px #FFF; }
+
+.primary-5 .checkbox-custom input {
+  opacity: 0;
+  position: absolute; }
+
+.primary-5 .checkbox-custom input, .primary-5 .checkbox-custom label {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 5px;
+  cursor: pointer; }
+
+.primary-5 .checkbox-custom label {
+  position: relative;
+  padding-left: 0; }
+
+.primary-5 .checkbox-custom input + label:before {
+  content: '';
+  background: #FFF;
+  border: 2px solid #000;
+  display: inline-block;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  padding: 2px;
+  margin-right: 10px;
+  text-align: center; }
+
+.primary-5 .checkbox-custom input:checked + label:before {
+  background: #000;
+  box-shadow: inset 0px 0px 0px 4px #FFF; }
+
+.primary-6 a {
+  color: #76C03B; }
+
+.primary-6 h4 {
+  color: #76C03B;
+  margin-top: 0; }
+
+.primary-6 .fancy-bg, .primary-6 .button, .primary-6 .primary-1 .nav-tabs > li, .primary-6 .primary-2 .nav-tabs > li, .primary-6 .primary-3 .nav-tabs > li, .primary-6 .primary-4 .nav-tabs > li, .primary-6 .primary-5 .nav-tabs > li, .primary-6 .pagetitle, .primary-6 .nav-tabs > li, .primary-6 .common-card {
+  background: repeating-linear-gradient(-45deg, #76C03B, #76C03B 2px, #FFF 2px, #FFF 12px); }
+
+.primary-6 .dense-fancy-bg, .primary-6 .dense-button {
+  background: repeating-linear-gradient(-45deg, #76C03B, #76C03B 9px, #FFF 2px, #FFF 12px); }
+
+.primary-6 .txt-color {
+  color: #76C03B !important; }
+
+.primary-6 .button, .primary-6 .primary-1 .nav-tabs > li, .primary-6 .primary-2 .nav-tabs > li, .primary-6 .primary-3 .nav-tabs > li, .primary-6 .primary-4 .nav-tabs > li, .primary-6 .primary-5 .nav-tabs > li, .primary-6 .pagetitle, .primary-6 .nav-tabs > li {
+  text-align: center;
+  border: 0;
+  padding: 10px;
+  width: 100%;
+  display: block; }
+  .primary-6 .button span, .primary-6 .primary-1 .nav-tabs > li span, .primary-6 .primary-2 .nav-tabs > li span, .primary-6 .primary-3 .nav-tabs > li span, .primary-6 .primary-4 .nav-tabs > li span, .primary-6 .primary-5 .nav-tabs > li span, .primary-6 .pagetitle span, .primary-6 .nav-tabs > li span {
+    background-color: #76C03B;
+    color: #FFF;
+    padding: 10px;
+    display: block;
+    text-transform: uppercase; }
+
+.primary-6 .pagetitle {
+  margin-bottom: 30px; }
+  .primary-6 .pagetitle span {
+    padding: 20px;
+    font-weight: bold;
+    font-size: 30px; }
+
+.primary-6 .dense-button {
+  border: 0;
+  padding: 17px;
+  width: 100%;
+  display: block;
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center; }
+  .primary-6 .dense-button span {
+    background-color: #FFF;
+    color: #76C03B;
+    padding: 10px;
+    display: block;
+    text-transform: uppercase; }
+
+.primary-6 .screaming-border {
+  border: 15px solid #76C03B; }
+  .primary-6 .screaming-border span {
+    font-weight: bold;
+    padding: 15px; }
+
+.primary-6 .nav-tabs {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  margin-bottom: 10px; }
+  .primary-6 .nav-tabs > li {
+    text-align: center; }
+    .primary-6 .nav-tabs > li a {
+      color: #FFF; }
+
+.primary-6 .top-border {
+  border-top: 2px solid #76C03B; }
+
+.primary-6 .tb-border {
+  border-top: 2px solid #76C03B;
+  border-bottom: 2px solid #76C03B; }
+
+.primary-6 .common-card {
+  color: #76C03B; }
+  .primary-6 .common-card .card-main, .primary-6 .common-card .card-main-filter, .primary-6 .common-card .card-main-overlay {
+    background-color: #76C03B; }
+    .primary-6 .common-card .card-main.empty, .primary-6 .common-card .empty.card-main-filter, .primary-6 .common-card .empty.card-main-overlay {
+      background-color: #FFF; }
+  .primary-6 .common-card .card-main-filter {
+    background-color: #76C03B; }
+  .primary-6 .common-card .card-footer.filled {
+    background-color: #76C03B;
+    font-weight: 600; }
+    .primary-6 .common-card .card-footer.filled p {
+      color: #FFF; }
+
+.primary-6 .bg-color {
+  background-color: #76C03B; }
+
+.primary-6 .border-top, .primary-6 .bordered-spaced {
+  border-top: 2px solid #76C03B; }
+
+.primary-6 .border-bottom, .primary-6 .bordered-spaced {
+  border-bottom: 2px solid #76C03B; }
+
+.primary-6 .bordered-spaced {
+  padding: 20px 0;
+  color: #76C03B;
+  margin-bottom: 20px; }
+
+.primary-6 hr.colored {
+  border-bottom: 2px solid #76C03B;
+  background: none;
+  margin-top: 30px;
+  margin-bottom: 30px; }
+
+.primary-6 .left-border {
+  border-left: 1px solid #76C03B;
+  padding-left: 10px; }
+
+.primary-6 .radio-custom input {
+  opacity: 0;
+  position: absolute; }
+
+.primary-6 .radio-custom input, .primary-6 .radio-custom label {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 5px;
+  cursor: pointer; }
+
+.primary-6 .radio-custom label {
+  position: relative;
+  padding-left: 0; }
+
+.primary-6 .radio-custom input + label:before {
+  content: '';
+  background: #FFF;
+  border: 2px solid #76C03B;
+  display: inline-block;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  padding: 2px;
+  margin-right: 10px;
+  text-align: center; }
+
+.primary-6 .radio-custom input + label:before {
+  border-radius: 50%; }
+
+.primary-6 .radio-custom input:checked + label:before {
+  background: #76C03B;
+  box-shadow: inset 0px 0px 0px 4px #FFF; }
+
+.primary-6 .checkbox-custom input {
+  opacity: 0;
+  position: absolute; }
+
+.primary-6 .checkbox-custom input, .primary-6 .checkbox-custom label {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 5px;
+  cursor: pointer; }
+
+.primary-6 .checkbox-custom label {
+  position: relative;
+  padding-left: 0; }
+
+.primary-6 .checkbox-custom input + label:before {
+  content: '';
+  background: #FFF;
+  border: 2px solid #76C03B;
+  display: inline-block;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  padding: 2px;
+  margin-right: 10px;
+  text-align: center; }
+
+.primary-6 .checkbox-custom input:checked + label:before {
+  background: #76C03B;
+  box-shadow: inset 0px 0px 0px 4px #FFF; }
 
 body {
   color: #000; }
@@ -6651,6 +7141,9 @@ textarea.form-control {
       text-decoration: none; }
 
 @media (max-width: 768px) {
+  .container {
+    padding-left: 20px;
+    padding-right: 20px; }
   .main-menu {
     flex-flow: row wrap; }
     .main-menu li {
@@ -6699,10 +7192,10 @@ textarea.form-control {
 .categories-select {
   margin: 40px 0;
   padding: 0; }
-  .categories-select .border-top span, .categories-select .primary-1 .bordered-spaced span, .primary-1 .categories-select .bordered-spaced span, .categories-select .primary-2 .bordered-spaced span, .primary-2 .categories-select .bordered-spaced span, .categories-select .primary-3 .bordered-spaced span, .primary-3 .categories-select .bordered-spaced span, .categories-select .primary-4 .bordered-spaced span, .primary-4 .categories-select .bordered-spaced span, .categories-select .primary-5 .bordered-spaced span, .primary-5 .categories-select .bordered-spaced span {
+  .categories-select .border-top span, .categories-select .primary-1 .bordered-spaced span, .primary-1 .categories-select .bordered-spaced span, .categories-select .primary-2 .bordered-spaced span, .primary-2 .categories-select .bordered-spaced span, .categories-select .primary-3 .bordered-spaced span, .primary-3 .categories-select .bordered-spaced span, .categories-select .primary-4 .bordered-spaced span, .primary-4 .categories-select .bordered-spaced span, .categories-select .primary-5 .bordered-spaced span, .primary-5 .categories-select .bordered-spaced span, .categories-select .primary-6 .bordered-spaced span, .primary-6 .categories-select .bordered-spaced span {
     padding: 15px 0;
     display: block; }
-    .categories-select .border-top span a, .categories-select .primary-1 .bordered-spaced span a, .primary-1 .categories-select .bordered-spaced span a, .categories-select .primary-2 .bordered-spaced span a, .primary-2 .categories-select .bordered-spaced span a, .categories-select .primary-3 .bordered-spaced span a, .primary-3 .categories-select .bordered-spaced span a, .categories-select .primary-4 .bordered-spaced span a, .primary-4 .categories-select .bordered-spaced span a, .categories-select .primary-5 .bordered-spaced span a, .primary-5 .categories-select .bordered-spaced span a {
+    .categories-select .border-top span a, .categories-select .primary-1 .bordered-spaced span a, .primary-1 .categories-select .bordered-spaced span a, .categories-select .primary-2 .bordered-spaced span a, .primary-2 .categories-select .bordered-spaced span a, .categories-select .primary-3 .bordered-spaced span a, .primary-3 .categories-select .bordered-spaced span a, .categories-select .primary-4 .bordered-spaced span a, .primary-4 .categories-select .bordered-spaced span a, .categories-select .primary-5 .bordered-spaced span a, .primary-5 .categories-select .bordered-spaced span a, .categories-select .primary-6 .bordered-spaced span a, .primary-6 .categories-select .bordered-spaced span a {
       color: #000;
       text-decoration: none; }
   .categories-select ul {
