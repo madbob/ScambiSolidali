@@ -64,7 +64,7 @@ class UserController extends Controller
             'name' => 'required|max:255',
             'surname' => 'required|max:255',
             'phone' => 'required|max:255',
-            'email' => 'required|max:255'
+            'email' => 'required|unique:users|max:255'
         ]);
 
         $user = new User();
