@@ -360,7 +360,9 @@ class DonationController extends Controller
 
         $search = $request->input('search');
         if (!empty($search)) {
-            $query->where('title', 'like', '%' . $search . '%');
+            $query->where('title', 'like', '%' . $search . '%')->orWhereHas('user', function($query) use ($search) {
+                $query->where('email', 'like', '%' . $search . '%')->orWhere('name', 'like', '%' . $search . '%')->orWhere('surname', 'like', '%' . $search . '%');
+            });
             $data['search'] = $search;
         }
 
