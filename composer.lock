@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c2bde2a0d4f3eb7b59e1c2f4697ff696",
+    "content-hash": "f9f0ef16aad4c5b09a9e02cea9af3cac",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -982,6 +982,47 @@
                 "rss"
             ],
             "time": "2017-11-27T02:06:44+00:00"
+        },
+        {
+            "name": "madbob/laravel-notification-mobyt",
+            "version": "0.1",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.com/madbob/laravel-notification-mobyt.git",
+                "reference": "360e80cc84c3c9a0de535e50f362a83718e57d5a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://gitlab.com/api/v4/projects/madbob%2Flaravel-notification-mobyt/repository/archive.zip?sha=360e80cc84c3c9a0de535e50f362a83718e57d5a",
+                "reference": "360e80cc84c3c9a0de535e50f362a83718e57d5a",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MadBob\\LaravelNotification\\Mobyt\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Roberto Guido",
+                    "email": "bob@linux.it"
+                }
+            ],
+            "description": "Integration with Laravel Notifications and Mobyt/Skebby/SMSItalia SMS gateways",
+            "keywords": [
+                "laravel",
+                "mobyt",
+                "notifications",
+                "skebby",
+                "sms",
+                "smsitalia"
+            ],
+            "time": "2019-04-14T20:30:38+00:00"
         },
         {
             "name": "maximebf/debugbar",

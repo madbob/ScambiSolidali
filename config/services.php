@@ -35,4 +35,11 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'mobyt' => [
+        'driver' => 'skebby',
+        'from' => 'CeloCelo',
+        'username' => env('MOBYT_USERNAME'),
+        'password' => env('MOBYT_PASSWORD'),
+    ],
+
 ];

@@ -71,6 +71,11 @@ class User extends Authenticatable
         return '???';
     }
 
+    public function routeNotificationForMobyt()
+    {
+        return $this->phone;
+    }
+
 	public function getRatingAttribute()
 	{
 		$rating = 0;

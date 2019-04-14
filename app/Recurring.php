@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Log;
 
 use App\RecurringPick;
+use App\Notifications\RecurringNotification;
 
 class Recurring extends Model
 {
@@ -80,13 +81,27 @@ class Recurring extends Model
             $recurring->company_id = $c->id;
             $recurring->filled = false;
             $recurring->closed = false;
-            $recurring->identifier = str_random(50);
+
+            /*
+                Attenzione: l'identificativo deve essere ragionevolmente lungo,
+                ma non troppo in quanto il link dovrà essere messo negli SMS di
+                notifica (che ovviamente hanno caratteri limitati)
+            */
+            do {
+                $recurring->identifier = str_random(20);
+            } while(Recurring::where('identifier', $recurring->identifier)->count() != 0);
+
             $recurring->contents = '';
             $recurring->save();
 
-            /*
-                TODO Inviare notifiche
-            */
+            foreach($c->users as $u) {
+                try {
+                    $u->notify(new RecurringNotification($recurring));
+                }
+                catch(\Exception $e) {
+                    Log::error('Impossibile notificare utente ' . $u->id . ' per le disponibilità ricorrenti: ' . $e->getMessage());
+                }
+            }
         }
     }
 
