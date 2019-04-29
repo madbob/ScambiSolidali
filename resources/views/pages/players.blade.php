@@ -201,6 +201,7 @@
                         </div>
 
                         <div class="col-md-12">
+                            <a class="btn btn-default" href="{{ route('giocatori.export') }}">Esporta CSV</a>
                             <div class="btn-group pull-right" role="group" data-toggle="buttons">
                                 <label class="btn btn-default active">
                                     <input type="radio" name="role-filter" data-role="all" autocomplete="off" checked> Tutti

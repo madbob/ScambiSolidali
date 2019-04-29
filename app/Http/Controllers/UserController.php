@@ -177,4 +177,27 @@ class UserController extends Controller
         Session::flash('message', sprintf('Mail inviata a %d destinatari', $count));
         return redirect(url('giocatori'));
     }
+
+    public function export()
+    {
+        $user = Auth::user();
+        if ($user->role != 'admin') {
+            return redirect(url('/'));
+        }
+
+        header("Content-type: text/csv");
+        header('Content-Disposition: attachment; filename="utenti_celocelo.csv";');
+
+        echo sprintf('"NOME";"COGNOME";"TELEFONO";"EMAIL";"TIPO"' . "\n");
+        $users = User::orderBy('surname', 'asc')->get();
+        foreach($users as $user) {
+            $row = [];
+            $row[] = $user->name;
+            $row[] = $user->surname;
+            $row[] = $user->phone;
+            $row[] = $user->email;
+            $row[] = $user->role;
+            echo sprintf("%s\n", join(';', $row));
+        }
+    }
 }

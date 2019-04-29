@@ -62,21 +62,32 @@ class RegisterController extends Controller
         ]);
     }
 
+    private function finalizeRegister($input, $institute, $type)
+    {
+        $user = $this->create($input);
+
+        Mail::send('mails.activation', ['user' => $user], function($message) use ($user){
+            $message->to($user->email);
+            $message->subject(env('APP_NAME') . ': attivazione account');
+        });
+
+        $user->role = $type;
+        $user->save();
+
+        if ($institute)
+            $institute->users()->attach($user->id);
+
+        Session::flash('message', 'Ti abbiamo inviato una mail per la conferma della registrazione');
+        return redirect()->to('login');
+    }
+
     public function register(Request $request) {
         $input = $request->all();
         $input['role'] = 'user';
         $validator = $this->validator($input);
 
         if ($validator->passes()){
-            $user = (object) $this->create($input)->toArray();
-
-            Mail::send('mails.activation', ['user' => $user], function($message) use ($user){
-                $message->to($user->email);
-                $message->subject(env('APP_NAME') . ': attivazione account');
-            });
-
-            Session::flash('message', 'Ti abbiamo inviato una mail per la conferma della registrazione');
-            return redirect()->to('login');
+            return $this->finalizeRegister($input, null, 'user');
         }
 
         return back()->with('errors', $validator->errors());
@@ -99,20 +110,7 @@ class RegisterController extends Controller
         $validator = $this->validator($input);
 
         if ($validator->passes()){
-            $user = $this->create($input);
-
-            Mail::send('mails.activation', ['user' => $user], function($message) use ($user){
-                $message->to($user->email);
-                $message->subject(env('APP_NAME') . ': attivazione account');
-            });
-
-            $user->role = 'operator';
-            $user->save();
-
-            $institute->users()->attach($user->id);
-
-            Session::flash('message', 'Ti abbiamo inviato una mail per la conferma della registrazione');
-            return redirect()->to('login');
+            return $this->finalizeRegister($input, $institute, 'operator');
         }
 
         return back()->with('errors', $validator->errors());

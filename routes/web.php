@@ -43,6 +43,7 @@ Route::get('/register/activate/{token}', 'Auth\RegisterController@activate');
 Route::get('/register/operator', 'Auth\RegisterController@registerOp');
 Route::post('/register/operator', 'Auth\RegisterController@postRegisterOp');
 
+Route::get('/giocatori/export', 'UserController@export')->name('giocatori.export');
 Route::post('/giocatori/mail', 'UserController@massiveMail')->name('giocatori.mail');
 
 Route::get('/periodico/prenota', 'RecurringController@booking')->name('periodico.prenota');
