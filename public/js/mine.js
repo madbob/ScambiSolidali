@@ -102,6 +102,22 @@ $(document).ready(function() {
         }
     });
 
+    /*
+        Quando il pulsante di invio viene cliccato lo disabilito, salvo
+        riabilitarlo dopo un secondo (qualora il submit sia fallito, tipo a
+        causa della foto mancante). Questo per evitare il click compulsivo e
+        l'invio di più annunci tutti uguali
+    */
+    $('.new-donation-form form button[type=submit]').click(function() {
+        var button = $(this);
+
+        button.prop('disabled', true);
+
+        setTimeout(function() {
+            button.prop('disabled', false);
+        }, 1000);
+    });
+
     $('body').on('click', '.async-delete-interaction', function(e) {
         e.preventDefault();
         var id = $(this).attr('data-item-id');
