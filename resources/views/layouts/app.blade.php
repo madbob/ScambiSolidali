@@ -8,6 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ $pagetitle }}</title>
+    <meta name="Description" content="Mettiamo in contatto chi opera nel sociale con chi ha qualcosa da regalare.">
 
     <link href="/css/chosen.min.css" rel="stylesheet">
     <link href="/css/bootstrap-chosen.css" rel="stylesheet">
@@ -155,7 +156,8 @@
         <br/>
     </div>
 
-    <script src="{{ url('js/app.js') }}"></script>
+    <script src="{{ url('js/jquery-3.1.0.min.js') }}"></script>
+    <script src="{{ url('js/bootstrap.min.js') }}"></script>
     <script src="{{ url('js/chosen.jquery.min.js') }}"></script>
     <script src="{{ url('js/bootstrap-datepicker.min.js') }}"></script>
     <script src="{{ url('js/bootstrap-datepicker.it.min.js') }}"></script>
