@@ -16,6 +16,7 @@
     <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.0.1/mapbox-gl-geocoder.css' type='text/css' />
     {!! Minify::stylesheet('/css/app.css') !!}
 
+    <meta name="theme-color" content="#FFF"/>
     <link rel="manifest" href="{{ asset('manifest.json') }}">
 
     <meta property="og:site_name" content="{{ env('APP_NAME') }}" />
