@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use Mail;
+use Log;
 use Session;
 
 use App\User;
@@ -14,42 +15,15 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
-
     use RegistersUsers;
 
-    /**
-     * Where to redirect users after login / registration.
-     *
-     * @var string
-     */
     protected $redirectTo = '/home';
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('guest');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -62,7 +36,7 @@ class RegisterController extends Controller
         ]);
     }
 
-    private function finalizeRegister($input, $institute, $type)
+    private function finalizeRegister($input, $institute)
     {
         $user = $this->create($input);
 
@@ -71,11 +45,9 @@ class RegisterController extends Controller
             $message->subject(env('APP_NAME') . ': attivazione account');
         });
 
-        $user->role = $type;
-        $user->save();
-
-        if ($institute)
+        if ($institute) {
             $institute->users()->attach($user->id);
+        }
 
         Session::flash('message', 'Ti abbiamo inviato una mail per la conferma della registrazione');
         return redirect()->to('login');
@@ -87,7 +59,7 @@ class RegisterController extends Controller
         $validator = $this->validator($input);
 
         if ($validator->passes()){
-            return $this->finalizeRegister($input, null, 'user');
+            return $this->finalizeRegister($input, null);
         }
 
         return back()->with('errors', $validator->errors());
@@ -110,20 +82,16 @@ class RegisterController extends Controller
         $validator = $this->validator($input);
 
         if ($validator->passes()){
-            return $this->finalizeRegister($input, $institute, 'operator');
+            return $this->finalizeRegister($input, $institute);
         }
 
         return back()->with('errors', $validator->errors());
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return User
-     */
     protected function create(array $data)
     {
+        Log::debug('Creo utente: ' . print_r($data, true));
+
         return User::create([
             'name' => $data['name'],
             'surname' => $data['surname'],
