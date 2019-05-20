@@ -40,7 +40,7 @@
         ]); ?>
     </script>
 </head>
-<body>
+<body class="{{ $main_css_class ?? '' }}">
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
@@ -53,7 +53,6 @@
                             <span class="icon-bar"></span>
                         </button>
                         <a class="navbar-brand" href="{{ url('/') }}">
-                            <img src="{{ url('images/logo.png') }}" alt="{{ config('app.name', 'Laravel') }}" class="img-responsive">
                         </a>
                     </div>
 
@@ -115,7 +114,7 @@
             <div class="row visible-md visible-lg">
                 <div class="col-md-12 primary-2">
                     <span class="tagline">
-                        mettiamo in contatto chi opera nel sociale con chi ha qualcosa da regalare!
+                        {{ $custom_claim ?? 'mettiamo in contatto chi opera nel sociale con chi ha qualcosa da regalare!' }}
                         <span class="pull-right"><a href="https://www.facebook.com/celocelo-190331531485606/">seguici su <img src="{{ url('images/facebook_icon.png') }}" alt="Facebook"></a></span>
                     </span>
                 </div>

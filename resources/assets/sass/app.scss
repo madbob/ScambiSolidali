@@ -545,8 +545,22 @@ textarea.form-control {
 .navbar-default {
     border: 0;
 
-    .navbar-brand {
-        float: none;
+    .container {
+        .row {
+            position: relative;
+
+            .navbar-brand {
+                height: 70%;
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                background-image: url('/images/logo.png');
+                background-repeat: no-repeat;
+                background-size: contain;
+                margin-left: 0;
+            }
+        }
     }
 }
 
@@ -952,6 +966,50 @@ $half: round($loops / 2);
     .list-group {
         .list-group-item {
             padding: 15px 25px;
+        }
+    }
+}
+
+/********************************* FOOD OVERWRITE */
+
+.food-page {
+    .navbar-default {
+        border: 0;
+
+        .container {
+            .row {
+                position: relative;
+
+                .navbar-brand {
+                    height: 114%;
+                    background-image: url('/images/logo-food.png');
+                }
+            }
+        }
+    }
+
+    .tagline {
+        border-top: 2px solid $food-color;
+        color: $food-color;
+    }
+
+    .main-menu {
+        border-top: 2px solid $food-color;
+    }
+
+    .navbar-right .city-title {
+        a, .city-name {
+            color: $food-color !important;
+        }
+    }
+
+    .primary-2 {
+        a {
+            color: $food-color;
+        }
+
+        .left-border {
+            border-left: 1px solid $food-color;
         }
     }
 }

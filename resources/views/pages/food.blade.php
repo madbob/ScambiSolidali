@@ -1,60 +1,18 @@
-@extends('layouts.app')
+@extends('layouts.app', ['main_css_class' => 'food-page', 'custom_claim' => 'mettiamo in contatto chi opera nel sociale con chi ha qualcosa da mangiare!'])
 
 @section('title', 'Food')
 
 @section('content')
     <div class="project">
         <div class="row primary-6">
-            <div class="pagetitle">
-                <span>FOOD</span>
+            <div class="col-md-6">
+                <img src="{{ asset('images/food-bg.svg') }}" class="img-responsive">
             </div>
 
-            <div class="col-md-3">
-                <div class="common-card">
-                    <div class="card-main image-frame" style="background-image: url('{{ url('images/categories/casa_elettrodomestici.svg') }}')">
-                        &nbsp;
-                    </div>
-                    <div class="card-footer vert-align">
-                        <p>
-                            {{ env('APP_NAME') }}
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-8 col-md-offset-1">
-                <div class="col-md-6 right-p">
-                    <p>
-                        <strong>Food</strong> mette in contatto chi opera nel sociale con chi ha qualcosa da mangiare!
-                    </p>
-                </div>
-                <div class="col-md-6 left-p">
-                    <p>
-                        ...
-                    </p>
-                </div>
-                <div class="col-md-6 right-p">
-                    <p class="border-bottom">
-                        &nbsp;
-                    </p>
-                </div>
-                <div class="col-md-6 left-p">
-                    <p class="border-bottom">
-                        &nbsp;
-                    </p>
-                </div>
-                <div class="col-md-12">
-                    <p>
-                        Soggetti coinvolti:
-                    </p>
-                    <ul>
-                        @foreach(App\Company::orderBy('name')->get() as $company)
-                            <li>{{ $company->name }}</li>
-                        @endforeach
-                    </ul>
-                    <p>
-                        Se anche tu vuoi essere parte del progetto, <a href="{{ route('contacts') }}">contattaci!</a>
-                    </p>
-                </div>
+            <div class="col-md-6">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pellentesque dolor nec eros imperdiet, ut molestie dolor interdum. Nunc iaculis turpis vel massa gravida placerat. Suspendisse potenti. Praesent posuere posuere sapien ut tincidunt. Pellentesque accumsan, tortor nec euismod mattis, nisl orci maximus nunc, et gravida justo metus ac dolor. Praesent fringilla quis ante ut vehicula. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vivamus eu scelerisque nulla, in eleifend diam. Fusce aliquam gravida eleifend. Sed vel risus faucibus, accumsan purus eget, euismod leo. Praesent ultrices nibh sed lorem vestibulum, nec porta eros varius. Mauris tincidunt elit eu fringilla bibendum. Aliquam cursus turpis est.
+                </p>
             </div>
         </div>
     </div>
