@@ -53,7 +53,7 @@
                                     </div>
                                     <div class="card-main-overlay">
                                         <span>
-                                            <p>Consegnato!</p>
+                                            <p>Assegnato!</p>
                                             <img src="{{ url('images/trofeo.svg') }}">
                                         </span>
                                     </div>
