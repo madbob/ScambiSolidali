@@ -10,12 +10,15 @@
     <title>{{ $pagetitle }}</title>
     <meta name="Description" content="Mettiamo in contatto chi opera nel sociale con chi ha qualcosa da regalare.">
 
-    <link href="/css/chosen.min.css" rel="stylesheet">
-    <link href="/css/bootstrap-chosen.css" rel="stylesheet">
-    <link href="/css/bootstrap-datepicker3.min.css" rel="stylesheet">
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.css' rel='stylesheet' />
     <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.0.1/mapbox-gl-geocoder.css' type='text/css' />
-    {!! Minify::stylesheet('/css/app.css') !!}
+
+    {!! Minify::stylesheet([
+        '/css/chosen.min.css',
+        '/css/bootstrap-chosen.css',
+        '/css/bootstrap-datepicker3.min.css',
+        '/css/app.css'
+    ]) !!}
 
     <meta name="theme-color" content="#FFF"/>
     <link rel="manifest" href="{{ asset('manifest.json') }}">

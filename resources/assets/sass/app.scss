@@ -9,7 +9,7 @@
   font-family: 'Work Sans';
   font-style: normal;
   font-weight: 300;
-  src: local('Work Sans Light'), local('WorkSans-Light'), url(https://fonts.gstatic.com/s/worksans/v2/FD_Udbezj8EHXbdsqLUpl-gdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
+  src: local('Work Sans Light'), local('WorkSans-Light'), url('../fonts/work_sans_light.woff2') format('woff2');
 }
 
 @font-face {
@@ -37,7 +37,7 @@
   font-family: 'Work Sans';
   font-style: normal;
   font-weight: 600;
-  src: local('Work Sans SemiBold'), local('WorkSans-SemiBold'), url(https://fonts.gstatic.com/s/worksans/v2/z9rX03Xuz9ZNHTMg1_ghGegdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
+  src: local('Work Sans SemiBold'), local('WorkSans-SemiBold'), url('../fonts/work_sans_semibold.woff2') format('woff2');
 }
 
 // Variables
@@ -550,12 +550,12 @@ textarea.form-control {
             position: relative;
 
             .navbar-brand {
-                height: 70%;
+                height: 95%;
                 position: absolute;
                 bottom: 0;
-                right: 0;
+                right: 50%;
                 left: 0;
-                background-image: url('/images/logo.png');
+                background-image: url('../images/logo.png');
                 background-repeat: no-repeat;
                 background-size: contain;
                 margin-left: 0;
@@ -981,8 +981,8 @@ $half: round($loops / 2);
                 position: relative;
 
                 .navbar-brand {
-                    height: 114%;
-                    background-image: url('/images/logo-food.png');
+                    height: 98%;
+                    background-image: url('../images/logo-food.png');
                 }
             }
         }

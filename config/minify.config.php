@@ -56,7 +56,7 @@ return array(
     */
 
     'js_build_path' => '/js/builds/',
-    'js_url_path' => '/js/builds/', 
+    'js_url_path' => '/js/builds/',
 
 	/*
     |--------------------------------------------------------------------------
@@ -69,7 +69,7 @@ return array(
     */
 
     'disable_mtime' => false,
-    'hash_salt' => '', 
+    'hash_salt' => '',
 
 	/*
     |--------------------------------------------------------------------------
