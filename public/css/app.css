@@ -7685,17 +7685,31 @@ textarea.form-control {
 .food-page .navbar-right .city-title a, .food-page .navbar-right .city-title .city-name {
   color: #76C03B !important; }
 
-.food-page .postcard p {
-  width: 55%;
+.food-page .postcard {
   text-align: left;
-  position: absolute;
-  padding: 20px;
-  text-transform: uppercase;
-  font-size: 1.7em;
-  color: #76C03B; }
-
-.food-page .postcard img {
-  width: 100%; }
+  background-image: url("../images/food-bg.svg");
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-color: #F4DEB7; }
+  .food-page .postcard h2 {
+    text-transform: uppercase;
+    font-size: 1.7em;
+    font-weight: bold;
+    color: #76C03B; }
+  .food-page .postcard h3 {
+    color: #76C03B; }
+  .food-page .postcard img {
+    width: 100%; }
+  .food-page .postcard .row {
+    margin: 0; }
+    .food-page .postcard .row .col-md-4 {
+      padding: 45px 25px;
+      font-size: 1.2em; }
+  .food-page .postcard .hard-bg {
+    background-color: #8AB83B;
+    color: #F7E5C8;
+    padding: 10px; }
 
 .food-page .credits .intro {
   color: #76C03B; }

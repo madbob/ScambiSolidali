@@ -18,7 +18,8 @@
 
                 <p>
                     Il cibo verrà immediatamente portato a operatori accreditati che gestiscono persone e famiglie per cui le tue donazioni alimentari fanno certamente la differenza.<br>
-                    La donazione di permetterà di accedere a sgravi fiscali.
+                    La donazione ti permetterà di accedere a sgravi fiscali.<br>
+                    Se vuoi aderire al progetto scrivi a <a herf="mailto:segreteria@agenzia.sansalvario.org">segreteria@agenzia.sansalvario.org</a> o telefona allo <a href="tel:00390116686772">011 6686772</a>.
                 </p>
 
                 <p>

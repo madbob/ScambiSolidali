@@ -1004,19 +1004,41 @@ $half: round($loops / 2);
     }
 
     .postcard {
-        p {
-            width: 55%;
-            text-align: left;
-            position: absolute;
-            padding: 20px;
+        text-align: left;
+        background-image: url('../images/food-bg.svg');
+        background-size: auto;
+        background-repeat: no-repeat;
+        background-position: left bottom;
+        background-color: #F4DEB7;
+
+        h2 {
             text-transform: uppercase;
             font-size: 1.7em;
             font-weight: bold;
             color: $food-color;
         }
 
+        h3 {
+            color: $food-color;
+        }
+
         img {
             width: 100%;
+        }
+
+        .row {
+            margin: 0;
+
+            .col-md-4 {
+                padding: 45px 25px;
+                font-size: 1.2em;
+            }
+        }
+
+        .hard-bg {
+            background-color: #8AB83B;
+            color: #F7E5C8;
+            padding: 10px;
         }
     }
 

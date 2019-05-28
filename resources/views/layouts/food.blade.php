@@ -55,7 +55,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="{{ url('/') }}">
+                        <a class="navbar-brand" href="{{ route('food') }}">
                         </a>
                     </div>
 
@@ -101,8 +101,6 @@
                             <li><a href="{{ route('food.progetto') }}">Progetto</a></li>
                             <li><a href="{{ route('food.come-funziona') }}">Regole</a></li>
                             <li><a href="{{ route('food.giocatori') }}">Giocatori</a></li>
-                            <li><a href="{{ url('parlano-di-noi') }}">Parlano di Noi</a></li>
-                            <li><a href="{{ url('contatti') }}">Contatti</a></li>
                             <li><a href="https://www.facebook.com/celocelo-190331531485606/">Seguici su <img src="{{ url('images/facebook_icon.png') }}" alt="Facebook"></a></li>
                         </ul>
                     </div>
@@ -126,8 +124,6 @@
                         <li><a href="{{ route('food.progetto') }}">Progetto</a></li>
                         <li><a href="{{ route('food.come-funziona') }}">Regole</a></li>
                         <li><a href="{{ route('food.giocatori') }}">Giocatori</a></li>
-                        <li><a href="{{ url('parlano-di-noi') }}">Parlano di Noi</a></li>
-                        <li><a href="{{ url('contatti') }}">Contatti</a></li>
                     </ul>
                 </div>
             </div>
