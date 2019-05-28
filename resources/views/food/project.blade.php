@@ -11,12 +11,12 @@
 
             <div class="col-md-3">
                 <div class="common-card">
-                    <div class="card-main image-frame" style="background-image: url('{{ url('images/categories/casa_elettrodomestici.svg') }}')">
+                    <div class="card-main image-frame" style="background-image: url('{{ url('images/food-placeholder.svg') }}')">
                         &nbsp;
                     </div>
                     <div class="card-footer vert-align">
                         <p>
-                            {{ env('APP_NAME') }}
+                            {{ env('APP_NAME') }} FOOD
                         </p>
                     </div>
                 </div>
