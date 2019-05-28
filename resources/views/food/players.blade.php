@@ -52,7 +52,7 @@
                     <div class="col-md-5 col-md-offset-1">
                         @foreach($companies as $company)
                             <div class="col-md-12 spaced-middle border-bottom">
-                                <p class="institute" data-institute-id="{{ $institute->id }}">
+                                <p class="institute" data-institute-id="{{ $company->id }}">
                                     {{ $company->name }}
                                 </p>
                             </div>
