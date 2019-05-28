@@ -55,8 +55,12 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="{{ url('/') }}">
-                        </a>
+
+                        <a class="navbar-brand" href="{{ url('/') }}"></a>
+
+                        @if(env('HAS_FOOD'))
+                            <a class="navbar-brand-food" href="{{ route('food') }}"></a>
+                        @endif
                     </div>
 
                     <div class="collapse navbar-collapse" id="app-navbar-collapse">

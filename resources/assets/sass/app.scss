@@ -550,12 +550,24 @@ textarea.form-control {
             position: relative;
 
             .navbar-brand {
-                height: 95%;
+                height: 80%;
                 position: absolute;
                 bottom: 0;
-                right: 50%;
+                right: 70%;
                 left: 0;
                 background-image: url('../images/logo.png');
+                background-repeat: no-repeat;
+                background-size: contain;
+                margin-left: 0;
+            }
+
+            .navbar-brand-food {
+                height: 80%;
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                left: 28%;
+                background-image: url('../images/food.svg');
                 background-repeat: no-repeat;
                 background-size: contain;
                 margin-left: 0;
@@ -638,10 +650,29 @@ textarea.form-control {
     }
 }
 
+@media (max-width: 992px) {
+    .navbar-default {
+        .container {
+            .row {
+                .navbar-brand-food {
+                    height: 45%;
+                    top: 10%;
+                    left: 40%;
+                }
+            }
+        }
+    }
+}
+
 @media (max-width: 768px) {
-    .container {
-        padding-left: 20px;
-        padding-right: 20px;
+    .navbar-default {
+        .container {
+            .row {
+                .navbar-brand-food {
+                    height: 95%;
+                }
+            }
+        }
     }
 
     .main-menu {
