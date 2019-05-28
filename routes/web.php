@@ -23,7 +23,6 @@ Route::get('/come-funziona', 'CommonController@working');
 Route::get('/privacy', 'CommonController@privacy');
 Route::get('/numeri', 'CommonController@numbers');
 Route::get('/contatti', 'CommonController@contacts')->name('contacts');
-Route::get('/food', 'CommonController@food')->name('food');
 
 Route::get('/celo/nuovo/{type}', 'DonationController@create');
 Route::get('/celo/renew/{token}', 'DonationController@renew');
@@ -46,6 +45,11 @@ Route::post('/register/operator', 'Auth\RegisterController@postRegisterOp');
 Route::get('/giocatori/export', 'UserController@export')->name('giocatori.export');
 Route::post('/giocatori/mail', 'UserController@massiveMail')->name('giocatori.mail');
 
+Route::get('/food', 'CommonController@food')->name('food');
+Route::get('/food/progetto', 'CommonController@foodProject')->name('food.progetto');
+Route::get('/food/come-funziona', 'CommonController@foodWorking')->name('food.come-funziona');
+Route::get('/food/giocatori', 'CommonController@foodPlayers')->name('food.giocatori');
+Route::get('/food/numeri', 'CommonController@foodNumbers')->name('food.numeri');
 Route::get('/periodico/prenota', 'RecurringController@booking')->name('periodico.prenota');
 Route::post('/periodico/prenota', 'RecurringController@saveBooking')->name('periodico.prenotazione');
 Route::post('/periodico/reset/weekly', 'RecurringController@resetWeekly')->name('periodico.reset_weekly');

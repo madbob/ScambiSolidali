@@ -43,7 +43,7 @@
         ]); ?>
     </script>
 </head>
-<body>
+<body class="food-page">
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
@@ -60,7 +60,7 @@
                     </div>
 
                     <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                        <ul class="nav navbar-nav navbar-right primary-2">
+                        <ul class="nav navbar-nav navbar-right primary-6">
                             <li>
                                 @if (Auth::guest())
                                     <div class="row">
@@ -97,13 +97,10 @@
                                 @endif
                             </li>
                         </ul>
-                        <ul class="nav navbar-nav navbar-right primary-2 visible-xs visible-sm">
-                            <li><a href="{{ url('progetto') }}">Progetto</a></li>
-                            <li><a href="{{ url('come-funziona') }}">Regole</a></li>
-                            <li><a href="{{ url('celo') }}">Celo</a></li>
-                            <li><a href="{{ url('manca') }}">Manca</a></li>
-                            <li><a href="{{ url('giocatori') }}">Giocatori</a></li>
-                            <li><a href="{{ url('numeri') }}">Vincitori</a></li>
+                        <ul class="nav navbar-nav navbar-right primary-6 visible-xs visible-sm">
+                            <li><a href="{{ route('food.progetto') }}">Progetto</a></li>
+                            <li><a href="{{ route('food.come-funziona') }}">Regole</a></li>
+                            <li><a href="{{ route('food.giocatori') }}">Giocatori</a></li>
                             <li><a href="{{ url('parlano-di-noi') }}">Parlano di Noi</a></li>
                             <li><a href="{{ url('contatti') }}">Contatti</a></li>
                             <li><a href="https://www.facebook.com/celocelo-190331531485606/">Seguici su <img src="{{ url('images/facebook_icon.png') }}" alt="Facebook"></a></li>
@@ -115,9 +112,9 @@
 
 		<div class="container">
             <div class="row visible-md visible-lg">
-                <div class="col-md-12 primary-2">
+                <div class="col-md-12 primary-6">
                     <span class="tagline">
-                        mettiamo in contatto chi opera nel sociale con chi ha qualcosa da regalare!
+                        mettiamo in contatto chi opera nel sociale con chi ha qualcosa da mangiare!
                         <span class="pull-right"><a href="https://www.facebook.com/celocelo-190331531485606/">seguici su <img src="{{ url('images/facebook_icon.png') }}" alt="Facebook"></a></span>
                     </span>
                 </div>
@@ -126,12 +123,9 @@
             <div class="row visible-md visible-lg">
                 <div class="col-md-12">
                     <ul class="main-menu">
-                        <li><a href="{{ url('progetto') }}">Progetto</a></li>
-                        <li><a href="{{ url('come-funziona') }}">Regole</a></li>
-                        <li><a href="{{ url('celo') }}">Celo</a></li>
-                        <li><a href="{{ url('manca') }}">Manca</a></li>
-                        <li><a href="{{ url('giocatori') }}">Giocatori</a></li>
-                        <li><a href="{{ url('numeri') }}">Vincitori</a></li>
+                        <li><a href="{{ route('food.progetto') }}">Progetto</a></li>
+                        <li><a href="{{ route('food.come-funziona') }}">Regole</a></li>
+                        <li><a href="{{ route('food.giocatori') }}">Giocatori</a></li>
                         <li><a href="{{ url('parlano-di-noi') }}">Parlano di Noi</a></li>
                         <li><a href="{{ url('contatti') }}">Contatti</a></li>
                     </ul>

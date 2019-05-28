@@ -7,6 +7,7 @@ use Auth;
 use App\Donation;
 use App\Category;
 use App\Story;
+use App\Company;
 
 class CommonController extends Controller
 {
@@ -64,7 +65,38 @@ class CommonController extends Controller
     public function food()
     {
         if (env('HAS_FOOD', false)) {
-            return view('pages.food');
+            return view('food.index');
+        }
+        else {
+            return redirect()->route('home');
+        }
+    }
+
+    public function foodProject()
+    {
+        if (env('HAS_FOOD', false)) {
+            return view('food.project');
+        }
+        else {
+            return redirect()->route('home');
+        }
+    }
+
+    public function foodWorking()
+    {
+        if (env('HAS_FOOD', false)) {
+            return view('food.working');
+        }
+        else {
+            return redirect()->route('home');
+        }
+    }
+
+    public function foodPlayers()
+    {
+        if (env('HAS_FOOD', false)) {
+            $companies = Company::orderBy('name', 'asc')->get();
+            return view('food.players', compact('companies'));
         }
         else {
             return redirect()->route('home');

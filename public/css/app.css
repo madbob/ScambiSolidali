@@ -7685,8 +7685,20 @@ textarea.form-control {
 .food-page .navbar-right .city-title a, .food-page .navbar-right .city-title .city-name {
   color: #76C03B !important; }
 
-.food-page .primary-2 a {
+.food-page .postcard p {
+  width: 55%;
+  text-align: left;
+  position: absolute;
+  padding: 20px;
+  text-transform: uppercase;
+  font-size: 1.7em;
   color: #76C03B; }
 
-.food-page .primary-2 .left-border {
-  border-left: 1px solid #76C03B; }
+.food-page .postcard img {
+  width: 100%; }
+
+.food-page .credits .intro {
+  color: #76C03B; }
+
+.food-page .credits img {
+  margin-right: 30px; }

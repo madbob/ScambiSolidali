@@ -101,5 +101,12 @@ T 011 6686772';
             $c->value = 'Casa del Quartiere';
             $c->save();
         }
+
+        if (Config::where('name', 'food_full_credits')->first() == null) {
+            $c = new Config();
+            $c->name = 'food_full_credits';
+            $c->value = sprintf('<p class="intro">Un progetto di</p><img src="%s" alt="Agenzia per lo Sviluppo Locale di San Salvario ONLUS"><img src="%s" alt="Equoevento ONLUS"><img src="%s" alt="Stradaidea Impresa Sociale ONLUS"><p class="intro"><br>Il progetto è sostenuto dalla Compagnia di San Paolo nell\'ambito del Bando Fatto per Bene</p><img src="%s" alt="Compagnia di San Paolo">', url('images/agenziasansalvario.jpg'), url('images/equoevento.jpg'), url('images/stranaidea.jpg'), url('images/csp.png'));
+            $c->save();
+        }
     }
 }
