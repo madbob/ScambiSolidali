@@ -7167,8 +7167,12 @@ textarea.form-control {
     left: 40%; } }
 
 @media (max-width: 768px) {
+  .navbar-default .container .row .navbar-brand {
+    height: 80% !important; }
   .navbar-default .container .row .navbar-brand-food {
-    height: 95%; }
+    height: 80%;
+    width: 10%;
+    top: auto; }
   .main-menu {
     flex-flow: row wrap; }
     .main-menu li {
@@ -7687,7 +7691,7 @@ textarea.form-control {
   .food-page .navbar-default .container .row {
     position: relative; }
     .food-page .navbar-default .container .row .navbar-brand {
-      height: 98%;
+      height: 105%;
       background-image: url("../images/logo-food.png"); }
 
 .food-page .tagline {

@@ -668,8 +668,14 @@ textarea.form-control {
     .navbar-default {
         .container {
             .row {
+                .navbar-brand {
+                    height: 80% !important;
+                }
+
                 .navbar-brand-food {
-                    height: 95%;
+                    height: 80%;
+                    width: 10%;
+                    top: auto;
                 }
             }
         }
@@ -1012,7 +1018,7 @@ $half: round($loops / 2);
                 position: relative;
 
                 .navbar-brand {
-                    height: 98%;
+                    height: 105%;
                     background-image: url('../images/logo-food.png');
                 }
             }
