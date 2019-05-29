@@ -101,7 +101,8 @@
                             <li><a href="{{ route('food.progetto') }}">Progetto</a></li>
                             <li><a href="{{ route('food.come-funziona') }}">Regole</a></li>
                             <li><a href="{{ route('food.giocatori') }}">Giocatori</a></li>
-                            <li><a href="https://www.facebook.com/celocelo-190331531485606/">Seguici su <img src="{{ url('images/facebook_icon.png') }}" alt="Facebook"></a></li>
+                            <li><a href="{{ route('food.contacts') }}">Contatti</a></li>
+                            <li><a href="https://www.facebook.com/celocelofood//">Seguici su <img src="{{ url('images/facebook_icon.png') }}" alt="Facebook"></a></li>
                         </ul>
                     </div>
                 </div>
@@ -124,6 +125,7 @@
                         <li><a href="{{ route('food.progetto') }}">Progetto</a></li>
                         <li><a href="{{ route('food.come-funziona') }}">Regole</a></li>
                         <li><a href="{{ route('food.giocatori') }}">Giocatori</a></li>
+                        <li><a href="{{ route('food.contacts') }}">Contatti</a></li>
                     </ul>
                 </div>
             </div>

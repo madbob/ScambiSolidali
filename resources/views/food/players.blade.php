@@ -53,7 +53,11 @@
                         @foreach($companies as $company)
                             <div class="col-md-12 spaced-middle border-bottom">
                                 <p class="institute" data-institute-id="{{ $company->id }}">
-                                    {{ $company->name }}
+                                    @if(!empty($company->website))
+                                        <a href="{{ $company->website }}">{{ $company->name }}</a>
+                                    @else
+                                        {{ $company->name }}
+                                    @endif
                                 </p>
                             </div>
                         @endforeach

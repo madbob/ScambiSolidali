@@ -10,7 +10,7 @@
                     <div class="row">
                         <div class="col-md-4">
                             <h2>
-                                Recuperiamo le eccedenze alimentari come se ci fosse un domani.
+                                Recuperiamo eccedenze alimentari come se ci fosse un domani.
                             </h2>
                         </div>
                         <div class="col-md-4">

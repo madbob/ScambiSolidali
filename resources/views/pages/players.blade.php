@@ -89,11 +89,9 @@
                                 @endif
                                 <p class="institute" data-institute-id="{{ $institute->id }}">
                                     @if(!empty($institute->website))
-                                        <a href="{{ $institute->website }}">
-                                    @endif
-                                    {{ $institute->name }}
-                                    @if(!empty($institute->website))
-                                        </a>
+                                        <a href="{{ $institute->website }}">{{ $institute->name }}</a>
+                                    @else
+                                        {{ $institute->name }}
                                     @endif
                                 </p>
                             </div>

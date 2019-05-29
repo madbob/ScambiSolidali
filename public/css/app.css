@@ -6736,20 +6736,20 @@ button.close {
   box-shadow: inset 0px 0px 0px 4px #FFF; }
 
 .primary-6 a {
-  color: #76C03B; }
+  color: #8AB83B; }
 
 .primary-6 h4 {
-  color: #76C03B;
+  color: #8AB83B;
   margin-top: 0; }
 
 .primary-6 .fancy-bg, .primary-6 .button, .primary-6 .primary-1 .nav-tabs > li, .primary-6 .primary-2 .nav-tabs > li, .primary-6 .primary-3 .nav-tabs > li, .primary-6 .primary-4 .nav-tabs > li, .primary-6 .primary-5 .nav-tabs > li, .primary-6 .pagetitle, .primary-6 .nav-tabs > li, .primary-6 .common-card {
-  background: repeating-linear-gradient(-45deg, #76C03B, #76C03B 2px, #FFF 2px, #FFF 12px); }
+  background: repeating-linear-gradient(-45deg, #8AB83B, #8AB83B 2px, #FFF 2px, #FFF 12px); }
 
 .primary-6 .dense-fancy-bg, .primary-6 .dense-button {
-  background: repeating-linear-gradient(-45deg, #76C03B, #76C03B 9px, #FFF 2px, #FFF 12px); }
+  background: repeating-linear-gradient(-45deg, #8AB83B, #8AB83B 9px, #FFF 2px, #FFF 12px); }
 
 .primary-6 .txt-color {
-  color: #76C03B !important; }
+  color: #8AB83B !important; }
 
 .primary-6 .button, .primary-6 .primary-1 .nav-tabs > li, .primary-6 .primary-2 .nav-tabs > li, .primary-6 .primary-3 .nav-tabs > li, .primary-6 .primary-4 .nav-tabs > li, .primary-6 .primary-5 .nav-tabs > li, .primary-6 .pagetitle, .primary-6 .nav-tabs > li {
   text-align: center;
@@ -6758,7 +6758,7 @@ button.close {
   width: 100%;
   display: block; }
   .primary-6 .button span, .primary-6 .primary-1 .nav-tabs > li span, .primary-6 .primary-2 .nav-tabs > li span, .primary-6 .primary-3 .nav-tabs > li span, .primary-6 .primary-4 .nav-tabs > li span, .primary-6 .primary-5 .nav-tabs > li span, .primary-6 .pagetitle span, .primary-6 .nav-tabs > li span {
-    background-color: #76C03B;
+    background-color: #8AB83B;
     color: #FFF;
     padding: 10px;
     display: block;
@@ -6781,13 +6781,13 @@ button.close {
   text-align: center; }
   .primary-6 .dense-button span {
     background-color: #FFF;
-    color: #76C03B;
+    color: #8AB83B;
     padding: 10px;
     display: block;
     text-transform: uppercase; }
 
 .primary-6 .screaming-border {
-  border: 15px solid #76C03B; }
+  border: 15px solid #8AB83B; }
   .primary-6 .screaming-border span {
     font-weight: bold;
     padding: 15px; }
@@ -6803,48 +6803,48 @@ button.close {
       color: #FFF; }
 
 .primary-6 .top-border {
-  border-top: 2px solid #76C03B; }
+  border-top: 2px solid #8AB83B; }
 
 .primary-6 .tb-border {
-  border-top: 2px solid #76C03B;
-  border-bottom: 2px solid #76C03B; }
+  border-top: 2px solid #8AB83B;
+  border-bottom: 2px solid #8AB83B; }
 
 .primary-6 .common-card {
-  color: #76C03B; }
+  color: #8AB83B; }
   .primary-6 .common-card .card-main, .primary-6 .common-card .card-main-filter, .primary-6 .common-card .card-main-overlay {
-    background-color: #76C03B; }
+    background-color: #8AB83B; }
     .primary-6 .common-card .card-main.empty, .primary-6 .common-card .empty.card-main-filter, .primary-6 .common-card .empty.card-main-overlay {
       background-color: #FFF; }
   .primary-6 .common-card .card-main-filter {
-    background-color: #76C03B; }
+    background-color: #8AB83B; }
   .primary-6 .common-card .card-footer.filled {
-    background-color: #76C03B;
+    background-color: #8AB83B;
     font-weight: 600; }
     .primary-6 .common-card .card-footer.filled p {
       color: #FFF; }
 
 .primary-6 .bg-color {
-  background-color: #76C03B; }
+  background-color: #8AB83B; }
 
 .primary-6 .border-top, .primary-6 .bordered-spaced {
-  border-top: 2px solid #76C03B; }
+  border-top: 2px solid #8AB83B; }
 
 .primary-6 .border-bottom, .primary-6 .bordered-spaced {
-  border-bottom: 2px solid #76C03B; }
+  border-bottom: 2px solid #8AB83B; }
 
 .primary-6 .bordered-spaced {
   padding: 20px 0;
-  color: #76C03B;
+  color: #8AB83B;
   margin-bottom: 20px; }
 
 .primary-6 hr.colored {
-  border-bottom: 2px solid #76C03B;
+  border-bottom: 2px solid #8AB83B;
   background: none;
   margin-top: 30px;
   margin-bottom: 30px; }
 
 .primary-6 .left-border {
-  border-left: 1px solid #76C03B;
+  border-left: 1px solid #8AB83B;
   padding-left: 10px; }
 
 .primary-6 .radio-custom input {
@@ -6864,7 +6864,7 @@ button.close {
 .primary-6 .radio-custom input + label:before {
   content: '';
   background: #FFF;
-  border: 2px solid #76C03B;
+  border: 2px solid #8AB83B;
   display: inline-block;
   vertical-align: middle;
   width: 20px;
@@ -6877,7 +6877,7 @@ button.close {
   border-radius: 50%; }
 
 .primary-6 .radio-custom input:checked + label:before {
-  background: #76C03B;
+  background: #8AB83B;
   box-shadow: inset 0px 0px 0px 4px #FFF; }
 
 .primary-6 .checkbox-custom input {
@@ -6897,7 +6897,7 @@ button.close {
 .primary-6 .checkbox-custom input + label:before {
   content: '';
   background: #FFF;
-  border: 2px solid #76C03B;
+  border: 2px solid #8AB83B;
   display: inline-block;
   vertical-align: middle;
   width: 20px;
@@ -6907,7 +6907,7 @@ button.close {
   text-align: center; }
 
 .primary-6 .checkbox-custom input:checked + label:before {
-  background: #76C03B;
+  background: #8AB83B;
   box-shadow: inset 0px 0px 0px 4px #FFF; }
 
 body {
@@ -7691,19 +7691,19 @@ textarea.form-control {
       background-image: url("../images/logo-food.png"); }
 
 .food-page .tagline {
-  border-top: 2px solid #76C03B;
-  color: #76C03B; }
+  border-top: 2px solid #8AB83B;
+  color: #8AB83B; }
 
 .food-page .main-menu {
-  border-top: 2px solid #76C03B; }
+  border-top: 2px solid #8AB83B; }
 
 .food-page .navbar-right .city-title a, .food-page .navbar-right .city-title .city-name {
-  color: #76C03B !important; }
+  color: #8AB83B !important; }
 
 .food-page .postcard {
   text-align: left;
   background-image: url("../images/food-bg.svg");
-  background-size: auto;
+  background-size: 33%;
   background-repeat: no-repeat;
   background-position: left bottom;
   background-color: #F4DEB7; }
@@ -7711,9 +7711,9 @@ textarea.form-control {
     text-transform: uppercase;
     font-size: 1.7em;
     font-weight: bold;
-    color: #76C03B; }
+    color: #8AB83B; }
   .food-page .postcard h3 {
-    color: #76C03B; }
+    color: #8AB83B; }
   .food-page .postcard img {
     width: 100%; }
   .food-page .postcard .row {
@@ -7727,7 +7727,7 @@ textarea.form-control {
     padding: 10px; }
 
 .food-page .credits .intro {
-  color: #76C03B; }
+  color: #8AB83B; }
 
 .food-page .credits img {
   margin-right: 30px; }

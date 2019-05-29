@@ -102,4 +102,9 @@ class CommonController extends Controller
             return redirect()->route('home');
         }
     }
+
+    public function foodContacts()
+    {
+        return view('food.contacts');
+    }
 }

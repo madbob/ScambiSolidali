@@ -50,6 +50,8 @@ Route::get('/food/progetto', 'CommonController@foodProject')->name('food.progett
 Route::get('/food/come-funziona', 'CommonController@foodWorking')->name('food.come-funziona');
 Route::get('/food/giocatori', 'CommonController@foodPlayers')->name('food.giocatori');
 Route::get('/food/numeri', 'CommonController@foodNumbers')->name('food.numeri');
+Route::get('/food/contatti', 'CommonController@foodContacts')->name('food.contacts');
+
 Route::get('/periodico/prenota', 'RecurringController@booking')->name('periodico.prenota');
 Route::post('/periodico/prenota', 'RecurringController@saveBooking')->name('periodico.prenotazione');
 Route::post('/periodico/reset/weekly', 'RecurringController@resetWeekly')->name('periodico.reset_weekly');

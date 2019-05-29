@@ -48,7 +48,7 @@
 
 /********************************* COMMONS */
 
-$colors: $primary-color-1 $primary-color-2 $secondary-color-1 $gray-color-1 $black-1 $food-color;
+$colors: $primary-color-1 $primary-color-2 $secondary-color-1 $gray-color-1 $black-1 $food-primary-1;
 
 @each $color in $colors {
     $i: index($colors, $color);
@@ -1020,24 +1020,24 @@ $half: round($loops / 2);
     }
 
     .tagline {
-        border-top: 2px solid $food-color;
-        color: $food-color;
+        border-top: 2px solid $food-primary-1;
+        color: $food-primary-1;
     }
 
     .main-menu {
-        border-top: 2px solid $food-color;
+        border-top: 2px solid $food-primary-1;
     }
 
     .navbar-right .city-title {
         a, .city-name {
-            color: $food-color !important;
+            color: $food-primary-1 !important;
         }
     }
 
     .postcard {
         text-align: left;
         background-image: url('../images/food-bg.svg');
-        background-size: auto;
+        background-size: 33%;
         background-repeat: no-repeat;
         background-position: left bottom;
         background-color: #F4DEB7;
@@ -1046,11 +1046,11 @@ $half: round($loops / 2);
             text-transform: uppercase;
             font-size: 1.7em;
             font-weight: bold;
-            color: $food-color;
+            color: $food-primary-1;
         }
 
         h3 {
-            color: $food-color;
+            color: $food-primary-1;
         }
 
         img {
@@ -1075,7 +1075,7 @@ $half: round($loops / 2);
 
     .credits {
         .intro {
-            color: $food-color;
+            color: $food-primary-1;
         }
 
         img {
