@@ -102,7 +102,7 @@
                             <li><a href="{{ route('food.come-funziona') }}">Regole</a></li>
                             <li><a href="{{ route('food.giocatori') }}">Giocatori</a></li>
                             <li><a href="{{ route('food.contacts') }}">Contatti</a></li>
-                            <li><a href="https://www.facebook.com/celocelofood//">Seguici su <img src="{{ url('images/facebook_icon.png') }}" alt="Facebook"></a></li>
+                            <li><a href="https://www.facebook.com/celocelofood/">Seguici su <img src="{{ url('images/facebook_icon.png') }}" alt="Facebook"></a></li>
                         </ul>
                     </div>
                 </div>
@@ -114,7 +114,7 @@
                 <div class="col-md-12 primary-6">
                     <span class="tagline">
                         mettiamo in contatto chi opera nel sociale con chi ha qualcosa da mangiare!
-                        <span class="pull-right"><a href="https://www.facebook.com/celocelo-190331531485606/">seguici su <img src="{{ url('images/facebook_icon.png') }}" alt="Facebook"></a></span>
+                        <span class="pull-right"><a href="https://www.facebook.com/celocelofood/">seguici su <img src="{{ url('images/facebook_icon.png') }}" alt="Facebook"></a></span>
                     </span>
                 </div>
             </div>
