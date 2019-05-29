@@ -113,7 +113,7 @@
             <div class="row visible-md visible-lg">
                 <div class="col-md-12 primary-6">
                     <span class="tagline">
-                        mettiamo in contatto chi opera nel sociale con chi ha qualcosa da mangiare!
+                        mettiamo in contatto chi opera nel sociale con chi ha qualcosa da regalare!
                         <span class="pull-right"><a href="https://www.facebook.com/celocelofood/">seguici su <img src="{{ url('images/facebook_icon.png') }}" alt="Facebook"></a></span>
                     </span>
                 </div>
