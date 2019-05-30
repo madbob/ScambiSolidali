@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ $pagetitle }}</title>
-    <meta name="Description" content="Mettiamo in contatto chi opera nel sociale con chi ha qualcosa da regalare.">
+    <meta name="Description" content="Recuperiamo eccedenze alimentari come se ci fosse un domani.">
 
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.css' rel='stylesheet' />
     <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.0.1/mapbox-gl-geocoder.css' type='text/css' />
@@ -113,7 +113,7 @@
             <div class="row visible-md visible-lg">
                 <div class="col-md-12 primary-6">
                     <span class="tagline">
-                        mettiamo in contatto chi opera nel sociale con chi ha qualcosa da regalare!
+                        recuperiamo eccedenze alimentari come se ci fosse un domani
                         <span class="pull-right"><a href="https://www.facebook.com/celocelofood/">seguici su <img src="{{ url('images/facebook_icon.png') }}" alt="Facebook"></a></span>
                     </span>
                 </div>
