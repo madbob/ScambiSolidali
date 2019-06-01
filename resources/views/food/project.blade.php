@@ -23,29 +23,41 @@
             </div>
             <div class="col-md-8 col-md-offset-1">
                 <div class="col-md-12">
-                    <h4>SMETTERE DI BUTTARE VIA IL CIBO AVANZATO? SI PUO’ FARE</h4>
                     <p>
-                        Recuperare il cibo avanzato è oggi una possibilità prevista dalla legge, nonché il metodo più semplice per fare qualcosa di concreto contro lo spreco alimentare.
+                        Celocelo Food, un nuovo progetto di recupero di eccedenze alimentari sta partendo!
                     </p>
                     <p>
-                        Se a fine giornata lavorativa hai delle eccedenze che non puoi più vendere o che semplicemente vuoi regalare, dillo a celocelo FOOD.
+                        La sfida di Celocelo Food è <strong>recuperare prodotti alimentari in eccedenza, anche freschi e da piccoli esercizi commerciali, e rIdistribuirli in maniera agile, senza stoccaggio e magazzino</strong>, attraverso l'utilizzo di una applicazione digitale.
                     </p>
                     <p>
-                        Celocelo FOOD nasce dall’esperienza e dall’unione della piattaforma celocelo con Equoevento Onlus: due realtà specializzate nel recupero e redistribuzione delle eccedenze. Un sistema intuitivo, facile e gratuito per aiutarti a non sprecare.
-                    </p>
-
-                    <h4>VANTAGGI PER CHI DONA E PER CHI RICEVE</h4>
-                    <p>
-                        La donazione delle eccedenze alimentari gode oggi della possibilità di SGRAVI FISCALI. Celocelo FOOD è in grado di fornirvi tutta la documentazione necessaria per usufruirne.<br>
-                        È sufficiente collegarsi al sito di celocelo FOOD e segnalare i prodotti di cui hai un’eccedenza. Ti contatteremo per venire a ritirare direttamente nel tuo negozio poco dopo la chiusura.
+                        Celocelo Food <strong>non vende nulla</strong>: recupera prodotti perfettamente conservati e consumabili, che rischierebbero di diventare rifiuto e li redistribuisce presso strutture e progetti che hanno in carico persone e famiglie in difficoltà economica.
                     </p>
                     <p>
-                        I riceventi delle tue donazioni sono operatori accreditati del mondo del sociale che gestiscono persone e famiglie in situazione di marginalità cronica, o in condizione di povertà grigia, ovvero in seguito a un evento traumatico come la perdita del lavoro, la separazione famigliare, la malattia. Persone per cui le tue donazioni alimentari fanno certamente la differenza.
+                        Celocelo Food - realizzato dall'<strong>Agenzia per lo sviluppo locale di San Salvario onlus - Casa del Quartiere San Salvario</strong> e da <strong>Equovento onlus</strong>, in collaborazione con <strong>coop. soc. Stranaidea</strong> e <strong>Officine Informatica Libera</strong> - è uno sviluppo del progetto Celocelo, la piattaforma informatica che rende possibile la donazione e il trasporto di beni materiali a persone e famiglie in difficoltà, attiva su tutto il territorio torinese dal 2017.
                     </p>
-
-                    <h4>HAI DEL CIBO INVENDUTO?</h4>
                     <p>
-                        Se a fine giornata lavorativa pensi di avere delle eccedenze che non puoi più vendere o che semplicemente vuoi regalare, scrivi a: segreteria@agenzia.sansalvario.org
+                        Sostenuto dalla Compagnia di San Paolo, nell'ambito del bando Fatto per Bene 2018, Celocelo Food intende quindi utilizzare reti, modalità operative e tecnologie già attive in Celocelo, per strutturare due circuiti specifici di recupero e redistribuzione di alimenti freschi e secchi:
+                    </p>
+                    <ol>
+                        <li><strong>un circuito di recupero coinvolgerà piccoli esercizi commerciali</strong>, nell'area di San Salvario e dei quartiere limitrofi;</li>
+                        <li>un altro circuito, che partirà in un secondo momento, che coinvolgerà <strong>la grande distribuzione, utilizzando un meccanismo di prenotazione e attribuzione just-in-time dei prodotti alimentari recuperati</strong>.</li>
+                    </ol>
+                    <p>
+                        Gli obiettivi del progetto sono: recuperare prodotti alimentari buoni, garantendone la perfetta conservazione e rIdistribuirli in maniera mirata a chi ne ha davvero bisogno; sensibilizzare gli operatori commerciali ad entrare in una rete di solidarietà e welfare locale; sollecitare i consumatori a orientare le proprie scelte di acquisto presso esercizi commerciali responsabili; attivare volontari che possano farsi carico, nel tempo, delle attività di recupero e redistribuzione.
+                    </p>
+                    <p>
+                        Celocelo Food punta infatti a costruire una rete di esercizi commerciali sensibili ai temi della responsabilità sociale e ambientale, dar loro visibilità, facilitare le donazioni di eccedenze, intercettare e coordinare cittadini attivi che abbiano voglia e motivazione di dedicare un po' del loro tempo libero a queste attività.
+                    </p>
+                    <p>
+                        Celocelo Food sarà presentato il <strong><u>12 giugno 2019, alle ore 11.00</u></strong>, presso <strong>Tomato Backpackers Hotel</strong>, in via Silvio Pellico 11, uno dei primi esercizi commerciali che hanno aderito al progetto.
+                    </p>
+                    <p>
+                        Celocelo Food è alla ricerca di operatori commerciali grandi e piccoli che vogliano aderire al progetto. Per farlo basta rivolgersi agli uffici dell'ass. Agenzia per lo sviluppo locale di San Salvario onlus, presso:
+                    </p>
+                    <p>
+                        Casa del Quartiere di San Salvario - via Morgari 14 - Torino<br>
+                        E segreteria@agenzia.sansalvario.org<br>
+                        T 0116686772
                     </p>
                 </div>
 

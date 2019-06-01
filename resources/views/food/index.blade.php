@@ -6,6 +6,9 @@
     <div class="project">
         <div class="row primary-6">
             <div class="col-md-12">
+                <video src="{{ asset('images/food.mp4') }}" width="100%" autoplay loop></video>
+            </div>
+            <div class="col-md-12">
                 <div class="button screaming-border postcard">
                     <div class="row">
                         <div class="col-md-4">
