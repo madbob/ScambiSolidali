@@ -39,11 +39,7 @@ class RegisterController extends Controller
     private function finalizeRegister($input, $institute)
     {
         $user = $this->create($input);
-
-        Mail::send('mails.activation', ['user' => $user], function($message) use ($user){
-            $message->to($user->email);
-            $message->subject(env('APP_NAME') . ': attivazione account');
-        });
+        $user->sendActivationNotification();
 
         if ($institute) {
             $institute->users()->attach($user->id);
@@ -92,7 +88,7 @@ class RegisterController extends Controller
     {
         Log::debug('Creo utente: ' . print_r($data, true));
 
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'surname' => $data['surname'],
             'email' => $data['email'],
@@ -101,6 +97,19 @@ class RegisterController extends Controller
             'verification_code' => str_random(15),
             'role' => $data['role']
         ]);
+
+        if (env('HAS_PUBLIC_OP', false)) {
+            if (isset($data['public_op']) && $data['public_op'] == 1) {
+                try {
+                    Mail::to(env('MAIL_FROM_ADDRESS'))->send(new OperatorRequired($user));
+                }
+                catch(\Exception $e) {
+                    Log::error('Impossibile notificare richiesta di accesso come operatore: ' . $user->id);
+                }
+            }
+        }
+
+        return $user;
     }
 
     public function activate(Request $request, $token)

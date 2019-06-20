@@ -60,7 +60,7 @@
                                 @endif
                                 <div class="card-footer vert-align">
                                     <p>
-                                        @if($edit_enabled)
+                                        @if($edit_enabled || $donation->userCanView($currentuser))
                                             <a class="show-details" data-endpoint="celo" data-item-id="{{ $donation->id }}">{{ $donation->title }}</a>
                                         @else
                                             {{ $donation->title }}

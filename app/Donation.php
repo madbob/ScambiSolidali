@@ -46,6 +46,23 @@ class Donation extends Model
         return storage_path() . '/app/';
     }
 
+    public function userCanView($user)
+    {
+        if (!is_null($user)) {
+            if (env('HAS_PUBLIC_OP', false)) {
+                if ($donation->type == 'service') {
+                    return true;
+                }
+            }
+
+            if ($user->role == 'admin' || $user->role == 'operator') {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public function imageUrl($index)
     {
         if ($this->type == 'service')

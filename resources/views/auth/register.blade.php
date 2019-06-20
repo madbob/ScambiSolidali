@@ -12,6 +12,19 @@
             {!! BootForm::password('password', 'Password', ['required' => 'required']) !!}
             {!! BootForm::password('password_confirmation', 'Conferma Password', ['required' => 'required']) !!}
 
+            @if(env('HAS_PUBLIC_OP', false))
+                <div class="form-group">
+                    <label for="" class="control-label"></label>
+                    <div>
+                        <div class="checkbox">
+                            <label>
+                                <input name="public_op" value="1" type="checkbox">Richiedo l'accesso per ottenere i beni donati su CeloCelo. Le richieste saranno vagliate dagli amministratori.
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            @endif
+
             <div class="form-group">
                 <label for="" class="control-label"></label>
                 <div>

@@ -3,12 +3,14 @@
 @section('title', 'Giocatori')
 
 @section('content')
+    <input type="hidden" name="trigger-show-details" data-endpoint="giocatori" data-item-id="{{ $current_show }}">
+
     <div class="players primary-1">
         @if($user && $user->role != 'user')
             <div class="row">
                 <div class="col-md-12">
                     <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active">
+                        <li role="presentation" class="{{ $current_tab == 'entities' ? 'active' : '' }}">
                             <span>
                                 <a href="#entities" aria-controls="entities" role="tab" data-toggle="tab">Associazioni</a>
                             </span>
@@ -16,14 +18,14 @@
 
                         @if($user->role == 'admin')
                             @if(env('HAS_FOOD', false))
-                                <li role="presentation">
+                                <li role="presentation" class="{{ $current_tab == 'companies' ? 'active' : '' }}">
                                     <span>
                                         <a href="#companies" aria-controls="companies" role="tab" data-toggle="tab">Aziende</a>
                                     </span>
                                 </li>
                             @endif
 
-                            <li role="presentation">
+                            <li role="presentation" class="{{ $current_tab == 'users' ? 'active' : '' }}">
                                 <span>
                                     <a href="#users" aria-controls="users" role="tab" data-toggle="tab">Utenti</a>
                                 </span>
@@ -35,7 +37,7 @@
         @endif
 
         <div class="tab-content">
-            <div role="tabpanel" class="tab-pane active" id="entities">
+            <div role="tabpanel" class="tab-pane {{ $current_tab == 'entities' ? 'active' : '' }}" id="entities">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="map" id="mapid"></div>
@@ -113,7 +115,7 @@
 
             @if($user && $user->role == 'admin')
                 @if(env('HAS_FOOD', false))
-                    <div role="tabpanel" class="tab-pane" id="companies">
+                    <div role="tabpanel" class="tab-pane  {{ $current_tab == 'companies' ? 'active' : '' }}" id="companies">
                         <div class="row">
                             <div class="col-md-12">
                                 <button class="btn btn-default button" data-toggle="modal" data-target="#company-new">
@@ -149,7 +151,7 @@
                     </div>
                 @endif
 
-                <div role="tabpanel" class="tab-pane" id="users">
+                <div role="tabpanel" class="tab-pane  {{ $current_tab == 'users' ? 'active' : '' }}" id="users">
                     <div class="row">
                         <div class="col-md-6">
                             <button class="btn btn-default button" data-toggle="modal" data-target="#user-new">

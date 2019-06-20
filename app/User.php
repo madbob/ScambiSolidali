@@ -102,4 +102,14 @@ class User extends Authenticatable
             $message->subject(env('APP_NAME') . ': reset password');
         });
     }
+
+    public function sendActivationNotification()
+    {
+        $user = $this;
+
+        Mail::send('mails.activation', ['user' => $user], function($message) use ($user){
+            $message->to($user->email);
+            $message->subject(env('APP_NAME') . ': attivazione account');
+        });
+    }
 }

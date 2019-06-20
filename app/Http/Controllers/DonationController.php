@@ -271,12 +271,13 @@ class DonationController extends Controller
 
     public function show($id)
     {
+        $donation = Donation::find($id);
         $user = Auth::user();
-        if ($user->role != 'admin' && $user->role != 'operator') {
+
+        if ($donation->userCanView($user) == false) {
             return redirect(url('/'));
         }
 
-        $donation = Donation::find($id);
         if ($donation->type == 'object')
             return view('donation.modal', ['donation' => $donation]);
         else
@@ -456,6 +457,7 @@ class DonationController extends Controller
         switch($type) {
             case 'assignation':
                 $donation->receivers()->detach($interaction_id);
+                Log::info('Assegnazione su donazione ' . $donation->id . ' revocata da ' . $user->id);
 
                 $rec = Receiver::find($interaction_id);
                 $rec->delete();

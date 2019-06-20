@@ -77,6 +77,18 @@
                                     </div>
                                 </div>
                             </div>
+
+                            @if(!empty($user->verification_code))
+                                <div class="form-group">
+                                    <form class="form-vertical" method="POST" action="{{ route('giocatori.reverify', $user->id) }}">
+                                        {{ csrf_field() }}
+
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-default">Rimanda mail verifica</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            @endif
                         @endif
                     </div>
                 </div>

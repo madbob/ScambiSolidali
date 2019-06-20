@@ -22,7 +22,7 @@ class UserController extends Controller
         $this->middleware('auth')->except(['index']);
     }
 
-    public function index()
+    public function index(Request $request)
     {
         $user = Auth::user();
 
@@ -42,6 +42,17 @@ class UserController extends Controller
             $operators_count = 0;
         }
 
+        $current_tab = 'entities';
+        $current_show = -1;
+        if ($request->has('show')) {
+            $show = $request->input('show');
+            $showing = User::find($show);
+            if ($showing != null && $showing->status != 'archived') {
+                $current_tab = 'users';
+                $current_show = $show;
+            }
+        }
+
         return view('pages.players', [
             'user' => $user,
             'institutes' => $institutes,
@@ -50,6 +61,8 @@ class UserController extends Controller
             'admins_count' => $admins_count,
             'users_count' => $users_count,
             'operators_count' => $operators_count,
+            'current_show' => $current_show,
+            'current_tab' => $current_tab,
         ]);
     }
 
@@ -127,6 +140,19 @@ class UserController extends Controller
         $user->companies()->sync($request->input('companies', []));
 
         Session::flash('message', 'Utente salvato');
+        return redirect(url('giocatori'));
+    }
+
+    public function reverify(Request $request, $id)
+    {
+        $user = Auth::user();
+        if ($user->role != 'admin') {
+            return redirect(url('/'));
+        }
+
+        $user = User::find($id);
+        $user->sendActivationNotification();
+        Session::flash('message', 'Email di verifica mandata');
         return redirect(url('giocatori'));
     }
 
