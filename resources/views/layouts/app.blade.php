@@ -70,7 +70,7 @@
                                     <div class="row">
                                         <div class="col-md-6 text-right city-title">
                                             <span class="city-name">{{ App\Config::getConf('instance_city') }}</span><br>
-                                            <small>vai su
+                                            <small>
                                                 @foreach(json_decode(App\Config::getConf('other_instance_cities')) as $city)
                                                     <a href="{{ $city->url }}">{{ $city->name }}</a>
                                                 @endforeach

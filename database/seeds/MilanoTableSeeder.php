@@ -25,13 +25,13 @@ class MilanoTableSeeder extends Seeder
         if (Config::where('name', 'powered_by')->first() == null) {
             $c = new Config();
             $c->name = 'powered_by';
-            $c->value = 'Ass. Agenzia per lo sviluppo locale di San Salvario ONLUS';
+            $c->value = 'Milano 2035';
             $c->save();
         }
 
         if (Config::where('name', 'owner_address')->first() == null) {
             $c = new Config();
-            $c->name = 'powered_by';
+            $c->name = 'owner_address';
             $c->value = 'via Morgari 14, 10125, Torino';
             $c->save();
         }
@@ -39,7 +39,7 @@ class MilanoTableSeeder extends Seeder
         if (Config::where('name', 'credits')->first() == null) {
             $c = new Config();
             $c->name = 'credits';
-            $c->value = sprintf('<p>Un progetto di<br/><img src="%s" alt="Agenzia per lo Sviluppo Locale di San Salvario"></p><p>Con il sostegno di<br/><img src="%s" alt="Compagnia di San Paolo">&nbsp;&nbsp;&nbsp;<img src="%s" alt="Iren"></p>', url('images/agenziasansalvario.jpg'), url('images/csp.png'), url('images/iren.jpg'));
+            $c->value = sprintf('<p>Un progetto di<br/><img src="%s" alt="Milano 2035"></p><p>Con il sostegno di<br/><img src="%s" alt="Fondazione Cariplo">', url('images/milano2035.png'), url('images/fondazione_cariplo.png'));
             $c->save();
         }
 
@@ -60,7 +60,7 @@ class MilanoTableSeeder extends Seeder
         if (Config::where('name', 'players_map_coordinates')->first() == null) {
             $c = new Config();
             $c->name = 'players_map_coordinates';
-            $c->value = '9.1904, 45.4773';
+            $c->value = '9.3284, 45.4604';
             $c->save();
         }
 
@@ -98,7 +98,7 @@ T 011 6686772';
         if (Config::where('name', 'contact_map_title')->first() == null) {
             $c = new Config();
             $c->name = 'contact_map_title';
-            $c->value = 'Casa del Quartiere';
+            $c->value = 'Milano 2035';
             $c->save();
         }
     }
