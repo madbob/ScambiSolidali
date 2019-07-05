@@ -40,7 +40,7 @@ var selectable_categories = {!! json_encode(App\Recurring::categories()) !!};
             <li class="list-group-item list-group-item-danger checklist-filling-row quantity-select">
                 <div class="row">
                     <div class="col-md-6">
-                        <p>Se si, quanti vaschette hai?</p>
+                        <p>Se si, quante vaschette hai?</p>
                     </div>
                     <div class="col-md-6">
                         <div class="btn-group btn-group-toggle btn-group-lg float-right" data-toggle="buttons">
