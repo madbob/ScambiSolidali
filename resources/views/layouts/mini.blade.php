@@ -28,9 +28,7 @@
         <br/>
     </div>
 
-    <script src="{{ url('js/app.js') }}"></script>
-    <script src="{{ url('js/bootstrap-datepicker.min.js') }}"></script>
-    <script src="{{ url('js/bootstrap-datepicker.it.min.js') }}"></script>
+    <script src="{{ url('js/jquery-3.1.0.min.js') }}"></script>
     {!! Minify::javascript('/js/mine.js') !!}
 </body>
 </html>

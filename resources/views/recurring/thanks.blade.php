@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('title', 'Grazie!')
+@extends('layouts.mini')
 
 @section('content')
     <div class="row">

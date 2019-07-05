@@ -86,6 +86,7 @@ class RecurringController extends Controller
         if ($having) {
             if ($type == 'weekly') {
                 $contents->quantity = $request->input('boxes');
+                $contents->comment = $request->input('comment');
             }
             else if ($type == 'monthly') {
                 $contents->quantities = [];

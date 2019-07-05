@@ -8,13 +8,6 @@
             <div class="col-md-12">
                 <div class="page-header">
                     <h3>
-                        @if($weekly->isEmpty() == false)
-                            <form class="pull-right" method="POST" action="{{ route('periodico.reset_weekly') }}">
-                                {!! csrf_field() !!}
-                                <button type="submit" class="btn btn-danger">Resetta</button>
-                            </form>
-                        @endif
-
                         Donazioni Settimanali
                     </h3>
                 </div>
@@ -31,8 +24,9 @@
                             <tr>
                                 <th width="20%">Azienda</th>
                                 <th width="10%">Stato</th>
-                                <th width="20%">Box Disponibili</th>
-                                <th width="20%">Note</th>
+                                <th width="10%">Box Disponibili</th>
+                                <th width="15%">Commento</th>
+                                <th width="15%">Note</th>
                                 <th width="30%">Contatti</th>
                             </tr>
                         </thead>
@@ -53,6 +47,12 @@
                                         }
 
                                         ?>
+                                    </td>
+
+                                    <td>
+                                        @if ($donation->status == 'ok')
+                                            {!! nl2br($donation->data->comment) !!}
+                                        @endif
                                     </td>
 
                                     <td>
@@ -97,13 +97,6 @@
             <div class="col-md-12">
                 <div class="page-header">
                     <h3>
-                        @if($monthly->isEmpty() == false)
-                            <form class="pull-right" method="POST" action="{{ route('periodico.reset_monthly') }}">
-                                {!! csrf_field() !!}
-                                <button type="submit" class="btn btn-danger">Resetta</button>
-                            </form>
-                        @endif
-
                         Donazioni Mensili
                     </h3>
                 </div>

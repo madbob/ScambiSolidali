@@ -73,7 +73,7 @@ class User extends Authenticatable
 
     public function routeNotificationForMobyt()
     {
-        return $this->phone;
+        return preg_replace('/[^0-9]/', '', $this->phone);
     }
 
 	public function getRatingAttribute()
