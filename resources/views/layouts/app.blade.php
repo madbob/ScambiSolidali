@@ -110,7 +110,7 @@
                             <li><a href="{{ url('numeri') }}">Vincitori</a></li>
                             <li><a href="{{ url('parlano-di-noi') }}">Parlano di Noi</a></li>
                             <li><a href="{{ url('contatti') }}">Contatti</a></li>
-                            <li><a href="https://www.facebook.com/celocelo-190331531485606/">Seguici su <img src="{{ url('images/facebook_icon.png') }}" alt="Facebook"></a></li>
+                            <li><a href="{{ App\Config::getConf('facebook_link') }}">Seguici su <img src="{{ url('images/facebook_icon.png') }}" alt="Facebook"></a></li>
                         </ul>
                     </div>
                 </div>
@@ -122,7 +122,7 @@
                 <div class="col-md-12 primary-2">
                     <span class="tagline">
                         mettiamo in contatto chi opera nel sociale con chi ha qualcosa da regalare!
-                        <span class="pull-right"><a href="https://www.facebook.com/celocelo-190331531485606/">seguici su <img src="{{ url('images/facebook_icon.png') }}" alt="Facebook"></a></span>
+                        <span class="pull-right"><a href="{{ App\Config::getConf('facebook_link') }}">seguici su <img src="{{ url('images/facebook_icon.png') }}" alt="Facebook"></a></span>
                     </span>
                 </div>
             </div>

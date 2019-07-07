@@ -9,6 +9,13 @@ class MilanoTableSeeder extends Seeder
 {
     public function run()
     {
+        if (Config::where('name', 'facebook_link')->first() == null) {
+            $c = new Config();
+            $c->name = 'facebook_link';
+            $c->value = 'https://www.facebook.com/Milano2035/';
+            $c->save();
+        }
+
         if (Config::where('name', 'instance_city')->first() == null) {
             $c = new Config();
             $c->name = 'instance_city';
@@ -40,7 +47,7 @@ class MilanoTableSeeder extends Seeder
         if (Config::where('name', 'credits')->first() == null) {
             $c = new Config();
             $c->name = 'credits';
-            $c->value = sprintf('<p>Un progetto di<br/><img src="%s" alt="Milano 2035"></p><p>Con il sostegno di<br/><img src="%s" alt="Welfare in Azione"><img src="%s" alt="Fondazione Cariplo">', url('images/milano2035.png'), url('welfareinazione.jpg'), url('images/fondazione_cariplo.png'));
+            $c->value = sprintf('<p>Un progetto di<br/><img src="%s" alt="Milano 2035"></p><p>Con il sostegno di<br/><img src="%s" alt="Welfare in Azione"><img src="%s" alt="Fondazione Cariplo">', url('images/milano2035.png'), url('images/welfareinazione.jpg'), url('images/fondazione_cariplo.png'));
             $c->save();
         }
 
@@ -58,10 +65,42 @@ class MilanoTableSeeder extends Seeder
             $c->save();
         }
 
+        if (Config::where('name', 'project_description')->first() == null) {
+            $c = new Config();
+            $c->name = 'project_description';
+            $c->value = '<div class="col-md-12">
+                <p>
+                    La piattaforma gestisce il reperimento e la distribuzione di beni per la casa (arredamento ed
+                    elettrodomestici) e lo scambio di tempo e competenze per attività che hanno a che fare con
+                    l\'abitare collaborativo, tra donatori privati e beneficiari del progetto Milano2035 - Coalizione
+                    per l\'Abitare Giovanile.
+                </p>
+                <p>
+                    I beneficiari diretti delle donazioni di beni per la casa sono gli under 35 della community di
+                    Milano2035, che ha l\'intento di incoraggiare e facilitare l\'autonomia abitativa dei giovani
+                    abitanti abbattendo barriere economiche e logistiche e permettendo loro di arredare casa in
+                    economia. Mentre tutti possono essere protagonisti dello scambio di tempo e competenze: Milano2035
+                    infatti promuove l\'abitare collaborativo, basato da un lato sul riusare, riciclare, sistemare e
+                    modificare gli arredi per diverse esigenze; dall’altro sulla condivisione di tempo e competenze
+                    per svolgere assieme tutte quelle attività che hanno a che fare con i luoghi della vita quotidiana
+                    (dall\'organizzare una cena condominiale al ricevere un pacco o accogliere una persone per conto
+                    di un co-houser; dalle piccole riparazioni casalinghe alla cura degli spazi comuni; dal doposcuola
+                    per i ragazzi della porta accanto all’accompagnare la nonna a fare la spesa...).
+                </p>
+                <p>
+                    Dunque, sulla piattaforma: tutti possono donare beni per la casa, tempo e competenze per
+                    l\'abitare collaborativo; tutti possono usufruire del tempo e delle competenze altrui, mentre solo
+                    i giovani accreditati come beneficiari di Milano 2035 possono usufruire dei beni donati
+                    (direttamente oppure attraverso uno degli enti che promuovono il progetto).
+                </p>
+            </div>';
+            $c->save();
+        }
+
         if (Config::where('name', 'players_map_coordinates')->first() == null) {
             $c = new Config();
             $c->name = 'players_map_coordinates';
-            $c->value = '9.3284, 45.4604';
+            $c->value = '9.1835, 45.4710';
             $c->save();
         }
 

@@ -96,6 +96,8 @@
             @endif
 
             <ul class="cells">
+                <?php $index = 0 ?>
+
                 @foreach(App\Story::orderBy('created_at', 'desc')->get() as $index => $story)
                     @if($index % 3 == 0)
                     </ul>
