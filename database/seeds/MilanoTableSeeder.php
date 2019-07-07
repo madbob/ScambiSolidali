@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 
 use App\Config;
+use App\Category;
 
 class MilanoTableSeeder extends Seeder
 {
@@ -39,14 +40,14 @@ class MilanoTableSeeder extends Seeder
         if (Config::where('name', 'credits')->first() == null) {
             $c = new Config();
             $c->name = 'credits';
-            $c->value = sprintf('<p>Un progetto di<br/><img src="%s" alt="Milano 2035"></p><p>Con il sostegno di<br/><img src="%s" alt="Fondazione Cariplo">', url('images/milano2035.png'), url('images/fondazione_cariplo.png'));
+            $c->value = sprintf('<p>Un progetto di<br/><img src="%s" alt="Milano 2035"></p><p>Con il sostegno di<br/><img src="%s" alt="Welfare in Azione"><img src="%s" alt="Fondazione Cariplo">', url('images/milano2035.png'), url('welfareinazione.jpg'), url('images/fondazione_cariplo.png'));
             $c->save();
         }
 
         if (Config::where('name', 'full_credits')->first() == null) {
             $c = new Config();
             $c->name = 'full_credits';
-            $c->value = '<p class="intro">Un progetto di</p><p>Ass. Agenzia per lo sviluppo locale di San Salvario ONLUS</p><p class="intro">Partner</p><p>Ufficio Pio della Compagnia di San Paolo, Città di Torino - Circoscrizione 8, Città di Torino- Assessorato alle Politiche Sociali, Ass. Asai, Oratorio San Luigi, Ass. Opportunanda, Ass. Mondo di Joele, Ass. Manzoni People, Parrocchia SS.Pietro e Paolo, Coop. Soc. Accomazzi, Ass. Manamanà, Ass. Officina Informatica Libera, Coop. Soc. Triciclo, SPI CGIL Lega 8, Società Cooperativa Sociale Lancillotto, Centro di Ascolto della Parrocchia Patrocinio di San Giuseppe, Centro di Ascolto della Parrocchia Assunzione di Maria Vergine - Lingotto Torino, Commissione Carità del Consiglio Pastorale della Parrocchia Immacolata Concezione e San Giovanni Battista, Istituto Comprensivo "Sandro Pertini", Associazione Articolo 47.<br><br>Il progetto è sostenuto dalla Compagnia di San Paolo nell’ambito del Bando Fatto per Bene e dal Comitato Territoriale di Torino di Iren.</p><p class="intro">Con il patrocinio di</p><p><img src="/images/circ2.jpg"></p>';
+            $c->value = '<p class="intro">Progetto</p><p>"Milano 2035 - Coalizione per l\'Abitare Giovanile" è uno degli otto interventi finanziati dal IV bando "Welfare di comunità" di Fondazione Cariplo. La piattaforma celocelo Milano2035 è realizzata in collaborazione con l’associazione Agenzia per lo sviluppo locale di San Salvario ONLUS</p><p class="intro">Partner</p><p>Fondazione DAR Cesare Scarponi ONLUS (capofila), La Cordata s.c.s., Fondazione Attilio e Teresa Cassoni, Associazione MeglioMilano, Genera s.c.s. ONLUS, Cooperativa Sociale Tuttinsieme, ACLI provinciali di Milano, Associazione Collaboriamo, Associazione Housing lab, Fondazione San Carlo ONLUS, Associazione CIESSEVI, Officina dell’Abitare coop. Sociale, Università degli Studi di Milano Bicocca - Dipartimento di Sociologia e Ricerca Sociale, Politecnico di Milano - Dipartimento Dastu, Comune di Cinisello Balsamo.</p>';
             $c->save();
         }
 
@@ -101,5 +102,67 @@ T 011 6686772';
             $c->value = 'Milano 2035';
             $c->save();
         }
+
+        $categories = [
+            'object' => [
+                'Casa' => [
+                    'Arredamento',
+                    'Biancheria',
+                    'Elettrodomestici',
+                    'Elettronica',
+                    'Stoviglie',
+                    'Utensili'
+                ],
+            ],
+            'service' => [
+                'Abitare Collaborativo' => [
+                    'Piccole riparazioni e manutenzioni',
+                    'Feste e piccoli eventi di vicinato',
+                    'Aiuto nello studio',
+                    'Aiuto nelle faccende di casa',
+                    'Aiuto nelle pratiche burocratiche',
+                    'Accompagnamento persone (spesa, uffici, ecc.)',
+                    'Cura animali domestici',
+                    'Condivisione auto/moto/bici',
+                    'Gruppo di acquisto alimentari',
+                    'Volontariato nel quartiere',
+                    'Volontariato nel progetto Milano 2035',
+                    'Altro'
+                ]
+            ]
+        ];
+
+        $managed = [];
+
+        foreach($categories as $type => $contents) {
+            foreach($contents as $primary => $subs) {
+                $master = Category::where('name', $primary)->first();
+                if (is_null($master)) {
+                    $master = new Category();
+            		$master->name = $primary;
+            		$master->parent_id = 0;
+                    $master->type = $type;
+            		$master->save();
+                }
+
+                $managed[] = $primary;
+
+                foreach ($subs as $s) {
+                    $cat = Category::where('name', $s)->first();
+                    if (is_null($cat)) {
+                        $cat = new Category();
+                		$cat->name = $s;
+                    }
+
+                    $cat->parent_id = $master->id;
+                    $master->type = $type;
+                    $cat->save();
+
+                    $managed[] = $s;
+                }
+            }
+        }
+
+        Category::whereNotIn('name', $managed)->delete();
     }
 }

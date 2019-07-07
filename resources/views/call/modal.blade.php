@@ -31,9 +31,9 @@ $has_donations = ($call && $call->donations()->count() != 0);
 
                             @include('category.selector', [
                                 'orientation' => 'horizontal',
-                                'selected' => $call ? ($call->type == 'service' ? 'service' : $call->category_id) : null,
-                                'and_service' => true]
-                            )
+                                'selected' => $call ? $call->category_id : null,
+                                'type' => 'all'
+                            ])
 
                             {!! BootForm::textarea('notes', 'Note (private, visualizzate solo agli operatori)', null) !!}
 

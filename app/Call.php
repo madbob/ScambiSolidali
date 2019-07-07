@@ -32,10 +32,15 @@ class Call extends Model
             return $donation->imageUrl(0);
         }
         else {
-            if ($this->type == 'service')
+            if ($this->type == 'service') {
                 return url('images/tempo.svg');
-            else
-                return $this->category->icon;
+            }
+            else {
+                if ($this->category)
+                    return $this->category->icon;
+                else
+                    return null;
+            }
         }
     }
 }

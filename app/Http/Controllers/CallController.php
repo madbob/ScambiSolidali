@@ -27,23 +27,16 @@ class CallController extends Controller
 
         $filter = $request->input('filter', null);
         if ($filter != null) {
-            if ($filter == 'service') {
-                $query->where('type', 'service');
+            $category = Category::find($filter);
+            if ($category->parent_id == 0) {
+                $subs = [];
+                foreach($category->children as $children)
+                    $subs[] = $children->id;
+
+                $query->whereIn('category_id', $subs);
             }
             else {
-                $query->where('type', 'object');
-
-                $category = Category::find($filter);
-                if ($category->parent_id == 0) {
-                    $subs = [];
-                    foreach($category->children as $children)
-                        $subs[] = $children->id;
-
-                    $query->whereIn('category_id', $subs);
-                }
-                else {
-                    $query->where('category_id', $category->id);
-                }
+                $query->where('category_id', $category->id);
             }
         }
         $data['filter'] = $filter;
@@ -68,15 +61,10 @@ class CallController extends Controller
 
     private function requestInCall($call, $request)
     {
-        $category = $request->input('category_id');
-        if ($category == 'service') {
-            $call->type = 'service';
-            $call->category_id = -1;
-        }
-        else {
-            $call->type = 'object';
-            $call->category_id = $category;
-        }
+        $category_id = $request->input('category_id');
+        $category = Category::find($category_id);
+        $call->type = $category->type;
+        $call->category_id = $category->id;
 
         $call->title = $request->input('title');
         $call->who = $request->input('who');

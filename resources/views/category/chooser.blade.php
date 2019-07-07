@@ -1,4 +1,4 @@
-<?php $categories = App\Category::where('parent_id', 0)->orderBy('name', 'asc')->get() ?>
+<?php $categories = App\Category::where('parent_id', 0)->where('type', $type)->orderBy('name', 'asc')->get() ?>
 
 @foreach($categories as $cat)
 	@if ($orientation == 'horizontal')

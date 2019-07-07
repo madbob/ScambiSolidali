@@ -21,12 +21,7 @@ if (isset($donation) == false)
         <h4>Informazioni sull'Oggetto</h4>
     </div>
 
-    <div class="form-group">
-        <label for="category_id" class="col-sm-2 col-md-3 control-label">Categoria</label>
-        <div class="col-sm-10 col-md-9">
-            @include('category.selector', ['orientation' => 'horizontal'])
-        </div>
-    </div>
+    @include('category.selector', ['orientation' => 'horizontal', 'type' => $call->type])
 
     {!! BootForm::text('title', 'Oggetto', null, ['required' => 'required']) !!}
     {!! BootForm::textarea('description', 'Descrizione e Dimensioni', null, ['required' => 'required']) !!}

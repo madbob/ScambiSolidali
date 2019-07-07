@@ -84,12 +84,7 @@ else
 
             {!! BootForm::text('title', 'Il mio Oggetto', null, ['required' => 'required']) !!}
 
-            <div class="form-group">
-                <label for="category_id" class="col-sm-2 col-md-2 control-label">Categoria</label>
-                <div class="col-sm-10 col-md-10">
-                    @include('category.selector', ['orientation' => 'horizontal', 'selected' => $donation ? $donation->category_id : null])
-                </div>
-            </div>
+            @include('category.selector', ['orientation' => 'horizontal', 'selected' => $donation ? $donation->category_id : null, 'type' => 'object'])
 
             {!! BootForm::textarea('description', 'Descrizione', null, ['required' => 'required']) !!}
             {!! BootForm::text('size', 'Dimensioni', null) !!}
