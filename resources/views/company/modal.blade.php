@@ -42,7 +42,7 @@
 
                         @if($company)
                             <div class="form-group">
-                                <label class="<<control-label">Operatori</label>
+                                <label class="control-label">Operatori</label>
                                 @if($company->users->isEmpty())
                                     <div class="alert alert-info">
                                         Non ci sono operatori registrati per questa azienda.
