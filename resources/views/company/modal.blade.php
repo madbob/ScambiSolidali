@@ -42,6 +42,26 @@
 
                         @if($company)
                             <div class="form-group">
+                                <label class="<<control-label">Operatori</label>
+                                @if($company->users->isEmpty())
+                                    <div class="alert alert-info">
+                                        Non ci sono operatori registrati per questa azienda.
+                                    </div>
+                                @else
+                                    <table class="table">
+                                        <tbody>
+                                            @foreach($company->users as $u)
+                                                <tr>
+                                                    <td>{{ $u->printableName() }}</td>
+                                                    <td>{{ $u->email }}</td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                @endif
+                            </div>
+
+                            <div class="form-group">
                                 <button class="btn btn-danger" role="button" data-toggle="collapse" href="#destroyCompany-{{ $company->id }}" aria-expanded="false" aria-controls="#destroyCompany-{{ $company->id }}">Elimina</button>
 
                                 <div class="collapse" id="destroyCompany-{{ $company->id }}">

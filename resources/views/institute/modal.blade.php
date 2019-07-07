@@ -18,7 +18,7 @@
                             @endif
 
                             <div class="form-group">
-                                <label for="address" class="control-label">Indirizzo</label>
+                                <label for="address" class="<<control-label">Indirizzo</label>
                                 <div>
                                     <input type="hidden" name="address" value="{{ $institute ? $institute->address : '' }}">
                                     <input type="hidden" name="coordinates" value="{{ $institute ? ($institute->lat . ',' . $institute->lng) : '' }}">
@@ -44,6 +44,26 @@
                         {!! BootForm::close() !!}
 
                         @if($institute)
+                            <div class="form-group">
+                                <label class="<<control-label">Operatori</label>
+                                @if($institute->users->isEmpty())
+                                    <div class="alert alert-info">
+                                        Non ci sono operatori registrati per questa associazione.
+                                    </div>
+                                @else
+                                    <table class="table">
+                                        <tbody>
+                                            @foreach($institute->users as $u)
+                                                <tr>
+                                                    <td>{{ $u->printableName() }}</td>
+                                                    <td>{{ $u->email }}</td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                @endif
+                            </div>
+
                             <div class="form-group">
                                 <button class="btn btn-danger" role="button" data-toggle="collapse" href="#destroyUser-{{ $institute->id }}" aria-expanded="false" aria-controls="#destroyUser-{{ $institute->id }}">Elimina</button>
 
