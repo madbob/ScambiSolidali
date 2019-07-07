@@ -23,6 +23,9 @@ $categories = $query->get();
 		else if ($categories->count() == 1) {
 			$col_size = 12;
 		}
+		else {
+			$col_size = 6;
+		}
 	}
 
 	?>

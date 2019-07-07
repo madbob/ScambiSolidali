@@ -19,8 +19,4 @@
 
         </li>
     @endforeach
-
-    <li class="border-top {{ $filter == 'service' ? 'selected' : '' }}">
-        <span><a href="{{ url($endpoint . '/?filter=service') }}">Servizi</a></span>
-    </li>
 </ul>
