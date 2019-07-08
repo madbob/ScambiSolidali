@@ -6,7 +6,7 @@
     <div class="project">
         <div class="row primary-6">
             <div class="col-md-12">
-                <img src="{{ asset('images/food.gif') }}" width="100%">
+                <iframe width="100%" height="315" src="https://www.youtube-nocookie.com/embed/9cQ4_Sn4yfE?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <div class="col-md-12">
                 <div class="button screaming-border postcard">
