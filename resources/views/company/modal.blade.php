@@ -25,6 +25,10 @@
                                 </div>
                             </div>
 
+                            {!! BootForm::text('opening_hours', 'Orari Apertura') !!}
+                            {!! BootForm::text('preferred_hours', 'Orario Ritiro') !!}
+                            {!! BootForm::textarea('notes', 'Note') !!}
+
                             {!! BootForm::radios('donation_frequency', 'Donazione', [
                                 'none' => 'Nessuna',
                                 'weekly' => 'Settimanale',

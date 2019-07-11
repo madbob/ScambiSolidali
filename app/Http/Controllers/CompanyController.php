@@ -24,6 +24,9 @@ class CompanyController extends Controller
         $company->website = normalizeUrl($request->input('website'));
         $company->donation_frequency = $request->input('donation_frequency');
         $company->address = $request->input('address');
+        $company->opening_hours = $request->input('opening_hours');
+        $company->preferred_hours = $request->input('preferred_hours');
+        $company->notes = $request->input('notes');
         $coordinates = explode(',', $request->input('coordinates'));
         $company->lat = $coordinates[0];
         $company->lng = $coordinates[1];

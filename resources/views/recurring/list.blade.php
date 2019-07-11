@@ -22,8 +22,9 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th width="20%">Azienda</th>
-                                <th width="10%">Stato</th>
+                                <th width="15%">Azienda</th>
+                                <th width="10%">Orari</th>
+                                <th width="5%">Stato</th>
                                 <th width="10%">Box Disponibili</th>
                                 <th width="15%">Commento</th>
                                 <th width="15%">Note</th>
@@ -35,7 +36,16 @@
 
             				@foreach($weekly as $donation)
                                 <tr>
-                                    <td>{{ $donation->company->name }}</td>
+                                    <td>
+                                        {{ $donation->company->name }}<br>
+                                        {{ $donation->company->address }}
+                                    </td>
+
+                                    <td>
+                                        Apertura: {{ $donation->company->opening_hours }}<br>
+                                        Ritiro: {{ $donation->company->preferred_hours }}
+                                    </td>
+
                                     <td><span class="glyphicon glyphicon-{{ $donation->status_icon }}" aria-hidden="true"></span></td>
 
                                     <td>
@@ -111,8 +121,9 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th width="20%">Azienda</th>
-                                <th width="10%">Stato</th>
+                                <th width="15%">Azienda</th>
+                                <th width="10%">Orari</th>
+                                <th width="5%">Stato</th>
                                 <th width="20%">Prodotti Disponibili</th>
                                 <th width="20%">Note</th>
                                 <th width="30%">Contatti</th>
@@ -132,7 +143,16 @@
 
                             @foreach($monthly as $donation)
                                 <tr>
-                                    <td>{{ $donation->company->name }}</td>
+                                    <td>
+                                        {{ $donation->company->name }}<br>
+                                        {{ $donation->company->address }}
+                                    </td>
+
+                                    <td>
+                                        Apertura: {{ $donation->company->opening_hours }}<br>
+                                        Ritiro: {{ $donation->company->preferred_hours }}
+                                    </td>
+
                                     <td><span class="glyphicon glyphicon-{{ $donation->status_icon }}" aria-hidden="true"></span></td>
 
                                     <td>
