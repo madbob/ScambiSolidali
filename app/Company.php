@@ -15,4 +15,12 @@ class Company extends Model
     {
         return $this->hasMany('App\Recurring');
     }
+
+    public function getAddressStreetAttribute()
+    {
+        if (strpos($this->address, ',') !== false)
+            return substr($this->address, 0, strpos($this->address, ','));
+        else
+            return $this->address;
+    }
 }

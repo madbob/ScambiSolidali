@@ -22,8 +22,7 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th width="15%">Azienda</th>
-                                <th width="10%">Orari</th>
+                                <th width="25%">Azienda</th>
                                 <th width="5%">Stato</th>
                                 <th width="10%">Box Disponibili</th>
                                 <th width="15%">Commento</th>
@@ -38,10 +37,7 @@
                                 <tr>
                                     <td>
                                         {{ $donation->company->name }}<br>
-                                        {{ $donation->company->address }}
-                                    </td>
-
-                                    <td>
+                                        {{ $donation->company->address_street }}<br>
                                         Apertura: {{ $donation->company->opening_hours }}<br>
                                         Ritiro: {{ $donation->company->preferred_hours }}
                                     </td>
@@ -121,8 +117,7 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th width="15%">Azienda</th>
-                                <th width="10%">Orari</th>
+                                <th width="25%">Azienda</th>
                                 <th width="5%">Stato</th>
                                 <th width="20%">Prodotti Disponibili</th>
                                 <th width="20%">Note</th>
@@ -145,10 +140,7 @@
                                 <tr>
                                     <td>
                                         {{ $donation->company->name }}<br>
-                                        {{ $donation->company->address }}
-                                    </td>
-
-                                    <td>
+                                        {{ $donation->company->address_street }}<br>
                                         Apertura: {{ $donation->company->opening_hours }}<br>
                                         Ritiro: {{ $donation->company->preferred_hours }}
                                     </td>
