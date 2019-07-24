@@ -121,7 +121,7 @@
             <div class="row visible-md visible-lg">
                 <div class="col-md-12 primary-2">
                     <span class="tagline">
-                        mettiamo in contatto chi opera nel sociale con chi ha qualcosa da regalare!
+                        {{ App\Config::getConf('main_tagline') }}
                         <span class="pull-right"><a href="{{ App\Config::getConf('facebook_link') }}">seguici su <img src="{{ url('images/facebook_icon.png') }}" alt="Facebook"></a></span>
                     </span>
                 </div>

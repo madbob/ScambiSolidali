@@ -6,7 +6,7 @@
     <input type="hidden" name="trigger-show-details" data-endpoint="giocatori" data-item-id="{{ $current_show }}">
 
     <div class="players primary-1">
-        @if($user && $user->role != 'user')
+        @if($user && $user->role == 'admin')
             <div class="row">
                 <div class="col-md-12">
                     <ul class="nav nav-tabs" role="tablist">
@@ -16,21 +16,19 @@
                             </span>
                         </li>
 
-                        @if($user->role == 'admin')
-                            @if(env('HAS_FOOD', false))
-                                <li role="presentation" class="{{ $current_tab == 'companies' ? 'active' : '' }}">
-                                    <span>
-                                        <a href="#companies" aria-controls="companies" role="tab" data-toggle="tab">Aziende</a>
-                                    </span>
-                                </li>
-                            @endif
-
-                            <li role="presentation" class="{{ $current_tab == 'users' ? 'active' : '' }}">
+                        @if(env('HAS_FOOD', false))
+                            <li role="presentation" class="{{ $current_tab == 'companies' ? 'active' : '' }}">
                                 <span>
-                                    <a href="#users" aria-controls="users" role="tab" data-toggle="tab">Utenti</a>
+                                    <a href="#companies" aria-controls="companies" role="tab" data-toggle="tab">Aziende</a>
                                 </span>
                             </li>
                         @endif
+
+                        <li role="presentation" class="{{ $current_tab == 'users' ? 'active' : '' }}">
+                            <span>
+                                <a href="#users" aria-controls="users" role="tab" data-toggle="tab">Utenti</a>
+                            </span>
+                        </li>
                     </ul>
                 </div>
             </div>

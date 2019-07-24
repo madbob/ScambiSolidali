@@ -38,7 +38,12 @@
                     <a class="other-arrowlink" href="{{ url('come-funziona') }}">Come funziona</a>
                 </p>
 
-                <iframe width="100%" height="315" src="{{ App\Config::getConf('video_link') }}" frameborder="0" allowfullscreen></iframe>
+                <?php $video_link = App\Config::getConf('video_link') ?>
+                @if(!empty($video_link))
+                    <iframe width="100%" height="315" src="{{ $video_link }}" frameborder="0" allowfullscreen></iframe>
+                @else
+                    <img class="home-cover" src="{{ App\Config::getConf('cover_link') }}">
+                @endif
             </div>
         </div>
 
@@ -90,7 +95,7 @@
         <div class="row primary-2">
             <div class="col-md-12 bg-color header-claim">
                 <p>
-                    <strong>{{ env('APP_NAME') }}</strong> è una piattaforma che migliora la vita<br/>delle persone in difficoltà che ti stanno attorno. Ti permette di:
+                    {!! App\Config::getConf('homebox_title') !!}
                 </p>
 
                 <div class="visible-md-block visible-lg-block">
