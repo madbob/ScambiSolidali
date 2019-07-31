@@ -14,12 +14,14 @@ use App\Mail\CallResponded;
 use App\Mail\DonationAssigned;
 use App\Mail\DonationRevoked;
 use App\Mail\DonationTransport;
+use App\Mail\DonationRequested;
 
 use App\User;
 use App\Donation;
 use App\Category;
 use App\Receiver;
 use App\Call;
+use App\Message;
 
 class DonationController extends Controller
 {
@@ -193,8 +195,14 @@ class DonationController extends Controller
 
         if ($donation->call_id != -1) {
             $call = Call::find($donation->call_id);
-            if ($call)
-                Mail::to($call->user->email)->send(new CallResponded($donation, $call));
+            if ($call) {
+                try {
+                    Mail::to($call->user->email)->send(new CallResponded($donation, $call));
+                }
+                catch(\Exception $e) {
+                    Log::error('Impossibile inviare notifica di appello risposto per donazione ' . $donation->id . ': ' . $e->getMessage());
+                }
+            }
         }
 
         return view('donation.thanks', ['donation' => $donation]);
@@ -255,8 +263,14 @@ class DonationController extends Controller
 
         if ($donation->call_id != -1 && $original_call != $donation->call_id) {
             $call = Call::find($donation->call_id);
-            if ($call)
-                Mail::to($call->user->email)->send(new CallResponded($donation, $call));
+            if ($call) {
+                try {
+                    Mail::to($call->user->email)->send(new CallResponded($donation, $call));
+                }
+                catch(\Exception $e) {
+                    Log::error('Impossibile inviare notifica di appello risposto per donazione ' . $donation->id . ': ' . $e->getMessage());
+                }
+            }
         }
 
         return redirect(url('donazione/mie'));
@@ -305,6 +319,33 @@ class DonationController extends Controller
             return redirect(url('donazione/mie'));
         else
             return redirect(url('celo'));
+    }
+
+    public function postContact(Request $request, $id)
+    {
+        $donation = Donation::find($id);
+
+        $user = Auth::user();
+
+        if ($donation->userCanView($user) == false) {
+            return redirect(url('/'));
+        }
+
+        $message = new Message();
+        $message->sender_id = $user->id;
+        $message->donation_id = $id;
+        $message->body = strip_tags($request->input('request'));
+        $message->save();
+
+        try {
+            Mail::to($donation->email)->send(new DonationRequested($message));
+        }
+        catch(\Exception $e) {
+            Log::error('Impossibile inoltrare mail di richiesta per donazione ' . $id . ': ' . $e->getMessage());
+        }
+
+        Session::flash('message', 'La tua richiesta è stata inviata');
+        return redirect(url('celo'));
     }
 
     public function renew(Request $request, $token)
@@ -422,13 +463,26 @@ class DonationController extends Controller
             */
             if ($donation->type == 'object') {
                 $donation->status = 'assigned';
-                Mail::to($donation->email)->send(new DonationAssigned($donation, $user, $user->institutes->first()));
+
+                try {
+                    Mail::to($donation->email)->send(new DonationAssigned($donation, $user, $user->institutes->first()));
+                }
+                catch(\Exception $e) {
+                    Log::error('Impossibile inviare notifica assegnazione donazione ' . $donation->id . ': ' . $e->getMessage());
+                }
+
                 Session::flash('message', 'Donazione assegnata. È stata inviata una mail al donatore per avere informazioni sul ritiro.');
 
                 if ($request->has('shipping')) {
                     $carriers = User::where('role', 'admin')->get();
-                    foreach($carriers as $carrier)
-                        Mail::to($carrier->email)->send(new DonationTransport($donation, $user));
+                    foreach($carriers as $carrier) {
+                        try {
+                            Mail::to($carrier->email)->send(new DonationTransport($donation, $user));
+                        }
+                        catch(\Exception $e) {
+                            Log::error('Impossibile inviare notifica richiesta trasporto per donazione ' . $donation->id . ': ' . $e->getMessage());
+                        }
+                    }
                 }
             }
 
@@ -459,7 +513,12 @@ class DonationController extends Controller
                     $donation->status = 'pending';
                     $donation->save();
 
-                    Mail::to($donation->email)->send(new DonationRevoked($donation));
+                    try {
+                        Mail::to($donation->email)->send(new DonationRevoked($donation));
+                    }
+                    catch(\Exception $e) {
+                        Log::error('Impossibile inviare notifica revoca donazione ' . $donation->id . ': ' . $e->getMessage());
+                    }
                 }
 
                 break;

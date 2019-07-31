@@ -8,7 +8,7 @@
                 <h4 class="modal-title" id="myModalLabel">Servizi | {{ $donation->title }}</h4>
                 <p class="text-muted"><small><br>{{ url('/celo?show=' . $donation->id) }}</small></p>
             </div>
-            <div class="modal-body">
+            <div class="modal-body primary-1">
                 <div class="row">
                     <div class="col-md-12">
                         <form class="form-horizontal">
@@ -65,7 +65,7 @@
                                                 <label for="holder" class="control-label">Motivo</label>
                                                 <select class="form-control" name="reason">
                                                     @foreach(App\Donation::declineReasons() as $identifier => $reason)
-                                                    <option value="{{ $identifier }}">{{ $reason->text }}</option>
+                                                        <option value="{{ $identifier }}">{{ $reason->text }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -79,6 +79,32 @@
                         </div>
                     @endif
                 </div>
+
+                @if (env('HAS_PUBLIC_OP', false))
+                    <div class="row">
+                        <div class="col-md-12">
+                            <hr>
+
+                            <p class="form-control-static">
+                                <small>Da qui puoi metterti in contatto con chi offre questo servizio: scrivi la tua richiesta ed inviala da qui. Il donatore riceverà il tuo nome ed il tuo indirizzo email per mettersi nuovamente in contatto con te.</small>
+                            </p>
+
+                            <form class="form-horizontal" method="POST" action="{{ route('donation.contact', $donation->id) }}">
+                                {!! csrf_field() !!}
+
+                                {!! BootForm::textarea('request', 'La tua Richiesta', null, ['required' => 'required']) !!}
+
+                                <div class="form-group">
+                                    <div>
+                                        <button class="button" type="submit">
+                                            <span>Invia Richiesta!</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

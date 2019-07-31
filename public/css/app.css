@@ -7237,6 +7237,10 @@ textarea.form-control {
 .celo .common-card, .manca .common-card {
   margin-bottom: 22px; }
 
+.form-horizontal .form-group {
+  margin-left: 0;
+  margin-right: 0; }
+
 /********************************* PROGETTO */
 .credits {
   font-size: 17px; }

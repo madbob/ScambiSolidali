@@ -50,7 +50,7 @@ class Donation extends Model
     {
         if (!is_null($user)) {
             if (env('HAS_PUBLIC_OP', false)) {
-                if ($donation->type == 'service') {
+                if ($this->type == 'service') {
                     return true;
                 }
             }

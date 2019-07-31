@@ -128,6 +128,8 @@ class UserController extends Controller
         $user->surname = $request->input('surname');
         $user->phone = $request->input('phone');
         $user->email = $request->input('email');
+
+        $ex_role = $user->role;
         $user->role = $request->input('role');
 
         $password = $request->input('password');
@@ -138,6 +140,15 @@ class UserController extends Controller
 
         $user->institutes()->sync($request->input('institutes', []));
         $user->companies()->sync($request->input('companies', []));
+
+        if ($ex_role == 'user' && $user->role == 'operator') {
+            try {
+                Mail::to($user->email)->send(new RoleUpdated($user));
+            }
+            catch(\Exception $e) {
+                Log::error('Impossibile inviare notifica cambiamento ruolo utente ' . $user->id . ': ' . $e->getMessage());
+            }
+        }
 
         Session::flash('message', 'Utente salvato');
         return redirect(url('giocatori'));

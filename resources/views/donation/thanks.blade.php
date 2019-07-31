@@ -5,10 +5,12 @@
 @section('content')
     <div class="row primary-1">
         <div class="col-md-12">
-            <p>
+            <h2>
                 Grazie per aver inserito il tuo annuncio!<br/>
                 Verrai contattato nel momento in cui qualcuno sarà interessato al tuo oggetto o alla tua competenza.
-            </p>
+            </h2>
+
+            <br><br><br>
 
             @if($donation->type == 'object')
                 <p>

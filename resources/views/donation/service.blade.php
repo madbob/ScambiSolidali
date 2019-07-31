@@ -46,6 +46,8 @@ else
         <div class="col-md-12">
             @include('call.selector', ['call' => $call, 'donation' => $donation, 'call_type' => 'service'])
 
+            <input type="hidden" name="type" value="service">
+
             @include('category.selector', ['orientation' => 'horizontal', 'selected' => $donation ? $donation->category_id : null, 'type' => 'service'])
 
             {!! BootForm::text('title', 'Cosa offro', null, ['required' => 'required']) !!}
