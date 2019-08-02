@@ -21,19 +21,20 @@
                         </form>
                     </div>
 
-                    @if($role == 'admin' || $role == 'operator')
-                        <div class="row">
-                            <div class="col-md-12">
-                                @include('donation.sameuser', ['donation' => $donation])
+                    <div class="row">
+                        <div class="col-md-12">
+                            @include('donation.sameuser', ['donation' => $donation])
 
-                                @if($donation->receivers->isEmpty() == false)
-                                    <hr/>
-                                    @include('donation.minilist', ['list' => $donation->receivers, 'print_object' => false])
-                                @endif
+                            @if($donation->receivers->isEmpty() == false)
+                                <hr/>
+                                @include('donation.minilist', ['list' => $donation->receivers, 'print_object' => false])
+                            @endif
 
-                                @if($donation->status == 'pending')
-                                    <hr/>
-                                    <button class="btn btn-success" role="button" data-toggle="collapse" href="#assignPanel-{{ $donation->id }}" aria-expanded="false" aria-controls="assignPanel-{{ $donation->id }}">Oggetto Assegnato</button>
+                            @if($donation->status == 'pending')
+                                <hr/>
+                                <button class="btn btn-success" role="button" data-toggle="collapse" href="#assignPanel-{{ $donation->id }}" aria-expanded="false" aria-controls="assignPanel-{{ $donation->id }}">Oggetto Assegnato</button>
+
+                                @if($role == 'admin' || $role == 'operator')
                                     <button class="btn btn-danger" role="button" data-toggle="collapse" href="#removePanel-{{ $donation->id }}" aria-expanded="false" aria-controls="removePanel-{{ $donation->id }}">Elimina</button>
 
                                     <div class="collapse" id="assignPanel-{{ $donation->id }}">
@@ -80,16 +81,26 @@
                                             </form>
                                         </div>
                                     </div>
-                                @elseif($donation->status == 'expiring' || $donation->status == 'expired')
-                                    <hr/>
-                                    <form class="form-vertical" method="POST" action="{{ url('celo/arenew/' . $donation->id) }}">
-                                        {{ csrf_field() }}
-                                        <button type="submit" class="btn btn-success" role="button">Rinnova</button>
-                                    </form>
+                                @elseif(env('HAS_PUBLIC_OP', false) && $role == 'student')
+                                    <div class="collapse" id="assignPanel-{{ $donation->id }}">
+                                        <div class="well">
+                                            <div class="alert alert-info">
+                                                Scrivi qui un messaggio destinato al donatore, per accordarvi sulla consegna. Il donatore riceverà i tuoi dati di contatto. Inviando questo form la donazione sarà marcata come "Assegnata".
+                                            </div>
+
+                                            @include('donation.assign_self', ['donation' => $donation])
+                                        </div>
+                                    </div>
                                 @endif
-                            </div>
+                            @elseif($donation->status == 'expiring' || $donation->status == 'expired')
+                                <hr/>
+                                <form class="form-vertical" method="POST" action="{{ url('celo/arenew/' . $donation->id) }}">
+                                    {{ csrf_field() }}
+                                    <button type="submit" class="btn btn-success" role="button">Rinnova</button>
+                                </form>
+                            @endif
                         </div>
-                    @endif
+                    </div>
                 </div>
             </div>
         </div>

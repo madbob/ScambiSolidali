@@ -415,41 +415,59 @@ class DonationController extends Controller
     public function postAssign(Request $request, $id)
     {
         $user = Auth::user();
-        if ($user->role != 'admin' && $user->role != 'operator') {
-            return redirect(url('/'));
-        }
 
         $donation = Donation::find($id);
         if ($donation != null && $donation->status != 'assigned') {
+            $done = false;
             $receiver_type = $request->input('assignation_type');
             $receiver = new Receiver();
             $receiver->type = $receiver_type;
 
-            if ($receiver_type == 'individual') {
-                $receiver->age = $request->input('receiver-age', 0);
-                if (empty($receiver->age))
-                    $receiver->age = null;
-                $receiver->gender = $request->input('receiver-gender');
-                $receiver->status = $request->input('receiver-status');
-                $receiver->children = $request->input('receiver-children');
-                $receiver->country = $request->input('receiver-country');
+            if ($user->role == 'admin' || $user->role == 'operator') {
+                if ($receiver_type == 'individual') {
+                    $receiver->age = $request->input('receiver-age', 0);
+                    if (empty($receiver->age))
+                        $receiver->age = null;
+                    $receiver->gender = $request->input('receiver-gender');
+                    $receiver->status = $request->input('receiver-status');
+                    $receiver->children = $request->input('receiver-children');
+                    $receiver->country = $request->input('receiver-country');
+                    $receiver->area = $request->input('receiver-area');
+
+                    $receiver->past = $request->input('receiver-past', 0);
+                    if (empty($receiver->past))
+                        $receiver->past = 0;
+
+                    $done = true;
+                }
+                else if ($receiver_type == 'organization') {
+                    $receiver->organization = $request->input('receiver-organization');
+                    $receiver->receivers = $request->input('receiver-receivers');
+                    $receiver->area = $request->input('receiver-area');
+
+                    $receiver->past = $request->input('receiver-past', 0);
+                    if (empty($receiver->past))
+                        $receiver->past = 0;
+
+                    $done = true;
+                }
             }
-            else {
-                $receiver->organization = $request->input('receiver-organization');
-                $receiver->receivers = $request->input('receiver-receivers');
+            else if ($user->role == 'student') {
+                if ($receiver_type == 'self') {
+                    $done = true;
+                }
             }
 
-            $receiver->area = $request->input('receiver-area');
-            $receiver->past = $request->input('receiver-past', 0);
-            if (empty($receiver->past))
-                $receiver->past = 0;
+            if ($done == false) {
+                return redirect(url('/'));
+            }
 
             $receiver->save();
 
             $donation->receivers()->attach($receiver, [
                 'operator_id' => Auth::user()->id,
                 'status' => $request->has('shipping') ? 'shipping_needed' : 'assigned',
-                'notes' => $request->input('notes'),
+                'notes' => $request->input('notes') ?? '',
                 'created_at' => date('Y-m-d G:i:s'),
                 'updated_at' => date('Y-m-d G:i:s')
             ]);
@@ -463,9 +481,10 @@ class DonationController extends Controller
             */
             if ($donation->type == 'object') {
                 $donation->status = 'assigned';
+                $message = $request->input('message');
 
                 try {
-                    Mail::to($donation->email)->send(new DonationAssigned($donation, $user, $user->institutes->first()));
+                    Mail::to($donation->email)->send(new DonationAssigned($donation, $user, $user->institutes->first(), $message));
                 }
                 catch(\Exception $e) {
                     Log::error('Impossibile inviare notifica assegnazione donazione ' . $donation->id . ': ' . $e->getMessage());

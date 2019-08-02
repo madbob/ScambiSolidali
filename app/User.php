@@ -55,7 +55,7 @@ class User extends Authenticatable
 
     public static function existingRoles()
     {
-        return [
+        $ret = [
             'user' => (object) [
                 'label' => 'Utente',
                 'multiple' => 'Utenti',
@@ -73,6 +73,15 @@ class User extends Authenticatable
                 'multiple' => 'Amministratori',
             ],
         ];
+
+        if (env('HAS_PUBLIC_OP', false)) {
+            $ret['student'] = (object) [
+                'label' => 'Studente',
+                'multiple' => 'Studenti',
+            ];
+        }
+
+        return $ret;
     }
 
     public function getRoleNameAttribute()

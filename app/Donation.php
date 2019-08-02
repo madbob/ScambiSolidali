@@ -58,6 +58,10 @@ class Donation extends Model
             if ($user->role == 'admin' || $user->role == 'operator') {
                 return true;
             }
+
+            if (env('HAS_PUBLIC_OP', false) && $user->role == 'student') {
+                return true;
+            }
         }
 
         return false;

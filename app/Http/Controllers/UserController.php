@@ -10,6 +10,7 @@ use Mail;
 use Log;
 
 use App\Mail\NewUserCreated;
+use App\Mail\RoleUpdated;
 use App\User;
 use App\Institute;
 use App\Company;
@@ -142,7 +143,7 @@ class UserController extends Controller
         $user->institutes()->sync($request->input('institutes', []));
         $user->companies()->sync($request->input('companies', []));
 
-        if ($ex_role == 'user' && $user->role == 'operator') {
+        if ($ex_role == 'user') {
             try {
                 Mail::to($user->email)->send(new RoleUpdated($user));
             }
