@@ -77,29 +77,34 @@ class Recurring extends Model
     private static function generateAll($companies)
     {
         foreach($companies as $c) {
-            $recurring = new Recurring();
-            $recurring->company_id = $c->id;
-            $recurring->filled = false;
-            $recurring->closed = false;
+            $recurring = Recurring::where('company_id', $c->id)->where('closed', false)->first();
+            if (is_null($recurring)) {
+                $recurring = new Recurring();
+                $recurring->company_id = $c->id;
+                $recurring->filled = false;
+                $recurring->closed = false;
 
-            /*
-                Attenzione: l'identificativo deve essere ragionevolmente lungo,
-                ma non troppo in quanto il link dovrà essere messo negli SMS di
-                notifica (che ovviamente hanno caratteri limitati)
-            */
-            do {
-                $recurring->identifier = str_random(20);
-            } while(Recurring::where('identifier', $recurring->identifier)->count() != 0);
+                /*
+                    Attenzione: l'identificativo deve essere ragionevolmente lungo,
+                    ma non troppo in quanto il link dovrà essere messo negli SMS di
+                    notifica (che ovviamente hanno caratteri limitati)
+                */
+                do {
+                    $recurring->identifier = str_random(20);
+                } while(Recurring::where('identifier', $recurring->identifier)->count() != 0);
 
-            $recurring->contents = '';
-            $recurring->save();
+                $recurring->contents = '';
+                $recurring->save();
+            }
 
-            foreach($c->users as $u) {
-                try {
-                    $u->notify(new RecurringNotification($recurring));
-                }
-                catch(\Exception $e) {
-                    Log::error('Impossibile notificare utente ' . $u->id . ' per le disponibilità ricorrenti: ' . $e->getMessage());
+            if ($recurring->filled == false) {
+                foreach($c->users as $u) {
+                    try {
+                        $u->notify(new RecurringNotification($recurring));
+                    }
+                    catch(\Exception $e) {
+                        Log::error('Impossibile notificare utente ' . $u->id . ' per le disponibilità ricorrenti: ' . $e->getMessage());
+                    }
                 }
             }
         }
@@ -107,12 +112,19 @@ class Recurring extends Model
 
     public static function generateWeekly()
     {
+        $today = date('Y-m-d');
+        Recurring::weekly()->where(DB::raw('DATE(created_at)'), '!=', $today)->where('closed', false)->update(['closed' => true]);
+
         $companies = Company::where('donation_frequency', 'weekly')->get();
         self::generateAll($companies);
     }
 
     public static function generateMonthly()
     {
+        $today = date('Y-m-d');
+        Recurring::monthly()->where(DB::raw('DATE(created_at)'), '!=', $today)->where('closed', false)->update(['closed' => true]);
+        RecurringPick::where('closed', false)->update(['closed' => true]);
+
         $companies = Company::where('donation_frequency', 'monthly')->get();
         self::generateAll($companies);
     }

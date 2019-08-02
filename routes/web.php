@@ -15,9 +15,10 @@ Route::get('/', function () {
     return redirect(url('/home'));
 });
 
-Route::get(substr(env('APP_KEY'), -5) . '/logs', '\MadBob\LaravelLog2Rss\Log2RssController@index');
-
 Route::get('/home', 'CommonController@home')->name('home');
+Route::get('/logo', 'CommonController@logo')->name('logo');
+Route::get('/maincss', 'CommonController@css')->name('css');
+
 Route::get('/progetto', 'CommonController@project');
 Route::get('/come-funziona', 'CommonController@working');
 Route::get('/privacy', 'CommonController@privacy');
@@ -58,6 +59,7 @@ Route::get('/periodico/prenota', 'RecurringController@booking')->name('periodico
 Route::post('/periodico/prenota', 'RecurringController@saveBooking')->name('periodico.prenotazione');
 Route::post('/periodico/reset/weekly', 'RecurringController@resetWeekly')->name('periodico.reset_weekly');
 Route::post('/periodico/reset/monthly', 'RecurringController@resetMonthly')->name('periodico.reset_monthly');
+Route::get('/periodico/archivio', 'RecurringController@archive')->name('periodico.archivio');
 
 Route::resource('/celo', 'DonationController');
 Route::resource('/giocatori', 'UserController');

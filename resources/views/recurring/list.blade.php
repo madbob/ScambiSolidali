@@ -4,21 +4,69 @@
 
 @section('content')
     <div class="celo primary-1">
+        <div class="row">
+            <div class="col-md-12">
+                <a class="btn btn-default" href="{{ route('periodico.archivio') }}">Archivio</a>
+
+                <button class="btn btn-danger pull-right" data-toggle="modal" data-target="#reset_weekly">Resetta Donazioni</button>
+                <div class="modal fade primary-1" id="reset_weekly" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">Resetta Donazioni Settimanali</h4>
+                            </div>
+
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <form method="POST" action="{{ route('periodico.reset_weekly') }}">
+                                            {{ csrf_field() }}
+
+                                            <p>
+                                                Procedendo le attuali donazioni settiminali saranno archiviate, saranno generati nuovi slot e saranno inviati gli SMS di notifica agli esercenti. Vuoi continuare?
+                                            </p>
+
+                                            <hr>
+
+                                            <div class="form-group">
+                                                <div>
+                                                    <button class="button" type="submit">
+                                                        <span>Si, Resetta</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     	<div class="row">
             <div class="col-md-12">
-                <div class="page-header">
-                    <h3>
-                        Donazioni Settimanali
-                    </h3>
-                </div>
-
                 @if($weekly->isEmpty())
+                    <div class="page-header">
+                        <h3>
+                            Donazioni Settimanali
+                        </h3>
+                    </div>
+
                     <div class="alert alert-info">
                         <p>
                             Non ci sono donazioni settimanali ricorrenti attive.
                         </p>
                     </div>
                 @else
+                    <div class="page-header">
+                        <h3>
+                            Donazioni Settimanali ({{ printableDate($weekly->first()->created_at) }})
+                        </h3>
+                    </div>
+
                     <table class="table">
                         <thead>
                             <tr>
@@ -88,6 +136,7 @@
                                 <th>Totale</th>
                                 <th>&nbsp;</th>
                                 <th>{{ $boxes }} box</th>
+                                <th>&nbsp;</th>
                                 <th>&nbsp;</th>
                                 <th>&nbsp;</th>
                             </tr>

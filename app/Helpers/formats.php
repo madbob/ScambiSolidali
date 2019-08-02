@@ -14,3 +14,10 @@ function normalizeUrl($input)
 
     return $normalized . $input;
 }
+
+function flatString($string)
+{
+    $string = mb_strtolower($string);
+    $string = str_replace(' ', '', $string);
+    return $string;
+}

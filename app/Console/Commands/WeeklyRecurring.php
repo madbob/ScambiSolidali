@@ -19,7 +19,6 @@ class WeeklyRecurring extends Command
     public function handle()
     {
         if(env('HAS_FOOD', false)) {
-            Recurring::weekly()->where('closed', false)->update(['closed' => true]);
             Recurring::generateWeekly();
         }
     }

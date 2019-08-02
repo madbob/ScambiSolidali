@@ -17,7 +17,7 @@
         '/css/chosen.min.css',
         '/css/bootstrap-chosen.css',
         '/css/bootstrap-datepicker3.min.css',
-        '/css/app.css'
+        route('css')
     ]) !!}
 
     <meta name="theme-color" content="#FFF"/>

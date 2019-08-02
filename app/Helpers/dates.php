@@ -31,3 +31,8 @@ function printableDate($date)
 {
     return ucwords(Date::parse($date)->format('l d F Y'));
 }
+
+function canonicalDate($date)
+{
+    return Date::parse($date)->format('Y-m-d');
+}

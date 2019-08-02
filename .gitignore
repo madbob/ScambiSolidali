@@ -4,6 +4,7 @@
 /storage/debugbar/
 /vendor
 /.idea
+/.sass-cache
 Homestead.json
 Homestead.yaml
 .env

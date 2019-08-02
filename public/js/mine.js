@@ -244,11 +244,11 @@ $(document).ready(function() {
         if ($(this).prop('checked')) {
             var role = $(this).attr('data-role');
             if (role == 'all') {
-                $('.users-list tr').show();
+                $('.users-list tbody tr').show();
             }
             else {
-                $('.users-list tr').hide();
-                $('.users-list tr[data-role=' + role + ']').show();
+                $('.users-list tbody tr').hide();
+                $('.users-list tbody tr[data-role=' + role + ']').show();
             }
         }
     });

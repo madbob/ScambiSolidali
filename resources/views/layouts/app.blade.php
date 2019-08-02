@@ -17,7 +17,7 @@
         '/css/chosen.min.css',
         '/css/bootstrap-chosen.css',
         '/css/bootstrap-datepicker3.min.css',
-        '/css/app.css'
+        route('css')
     ]) !!}
 
     <meta name="theme-color" content="#FFF"/>
@@ -76,24 +76,23 @@
                                                 @endforeach
                                             </small>
                                         </div>
-                                        <div class="col-md-6 left-border">
+                                        <div class="col-md-6 left-border hidden-sm hidden-xs">
                                             <a href="{{ url('/register') }}">Registrati</a>
                                             <a href="{{ url('/login') }}">Login</a>
                                         </div>
                                     </div>
                                 @else
-                                    <div class="row">
-                                        <div class="col-md-4 city-title">
+                                    <div class="row text-right">
+                                        <div class="col-md-6 city-title">
                                             <span class="city-name">{{ App\Config::getConf('instance_city') }}</span>
                                         </div>
-                                        <div class="col-md-4">
-                                            <span>Ciao, {{ Auth::user()->name }}</span>
-                                        </div>
-                                        <div class="col-md-4 left-border">
-                                            <a href="{{ url('/donazione/mie') }}">Il Mio Profilo</a>
-                                            <a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                                        <div class="col-md-6 left-border hidden-sm hidden-xs">
+                                            <span>Ciao, {{ Auth::user()->name }}<br></span>
 
-                                            <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                            <a href="{{ url('/donazione/mie') }}">Il Mio Profilo</a>
+                                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                                 {{ csrf_field() }}
                                             </form>
                                         </div>
@@ -101,7 +100,19 @@
                                 @endif
                             </li>
                         </ul>
-                        <ul class="nav navbar-nav navbar-right primary-2 visible-xs visible-sm">
+                        <ul class="nav navbar-nav navbar-right primary-2 visible-xs visible-sm navbar-mobile">
+                            @if (Auth::guest())
+                                <li><a href="{{ route('register') }}">Registrati</a></li>
+                                <li><a href="{{ route('login') }}">Login</a></li>
+                            @else
+                                <li><a href="{{ url('/donazione/mie') }}">Il Mio Profilo</a></li>
+
+                                <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            @endif
+
                             <li><a href="{{ url('progetto') }}">Progetto</a></li>
                             <li><a href="{{ url('come-funziona') }}">Regole</a></li>
                             <li><a href="{{ url('celo') }}">Celo</a></li>

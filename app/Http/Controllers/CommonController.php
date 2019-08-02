@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 
+use App\Config;
 use App\Donation;
 use App\Category;
 use App\Story;
@@ -11,6 +12,20 @@ use App\Company;
 
 class CommonController extends Controller
 {
+    public function logo()
+    {
+        $city = Config::getConf('instance_city');
+        $city = flatString($city);
+        return response()->download(public_path('images/logo_' . $city . '.png'));
+    }
+
+    public function css()
+    {
+        $city = Config::getConf('instance_city');
+        $city = flatString($city);
+        return response()->download(public_path('css/' . $city . '.css'));
+    }
+
     public function home()
     {
         return view('pages.home');

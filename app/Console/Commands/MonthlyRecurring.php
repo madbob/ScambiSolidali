@@ -20,8 +20,6 @@ class MonthlyRecurring extends Command
     public function handle()
     {
         if(env('HAS_FOOD', false)) {
-            Recurring::monthly()->where('closed', false)->update(['closed' => true]);
-            RecurringPick::where('closed', false)->update(['closed' => true]);
             Recurring::generateMonthly();
         }
     }

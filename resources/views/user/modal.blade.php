@@ -15,11 +15,17 @@
                             {!! BootForm::text('phone', 'Telefono') !!}
                             {!! BootForm::email() !!}
                             {!! BootForm::password('password', 'Password', ['help_text' => 'Lascia vuoto per non modificare la password']) !!}
-                            {!! BootForm::radios('role', 'Ruolo', [
-                                'admin' => 'Amministratore',
-                                'operator' => 'Operatore',
-                                'user' => 'Utente'
-                            ]) !!}
+
+                            <?php
+
+                            $selector = [];
+                            foreach(App\User::existingRoles() as $identifier => $metadata) {
+                                $selector[$identifier] = $metadata->label;
+                            }
+
+                            ?>
+
+                            {!! BootForm::radios('role', 'Ruolo', $selector) !!}
 
                             <?php
 

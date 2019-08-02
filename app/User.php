@@ -53,22 +53,37 @@ class User extends Authenticatable
 		return sprintf('%s %s (%s)', $this->name, $this->surname, join(', ', $institutes));
 	}
 
+    public static function existingRoles()
+    {
+        return [
+            'user' => (object) [
+                'label' => 'Utente',
+                'multiple' => 'Utenti',
+            ],
+            'businness' => (object) [
+                'label' => 'Esercente',
+                'multiple' => 'Esercenti',
+            ],
+            'operator' => (object) [
+                'label' => 'Operatore',
+                'multiple' => 'Operatori',
+            ],
+            'admin' => (object) [
+                'label' => 'Amministratore',
+                'multiple' => 'Amministratori',
+            ],
+        ];
+    }
+
     public function getRoleNameAttribute()
     {
-        switch($this->role) {
-            case 'user':
-                return 'Utente';
-            case 'weekly_donor':
-                return 'Donatore Settimanale';
-            case 'monthly_donor':
-                return 'Donatore Mensile';
-            case 'operator':
-                return 'Operatore';
-            case 'admin':
-                return 'Amministratore';
+        $roles = self::existingRoles();
+        if (isset($roles[$this->role])) {
+            return $roles[$this->role]->label;
         }
-
-        return '???';
+        else {
+            return '???';
+        }
     }
 
     public function routeNotificationForMobyt()

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Auth;
 use Log;
+use DB;
 
 use App\Recurring;
 use App\RecurringPick;
@@ -198,30 +199,47 @@ class RecurringController extends Controller
 
     public function resetWeekly(Request $request)
     {
-        if (env('HAS_FOOD', false) == false) {
+        if (env('HAS_FOOD', false) == false || $request->user()->role != 'admin') {
             return redirect(url('/'));
         }
 
-        if ($request->user()->role != 'admin') {
-            return redirect(url('/'));
-        }
-
-        Recurring::weekly()->where('closed', false)->update(['closed' => true]);
+        Recurring::generateWeekly();
         return redirect()->route('periodico.index');
     }
 
     public function resetMonthly(Request $request)
     {
-        if (env('HAS_FOOD', false) == false) {
+        if (env('HAS_FOOD', false) == false || $request->user() == null || $request->user()->role != 'admin') {
             return redirect(url('/'));
         }
 
-        if ($request->user()->role != 'admin') {
-            return redirect(url('/'));
-        }
-
-        Recurring::monthly()->where('closed', false)->update(['closed' => true]);
-        RecurringPick::where('closed', false)->update(['closed' => true]);
+        Recurring::generateMonthly();
         return redirect()->route('periodico.index');
+    }
+
+    public function archive(Request $request)
+    {
+        if (env('HAS_FOOD', false) == false || $request->user() == null || $request->user()->role != 'admin') {
+            return redirect(url('/'));
+        }
+
+        $dates = Recurring::weekly()->select(DB::raw('DATE(created_at) as created_at'))->distinct()->orderBy('created_at', 'desc')->get();
+
+        if ($request->has('date')) {
+            $date = $request->input('date');
+        }
+        else {
+            if ($dates->isEmpty() == false)
+                $date = $dates->first()->created_at;
+            else
+                $date = null;
+        }
+
+        $recurrings = Recurring::weekly()->where(DB::raw('DATE(created_at)'), $date)->get();
+
+        return view('recurring.archive', [
+            'dates' => $dates,
+            'weekly' => $recurrings
+        ]);
     }
 }

@@ -173,11 +173,16 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {!! BootForm::vertical(['model' => null, 'store' => 'giocatori.mail']) !!}
-                                                        {!! BootForm::radios('recipients', 'Destinatari', [
-                                                            'admin' => 'Tutti gli Amministratori',
-                                                            'operator' => 'Tutti gli Operatori',
-                                                            'user' => 'Tutti gli Utenti'
-                                                        ]) !!}
+                                                        <?php
+
+                                                        $selector = [];
+                                                        foreach(App\User::existingRoles() as $identifier => $metadata) {
+                                                            $selector[$identifier] = sprintf('Tutti ' . $metadata->multiple);
+                                                        }
+
+                                                        ?>
+
+                                                        {!! BootForm::radios('recipients', 'Destinatari', $selector) !!}
 
                                                         {!! BootForm::text('subject', 'Oggetto') !!}
                                                         {!! BootForm::textarea('body', 'Testo') !!}
@@ -204,15 +209,11 @@
                                 <label class="btn btn-default active">
                                     <input type="radio" name="role-filter" data-role="all" autocomplete="off" checked> Tutti
                                 </label>
-                                <label class="btn btn-default">
-                                    <input type="radio" name="role-filter" data-role="admin" autocomplete="off"> {{ $admins_count }} Amministratori
-                                </label>
-                                <label class="btn btn-default">
-                                    <input type="radio" name="role-filter" data-role="user" autocomplete="off"> {{ $users_count }} Utenti
-                                </label>
-                                <label class="btn btn-default">
-                                    <input type="radio" name="role-filter" data-role="operator" autocomplete="off"> {{ $operators_count }} Operatori
-                                </label>
+                                @foreach($counters as $identifier => $label)
+                                    <label class="btn btn-default">
+                                        <input type="radio" name="role-filter" data-role="{{ $identifier }}" autocomplete="off"> {{ $label }}
+                                    </label>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -220,12 +221,12 @@
                     <table class="table users-list">
         				<thead>
         					<tr>
-                                <th>Ruolo</th>
-        						<th>Nome</th>
-        						<th>Cognome</th>
-        						<th>Telefono</th>
-        						<th>E-Mail</th>
-                                <th>Azioni</th>
+                                <th width="15%">Ruolo</th>
+        						<th width="20%">Nome</th>
+        						<th width="20%">Cognome</th>
+        						<th width="20%">Telefono</th>
+        						<th width="20%">E-Mail</th>
+                                <th width="5%">Azioni</th>
         					</tr>
         				</thead>
         				<tbody>

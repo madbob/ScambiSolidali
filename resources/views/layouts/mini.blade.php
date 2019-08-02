@@ -9,7 +9,7 @@
 
     <title>{{ $pagetitle }}</title>
 
-    {!! Minify::stylesheet('/css/app.css') !!}
+    {!! Minify::stylesheet(route('css')) !!}
 
     <script>
         window.Laravel = <?php echo json_encode([

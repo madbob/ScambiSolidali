@@ -42,7 +42,7 @@
                 @if(!empty($video_link))
                     <iframe width="100%" height="315" src="{{ $video_link }}" frameborder="0" allowfullscreen></iframe>
                 @else
-                    <img class="home-cover" src="{{ App\Config::getConf('cover_link') }}">
+                    <img class="home-cover img-responsive" src="{{ App\Config::getConf('cover_link') }}">
                 @endif
             </div>
         </div>

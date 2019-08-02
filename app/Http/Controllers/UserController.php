@@ -31,15 +31,18 @@ class UserController extends Controller
 
         if ($user && $user->role == 'admin') {
             $users = User::orderBy('surname', 'asc')->get();
-            $admins_count = User::where('role', 'admin')->count();
-            $users_count = User::where('role', 'user')->count();
-            $operators_count = User::where('role', 'operator')->count();
+
+            foreach(User::existingRoles() as $identifier => $metadata) {
+                $count = User::where('role', $identifier)->count();
+                $counters[$identifier] = sprintf('%d %s', $count, $metadata->multiple);
+            }
         }
         else {
             $users = [];
-            $admins_count = 0;
-            $users_count = 0;
-            $operators_count = 0;
+
+            foreach(User::existingRoles() as $identifier => $metadata) {
+                $counters[$identifier] = sprintf('0 %s', $count, $metadata->multiple);
+            }
         }
 
         $current_tab = 'entities';
@@ -58,9 +61,7 @@ class UserController extends Controller
             'institutes' => $institutes,
             'companies' => $companies,
             'users' => $users,
-            'admins_count' => $admins_count,
-            'users_count' => $users_count,
-            'operators_count' => $operators_count,
+            'counters' => $counters,
             'current_show' => $current_show,
             'current_tab' => $current_tab,
         ]);

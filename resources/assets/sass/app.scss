@@ -555,7 +555,7 @@ textarea.form-control {
                 bottom: 0;
                 right: 70%;
                 left: 0;
-                background-image: url('../images/logo.png');
+                background-image: url('../logo');
                 background-repeat: no-repeat;
                 background-size: contain;
                 margin-left: 0;
@@ -618,6 +618,10 @@ textarea.form-control {
     }
 }
 
+.navbar-mobile {
+    padding: 0 20px;
+}
+
 .tagline {
     border-top: 2px solid $primary-color-2;
     padding: 20px 0;
@@ -643,10 +647,15 @@ textarea.form-control {
         text-transform: uppercase;
         list-style: none;
         flex: 0 1 auto;
+        border-bottom: 2px solid #FFF;
 
         a {
             color: #000;
             text-decoration: none;
+        }
+
+        &:hover {
+            border-bottom: 2px solid #000;
         }
     }
 }
@@ -666,6 +675,10 @@ textarea.form-control {
         font-size: $font-size-base;
         color: inherit;
     }
+}
+
+.home-cover {
+    margin: auto;
 }
 
 .tb-border {
