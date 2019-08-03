@@ -141,7 +141,7 @@ class MilanoTableSeeder extends Seeder
                     <h4>Vuoi aderire al progetto?</h4>
 
                     <p>Se sei un giovane under 35 puoi accedere alla donazione di beni per la casa e alle attività di abitare collaborativo. Se hai più di 35 anni, puoi accedere alle attività di abitare collaborativo.</p>
-                    <p>In entrambe i casi, devi essere accreditato: in fase di registrazione richiedi l\'accreditamento come Giovane <a href="http://www.milano2035.it">Milano 2035</a>.</p>
+                    <p>In entrambe i casi, devi essere registrato: in fase di registrazione richiedi l\'accreditamento come Giovane <a href="http://www.milano2035.it">Milano 2035</a>.</p>
                 </div>
             </div>
 

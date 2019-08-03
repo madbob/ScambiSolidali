@@ -49,7 +49,7 @@ class CommonController extends Controller
     public function numbers()
     {
         $categories = [];
-        $parents = Category::with('children')->where('parent_id', 0)->get();
+        $parents = Category::with('children')->where('parent_id', 0)->where('type', 'object')->get();
         foreach($parents as $p) {
             $subs = [$p->id];
 
