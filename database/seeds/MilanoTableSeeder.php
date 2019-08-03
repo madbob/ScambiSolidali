@@ -19,7 +19,7 @@ class MilanoTableSeeder extends Seeder
         if (Config::where('name', 'homebox_title')->first() == null) {
             $c = new Config();
             $c->name = 'homebox_title';
-            $c->value = sprintf("<strong>%s</strong> è una piattaforma che supporta i giovani abitanti del progetto Milano 2035. Ti permette di:", env('APP_NAME'));
+            $c->value = sprintf("<strong>%s</strong> è una piattaforma che supporta i giovani abitanti del progetto <a href=\"http://www.milano2035.it\">Milano 2035</a>. Ti permette di:", env('APP_NAME'));
             $c->save();
         }
 
@@ -61,14 +61,14 @@ class MilanoTableSeeder extends Seeder
         if (Config::where('name', 'credits')->first() == null) {
             $c = new Config();
             $c->name = 'credits';
-            $c->value = sprintf('<p>Un progetto di<br/><img src="%s" alt="Agenzia per lo Sviluppo Locale di San Salvario"><img src="%s" alt="Milano 2035"></p><p>Con il sostegno di<br/><img src="%s" alt="Welfare in Azione"><img src="%s" alt="Fondazione Cariplo">', url('images/agenziasansalvario.jpg'), url('images/milano2035.png'), url('images/welfareinazione.jpg'), url('images/fondazione_cariplo.png'));
+            $c->value = sprintf('<p>Un progetto di<br/><img src="%s" alt="Agenzia per lo Sviluppo Locale di San Salvario"><img src="%s" alt="Milano 2035"></p><p>Con il sostegno di<br/><img src="%s" alt="Welfare in Azione"><img src="%s" alt="Fondazione Cariplo"></p><p><a href="http://www.milano2035.it">www.milano2035.it</a></p>', url('images/agenziasansalvario.jpg'), url('images/milano2035.png'), url('images/welfareinazione.jpg'), url('images/fondazione_cariplo.png'));
             $c->save();
         }
 
         if (Config::where('name', 'full_credits')->first() == null) {
             $c = new Config();
             $c->name = 'full_credits';
-            $c->value = '<p class="intro">Progetto</p><p>"Milano 2035 - Coalizione per l\'Abitare Giovanile" è uno degli otto interventi finanziati dal IV bando "Welfare di comunità" di Fondazione Cariplo. La piattaforma celocelo Milano2035 è realizzata in collaborazione con l’associazione Agenzia per lo sviluppo locale di San Salvario ONLUS</p><p class="intro">Partner</p><p>Fondazione DAR Cesare Scarponi ONLUS (capofila), La Cordata s.c.s., Fondazione Attilio e Teresa Cassoni, Associazione MeglioMilano, Genera s.c.s. ONLUS, Cooperativa Sociale Tuttinsieme, ACLI provinciali di Milano, Associazione Collaboriamo, Associazione Housing lab, Fondazione San Carlo ONLUS, Associazione CIESSEVI, Officina dell’Abitare coop. Sociale, Università degli Studi di Milano Bicocca - Dipartimento di Sociologia e Ricerca Sociale, Politecnico di Milano - Dipartimento Dastu, Comune di Cinisello Balsamo.</p>';
+            $c->value = '<p class="intro">Progetto</p><p><a href="http://www.milano2035.it">"Milano 2035 - Coalizione per l\'Abitare Giovanile"</a> è uno degli otto interventi finanziati dal IV bando "Welfare di comunità" di Fondazione Cariplo. La piattaforma celocelo Milano2035 è realizzata in collaborazione con l’associazione Agenzia per lo sviluppo locale di San Salvario ONLUS</p><p class="intro">Partner</p><p>Fondazione DAR Cesare Scarponi ONLUS (capofila), La Cordata s.c.s., Fondazione Attilio e Teresa Cassoni, Associazione MeglioMilano, Genera s.c.s. ONLUS, Cooperativa Sociale Tuttinsieme, ACLI provinciali di Milano, Associazione Collaboriamo, Associazione Housing lab, Fondazione San Carlo ONLUS, Associazione CIESSEVI, Officina dell’Abitare coop. Sociale, Università degli Studi di Milano Bicocca - Dipartimento di Sociologia e Ricerca Sociale, Politecnico di Milano - Dipartimento Dastu, Comune di Cinisello Balsamo.</p>';
             $c->save();
         }
 
@@ -104,7 +104,7 @@ class MilanoTableSeeder extends Seeder
                 <p>
                     Dunque, sulla piattaforma: tutti possono donare beni per la casa, tempo e competenze per
                     l\'abitare collaborativo; tutti possono usufruire del tempo e delle competenze altrui, mentre solo
-                    i giovani accreditati come beneficiari di Milano 2035 possono usufruire dei beni donati
+                    i giovani accreditati come beneficiari di <a href="http://www.milano2035.it">Milano 2035</a> possono usufruire dei beni donati
                     (direttamente oppure attraverso uno degli enti che promuovono il progetto).
                 </p>
             </div>';
@@ -116,7 +116,7 @@ class MilanoTableSeeder extends Seeder
             $c->name = 'working_description';
             $c->value = '<div class="row primary-1">
                 <div class="col-md-3">
-                    <div class="button screaming-border"><span>SEI UN PRIVATO?</span></div>
+                    <div class="button screaming-border"><span>VUOI DONARE?</span></div>
                 </div>
 
                 <div class="col-md-8 col-md-offset-1">
@@ -126,7 +126,7 @@ class MilanoTableSeeder extends Seeder
                     <p>Registrati sul sito, scegli la categoria, descrivi il tuo oggetto, aggiungi delle foto e premi Invio! Oppure descrivi le tue competenze e la tua disponibilità di tempo!<br/></p>
                     <p><a class="arrowlink" href="' . url('manca') . '">vai su MANCA!</a></p>
                     <p>Consulta la bacheca dei nostri appelli, scoprirai cosa stiamo cercando.</p>
-                    <p>Tutti i beni donati saranno destinati ai giovani under 35 beneficiari diretti del progetto Milano 2035. Tutte le attività di abitare collaborativo saranno realizzate da chiunque voglia aderire a Milano 2035.</p>
+                    <p>Tutti i beni donati saranno destinati ai giovani under 35 beneficiari diretti del progetto <a href="http://www.milano2035.it">Milano 2035</a>. Tutte le attività di abitare collaborativo saranno realizzate da chiunque voglia aderire a <a href="http://www.milano2035.it">Milano 2035</a>.</p>
                 </div>
             </div>
 
@@ -134,14 +134,14 @@ class MilanoTableSeeder extends Seeder
 
             <div class="row primary-2">
                 <div class="col-md-3">
-                    <div class="button screaming-border"><span>VUOI RICEVERE UN BENE?</span></div>
+                    <div class="button screaming-border"><span>VUOI ADERIRE?</span></div>
                 </div>
 
                 <div class="col-md-8 col-md-offset-1">
                     <h4>Vuoi aderire al progetto?</h4>
 
                     <p>Se sei un giovane under 35 puoi accedere alla donazione di beni per la casa e alle attività di abitare collaborativo. Se hai più di 35 anni, puoi accedere alle attività di abitare collaborativo.</p>
-                    <p>In entrambe i casi, devi essere accreditato: in fase di registrazione richiedi l\'accreditamento come Giovane Milano 2035.</p>
+                    <p>In entrambe i casi, devi essere accreditato: in fase di registrazione richiedi l\'accreditamento come Giovane <a href="http://www.milano2035.it">Milano 2035</a>.</p>
                 </div>
             </div>
 
@@ -162,7 +162,7 @@ class MilanoTableSeeder extends Seeder
                         <li>Prendi accordi per il trasporto</li>
                     </ol>
 
-                    <p>I beni donati andranno a favore dei giovani beneficiari del progetto Milano 2035. Le attività di abitare collaborativo andranno a favore di tutta la collettività. Potrai conoscere gli esiti delle donazioni attraverso i canali di Milano 2035.</p>
+                    <p>I beni donati andranno a favore dei giovani beneficiari del progetto <a href="http://www.milano2035.it">Milano 2035</a>. Le attività di abitare collaborativo andranno a favore di tutta la collettività. Potrai conoscere gli esiti delle donazioni attraverso i canali di <a href="http://www.milano2035.it">Milano 2035</a>.</p>
                 </div>
             </div>
 
@@ -181,20 +181,7 @@ class MilanoTableSeeder extends Seeder
                         <li>il donatore è disponibile a consegnare il bene al beneficiario dopo aver preso accordi con l’Ente accreditato di riferimento</li>
                         <li>l’Ente accreditato provvede al ritiro e alla consegna del bene</li>
                         <li>il beneficiario provvede in modo autonomo al ritiro del bene previ accordi tra donatore e l’Ente accreditato</li>
-                        <li>il beneficiario o l’Ente accreditato sono in grado di sostenere la spesa di trasporto e possono chiedere un preventivo a un fornitore di loro fiducia oppure alla Cooperativa La Fonte, partner del nostro progetto (sotto i dettagli)</li>
-                        <li>nel caso di impossibilità ad effettuare il trasporto da parte dell’Ente accreditato o in caso  di gravi difficoltà economiche del beneficiario, il progetto celocelo può contribuire a sostenere le spese del trasporto richiesto, l’operatore dovrà richiedere il trasporto quando assegna il bene tramite il sito</li>
                     </ul>
-
-                    <h4>Smontaggio</h4>
-
-                    <p>Il progetto non sostiene le spese di smontaggio e montaggio.</p>
-                    <p>Chiediamo al donatore di far trovare i mobili smontati e a chi riceve di provvedere al montaggio.</p>
-                    <p>Nel caso di impossibilità a provvedere allo smontaggio e al montaggio di seguito trovate i contatti e le tariffe dei nostri fornitori di fiducia (in caso di gravi difficoltà il progetto celocelo può contribuire a sostenerne le spese).</p>
-                    <p>Cooperativa La Fonte Onlus<br>Società Cooperativa Sociale<br>Via San Marchese 26/2 – 10078 Venaria Reale (To)
-                    </p>
-                    <p>Per informazioni  e preventivi : lafonteonlus16@gmail.com<br>Tel. 351 2276924, Enzo Covito
-                    </p>
-                    <p>Tariffe:<br>17 euro all\'ora a persona per la manodopera<br>80 centesimi al km per il trasporto (tenendo conto che la partenza è da Venaria)</p>
                 </div>
             </div>';
 
