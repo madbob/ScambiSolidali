@@ -72,7 +72,10 @@
     				@endforeach
 
                     <p class="clearfix">&nbsp;</p>
-        			{{ $donations->links() }}
+
+                    <div class="text-center">
+                        {{ $donations->links() }}
+                    </div>
                 @endif
     		</div>
     	</div>

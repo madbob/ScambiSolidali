@@ -66,7 +66,10 @@
     				@endforeach
 
                     <p class="clearfix">&nbsp;</p>
-        			{{ $calls->links() }}
+
+                    <div class="text-center">
+                        {{ $calls->links() }}
+                    </div>
                 @endif
     		</div>
     	</div>
