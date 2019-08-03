@@ -42,7 +42,7 @@ class UserController extends Controller
             $users = [];
 
             foreach(User::existingRoles() as $identifier => $metadata) {
-                $counters[$identifier] = sprintf('0 %s', $count, $metadata->multiple);
+                $counters[$identifier] = sprintf('0 %s', $metadata->multiple);
             }
         }
 
