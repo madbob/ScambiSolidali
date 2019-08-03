@@ -27,7 +27,7 @@
                     Rispondi alle nostre call, ti contatteremo appena possibile!
                 </p>
 
-                @include('category.filter', ['filter' => $filter, 'endpoint' => 'manca'])
+                @include('category.filter', ['filter' => $filter, 'direct_response' => true, 'endpoint' => 'manca'])
             </div>
 
             <div class="col-md-8 col-md-offset-1 col-lg-9 col-lg-offset-1 primary-2">

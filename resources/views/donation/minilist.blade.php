@@ -44,13 +44,13 @@
                     </td>
 
                     <td>
-                        @if(Auth::user()->role == 'admin' || $item->pivot->operator_id == Auth::user()->id)
+                        @if($currentuser->role == 'admin' || $item->pivot->operator_id == $currentuser->id)
                             {{ $item->pivot->notes }}
                         @endif
                     </td>
 
                     <td>
-                        @if(Auth::user()->role == 'admin' || $item->pivot->operator_id == Auth::user()->id)
+                        @if($currentuser->role == 'admin' || $item->pivot->operator_id == $currentuser->id)
                             <button class="btn btn-default btn-sm async-delete-interaction assignation" data-donation-id="{{ $donation->id }}" data-item-id="{{ $item->id }}">
                                 <small>Rimuovi</small>
                             </button>

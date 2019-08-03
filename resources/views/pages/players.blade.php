@@ -6,7 +6,7 @@
     <input type="hidden" name="trigger-show-details" data-endpoint="giocatori" data-item-id="{{ $current_show }}">
 
     <div class="players primary-1">
-        @if($user && $user->role == 'admin')
+        @if($currentuser && $currentuser->role == 'admin')
             <div class="row">
                 <div class="col-md-12">
                     <ul class="nav nav-tabs" role="tablist">
@@ -82,7 +82,7 @@
                     <div class="col-md-5 col-md-offset-1">
                         @foreach($institutes as $institute)
                             <div class="col-md-12 spaced-middle border-bottom">
-                                @if($user && $user->role == 'admin')
+                                @if($currentuser && $currentuser->role == 'admin')
                                     <div class="pull-right">
                                         <p class="show-details" data-endpoint="ente" data-item-id="{{ $institute->id }}">Edit</p>
                                     </div>
@@ -99,7 +99,7 @@
 
                         <br/>
 
-                        @if($user && $user->role == 'admin')
+                        @if($currentuser && $currentuser->role == 'admin')
                             <div class="col-md-12">
                                 <button class="btn btn-default button" data-toggle="modal" data-target="#institute-new">
                                     <span>Aggiungi Associazione</span>
@@ -111,7 +111,7 @@
                 </div>
             </div>
 
-            @if($user && $user->role == 'admin')
+            @if($currentuser && $currentuser->role == 'admin')
                 @if(env('HAS_FOOD', false))
                     <div role="tabpanel" class="tab-pane  {{ $current_tab == 'companies' ? 'active' : '' }}" id="companies">
                         <div class="row">

@@ -4,6 +4,9 @@ $query = App\Category::where('parent_id', 0)->orderBy('name', 'asc');
 if ($type != 'all') {
 	$query->where('type', $type);
 }
+if ($direct_response == false) {
+	$query->where('direct_response', false);
+}
 $categories = $query->get();
 
 ?>

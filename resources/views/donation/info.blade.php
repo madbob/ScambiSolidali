@@ -11,7 +11,7 @@
 
 <p class="form-control-static">{{ $donation->name }} {{ $donation->surname }}</p>
 
-@if($role == 'admin' || $role == 'operator')
+@if($currentuser->role == 'admin' || $currentuser->role == 'operator')
     <p class="form-control-static">{{ $donation->phone }}</p>
     <p class="form-control-static">{{ $donation->email }}</p>
     <p class="form-control-static">{{ $donation->address }}</p>
@@ -19,7 +19,7 @@
 
 <p class="form-control-static">{!! nl2br($donation->description) !!}</p>
 
-@if($role == 'admin' || $role == 'operator')
+@if($currentuser->role == 'admin' || $currentuser->role == 'operator')
     @if($donation->type == 'object')
         <hr/>
 

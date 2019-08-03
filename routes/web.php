@@ -26,6 +26,7 @@ Route::get('/numeri', 'CommonController@numbers');
 Route::get('/contatti', 'CommonController@contacts')->name('contacts');
 
 Route::get('/celo/nuovo/{type}', 'DonationController@create');
+Route::post('/celo/direct/{call_id}', 'DonationController@directResponse')->name('celo.direct');
 Route::get('/celo/renew/{token}', 'DonationController@renew');
 Route::post('/celo/arenew/{id}', 'DonationController@adminRenew');
 Route::get('/celo/archivio', 'DonationController@getArchive');
@@ -61,14 +62,14 @@ Route::post('/periodico/reset/weekly', 'RecurringController@resetWeekly')->name(
 Route::post('/periodico/reset/monthly', 'RecurringController@resetMonthly')->name('periodico.reset_monthly');
 Route::get('/periodico/archivio', 'RecurringController@archive')->name('periodico.archivio');
 
-Route::resource('/celo', 'DonationController');
-Route::resource('/giocatori', 'UserController');
-Route::resource('/parlano-di-noi', 'MediaController');
-Route::resource('/storie', 'StoryController');
-Route::resource('/archivio', 'ArchiveController');
-Route::resource('/ente', 'InstituteController');
-Route::resource('/azienda', 'CompanyController');
-Route::resource('/manca', 'CallController');
-Route::resource('/periodico', 'RecurringController');
+Route::resource('celo', 'DonationController');
+Route::resource('giocatori', 'UserController');
+Route::resource('parlano-di-noi', 'MediaController');
+Route::resource('storie', 'StoryController');
+Route::resource('archivio', 'ArchiveController');
+Route::resource('ente', 'InstituteController');
+Route::resource('azienda', 'CompanyController');
+Route::resource('manca', 'CallController');
+Route::resource('periodico', 'RecurringController');
 
 Auth::routes();

@@ -44,7 +44,12 @@ else
 <div class="row new-donation-form primary-1">
     {!! BootForm::vertical(['model' => $donation, 'store' => 'DonationController@store', 'update' => 'DonationController@update', 'enctype' => 'multipart/form-data']) !!}
         <div class="col-md-12">
-            @include('call.selector', ['call' => $call, 'donation' => $donation, 'call_type' => 'service'])
+            @include('call.selector', [
+                'call' => $call,
+                'donation' => $donation,
+                'call_type' => 'service',
+                'direct_response' => false
+            ])
 
             <input type="hidden" name="type" value="service">
 
@@ -56,11 +61,11 @@ else
 
             <br><br><br>
 
-            {!! BootForm::text('name', 'Nome', $user->name, ['required' => 'required']) !!}
-            {!! BootForm::text('surname', 'Cognome', $user->surname, ['required' => 'required']) !!}
+            {!! BootForm::text('name', 'Nome', $currentuser->name, ['required' => 'required']) !!}
+            {!! BootForm::text('surname', 'Cognome', $currentuser->surname, ['required' => 'required']) !!}
             {!! BootForm::text('address', 'Indirizzo') !!}
-            {!! BootForm::text('phone', 'Telefono', $user->phone, ['required' => 'required']) !!}
-            {!! BootForm::email('email', 'E-Mail', $user->email, ['required' => 'required']) !!}
+            {!! BootForm::text('phone', 'Telefono', $currentuser->phone, ['required' => 'required']) !!}
+            {!! BootForm::email('email', 'E-Mail', $currentuser->email, ['required' => 'required']) !!}
 
             <div class="form-group">
                 <p class="text-center">

@@ -21,7 +21,11 @@ if (isset($donation) == false)
         <h4>Informazioni sull'Oggetto</h4>
     </div>
 
-    @include('category.selector', ['orientation' => 'horizontal', 'type' => $call->type])
+    @include('category.selector', [
+        'orientation' => 'horizontal',
+        'type' => $call->type,
+        'direct_response' => false
+    ])
 
     {!! BootForm::text('title', 'Oggetto', null, ['required' => 'required']) !!}
     {!! BootForm::textarea('description', 'Descrizione e Dimensioni', null, ['required' => 'required']) !!}
@@ -61,20 +65,13 @@ if (isset($donation) == false)
         <h4>Informazioni per il Ritiro</h4>
     </div>
 
-    <?php
+    <?php $last = $donation ? $donation : $currentuser->lastDonation() ?>
 
-    if ($donation == null)
-        $last = Auth::user()->lastDonation();
-    else
-        $last = $donation;
-
-    ?>
-
-    {!! BootForm::text('name', 'Nome', $last ? $last->name : $user->name, ['required' => 'required']) !!}
-    {!! BootForm::text('surname', 'Cognome', $last ? $last->surname : $user->surname, ['required' => 'required']) !!}
+    {!! BootForm::text('name', 'Nome', $last ? $last->name : $currentuser->name, ['required' => 'required']) !!}
+    {!! BootForm::text('surname', 'Cognome', $last ? $last->surname : $currentuser->surname, ['required' => 'required']) !!}
     {!! BootForm::text('address', 'Indirizzo', $last ? $last->address : '', ['required' => 'required']) !!}
-    {!! BootForm::text('phone', 'Telefono', $last ? $last->phone : $user->phone, ['required' => 'required']) !!}
-    {!! BootForm::email('email', 'E-Mail', $last ? $last->email : $user->email, ['required' => 'required']) !!}
+    {!! BootForm::text('phone', 'Telefono', $last ? $last->phone : $currentuser->phone, ['required' => 'required']) !!}
+    {!! BootForm::email('email', 'E-Mail', $last ? $last->email : $currentuser->email, ['required' => 'required']) !!}
     {!! BootForm::text('floor', 'Piano', $last ? $last->floor : '') !!}
     {!! BootForm::checkbox('elevator', 'Ascensore', $last ? $last->elevator : false) !!}
     {!! BootForm::textarea('shipping_notes', 'Note') !!}

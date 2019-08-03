@@ -102,17 +102,40 @@ class DonationController extends Controller
 
     public function create(Request $request, $type)
     {
-        $user = Auth::user();
-
-        if($request->has('call'))
+        if($request->has('call')) {
             $call = Call::find($request->input('call'));
-        else
+            if ($call && $call->category->direct_response) {
+                return redirect()->route('call.index', ['show' => $call->id]);
+            }
+        }
+        else {
             $call = null;
+        }
 
         if ($type == 'servizio')
-            return view('donation.service', ['user' => $user, 'call' => $call]);
+            return view('donation.service', ['call' => $call]);
         else
-            return view('donation.create', ['user' => $user, 'call' => $call]);
+            return view('donation.create', ['call' => $call]);
+    }
+
+    public function directResponse(Request $request, $call_id)
+    {
+        $call = Call::find($call_id);
+        if ($call && $call->category->direct_response) {
+            $user = $request->user();
+            $message = strip_tags($request->input('message'));
+
+            try {
+                Mail::to($call->user->email)->send(new CallResponded(null, $call, $user, $message));
+                Session::flash('message', 'Il tuo messaggio è stato inviato');
+            }
+            catch(\Exception $e) {
+                Log::error('Impossibile inviare notifica di appello diretto risposto da ' . $user->id . ': ' . $e->getMessage());
+                Session::flash('message', 'Si è verificato un errore inviando il tuo messaggio! Ti invitiamo a riprovare!');
+            }
+        }
+
+        return redirect()->route('call.index');
     }
 
     private function requestInDonation($donation, $request)
@@ -196,8 +219,10 @@ class DonationController extends Controller
         if ($donation->call_id != -1) {
             $call = Call::find($donation->call_id);
             if ($call) {
+                $user = $request->user();
+
                 try {
-                    Mail::to($call->user->email)->send(new CallResponded($donation, $call));
+                    Mail::to($call->user->email)->send(new CallResponded($donation, $call, $user, ''));
                 }
                 catch(\Exception $e) {
                     Log::error('Impossibile inviare notifica di appello risposto per donazione ' . $donation->id . ': ' . $e->getMessage());
@@ -265,7 +290,7 @@ class DonationController extends Controller
             $call = Call::find($donation->call_id);
             if ($call) {
                 try {
-                    Mail::to($call->user->email)->send(new CallResponded($donation, $call));
+                    Mail::to($call->user->email)->send(new CallResponded($donation, $call, $user, ''));
                 }
                 catch(\Exception $e) {
                     Log::error('Impossibile inviare notifica di appello risposto per donazione ' . $donation->id . ': ' . $e->getMessage());
@@ -548,16 +573,14 @@ class DonationController extends Controller
 
     public function getMyEdit(Request $request, $id)
     {
-        $user = Auth::user();
-
         $donation = Donation::find($id);
         if ($donation->user_id != $user->id)
             return redirect(url('/'));
 
         if ($donation->type == 'service')
-            return view('donation.service', ['user' => $user, 'donation' => $donation]);
+            return view('donation.service', ['donation' => $donation]);
         else
-            return view('donation.create', ['user' => $user, 'donation' => $donation]);
+            return view('donation.create', ['donation' => $donation]);
     }
 
     public function getReport()

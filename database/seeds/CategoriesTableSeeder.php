@@ -60,5 +60,12 @@ class CategoriesTableSeeder extends Seeder
                 }
             }
         }
+
+        $master = new Category();
+        $master->name = 'Affitti Casa';
+        $master->parent_id = 0;
+        $master->type = 'service';
+        $master->direct_response = true;
+        $master->save();
     }
 }

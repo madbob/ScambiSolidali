@@ -1,4 +1,10 @@
-<?php $call_query = App\Call::where('status', 'open')->where('type', $call_type)->where('when', '>=', date('Y-m-d')) ?>
+<?php
+
+$call_query = App\Call::where('status', 'open')->where('type', $call_type)->where('when', '>=', date('Y-m-d'))->whereHas('category', function($query) {
+    $query->where('direct_response', false);
+});
+
+?>
 
 @if($call_query->count() > 0)
     <br/>

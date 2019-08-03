@@ -1,11 +1,9 @@
-<?php $role = Auth::user()->role ?>
-
 <div class="modal fade" id="info-{{ $donation->id }}" tabindex="-1" role="dialog" aria-labelledby="info">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Servizi | {{ $donation->title }}</h4>
+                <h4 class="modal-title" id="myModalLabel">{{ $donation->category->name }} | {{ $donation->title }}</h4>
                 <p class="text-muted"><small><br>{{ url('/celo?show=' . $donation->id) }}</small></p>
             </div>
             <div class="modal-body primary-1">
@@ -16,7 +14,7 @@
                         </form>
                     </div>
 
-                    @if($role == 'admin' || $role == 'operator')
+                    @if($currentuser->role == 'admin' || $currentuser->role == 'operator')
                         <div class="row">
                             <div class="col-md-12">
                                 @include('donation.sameuser', ['donation' => $donation])

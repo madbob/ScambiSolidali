@@ -31,7 +31,7 @@
                     @endif
                 @endif
 
-                @include('category.filter', ['filter' => $filter, 'endpoint' => 'celo'])
+                @include('category.filter', ['filter' => $filter, 'direct_response' => false, 'endpoint' => 'celo'])
             </div>
 
             <div class="col-md-8 col-md-offset-1 col-lg-9 col-lg-offset-1">

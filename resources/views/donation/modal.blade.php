@@ -1,5 +1,3 @@
-<?php $role = Auth::user()->role ?>
-
 <div class="modal fade donation-modal" id="info-{{ $donation->id }}" tabindex="-1" role="dialog" aria-labelledby="info">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -34,7 +32,7 @@
                                 <hr/>
                                 <button class="btn btn-success" role="button" data-toggle="collapse" href="#assignPanel-{{ $donation->id }}" aria-expanded="false" aria-controls="assignPanel-{{ $donation->id }}">Oggetto Assegnato</button>
 
-                                @if($role == 'admin' || $role == 'operator')
+                                @if($currentuser->role == 'admin' || $currentuser->role == 'operator')
                                     <button class="btn btn-danger" role="button" data-toggle="collapse" href="#removePanel-{{ $donation->id }}" aria-expanded="false" aria-controls="removePanel-{{ $donation->id }}">Elimina</button>
 
                                     <div class="collapse" id="assignPanel-{{ $donation->id }}">
@@ -81,7 +79,7 @@
                                             </form>
                                         </div>
                                     </div>
-                                @elseif(env('HAS_PUBLIC_OP', false) && $role == 'student')
+                                @elseif(env('HAS_PUBLIC_OP', false) && $currentuser->role == 'student')
                                     <div class="collapse" id="assignPanel-{{ $donation->id }}">
                                         <div class="well">
                                             <div class="alert alert-info">

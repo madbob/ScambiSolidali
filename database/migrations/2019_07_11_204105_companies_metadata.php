@@ -17,7 +17,7 @@ class CompaniesMetadata extends Migration
 
     public function down()
     {
-        Schema::table('categories', function (Blueprint $table) {
+        Schema::table('companies', function (Blueprint $table) {
             $table->dropColumn(['opening_hours']);
             $table->dropColumn(['preferred_hours']);
             $table->dropColumn(['notes']);

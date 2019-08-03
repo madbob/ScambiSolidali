@@ -58,7 +58,6 @@ class UserController extends Controller
         }
 
         return view('pages.players', [
-            'user' => $user,
             'institutes' => $institutes,
             'companies' => $companies,
             'users' => $users,

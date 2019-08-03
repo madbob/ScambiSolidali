@@ -87,7 +87,7 @@
                                             <span class="city-name">{{ App\Config::getConf('instance_city') }}</span>
                                         </div>
                                         <div class="col-md-6 left-border hidden-sm hidden-xs">
-                                            <span>Ciao, {{ Auth::user()->name }}<br></span>
+                                            <span>Ciao, {{ $currentuser->name }}<br></span>
 
                                             <a href="{{ url('/donazione/mie') }}">Il Mio Profilo</a>
                                             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>

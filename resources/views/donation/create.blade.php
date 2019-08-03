@@ -78,7 +78,12 @@ else
         </div>
 
         <div class="col-md-8 col-md-offset-1">
-            @include('call.selector', ['call' => $call, 'donation' => $donation, 'call_type' => 'object'])
+            @include('call.selector', [
+                'call' => $call,
+                'donation' => $donation,
+                'call_type' => 'object',
+                'direct_response' => false
+            ])
 
             <input type="hidden" name="type" value="object">
 
@@ -92,13 +97,13 @@ else
 
             <br><br><br>
 
-            <?php $last = $donation ? $donation : Auth::user()->lastDonation() ?>
+            <?php $last = $donation ? $donation : $currentuser->lastDonation() ?>
 
-            {!! BootForm::text('name', 'Nome', $last ? $last->name : $user->name, ['required' => 'required']) !!}
-            {!! BootForm::text('surname', 'Cognome', $last ? $last->surname : $user->surname, ['required' => 'required']) !!}
+            {!! BootForm::text('name', 'Nome', $last ? $last->name : $currentuser->name, ['required' => 'required']) !!}
+            {!! BootForm::text('surname', 'Cognome', $last ? $last->surname : $currentuser->surname, ['required' => 'required']) !!}
             {!! BootForm::text('address', 'Indirizzo (via, numero civico, CAP, città)', $last ? $last->address : '', ['required' => 'required']) !!}
-            {!! BootForm::text('phone', 'Telefono', $last ? $last->phone : $user->phone, ['required' => 'required']) !!}
-            {!! BootForm::email('email', 'E-Mail', $last ? $last->email : $user->email, ['required' => 'required']) !!}
+            {!! BootForm::text('phone', 'Telefono', $last ? $last->phone : $currentuser->phone, ['required' => 'required']) !!}
+            {!! BootForm::email('email', 'E-Mail', $last ? $last->email : $currentuser->email, ['required' => 'required']) !!}
             {!! BootForm::text('floor', 'Piano', $last ? $last->floor : '') !!}
 
             <div class="checkbox checkbox-custom">
