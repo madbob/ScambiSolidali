@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 use Log;
+use DB;
 
 use App\RecurringPick;
 use App\Notifications\RecurringNotification;
