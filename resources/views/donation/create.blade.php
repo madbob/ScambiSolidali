@@ -89,7 +89,12 @@ else
 
             {!! BootForm::text('title', 'Il mio Oggetto', null, ['required' => 'required']) !!}
 
-            @include('category.selector', ['orientation' => 'horizontal', 'selected' => $donation ? $donation->category_id : null, 'type' => 'object'])
+            @include('category.selector', [
+                'orientation' => 'horizontal',
+                'selected' => $donation ? $donation->category_id : null,
+                'type' => 'object',
+                'direct_response' => false
+            ])
 
             {!! BootForm::textarea('description', 'Descrizione', null, ['required' => 'required']) !!}
             {!! BootForm::text('size', 'Dimensioni', null) !!}

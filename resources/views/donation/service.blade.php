@@ -53,7 +53,12 @@ else
 
             <input type="hidden" name="type" value="service">
 
-            @include('category.selector', ['orientation' => 'horizontal', 'selected' => $donation ? $donation->category_id : null, 'type' => 'service'])
+            @include('category.selector', [
+                'orientation' => 'horizontal',
+                'selected' => $donation ? $donation->category_id : null,
+                'type' => 'service',
+                'direct_response' => false
+            ])
 
             {!! BootForm::text('title', 'Cosa offro', null, ['required' => 'required']) !!}
             {!! BootForm::textarea('description', 'Descrizione', null, ['required' => 'required']) !!}
