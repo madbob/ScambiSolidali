@@ -31,7 +31,7 @@ class CallResponded extends Mailable
             'donation' => $this->donation,
             'call' => $this->call,
             'user' => $this->user,
-            'message' => $this->message
+            'user_message' => $this->message
         ]);
     }
 }

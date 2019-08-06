@@ -8,8 +8,8 @@
         per verificare la donazione e rispondere al donatore ({{ $user->printableName() }} - {{ $user->email }} - {{ $user->phone }}).
     </p>
 @else
-    @if(!empty($message))
+    @if(!empty($user_message))
         {{ $user->printableName() }} - {{ $user->email }} - {{ $user->phone }} ha scritto:<br>
-        {!! nl2br($message) !!}
+        {!! nl2br($user_message) !!}
     @endif
 @endif
