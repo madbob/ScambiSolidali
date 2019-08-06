@@ -573,6 +573,8 @@ class DonationController extends Controller
 
     public function getMyEdit(Request $request, $id)
     {
+        $user = Auth::user();
+
         $donation = Donation::find($id);
         if ($donation->user_id != $user->id)
             return redirect(url('/'));

@@ -124,6 +124,12 @@ class UserController extends Controller
             'email' => 'required|max:255'
         ]);
 
+        $test = User::where('email', $request->input('email'))->where('id', '!=', $id)->first();
+        if ($test) {
+            Session::flash('message', 'Un utente con questo indirizzo email esiste già');
+            return redirect(url('giocatori'));
+        }
+
         $user = User::find($id);
         $user->name = $request->input('name');
         $user->surname = $request->input('surname');

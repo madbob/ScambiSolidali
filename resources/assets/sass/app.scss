@@ -182,6 +182,24 @@ $colors: $primary-color-1 $primary-color-2 $secondary-color-1 $gray-color-1 $bla
                     }
                 }
             }
+
+            &.primary-#{$i} {
+                color: $color;
+
+                .card-main {
+                    background-color: $color;
+                }
+
+                .card-main-filter {
+                    background-color: $color;
+                }
+
+                .card-footer {
+                    &.filled {
+                        background-color: $color;
+                    }
+                }
+            }
         }
 
         .bg-color {

@@ -42,7 +42,7 @@
                         <?php $image = $call->image ?>
                         @if($image)
                             <div class="col-md-6 col-lg-4 right-p">
-                                <div class="common-card">
+                                <div class="common-card {{ $call->category && $call->category->direct_response ? 'primary-1' : '' }}">
                                     <div class="card-main image-frame" style="background-image: url('{{ $image }}')">
                                         &nbsp;
                                     </div>
