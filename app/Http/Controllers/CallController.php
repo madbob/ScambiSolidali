@@ -29,7 +29,7 @@ class CallController extends Controller
         if ($filter != null) {
             $category = Category::find($filter);
             if ($category->parent_id == 0) {
-                $subs = [];
+                $subs = [$category->id];
                 foreach($category->children as $children)
                     $subs[] = $children->id;
 
