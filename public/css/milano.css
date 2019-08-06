@@ -5947,14 +5947,6 @@ button.close {
     font-weight: 600; }
     .primary-1 .common-card .card-footer.filled p {
       color: #FFF; }
-  .primary-1 .common-card.primary-1 {
-    color: #DE1159; }
-    .primary-1 .common-card.primary-1 .card-main, .common-card.primary-1 .common-card.primary-1 .card-main-filter, .common-card.primary-1 .common-card.primary-1 .card-main-overlay {
-      background-color: #DE1159; }
-    .primary-1 .common-card.primary-1 .card-main-filter {
-      background-color: #DE1159; }
-    .primary-1 .common-card.primary-1 .card-footer.filled {
-      background-color: #DE1159; }
 
 .primary-1 .bg-color {
   background-color: #DE1159; }
@@ -6043,6 +6035,15 @@ button.close {
   background: #DE1159;
   box-shadow: inset 0px 0px 0px 4px #FFF; }
 
+.common-card.primary-1 {
+  color: #DE1159 !important; }
+  .common-card.primary-1 .card-main, .common-card.primary-1 .card-main-filter, .common-card.primary-1 .card-main-overlay {
+    background-color: #DE1159 !important; }
+  .common-card.primary-1 .card-main-filter {
+    background-color: #DE1159 !important; }
+  .common-card.primary-1 .card-footer.filled {
+    background-color: #DE1159 !important; }
+
 .primary-2 a {
   color: #404042; }
 
@@ -6130,14 +6131,6 @@ button.close {
     font-weight: 600; }
     .primary-2 .common-card .card-footer.filled p {
       color: #FFF; }
-  .primary-2 .common-card.primary-2 {
-    color: #404042; }
-    .primary-2 .common-card.primary-2 .card-main, .common-card.primary-2 .common-card.primary-2 .card-main-filter, .common-card.primary-2 .common-card.primary-2 .card-main-overlay {
-      background-color: #404042; }
-    .primary-2 .common-card.primary-2 .card-main-filter {
-      background-color: #404042; }
-    .primary-2 .common-card.primary-2 .card-footer.filled {
-      background-color: #404042; }
 
 .primary-2 .bg-color {
   background-color: #404042; }
@@ -6226,6 +6219,15 @@ button.close {
   background: #404042;
   box-shadow: inset 0px 0px 0px 4px #FFF; }
 
+.common-card.primary-2 {
+  color: #404042 !important; }
+  .common-card.primary-2 .card-main, .common-card.primary-2 .card-main-filter, .common-card.primary-2 .card-main-overlay {
+    background-color: #404042 !important; }
+  .common-card.primary-2 .card-main-filter {
+    background-color: #404042 !important; }
+  .common-card.primary-2 .card-footer.filled {
+    background-color: #404042 !important; }
+
 .primary-3 a {
   color: #F68512; }
 
@@ -6313,14 +6315,6 @@ button.close {
     font-weight: 600; }
     .primary-3 .common-card .card-footer.filled p {
       color: #FFF; }
-  .primary-3 .common-card.primary-3 {
-    color: #F68512; }
-    .primary-3 .common-card.primary-3 .card-main, .common-card.primary-3 .common-card.primary-3 .card-main-filter, .common-card.primary-3 .common-card.primary-3 .card-main-overlay {
-      background-color: #F68512; }
-    .primary-3 .common-card.primary-3 .card-main-filter {
-      background-color: #F68512; }
-    .primary-3 .common-card.primary-3 .card-footer.filled {
-      background-color: #F68512; }
 
 .primary-3 .bg-color {
   background-color: #F68512; }
@@ -6409,6 +6403,15 @@ button.close {
   background: #F68512;
   box-shadow: inset 0px 0px 0px 4px #FFF; }
 
+.common-card.primary-3 {
+  color: #F68512 !important; }
+  .common-card.primary-3 .card-main, .common-card.primary-3 .card-main-filter, .common-card.primary-3 .card-main-overlay {
+    background-color: #F68512 !important; }
+  .common-card.primary-3 .card-main-filter {
+    background-color: #F68512 !important; }
+  .common-card.primary-3 .card-footer.filled {
+    background-color: #F68512 !important; }
+
 .primary-4 a {
   color: #DDD; }
 
@@ -6496,14 +6499,6 @@ button.close {
     font-weight: 600; }
     .primary-4 .common-card .card-footer.filled p {
       color: #FFF; }
-  .primary-4 .common-card.primary-4 {
-    color: #DDD; }
-    .primary-4 .common-card.primary-4 .card-main, .common-card.primary-4 .common-card.primary-4 .card-main-filter, .common-card.primary-4 .common-card.primary-4 .card-main-overlay {
-      background-color: #DDD; }
-    .primary-4 .common-card.primary-4 .card-main-filter {
-      background-color: #DDD; }
-    .primary-4 .common-card.primary-4 .card-footer.filled {
-      background-color: #DDD; }
 
 .primary-4 .bg-color {
   background-color: #DDD; }
@@ -6592,6 +6587,15 @@ button.close {
   background: #DDD;
   box-shadow: inset 0px 0px 0px 4px #FFF; }
 
+.common-card.primary-4 {
+  color: #DDD !important; }
+  .common-card.primary-4 .card-main, .common-card.primary-4 .card-main-filter, .common-card.primary-4 .card-main-overlay {
+    background-color: #DDD !important; }
+  .common-card.primary-4 .card-main-filter {
+    background-color: #DDD !important; }
+  .common-card.primary-4 .card-footer.filled {
+    background-color: #DDD !important; }
+
 .primary-5 a {
   color: #000; }
 
@@ -6679,14 +6683,6 @@ button.close {
     font-weight: 600; }
     .primary-5 .common-card .card-footer.filled p {
       color: #FFF; }
-  .primary-5 .common-card.primary-5 {
-    color: #000; }
-    .primary-5 .common-card.primary-5 .card-main, .common-card.primary-5 .common-card.primary-5 .card-main-filter, .common-card.primary-5 .common-card.primary-5 .card-main-overlay {
-      background-color: #000; }
-    .primary-5 .common-card.primary-5 .card-main-filter {
-      background-color: #000; }
-    .primary-5 .common-card.primary-5 .card-footer.filled {
-      background-color: #000; }
 
 .primary-5 .bg-color {
   background-color: #000; }
@@ -6775,6 +6771,15 @@ button.close {
   background: #000;
   box-shadow: inset 0px 0px 0px 4px #FFF; }
 
+.common-card.primary-5 {
+  color: #000 !important; }
+  .common-card.primary-5 .card-main, .common-card.primary-5 .card-main-filter, .common-card.primary-5 .card-main-overlay {
+    background-color: #000 !important; }
+  .common-card.primary-5 .card-main-filter {
+    background-color: #000 !important; }
+  .common-card.primary-5 .card-footer.filled {
+    background-color: #000 !important; }
+
 .primary-6 a {
   color: #8AB83B; }
 
@@ -6862,14 +6867,6 @@ button.close {
     font-weight: 600; }
     .primary-6 .common-card .card-footer.filled p {
       color: #FFF; }
-  .primary-6 .common-card.primary-6 {
-    color: #8AB83B; }
-    .primary-6 .common-card.primary-6 .card-main, .common-card.primary-6 .common-card.primary-6 .card-main-filter, .common-card.primary-6 .common-card.primary-6 .card-main-overlay {
-      background-color: #8AB83B; }
-    .primary-6 .common-card.primary-6 .card-main-filter {
-      background-color: #8AB83B; }
-    .primary-6 .common-card.primary-6 .card-footer.filled {
-      background-color: #8AB83B; }
 
 .primary-6 .bg-color {
   background-color: #8AB83B; }
@@ -6957,6 +6954,15 @@ button.close {
 .primary-6 .checkbox-custom input:checked + label:before {
   background: #8AB83B;
   box-shadow: inset 0px 0px 0px 4px #FFF; }
+
+.common-card.primary-6 {
+  color: #8AB83B !important; }
+  .common-card.primary-6 .card-main, .common-card.primary-6 .card-main-filter, .common-card.primary-6 .card-main-overlay {
+    background-color: #8AB83B !important; }
+  .common-card.primary-6 .card-main-filter {
+    background-color: #8AB83B !important; }
+  .common-card.primary-6 .card-footer.filled {
+    background-color: #8AB83B !important; }
 
 body {
   color: #000; }

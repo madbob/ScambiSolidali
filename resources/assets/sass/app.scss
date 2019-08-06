@@ -182,24 +182,6 @@ $colors: $primary-color-1 $primary-color-2 $secondary-color-1 $gray-color-1 $bla
                     }
                 }
             }
-
-            &.primary-#{$i} {
-                color: $color;
-
-                .card-main {
-                    background-color: $color;
-                }
-
-                .card-main-filter {
-                    background-color: $color;
-                }
-
-                .card-footer {
-                    &.filled {
-                        background-color: $color;
-                    }
-                }
-            }
         }
 
         .bg-color {
@@ -309,6 +291,26 @@ $colors: $primary-color-1 $primary-color-2 $secondary-color-1 $gray-color-1 $bla
             input:checked + label:before {
                 background: $color;
                 box-shadow: inset 0px 0px 0px 4px #FFF;
+            }
+        }
+    }
+
+    .common-card {
+        &.primary-#{$i} {
+            color: $color !important;
+
+            .card-main {
+                background-color: $color !important;
+            }
+
+            .card-main-filter {
+                background-color: $color !important;
+            }
+
+            .card-footer {
+                &.filled {
+                    background-color: $color !important;
+                }
             }
         }
     }
