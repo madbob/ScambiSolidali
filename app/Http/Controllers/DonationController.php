@@ -105,7 +105,7 @@ class DonationController extends Controller
         if($request->has('call')) {
             $call = Call::find($request->input('call'));
             if ($call && $call->category->direct_response) {
-                return redirect()->route('call.index', ['show' => $call->id]);
+                return redirect()->route('manca.index', ['show' => $call->id]);
             }
         }
         else {
@@ -135,7 +135,7 @@ class DonationController extends Controller
             }
         }
 
-        return redirect()->route('call.index');
+        return redirect()->route('manca.index');
     }
 
     private function requestInDonation($donation, $request)
