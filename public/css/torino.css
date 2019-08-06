@@ -7104,8 +7104,18 @@ textarea.form-control {
       position: absolute;
       bottom: 0;
       right: 0;
-      left: 28%;
+      left: 32%;
       background-image: url("../images/food.svg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      margin-left: 0; }
+    .navbar-default .container .row .navbar-brand-house {
+      height: 80%;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      left: 42%;
+      background-image: url("../images/casa.png");
       background-repeat: no-repeat;
       background-size: contain;
       margin-left: 0; }

@@ -122,4 +122,14 @@ class CommonController extends Controller
     {
         return view('food.contacts');
     }
+
+    public function house()
+    {
+        if (env('HAS_HOUSE', false)) {
+            return view('house.index');
+        }
+        else {
+            return redirect()->route('home');
+        }
+    }
 }

@@ -61,6 +61,10 @@
                         @if(env('HAS_FOOD'))
                             <a class="navbar-brand-food" href="{{ route('food') }}"></a>
                         @endif
+
+                        @if(env('HAS_HOUSE'))
+                            <a class="navbar-brand-house" href="{{ route('house') }}"></a>
+                        @endif
                     </div>
 
                     <div class="collapse navbar-collapse" id="app-navbar-collapse">
