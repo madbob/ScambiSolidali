@@ -11,7 +11,7 @@
 
             <div class="col-md-3">
                 <div class="common-card">
-                    <div class="card-main image-frame" style="background-image: url('{{ url('images/categories/affitti.svg') }}')">
+                    <div class="card-main image-frame" style="background-image: url('{{ url('images/categories/affitti_affitti.svg') }}')">
                         &nbsp;
                     </div>
                     <div class="card-footer vert-align">

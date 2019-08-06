@@ -32,14 +32,16 @@ class Call extends Model
             return $donation->imageUrl(0);
         }
         else {
-            if ($this->type == 'service') {
-                return url('images/tempo.svg');
+            if ($this->category && file_exists(public_path($this->category->icon_path))) {
+                return $this->category->icon;
             }
             else {
-                if ($this->category)
-                    return $this->category->icon;
-                else
+                if ($this->type == 'service') {
+                    return url('images/tempo.svg');
+                }
+                else {
                     return null;
+                }
             }
         }
     }

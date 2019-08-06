@@ -16,14 +16,17 @@ class Category extends Model
         return $this->belongsTo('App\Category', 'parent_id');
     }
 
-    public function getIconAttribute()
+    public function getIconPathAttribute()
     {
         $parent = $this->parent;
         if ($parent == null)
             $parent = $this;
 
-        return url(sprintf('images/categories/%s_%s.svg',
-            str_replace(' ', '_', strtolower($parent->name)),
-            str_replace(' ', '_', strtolower($this->name))));
+        return sprintf('images/categories/%s_%s.svg', str_replace(' ', '_', strtolower($parent->name)), str_replace(' ', '_', strtolower($this->name)));
+    }
+
+    public function getIconAttribute()
+    {
+        return url($this->icon_path);
     }
 }
