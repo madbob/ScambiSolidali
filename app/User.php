@@ -60,10 +60,6 @@ class User extends Authenticatable
                 'label' => 'Utente',
                 'multiple' => 'Utenti',
             ],
-            'businness' => (object) [
-                'label' => 'Esercente',
-                'multiple' => 'Esercenti',
-            ],
             'operator' => (object) [
                 'label' => 'Operatore',
                 'multiple' => 'Operatori',
@@ -73,6 +69,13 @@ class User extends Authenticatable
                 'multiple' => 'Amministratori',
             ],
         ];
+
+        if (env('HAS_FOOD', false)) {
+            $ret['businness'] = (object) [
+                'label' => 'Esercente',
+                'multiple' => 'Esercenti',
+            ];
+        }
 
         if (env('HAS_PUBLIC_OP', false)) {
             $ret['student'] = (object) [
