@@ -7797,12 +7797,20 @@ textarea.form-control {
   .navbar-default .container .row .navbar-brand-food {
     height: 45%;
     top: 10%;
-    left: 40%; } }
+    left: 40%; }
+  .navbar-default .container .row .navbar-brand-house {
+    height: 45%;
+    top: 10%;
+    left: 51%; } }
 
 @media (max-width: 768px) {
   .navbar-default .container .row .navbar-brand {
     height: 80% !important; }
   .navbar-default .container .row .navbar-brand-food {
+    height: 80%;
+    width: 10%;
+    top: auto; }
+  .navbar-default .container .row .navbar-brand-house {
     height: 80%;
     width: 10%;
     top: auto; }
