@@ -94,6 +94,7 @@ class User extends Authenticatable
             return $roles[$this->role]->label;
         }
         else {
+            Log::error('Utente con ruolo non assegnato: ' . $this->id);
             return '???';
         }
     }
