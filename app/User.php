@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use Log;
 use Mail;
 
 class User extends Authenticatable
@@ -94,7 +95,7 @@ class User extends Authenticatable
             return $roles[$this->role]->label;
         }
         else {
-            Log::error('Utente con ruolo non assegnato: ' . $this->id);
+            Log::error('Utente con ruolo non assegnato: ' . $this->id . ' ' . $this->role);
             return '???';
         }
     }
