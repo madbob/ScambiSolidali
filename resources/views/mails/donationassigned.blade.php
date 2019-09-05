@@ -5,10 +5,10 @@
     @endif
     !
 </p>
-@if(!empty($message))
+@if(!empty($user_message))
     <p>
         L'assegnatario scrive il seguente messaggio:<br>
-        {!! nl2br($message) !!}
+        {!! nl2br($user_message) !!}
     </p>
     <p>
         Puoi ricontattarlo all'indirizzo email {{ $user->email }} o al numero di telefono {{ $user->phone }}.

@@ -31,7 +31,7 @@ class DonationAssigned extends Mailable
             'donation' => $this->donation,
             'user' => $this->user,
             'institute' => $this->institute,
-            'message' => $this->message,
+            'user_message' => $this->message,
         ]);
     }
 }
