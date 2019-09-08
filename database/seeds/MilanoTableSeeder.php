@@ -54,7 +54,7 @@ class MilanoTableSeeder extends Seeder
         if (Config::where('name', 'owner_address')->first() == null) {
             $c = new Config();
             $c->name = 'owner_address';
-            $c->value = 'via Morgari 14, 10125, Torino';
+            $c->value = '';
             $c->save();
         }
 
@@ -205,24 +205,21 @@ class MilanoTableSeeder extends Seeder
         if (Config::where('name', 'contact_main')->first() == null) {
             $c = new Config();
             $c->name = 'contact_main';
-            $c->value = 'Ass. Agenzia per lo sviluppo di San Salvario onlus
-c/o Casa del Quartiere San Salvario';
+            $c->value = 'Milano 2035';
             $c->save();
         }
 
         if (Config::where('name', 'contact_contents')->first() == null) {
             $c = new Config();
             $c->name = 'contact_contents';
-            $c->value = 'via Morgari 14 - 10125 Torino
-segreteria@agenzia.sansalvario.org
-T 011 6686772';
+            $c->value = 'touchpoint@milano2035.it';
             $c->save();
         }
 
         if (Config::where('name', 'contact_map_coordinates')->first() == null) {
             $c = new Config();
             $c->name = 'contact_map_coordinates';
-            $c->value = '7.67824, 45.05408';
+            $c->value = '9.1835, 45.4710';
             $c->save();
         }
 
