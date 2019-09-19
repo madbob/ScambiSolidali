@@ -18,29 +18,7 @@
 
     <div class="form-group">
         <label for="receiver-area" class="col-sm-4 control-label">Area</label>
-        <div class="col-sm-4">
-            @for($i = 1; $i < 6; $i++)
-                <div class="checkbox">
-                    <label>
-                        <input type="radio" name="receiver-area" value="circ{{ $i }}" required> Circoscrizione {{ $i }}
-                    </label>
-                </div>
-            @endfor
-        </div>
-        <div class="col-sm-4">
-            @for(; $i < 9; $i++)
-                <div class="checkbox">
-                    <label>
-                        <input type="radio" name="receiver-area" value="circ{{ $i }}" required> Circoscrizione {{ $i }}
-                    </label>
-                </div>
-            @endfor
-            <div class="checkbox">
-                <label>
-                    <input type="radio" name="receiver-area" value="other" required> Altro
-                </label>
-            </div>
-        </div>
+        @include('donation.areaselect')
     </div>
 
     <div class="form-group">

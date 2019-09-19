@@ -437,6 +437,16 @@ class DonationController extends Controller
         return view('donation.archive', $data);
     }
 
+    private function readReceiverArea($request)
+    {
+        $area = $request->input('receiver-area', 'other');
+        if ($area == 'other') {
+            $area = $request->input('receiver-area-other', '');
+        }
+
+        return $area;
+    }
+
     public function postAssign(Request $request, $id)
     {
         $user = Auth::user();
@@ -457,7 +467,7 @@ class DonationController extends Controller
                     $receiver->status = $request->input('receiver-status');
                     $receiver->children = $request->input('receiver-children');
                     $receiver->country = $request->input('receiver-country');
-                    $receiver->area = $request->input('receiver-area');
+                    $receiver->area = $this->readReceiverArea($request);
 
                     $receiver->past = $request->input('receiver-past', 0);
                     if (empty($receiver->past))
@@ -468,7 +478,7 @@ class DonationController extends Controller
                 else if ($receiver_type == 'organization') {
                     $receiver->organization = $request->input('receiver-organization');
                     $receiver->receivers = $request->input('receiver-receivers');
-                    $receiver->area = $request->input('receiver-area');
+                    $receiver->area = $this->readReceiverArea($request);
 
                     $receiver->past = $request->input('receiver-past', 0);
                     if (empty($receiver->past))
