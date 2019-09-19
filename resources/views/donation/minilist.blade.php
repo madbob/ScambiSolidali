@@ -25,7 +25,7 @@
                 <tr>
                     <td>{{ ucwords(strftime('%d/%m/%G', strtotime($item->pivot->updated_at))) }}</td>
 
-                    <td>{{ App\User::find($item->pivot->operator_id)->printableOperatorName() }}</td>
+                    <td>{{ $operator = App\User::find($item->pivot->operator_id) ? $operator->printableOperatorName() : '?' }}</td>
 
                     @if($print_object == true)
                         <td>{{ App\Donation::find($item->pivot->donation_id)->title }}</td>
