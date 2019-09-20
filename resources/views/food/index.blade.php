@@ -5,6 +5,9 @@
 @section('content')
     <div class="project">
         <div class="row primary-6">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
+                <img src="{{ url('images/call_food.jpg') }}" alt="Appello Volontari Celocelo Food" class="img-responsive">
+            </div>
             <div class="col-md-12">
                 <iframe width="100%" height="315" src="https://www.youtube-nocookie.com/embed/9cQ4_Sn4yfE?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
