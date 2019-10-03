@@ -212,14 +212,22 @@ class MilanoTableSeeder extends Seeder
         if (Config::where('name', 'contact_contents')->first() == null) {
             $c = new Config();
             $c->name = 'contact_contents';
-            $c->value = 'touchpoint@milano2035.it';
+            $c->value = 'touchpoint@milano2035.it
+
+Touch Point presso Off Campus San Siro,
+Via Giacinto Gigante, di fronte al n. 5, Milano (MI)
+tutti i lunedì dalle 14.30 alle 17.30
+
+Touch Point presso Cofò
+Via Carlo Martinelli, 23 Cinisello Balsamo (MI)
+dalle 8.00 alle 20.00';
             $c->save();
         }
 
         if (Config::where('name', 'contact_map_coordinates')->first() == null) {
             $c = new Config();
             $c->name = 'contact_map_coordinates';
-            $c->value = '9.1835, 45.4710';
+            $c->value = '9.13835, 45.47117';
             $c->save();
         }
 
