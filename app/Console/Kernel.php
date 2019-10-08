@@ -10,7 +10,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('check:expired')->daily();
-        $schedule->command('recurring:weekly')->weeklyOn(6, '11:00');
+        $schedule->command('recurring:weekly')->weeklyOn(6, '12:00');
     }
 
     protected function commands()
