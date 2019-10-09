@@ -40,7 +40,8 @@ class DonationController extends Controller
         if (!empty($filter)) {
             $category = Category::find($filter);
             if ($category == null) {
-                Log::error('Richiesta categoria non esistente: ' . $filter);
+                Log::error('Richiesta categoria non esistente per donazioni: ' . $filter);
+                $filter = null;
             }
             else {
                 if ($category->parent_id == 0) {

@@ -102,6 +102,7 @@ class Recurring extends Model
                 foreach($c->users as $u) {
                     try {
                         $u->notify(new RecurringNotification($recurring));
+                        Log::debug('Invio notifica donazione ricorrente a ' . $u->printableName() . ' - ' . $u->phone);
                     }
                     catch(\Exception $e) {
                         Log::error('Impossibile notificare utente ' . $u->id . ' per le disponibilità ricorrenti: ' . $e->getMessage());

@@ -96,7 +96,18 @@ class User extends Authenticatable
         }
         else {
             Log::error('Utente con ruolo non assegnato: ' . $this->id . ' ' . $this->role);
-            return '???';
+            if ($this->institutes->count() != 0) {
+                $this->role = 'operator';
+            }
+            else if (env('HAS_FOOD', false) && $this->companies->count() != 0) {
+                $this->role = 'businness';
+            }
+            else {
+                $this->role = 'user';
+            }
+
+            $this->save();
+            return $this->role_name;
         }
     }
 

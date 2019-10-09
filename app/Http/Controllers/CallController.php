@@ -26,17 +26,23 @@ class CallController extends Controller
         $query = Call::orderByRaw(DB::raw("FIELD(status, 'draft', 'open', 'closed', 'archived')"))->orderBy('updated_at', 'desc');
 
         $filter = $request->input('filter', null);
-        if ($filter != null) {
+        if (!is_null($filter)) {
             $category = Category::find($filter);
-            if ($category->parent_id == 0) {
-                $subs = [$category->id];
-                foreach($category->children as $children)
-                    $subs[] = $children->id;
-
-                $query->whereIn('category_id', $subs);
+            if ($category == null) {
+                Log::error('Richiesta categoria non esistente per appelli: ' . $filter);
+                $filter = null;
             }
             else {
-                $query->where('category_id', $category->id);
+                if ($category->parent_id == 0) {
+                    $subs = [$category->id];
+                    foreach($category->children as $children)
+                        $subs[] = $children->id;
+
+                    $query->whereIn('category_id', $subs);
+                }
+                else {
+                    $query->where('category_id', $category->id);
+                }
             }
         }
         $data['filter'] = $filter;
