@@ -64,13 +64,6 @@ class TorinoTableSeeder extends Seeder
             $c->save();
         }
 
-        if (Config::where('name', 'food_credits')->first() == null) {
-            $c = new Config();
-            $c->name = 'food_credits';
-            $c->value = sprintf('<p>Con il sostegno di<br/><img src="%s" alt="Iren"></p>', url('images/iren.jpg'));
-            $c->save();
-        }
-
         if (Config::where('name', 'full_credits')->first() == null) {
             $c = new Config();
             $c->name = 'full_credits';
@@ -262,7 +255,7 @@ T 011 6686772';
         if (Config::where('name', 'food_full_credits')->first() == null) {
             $c = new Config();
             $c->name = 'food_full_credits';
-            $c->value = sprintf('<p class="intro">Un progetto di</p><p>Ass. Agenzia per lo sviluppo locale di San Salvario ONLUS, Equoevento ONLUS</p><p class="intro"><br>In collaborazione con</p><p>Stranaidea Impresa Sociale ONLUS</p><img src="%s" alt="Agenzia per lo Sviluppo Locale di San Salvario ONLUS"><img src="%s" alt="Equoevento ONLUS"><img src="%s" alt="Stradaidea Impresa Sociale ONLUS"><p class="intro"><br><br>Con il sostegno di</p><img src="%s" alt="Compagnia di San Paolo"><p><br>nell\'ambito del bando "Fatto per Bene 2018"</p>', url('images/agenziasansalvario.jpg'), url('images/equoevento.jpg'), url('images/stranaidea.jpg'), url('images/csp.png'));
+            $c->value = sprintf('<p class="intro">Un progetto di</p><p>Ass. Agenzia per lo sviluppo locale di San Salvario ONLUS, Equoevento ONLUS</p><p class="intro"><br>In collaborazione con</p><p>Stranaidea Impresa Sociale ONLUS</p><img src="%s" alt="Agenzia per lo Sviluppo Locale di San Salvario ONLUS"><img src="%s" alt="Equoevento ONLUS"><img src="%s" alt="Stradaidea Impresa Sociale ONLUS"><p class="intro"><br><br>Con il sostegno di</p><img src="%s" alt="Compagnia di San Paolo"><img src="%s" alt="Iren"><p><br>nell\'ambito del bando "Fatto per Bene 2018"</p>', url('images/agenziasansalvario.jpg'), url('images/equoevento.jpg'), url('images/stranaidea.jpg'), url('images/csp.png'), url('images/iren.jpg'));
             $c->save();
         }
     }

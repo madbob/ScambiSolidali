@@ -36,13 +36,5 @@
                 </div>
             </div>
         </div>
-
-        <div class="row footer-credits">
-            <div class="col-md-12">
-                <div class="text-center">
-                    {!! App\Config::getConf('food_credits') !!}
-                </div>
-            </div>
-        </div>
     </div>
 @endsection
