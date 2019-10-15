@@ -7790,8 +7790,10 @@ textarea.form-control {
   color: #8AB83B; }
 
 .food-page .credits img {
-  max-width: 100px;
-  margin-right: 30px; }
+  margin-right: 60px; }
+
+.food-page .credits p.details {
+  font-size: 10px; }
 
 /********************************* MEDIA QUERIES */
 @media (max-width: 992px) {
