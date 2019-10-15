@@ -39,7 +39,7 @@ class ValsusaTableSeeder extends Seeder
         if (Config::where('name', 'other_instance_cities')->first() == null) {
             $c = new Config();
             $c->name = 'other_instance_cities';
-            $c->value = '[{"name":"Torino", "url":"https://celocelo.it/"}]';
+            $c->value = '[{"name":"Torino", "url":"https://celocelo.it/"}, {"name":"Milano", "url":"https://milano.celocelo.it/"}]';
             $c->save();
         }
 

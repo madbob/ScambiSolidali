@@ -39,7 +39,7 @@ class TorinoTableSeeder extends Seeder
         if (Config::where('name', 'other_instance_cities')->first() == null) {
             $c = new Config();
             $c->name = 'other_instance_cities';
-            $c->value = '[{"name":"Val Susa", "url":"https://valsusa.celocelo.it/"}]';
+            $c->value = '[{"name":"Milano", "url":"https://milano.celocelo.it/"}, {"name":"Val Susa", "url":"https://valsusa.celocelo.it/"}]';
             $c->save();
         }
 
@@ -61,6 +61,13 @@ class TorinoTableSeeder extends Seeder
             $c = new Config();
             $c->name = 'credits';
             $c->value = sprintf('<p>Un progetto di<br/><img src="%s" alt="Agenzia per lo Sviluppo Locale di San Salvario"></p><p>Con il sostegno di<br/><img src="%s" alt="Compagnia di San Paolo">&nbsp;&nbsp;&nbsp;<img src="%s" alt="Iren"></p>', url('images/agenziasansalvario.jpg'), url('images/csp.png'), url('images/iren.jpg'));
+            $c->save();
+        }
+
+        if (Config::where('name', 'food_credits')->first() == null) {
+            $c = new Config();
+            $c->name = 'food_credits';
+            $c->value = sprintf('<p>Con il sostegno di<br/><img src="%s" alt="Iren"></p>', url('images/iren.jpg'));
             $c->save();
         }
 
