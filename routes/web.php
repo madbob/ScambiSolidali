@@ -48,6 +48,7 @@ Route::post('/register/operator', 'Auth\RegisterController@postRegisterOp');
 Route::get('/giocatori/export', 'UserController@export')->name('giocatori.export');
 Route::post('/giocatori/mail', 'UserController@massiveMail')->name('giocatori.mail');
 Route::post('/giocatori/reverify/{id}', 'UserController@reverify')->name('giocatori.reverify');
+Route::get('/giocatori/bypass/{id}', 'UserController@bypass')->name('giocatori.bypass');
 
 Route::get('/food', 'CommonController@food')->name('food');
 Route::get('/food/progetto', 'CommonController@foodProject')->name('food.progetto');

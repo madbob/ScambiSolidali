@@ -244,4 +244,14 @@ class UserController extends Controller
             echo sprintf("%s\n", join(';', $row));
         }
     }
+
+    public function bypass($id)
+    {
+        $user = Auth::user();
+        if ($user->role == 'admin') {
+            Auth::loginUsingId($id);
+        }
+
+        return redirect(url('/'));
+    }
 }
