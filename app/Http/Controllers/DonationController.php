@@ -490,6 +490,19 @@ class DonationController extends Controller
             }
             else if ($user->role == 'student') {
                 if ($receiver_type == 'self') {
+                    $receiver->age = $request->input('receiver-age', 0);
+                    if (empty($receiver->age))
+                        $receiver->age = null;
+                    $receiver->gender = $request->input('receiver-gender');
+                    $receiver->status = $request->input('receiver-status');
+                    $receiver->children = $request->input('receiver-children');
+                    $receiver->country = $request->input('receiver-country');
+                    $receiver->area = $this->readReceiverArea($request);
+
+                    $receiver->past = $request->input('receiver-past', 0);
+                    if (empty($receiver->past))
+                        $receiver->past = 0;
+
                     $done = true;
                 }
             }

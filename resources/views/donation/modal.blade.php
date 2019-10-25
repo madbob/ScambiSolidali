@@ -82,10 +82,6 @@
                                 @elseif(env('HAS_PUBLIC_OP', false) && $currentuser->role == 'student')
                                     <div class="collapse" id="assignPanel-{{ $donation->id }}">
                                         <div class="well">
-                                            <div class="alert alert-info">
-                                                Scrivi qui un messaggio destinato al donatore, per accordarvi sulla consegna. Il donatore riceverà i tuoi dati di contatto. Inviando questo form la donazione sarà marcata come "Assegnata".
-                                            </div>
-
                                             @include('donation.assign_self', ['donation' => $donation])
                                         </div>
                                     </div>
