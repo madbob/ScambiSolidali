@@ -44,6 +44,10 @@
                                     <span>Celo!</span>
                                 </a>
                             @endif
+                        @else
+                            <div class="alert alert-danger">
+                                Questo appello non è più valido! <a href="{{ url('manca') }}">Clicca qui</a> per consultare gli altri appelli ancora aperti.
+                            </div>
                         @endif
                     </div>
                 </div>
