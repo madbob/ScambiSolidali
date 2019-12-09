@@ -1,3 +1,16 @@
+<?php
+
+if (!isset($context)) {
+    if ($media) {
+        $context = $media->context;
+    }
+    else {
+        $context = 'media';
+    }
+}
+
+?>
+
 <div class="modal fade primary-1" id="media-{{ $media ? $media->id : 'new' }}" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -10,10 +23,17 @@
                 <div class="row">
                     <div class="col-md-12">
                         {!! BootForm::vertical(['model' => $media, 'store' => 'parlano-di-noi.store', 'update' => 'parlano-di-noi.update', 'enctype' => 'multipart/form-data']) !!}
-                            {!! BootForm::text('channel', 'Testata') !!}
-                            {!! BootForm::text('date', 'Data', $media ? printableDate($media->date) : '', ['class' => 'date']) !!}
-                            {!! BootForm::text('link', 'Link') !!}
+                            @if($context == 'media')
+                                {!! BootForm::text('channel', 'Testata') !!}
+                                {!! BootForm::text('date', 'Data', $media ? printableDate($media->date) : '', ['class' => 'date']) !!}
+                                {!! BootForm::text('link', 'Link') !!}
+                            @else
+                                {!! BootForm::text('text', 'Testo') !!}
+                            @endif
+
                             {!! BootForm::file('file', 'File') !!}
+
+                            {!! BootForm::hidden('context', $context) !!}
 
                             <div class="form-group">
                                 <div>

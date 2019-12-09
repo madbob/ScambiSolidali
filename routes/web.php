@@ -63,6 +63,8 @@ Route::post('/periodico/reset/weekly', 'RecurringController@resetWeekly')->name(
 Route::post('/periodico/reset/monthly', 'RecurringController@resetMonthly')->name('periodico.reset_monthly');
 Route::get('/periodico/archivio', 'RecurringController@archive')->name('periodico.archivio');
 
+Route::get('/gallery/{context}', 'MediaController@gallery')->name('media.gallery');
+
 Route::get('/casa', 'CommonController@house')->name('house');
 
 Route::resource('celo', 'DonationController');

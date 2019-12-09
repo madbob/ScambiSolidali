@@ -107,6 +107,7 @@
                             <li><a href="{{ route('food.progetto') }}">Progetto</a></li>
                             <li><a href="{{ route('food.come-funziona') }}">Regole</a></li>
                             <li><a href="{{ route('food.giocatori') }}">Giocatori</a></li>
+                            <li><a href="{{ route('media.gallery', 'food') }}">Galleria</a></li>
                             <li><a href="{{ route('food.contacts') }}">Contatti</a></li>
                             <li><a href="https://www.facebook.com/celocelofood/">Seguici su <img src="{{ url('images/facebook_icon.png') }}" alt="Facebook"></a></li>
                         </ul>
@@ -115,7 +116,7 @@
             </div>
         </nav>
 
-		<div class="container">
+		<div class="container food-main-container">
             <div class="row visible-md visible-lg">
                 <div class="col-md-12 primary-6">
                     <span class="tagline">
@@ -131,6 +132,7 @@
                         <li><a href="{{ route('food.progetto') }}">Progetto</a></li>
                         <li><a href="{{ route('food.come-funziona') }}">Regole</a></li>
                         <li><a href="{{ route('food.giocatori') }}">Giocatori</a></li>
+                        <li><a href="{{ route('media.gallery', 'food') }}">Galleria</a></li>
                         <li><a href="{{ route('food.contacts') }}">Contatti</a></li>
                     </ul>
                 </div>

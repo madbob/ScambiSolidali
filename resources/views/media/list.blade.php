@@ -14,7 +14,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <button class="btn btn-default" data-toggle="modal" data-target="#media-new">Crea Nuovo Riferimento</button>
-                    @include('media.modal', ['media' => null])
+                    @include('media.modal', ['media' => null, 'context' => 'media'])
                 </div>
             </div>
         @endif
