@@ -7314,6 +7314,10 @@ textarea.form-control {
   margin-left: 0;
   margin-right: 0; }
 
+.btn-flow {
+  white-space: normal !important;
+  word-wrap: break-word; }
+
 /********************************* PROGETTO */
 .credits {
   font-size: 17px; }

@@ -102,7 +102,7 @@
                                         </div>
                                     </div>
 
-                                    <p class="visible-xs visible-sm">
+                                    <p class="visible-xs visible-sm btn btn-default btn-flow">
                                         Clicca qui per donare un oggetto
                                     </p>
                                 </a>
@@ -121,7 +121,7 @@
                                         </div>
                                     </div>
 
-                                    <p class="visible-xs visible-sm">
+                                    <p class="visible-xs visible-sm btn btn-default btn-flow">
                                         Clicca qui per donare una competenza
                                     </p>
                                 </a>
