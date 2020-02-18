@@ -103,7 +103,7 @@
                                     </div>
 
                                     <p class="visible-xs visible-sm">
-                                        Dona un oggetto
+                                        Clicca qui per donare un oggetto
                                     </p>
                                 </a>
                             </div>
@@ -122,7 +122,7 @@
                                     </div>
 
                                     <p class="visible-xs visible-sm">
-                                        Dona una competenza
+                                        Clicca qui per donare una competenza
                                     </p>
                                 </a>
                             </div>

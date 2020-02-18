@@ -43,6 +43,10 @@ else
 
 <div class="row new-donation-form primary-1">
     {!! BootForm::vertical(['model' => $donation, 'store' => 'DonationController@store', 'update' => 'DonationController@update', 'enctype' => 'multipart/form-data']) !!}
+        <div class="alert alert-danger">
+            Attenzione! Se intendi donare un oggetto, non compilare questo form ma <a href="{{ route('celo.create') }}">clicca qui</a>! Le donazioni di oggetti compilate tramite questo form saranno rimosse dagli amministratori.
+        </div>
+
         <div class="col-md-12">
             @include('call.selector', [
                 'call' => $call,

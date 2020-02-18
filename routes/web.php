@@ -25,7 +25,7 @@ Route::get('/privacy', 'CommonController@privacy');
 Route::get('/numeri', 'CommonController@numbers');
 Route::get('/contatti', 'CommonController@contacts')->name('contacts');
 
-Route::get('/celo/nuovo/{type}', 'DonationController@create');
+Route::get('/celo/nuovo/{type}', 'DonationController@create')->name('celo.create');
 Route::post('/celo/direct/{call_id}', 'DonationController@directResponse')->name('celo.direct');
 Route::get('/celo/renew/{token}', 'DonationController@renew');
 Route::post('/celo/arenew/{id}', 'DonationController@adminRenew');
