@@ -29,6 +29,7 @@ if (!isset($context)) {
                                 {!! BootForm::text('link', 'Link') !!}
                             @else
                                 {!! BootForm::text('text', 'Testo') !!}
+                                {!! BootForm::hidden('link', $media ? $media->link : '') !!}
                             @endif
 
                             {!! BootForm::file('file', 'File') !!}
