@@ -298,7 +298,7 @@ $(document).ready(function() {
 
             map.on('click', 'points', function(e) {
                 var coordinates = e.features[0].geometry.coordinates.slice();
-                var description = e.features[0].properties.title;
+                var description = e.features[0].properties.description;
 
                 while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
                     coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
@@ -314,10 +314,6 @@ $(document).ready(function() {
             map.on('mouseleave', 'points', function() {
                 map.getCanvas().style.cursor = '';
             });
-
-            if (typeof bounding !== 'undefined') {
-                map.fitBounds(bounding);
-            }
         });
     }
 

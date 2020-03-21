@@ -27,7 +27,8 @@
                                 ?>
                             },
                             properties: {
-                                title: "{{ $item->name }}",
+                                title: '',
+                                description: "{{ $item->name }}",
                                 id: {{ $item->id }}
                             }
                         },
