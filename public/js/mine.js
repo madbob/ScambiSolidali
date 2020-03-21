@@ -286,7 +286,6 @@ $(document).ready(function() {
         var map = new mapboxgl.Map({
             container: 'mapid',
             style: 'mapbox://styles/mapbox/light-v9',
-            center: coords,
             zoom: zoom
         });
 
@@ -295,16 +294,43 @@ $(document).ready(function() {
         */
 
         map.on('load', function() {
-            map.addLayer(geoJson);
+            map.addSource('places', geoJson);
+            map.addLayer({
+                'id': 'places',
+                'type': 'symbol',
+                'source': 'places',
+                'layout': {
+                    "icon-image": "star-15",
+                    "icon-allow-overlap": true,
+                    "text-field": "{title}",
+                    "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+                    "text-offset": [0, 0.6],
+                    "text-anchor": "top"
+                }
+            });
         });
 
-        map.on('click', function (e) {
-            var features = map.queryRenderedFeatures(e.point);
-            if (!features.length)
-                return;
+        if (typeof myVar !== 'undefined') {
+            map.fitBounds(bounding);
+        }
 
-            var feature = features[0];
-            $('.institute').removeClass('selected').filter('[data-institute-id=' + feature.properties['id'] + ']').addClass('selected');
+        map.on('click', 'places', function(e) {
+            var coordinates = e.features[0].geometry.coordinates.slice();
+            var description = e.features[0].properties.title;
+
+            while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+            }
+
+            new mapboxgl.Popup().setLngLat(coordinates).setHTML(description).addTo(map);
+        });
+
+        map.on('mouseenter', 'places', function() {
+            map.getCanvas().style.cursor = 'pointer';
+        });
+
+        map.on('mouseleave', 'places', function() {
+            map.getCanvas().style.cursor = '';
         });
     }
 

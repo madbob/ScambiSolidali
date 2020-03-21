@@ -39,45 +39,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="map" id="mapid"></div>
-
-                        <script>
-                            var geoJson = {
-                                id: "points",
-                                type: "symbol",
-                                source: {
-                                    type: "geojson",
-                                    data: {
-                                        type: "FeatureCollection",
-                                        features: [
-                                            @foreach($institutes as $institute)
-                                                {
-                                                    type: 'Feature',
-                                                    geometry: {
-                                                        type: "Point",
-                                                        coordinates: [{{ $institute->lng }}, {{ $institute->lat }}]
-                                                    },
-                                                    properties: {
-                                                        title: "",
-                                                        id: {{ $institute->id }}
-                                                    }
-                                                },
-                                            @endforeach
-                                        ]
-                                    }
-                                },
-                                layout: {
-                                    "icon-image": "star-15",
-                                    "icon-allow-overlap": true,
-                                    "text-field": "{title}",
-                                    "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
-                                    "text-offset": [0, 0.6],
-                                    "text-anchor": "top"
-                                }
-                            };
-
-                            var coords = [{{ App\Config::getConf('players_map_coordinates') }}];
-                            var zoom = {{ App\Config::getConf('players_map_zoom') }};
-                        </script>
+                        @include('generic.geojson', ['items' => $institutes])
                     </div>
                     <div class="col-md-5 col-md-offset-1">
                         @foreach($institutes as $institute)

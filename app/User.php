@@ -64,7 +64,7 @@ class User extends Authenticatable
         foreach($this->companies as $i)
             $all[] = $i->name;
 
-		return join(', ', $all));
+		return join(', ', $all);
 	}
 
     public static function existingRoles()
