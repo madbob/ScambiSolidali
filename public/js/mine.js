@@ -294,27 +294,14 @@ $(document).ready(function() {
         */
 
         map.on('load', function() {
-            map.addSource('places', geoJson);
-            map.addLayer({
-                'id': 'places',
-                'type': 'symbol',
-                'source': 'places',
-                'layout': {
-                    "icon-image": "star-15",
-                    "icon-allow-overlap": true,
-                    "text-field": "{title}",
-                    "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
-                    "text-offset": [0, 0.6],
-                    "text-anchor": "top"
-                }
-            });
+            map.addLayer(geoJson);
         });
 
         if (typeof myVar !== 'undefined') {
             map.fitBounds(bounding);
         }
 
-        map.on('click', 'places', function(e) {
+        map.on('click', 'points', function(e) {
             var coordinates = e.features[0].geometry.coordinates.slice();
             var description = e.features[0].properties.title;
 
@@ -325,11 +312,11 @@ $(document).ready(function() {
             new mapboxgl.Popup().setLngLat(coordinates).setHTML(description).addTo(map);
         });
 
-        map.on('mouseenter', 'places', function() {
+        map.on('mouseenter', 'points', function() {
             map.getCanvas().style.cursor = 'pointer';
         });
 
-        map.on('mouseleave', 'places', function() {
+        map.on('mouseleave', 'points', function() {
             map.getCanvas().style.cursor = '';
         });
     }
