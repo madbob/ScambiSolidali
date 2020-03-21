@@ -48,6 +48,7 @@
 
                     var coords = [{{ App\Config::getConf('contact_map_coordinates') }}];
                     var zoom = 15;
+                    var bounding = [[{{ App\Config::getConf('contact_map_coordinates') }}], [{{ App\Config::getConf('contact_map_coordinates') }}]];
                 </script>
             </div>
 
