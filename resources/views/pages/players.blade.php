@@ -221,11 +221,12 @@
                     <table class="table users-list">
         				<thead>
         					<tr>
-                                <th width="15%">Ruolo</th>
+                                <th width="5%">Ruolo</th>
         						<th width="20%">Nome</th>
         						<th width="20%">Cognome</th>
         						<th width="20%">Telefono</th>
         						<th width="20%">E-Mail</th>
+                                <th width="10%">Ente</th>
                                 <th width="5%">Azioni</th>
         					</tr>
         				</thead>
@@ -237,6 +238,7 @@
                                     <td>{{ $u->surname }}</td>
         							<td>{{ $u->phone }}</td>
         							<td>{{ $u->email }}</td>
+                                    <td>{{ $u->printableOrganizations() }}</td>
                                     <td><button class="btn btn-default show-details" data-endpoint="giocatori" data-item-id="{{ $u->id }}"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button></td>
         						</tr>
         					@endforeach

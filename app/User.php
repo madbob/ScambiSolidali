@@ -54,6 +54,19 @@ class User extends Authenticatable
 		return sprintf('%s %s (%s)', $this->name, $this->surname, join(', ', $institutes));
 	}
 
+    public function printableOrganizations()
+	{
+        $all = [];
+
+        foreach($this->institutes as $i)
+            $all[] = $i->name;
+
+        foreach($this->companies as $i)
+            $all[] = $i->name;
+
+		return join(', ', $all));
+	}
+
     public static function existingRoles()
     {
         $ret = [
