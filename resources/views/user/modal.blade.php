@@ -13,6 +13,11 @@
                             {!! BootForm::text('name', 'Nome') !!}
                             {!! BootForm::text('surname', 'Cognome') !!}
                             {!! BootForm::text('phone', 'Telefono') !!}
+
+                            @if(env('HAS_BIRTHDATE', false))
+                                {!! BootForm::date('birthdate', 'Data di Nascita') !!}
+                            @endif
+
                             {!! BootForm::email() !!}
                             {!! BootForm::password('password', 'Password', ['help_text' => 'Lascia vuoto per non modificare la password']) !!}
 

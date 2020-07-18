@@ -86,6 +86,7 @@ class UserController extends Controller
         $user->surname = $request->input('surname');
         $user->phone = $request->input('phone');
         $user->email = $request->input('email');
+        $user->birthdate = $request->input('birthdate', null);
         $user->role = $request->input('role');
 
         $password = str_random(10);
@@ -135,6 +136,7 @@ class UserController extends Controller
         $user->surname = $request->input('surname');
         $user->phone = $request->input('phone');
         $user->email = $request->input('email');
+        $user->birthdate = $request->input('birthdate', null);
 
         $ex_role = $user->role;
         $user->role = $request->input('role');

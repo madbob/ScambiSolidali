@@ -617,51 +617,57 @@ class DonationController extends Controller
             header("Content-type: text/csv");
             header('Content-Disposition: attachment; filename="report_celocelo.csv";');
 
-            echo sprintf('"OGGETTO DONATO";"NOTE";"APPELLO";"TIPO";"NOME";"ETÀ";"SESSO";"LAVORO";"FIGLI";"AREA";"NAZIONALITÀ";"OCCORRENZE";"BENEFICIARI"' . "\n");
-            $donations = Donation::where('status', 'assigned')->get();
+            echo sprintf('"OGGETTO DONATO";"STATUS";"NOTE";"APPELLO";"TIPO";"NOME";"ETÀ";"SESSO";"LAVORO";"FIGLI";"AREA";"NAZIONALITÀ";"OCCORRENZE";"BENEFICIARI"' . "\n");
+            $donations = Donation::orderBy('id', 'desc')->get();
             foreach($donations as $donation) {
-                $receivers = $donation->receivers()->wherePivot('status', 'assigned')->get();
+                if ($donation->status == 'assigned') {
+                    $receivers = $donation->receivers()->wherePivot('status', 'assigned')->get();
 
-                foreach($receivers as $receiver) {
+                    foreach($receivers as $receiver) {
+                        $row = [];
+                        $row[] = $donation->title;
+                        $row[] = $donation->printableStatus();
+                        $row[] = sprintf('"%s"', $receiver->pivot->notes);
+                        $row[] = $donation->call ? $donation->call->title : '';
+
+                        switch($receiver->type) {
+                            case 'individual':
+                                $row[] = 'Persona';
+                                $row[] = '';
+                                $row[] = $receiver->age;
+                                $row[] = $receiver->gender;
+                                $row[] = $receiver->status;
+                                $row[] = $receiver->children;
+                                $row[] = $receiver->area;
+                                $row[] = $receiver->country;
+                                $row[] = $receiver->past;
+                                $row[] = 1;
+                                break;
+                            case 'organization':
+                                $row[] = 'Ente';
+                                $row[] = $receiver->organization;
+                                $row[] = '';
+                                $row[] = '';
+                                $row[] = '';
+                                $row[] = '';
+                                $row[] = $receiver->area;
+                                $row[] = '';
+                                $row[] = $receiver->past;
+                                $row[] = $receiver->receivers;
+                                break;
+                            default:
+                                break;
+                        }
+
+                        echo sprintf("%s\n", join(';', $row));
+                    }
+                }
+                else {
                     $row = [];
                     $row[] = $donation->title;
-                    $row[] = sprintf('"%s"', $receiver->pivot->notes);
-
-                    $call = $donation->call;
-                    if ($call)
-                        $row[] = $call->title;
-                    else
-                        $row[] = '';
-
-                    switch($receiver->type) {
-                        case 'individual':
-                            $row[] = 'Persona';
-                            $row[] = '';
-                            $row[] = $receiver->age;
-                            $row[] = $receiver->gender;
-                            $row[] = $receiver->status;
-                            $row[] = $receiver->children;
-                            $row[] = $receiver->area;
-                            $row[] = $receiver->country;
-                            $row[] = $receiver->past;
-                            $row[] = 1;
-                            break;
-                        case 'organization':
-                            $row[] = 'Ente';
-                            $row[] = $receiver->organization;
-                            $row[] = '';
-                            $row[] = '';
-                            $row[] = '';
-                            $row[] = '';
-                            $row[] = $receiver->area;
-                            $row[] = '';
-                            $row[] = $receiver->past;
-                            $row[] = $receiver->receivers;
-                            break;
-                        default:
-                            break;
-                    }
-
+                    $row[] = $donation->printableStatus();
+                    $row[] = '';
+                    $row[] = $donation->call ? $donation->call->title : '';
                     echo sprintf("%s\n", join(';', $row));
                 }
             }

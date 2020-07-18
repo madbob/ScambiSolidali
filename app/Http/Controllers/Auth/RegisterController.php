@@ -100,6 +100,11 @@ class RegisterController extends Controller
             'role' => $data['role']
         ]);
 
+        if (isset($data['birthdate'])) {
+            $user->birthdate = $data['birthdate'];
+            $user->save();
+        }
+
         if (env('HAS_PUBLIC_OP', false)) {
             if (isset($data['public_op']) && $data['public_op'] == 1) {
                 try {

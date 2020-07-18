@@ -9,6 +9,11 @@
             {!! BootForm::text('surname', 'Cognome', '', ['required' => 'required']) !!}
             {!! BootForm::email('email', 'E-Mail', '', ['required' => 'required']) !!}
             {!! BootForm::text('phone', 'Telefono', '', ['required' => 'required']) !!}
+
+            @if(env('HAS_BIRTHDATE', false))
+                {!! BootForm::date('birthdate', 'Data di Nascita', '') !!}
+            @endif
+
             {!! BootForm::password('password', 'Password', ['required' => 'required']) !!}
             {!! BootForm::password('password_confirmation', 'Conferma Password', ['required' => 'required']) !!}
 
@@ -50,7 +55,7 @@
         <br/>
 
         <p>
-            Hai un codice identificativo per accreditarti come operatore?<br/><a href="{{ url('register/operator') }}">Visita questa pagina</a>.
+            Hai un codice identificativo per accreditarti come {{ App\User::existingRoles()['operator']->label }}?<br/><a href="{{ url('register/operator') }}">Visita questa pagina</a>.
         </p>
     </div>
 </div>
