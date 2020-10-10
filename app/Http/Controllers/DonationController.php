@@ -617,7 +617,7 @@ class DonationController extends Controller
             header("Content-type: text/csv");
             header('Content-Disposition: attachment; filename="report_celocelo.csv";');
 
-            echo sprintf('"OGGETTO DONATO";"STATUS";"NOTE";"APPELLO";"TIPO";"NOME";"ETÀ";"SESSO";"LAVORO";"FIGLI";"AREA";"NAZIONALITÀ";"OCCORRENZE";"BENEFICIARI"' . "\n");
+            echo sprintf('"OGGETTO DONATO";"STATUS";"NOTE";"APPELLO";"TIPO";"NOME";"ETÀ";"SESSO";"LAVORO";"FAMIGLIA";"AREA";"NAZIONALITÀ";"OCCORRENZE";"BENEFICIARI"' . "\n");
             $donations = Donation::orderBy('id', 'desc')->get();
             foreach($donations as $donation) {
                 if ($donation->status == 'assigned') {

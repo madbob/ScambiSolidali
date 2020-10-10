@@ -47,16 +47,26 @@
     </div>
 
     <div class="form-group">
-        <label for="receiver-children" class="col-sm-4 control-label">Famiglia</label>
+        <label for="receiver-children" class="col-sm-4 control-label">Con chi abiti</label>
         <div class="col-sm-8">
             <div class="checkbox">
                 <label>
-                    <input type="radio" name="receiver-children" value="children" required> Ha figli
+                    <input type="radio" name="receiver-children" value="alone" required> Solo
                 </label>
             </div>
             <div class="checkbox">
                 <label>
-                    <input type="radio" name="receiver-children" value="nochildren" required> Non ha figli
+                    <input type="radio" name="receiver-children" value="roommate" required> Coinquilini
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="radio" name="receiver-children" value="couple" required> In coppia
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="radio" name="receiver-children" value="family" required> In famiglia
                 </label>
             </div>
         </div>
