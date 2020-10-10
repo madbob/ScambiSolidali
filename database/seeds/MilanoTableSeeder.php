@@ -176,12 +176,29 @@ class MilanoTableSeeder extends Seeder
                 <div class="col-md-8 col-md-offset-1">
                     <h4>Trasporto</h4>
 
-                    <p>Ecco le possibili opzioni:</p>
-                    <ul>
-                        <li>il donatore è disponibile a consegnare il bene al beneficiario dopo aver preso accordi con l’Ente accreditato di riferimento</li>
-                        <li>l’Ente accreditato provvede al ritiro e alla consegna del bene</li>
-                        <li>il beneficiario provvede in modo autonomo al ritiro del bene previ accordi tra donatore e l’Ente accreditato</li>
-                    </ul>
+                    <p>
+                        In generale, il progetto Milano 2035 non sostiene le spese di trasporto, smontaggio e montaggio.
+                    </p>
+                    <p>
+                        In caso di donazioni “importanti” (es. intere cucine, mobili di grosse dimensioni, ecc.) in assenza di un beneficiario, è possibile contattare touchpoint@milano2035.it per valutare assieme una collaborazione per il trasporto e la custodia dell\'arredo presso lo spazio di progetto Lab Barona.
+                    </p>
+                    <p>
+                        Negli altri casi è possibile contattare un nostro fornitore di fiducia, che accorda condizioni favorevoli ai partecipanti al progetto:
+                    </p>
+                    <p>
+                        Atef Mikhail Samuel<br>
+                        Email mikhail_165@yahoo.it<br>
+                        Cellulare 333425804
+                    </p>
+                    <p>
+                        Per avere una valutazione dei costi, è necessario fornire ad Atef una descrizione degli articoli da trasportare, con relative misure, nonché il tragitto da effettuare.
+                    </p>
+                    <p>
+                        Le tariffe base da cui si parte per il trasporto sono: 50 Euro per articoli di lunghezza massima 2 metri e peso complessivo massimo 100 chili; 50 centesimi a chilometro per tragitti superiori a 10 chilometri. Per eventuale smontaggio e/o montaggio: 15 Euro all’ora-uomo.
+                    </p>
+                    <p>
+                        Milano 2035 declina qualsiasi responsabilità per il servizio di trasporto, smontaggio e montaggio eventualmente richiesti al fornitore, rimanendo comunque a disposizione per ricevere eventuali segnalazioni e/o per individuare soluzioni personalizzate a seconda delle condizioni del donatore e/o del beneficiario.
+                    </p>
                 </div>
             </div>';
 

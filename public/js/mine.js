@@ -104,6 +104,7 @@ $(document).ready(function() {
 
     $('body').on('click', '.async-delete-interaction', function(e) {
         e.preventDefault();
+        $(this).prop('disabled', true);
         var id = $(this).attr('data-item-id');
         var donation = $(this).attr('data-donation-id');
         var url = '';
@@ -122,6 +123,7 @@ $(document).ready(function() {
             },
             success: function(data) {
                 row.remove();
+                location.reload();
             }
         });
     });

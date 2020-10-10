@@ -15,8 +15,10 @@
                 <br/>
 
                 <p>
-                    Qui puoi inserire il tuo annuncio!<br/>
-                    Dicci cosa vuoi regalare e attendi la nostra risposta!
+                    <a href="#" class="black" data-toggle="modal" data-target="#celo-select">
+                        Qui puoi inserire il tuo annuncio!<br/>
+                        Dicci cosa vuoi regalare e attendi la nostra risposta!
+                    </a>
                 </p>
 
                 @if($user && $user->role == 'admin')
@@ -61,9 +63,9 @@
                                 <div class="card-footer vert-align">
                                     <p>
                                         @if($edit_enabled || $donation->userCanView($currentuser))
-                                            <a class="show-details" data-endpoint="celo" data-item-id="{{ $donation->id }}">{{ $donation->title }}</a>
+                                            <a href="#" class="show-details" data-endpoint="celo" data-item-id="{{ $donation->id }}">{{ $donation->title }}</a>
                                         @else
-                                            {{ $donation->title }}
+                                            <a href="#" data-toggle="modal" data-target="#require-registration">{{ $donation->title }}</a>
                                         @endif
                                     </p>
                                 </div>
@@ -125,6 +127,29 @@
                                         Clicca qui per donare una competenza
                                     </p>
                                 </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="require-registration" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <p>
+                                    Per accedere ai dettagli degli oggetti donati devi essere un utente registrato e accreditato dagli amministratori.
+                                </p>
+                                <p>
+                                    <a href="{{ route('register') }}">Clicca qui per registrarti e chiedere l'abilitazione.</a>
+                                </p>
                             </div>
                         </div>
                     </div>
