@@ -307,8 +307,8 @@ class DonationController extends Controller
         $donation = Donation::find($id);
         $user = Auth::user();
 
-        if ($donation->userCanView($user) == false) {
-            return redirect(url('/'));
+        if ($donation->userCanView($user) == false && $donation->user_id != $user->id) {
+            abort(404);
         }
 
         if ($donation->type == 'object')
