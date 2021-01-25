@@ -147,9 +147,16 @@
                                 <p>
                                     Per accedere ai dettagli degli oggetti donati devi essere un utente registrato e accreditato dagli amministratori.
                                 </p>
-                                <p>
-                                    <a href="{{ route('register') }}">Clicca qui per registrarti e chiedere l'abilitazione.</a>
-                                </p>
+
+                                @if(env('HAS_PUBLIC_OP', false))
+                                    <p>
+                                        <a href="{{ route('register') }}">Clicca qui per registrarti e chiedere l'abilitazione.</a>
+                                    </p>
+                                @else
+                                    <p>
+                                        <a href="{{ route('contacts') }}">Contattaci per maggiori informazioni.</a>
+                                    </p>
+                                @endif
                             </div>
                         </div>
                     </div>

@@ -1003,7 +1003,7 @@ $half: round($loops / 2);
 @for $i from 0 through $loops {
     .progress-#{$i*$step} {
         $nextdeg: -90deg + ( $increment * ( $i - $half ) );
-        background-image: linear-gradient($nextdeg, #00BFE3 50%, transparent 50%, transparent), linear-gradient(270deg, #00BFE3 50%, #FFF 50%, #FFF);
+        background-image: linear-gradient($nextdeg, $primary-color-1 50%, transparent 50%, transparent), linear-gradient(270deg, $primary-color-1 50%, #FFF 50%, #FFF);
     }
 }
 
