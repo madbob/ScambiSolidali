@@ -301,29 +301,6 @@ $(document).ready(function() {
             }
 
             map.addLayer(geoJson);
-
-            var popup = new mapboxgl.Popup({
-                closeButton: false,
-                closeOnClick: false
-            });
-
-            map.on('mouseenter', 'points', function (e) {
-                map.getCanvas().style.cursor = 'pointer';
-
-                var coordinates = e.features[0].geometry.coordinates.slice();
-                var description = e.features[0].properties.description;
-
-                while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-                    coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-                }
-
-                popup.setLngLat(coordinates).setHTML(description).addTo(map);
-            });
-
-            map.on('mouseleave', 'points', function () {
-                map.getCanvas().style.cursor = '';
-                popup.remove();
-            });
         });
     }
 
