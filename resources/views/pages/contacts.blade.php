@@ -30,7 +30,8 @@
                                             coordinates: [{{ App\Config::getConf('contact_map_coordinates') }}]
                                         },
                                         properties: {
-                                            title: "{{ App\Config::getConf('contact_map_title') }}"
+                                            title: "{{ App\Config::getConf('contact_map_title') }}",
+                                            description: '',
                                         }
                                     }
                                 ]
