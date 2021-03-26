@@ -21,3 +21,20 @@ function flatString($string)
     $string = str_replace(' ', '', $string);
     return $string;
 }
+
+function t($string)
+{
+    static $texts = null;
+
+    if (is_null($texts)) {
+        $texts = json_decode(App\Config::getConf('strings'));
+    }
+
+    foreach($texts as $text) {
+        if ($text->original == $string) {
+            return $text->custom;
+        }
+    }
+
+    return $string;
+}

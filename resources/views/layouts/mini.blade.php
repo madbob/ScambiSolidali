@@ -9,7 +9,7 @@
 
     <title>{{ $pagetitle }}</title>
 
-    {!! Minify::stylesheet(route('css')) !!}
+    <link rel='stylesheet' href='{{ route('css') }}?a={{ time() }}' type='text/css' />
 
     <script>
         window.Laravel = <?php echo json_encode([
@@ -31,6 +31,6 @@
     <script src="{{ url('js/jquery-3.1.0.min.js') }}"></script>
     <script src="{{ url('js/bootstrap-datepicker.min.js') }}"></script>
     <script src="{{ url('js/bootstrap-datepicker.it.min.js') }}"></script>
-    {!! Minify::javascript('/js/mine.js') !!}
+    <script src="{{ url('/js/mine.js') }}"></script>
 </body>
 </html>

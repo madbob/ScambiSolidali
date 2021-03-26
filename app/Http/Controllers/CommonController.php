@@ -23,7 +23,7 @@ class CommonController extends Controller
     {
         $city = Config::getConf('instance_city');
         $city = flatString($city);
-        return response()->download(public_path('css/' . $city . '.css'));
+        return response()->download(public_path('css/' . $city . '.css'), $city . '.css', ['Content-Type' => 'text/css']);
     }
 
     public function home()

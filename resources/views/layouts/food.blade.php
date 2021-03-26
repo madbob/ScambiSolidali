@@ -10,15 +10,15 @@
     <title>{{ $pagetitle }}</title>
     <meta name="Description" content="Recuperiamo eccedenze alimentari come se ci fosse un domani.">
 
+    <?php $append = time() ?>
+
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.css' rel='stylesheet' />
     <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.0.1/mapbox-gl-geocoder.css' type='text/css' />
 
-    {!! Minify::stylesheet([
-        '/css/chosen.min.css',
-        '/css/bootstrap-chosen.css',
-        '/css/bootstrap-datepicker3.min.css',
-        route('css')
-    ]) !!}
+    <link rel='stylesheet' href='/css/chosen.min.css?a={{ $append }}' type='text/css' />
+    <link rel='stylesheet' href='/css/bootstrap-chosen.css?a={{ $append }}' type='text/css' />
+    <link rel='stylesheet' href='/css/bootstrap-datepicker3.min.css?a={{ $append }}' type='text/css' />
+    <link rel='stylesheet' href='{{ route('css') }}?a={{ $append }}' type='text/css' />
 
     <meta name="theme-color" content="#FFF"/>
     <link rel="manifest" href="{{ asset('manifest.json') }}">
@@ -166,11 +166,7 @@
     <script src="{{ url('js/exif.js') }}"></script>
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.js'></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.0.1/mapbox-gl-geocoder.js'></script>
-    @if(env('APP_DEBUG', false) == false)
-        {!! Minify::javascript('/js/mine.js') !!}
-    @else
-        <script src="{{ url('js/mine.js') }}"></script>
-    @endif
+    <script src="{{ url('js/mine.js') }}?a={{ $append }}"></script>
 
     <!-- Piwik -->
     <script type="text/javascript">

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Giocatori')
+@section('title', t('Giocatori'))
 
 @section('content')
     <input type="hidden" name="trigger-show-details" data-endpoint="giocatori" data-item-id="{{ $current_show }}">

@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="pagetitle">
-                    <span>STORIE A LIETO FINE</span>
+                    <span class="text-uppercase">{{ t('Storie a lieto fine') }}</span>
                 </div>
             </div>
 

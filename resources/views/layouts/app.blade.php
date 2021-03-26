@@ -8,17 +8,17 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ $pagetitle }}</title>
-    <meta name="Description" content="Mettiamo in contatto chi opera nel sociale con chi ha qualcosa da regalare.">
+    <meta name="Description" content="{{ App\Config::getConf('main_tagline') }}">
+
+    <?php $append = time() ?>
 
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
     <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css' type='text/css' />
 
-    {!! Minify::stylesheet([
-        '/css/chosen.min.css',
-        '/css/bootstrap-chosen.css',
-        '/css/bootstrap-datepicker3.min.css',
-        route('css')
-    ]) !!}
+    <link rel='stylesheet' href='/css/chosen.min.css?a={{ $append }}' type='text/css' />
+    <link rel='stylesheet' href='/css/bootstrap-chosen.css?a={{ $append }}' type='text/css' />
+    <link rel='stylesheet' href='/css/bootstrap-datepicker3.min.css?a={{ $append }}' type='text/css' />
+    <link rel='stylesheet' href='{{ route('css') }}?a={{ $append }}' type='text/css' />
 
     <meta name="theme-color" content="#FFF"/>
     <link rel="manifest" href="{{ asset('manifest.json') }}">
@@ -119,10 +119,10 @@
 
                             <li><a href="{{ url('progetto') }}">Progetto</a></li>
                             <li><a href="{{ url('come-funziona') }}">Regole</a></li>
-                            <li><a href="{{ url('celo') }}">Celo</a></li>
-                            <li><a href="{{ url('manca') }}">Manca</a></li>
-                            <li><a href="{{ url('giocatori') }}">Giocatori</a></li>
-                            <li><a href="{{ url('numeri') }}">Vincitori</a></li>
+                            <li><a href="{{ url('celo') }}">{{ t('Celo') }}</a></li>
+                            <li><a href="{{ url('manca') }}">{{ t('Manca') }}</a></li>
+                            <li><a href="{{ url('giocatori') }}">{{ t('Giocatori') }}</a></li>
+                            <li><a href="{{ url('numeri') }}">{{ t('Vincitori') }}</a></li>
                             <li><a href="{{ url('parlano-di-noi') }}">Parlano di Noi</a></li>
                             <li><a href="{{ url('contatti') }}">Contatti</a></li>
                             <li><a href="{{ App\Config::getConf('facebook_link') }}">Seguici su <img src="{{ url('images/facebook_icon.png') }}" alt="Facebook"></a></li>
@@ -147,10 +147,10 @@
                     <ul class="main-menu">
                         <li><a href="{{ url('progetto') }}">Progetto</a></li>
                         <li><a href="{{ url('come-funziona') }}">Regole</a></li>
-                        <li><a href="{{ url('celo') }}">Celo</a></li>
-                        <li><a href="{{ url('manca') }}">Manca</a></li>
-                        <li><a href="{{ url('giocatori') }}">Giocatori</a></li>
-                        <li><a href="{{ url('numeri') }}">Vincitori</a></li>
+                        <li><a href="{{ url('celo') }}">{{ t('Celo') }}</a></li>
+                        <li><a href="{{ url('manca') }}">{{ t('Manca') }}</a></li>
+                        <li><a href="{{ url('giocatori') }}">{{ t('Giocatori') }}</a></li>
+                        <li><a href="{{ url('numeri') }}">{{ t('Vincitori') }}</a></li>
                         <li><a href="{{ url('parlano-di-noi') }}">Parlano di Noi</a></li>
                         <li><a href="{{ url('contatti') }}">Contatti</a></li>
                     </ul>
@@ -185,11 +185,7 @@
     <script src="{{ url('js/exif.js') }}"></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js'></script>
-    @if(env('APP_DEBUG', false) == false)
-        {!! Minify::javascript('/js/mine.js') !!}
-    @else
-        <script src="{{ url('js/mine.js') }}"></script>
-    @endif
+    <script src="{{ url('js/mine.js') }}?a={{ $append }}"></script>
 
     <!-- Piwik -->
     <script type="text/javascript">

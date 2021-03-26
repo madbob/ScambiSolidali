@@ -57,8 +57,8 @@
                 <div class="col-md-offset-1 col-md-7 both-p spaced-below">
                     <div class="common-card">
                         <div class="card-main vert-align bg-color">
-                            <p>
-                                CELO!
+                            <p class="text-uppercase">
+                                {{ t('Celo!') }}
                             </p>
                         </div>
                         <div class="card-footer vert-align">
@@ -73,8 +73,8 @@
                 <div class="col-md-7 both-p">
                     <div class="common-card">
                         <div class="card-main vert-align bg-color">
-                            <p>
-                                MANCA!
+                            <p class="text-uppercase">
+                                {{ t('Manca!') }}
                             </p>
                         </div>
                         <div class="card-footer vert-align">
@@ -165,7 +165,7 @@
                 </p>
 
                 <p class="small-link">
-                    <a class="other-arrowlink" href="{{ url('numeri') }}">Cosa è successo</a>
+                    <a class="other-arrowlink" href="{{ url('numeri') }}">{{ t('Cosa è successo') }}</a>
                 </p>
             </div>
         </div>

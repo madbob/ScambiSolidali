@@ -9,15 +9,14 @@
     	<div class="row">
     		<div class="col-md-3 col-lg-2">
                 <button data-toggle="modal" data-target="#celo-select" class="dense-button">
-                    <span>Celo!</span>
+                    <span>{{ t('Celo!') }}</span>
                 </button>
 
                 <br/>
 
                 <p>
                     <a href="#" class="black" data-toggle="modal" data-target="#celo-select">
-                        Qui puoi inserire il tuo annuncio!<br/>
-                        Dicci cosa vuoi regalare e attendi la nostra risposta!
+                        {!! t('Qui puoi inserire il tuo annuncio!<br/>Dicci cosa vuoi regalare e attendi la nostra risposta!') !!}
                     </a>
                 </p>
 

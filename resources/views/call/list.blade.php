@@ -10,21 +10,19 @@
     		<div class="col-md-3 col-lg-2">
                 @if($edit_enabled)
                     <button class="dense-button" data-toggle="modal" data-target="#new-call">
-                        <span>Manca!</span>
+                        <span>{{ t('Manca!') }}</span>
                     </button>
                     @include('call.modal', ['call' => null])
                 @else
                     <p class="dense-button">
-                        <span>Manca!</span>
+                        <span>{{ t('Manca!') }}</span>
                     </p>
                 @endif
 
                 <br/>
 
                 <p>
-                    Guarda cosa ci manca!<br/>
-                    Ce l'hai?<br/>
-                    Rispondi alle nostre call, ti contatteremo appena possibile!
+                    {!! t("Guarda cosa ci manca!<br/>Ce l'hai?<br/>Rispondi alle nostre call, ti contatteremo appena possibile!") !!}
                 </p>
 
                 @include('category.filter', ['filter' => $filter, 'direct_response' => true, 'endpoint' => 'manca'])
