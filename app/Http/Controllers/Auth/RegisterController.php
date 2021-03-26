@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 use Mail;
 use Log;
 use Session;
@@ -33,7 +35,7 @@ class RegisterController extends Controller
             'surname' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'phone' => 'required|max:255',
-            'password' => 'required|min:6|confirmed',
+            'password' => 'required|min:8|confirmed',
             'privacy' => 'required',
         ]);
     }
@@ -96,7 +98,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'phone' => $data['phone'],
             'password' => bcrypt($data['password']),
-            'verification_code' => str_random(15),
+            'verification_code' => Str::random(15),
             'role' => $data['role']
         ]);
 

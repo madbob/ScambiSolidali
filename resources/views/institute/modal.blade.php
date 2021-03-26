@@ -27,7 +27,7 @@
                                 </div>
                             </div>
 
-                            {!! BootForm::staticfield('code', 'Codice', $institute ? $institute->code : ($code = str_random(10)), ['help_text' => 'Questo è il codice che gli operatori devono usare nell\'apposito pannello di registrazione per essere accreditati a questo ente', 'disabled' => 'disabled']) !!}
+                            {!! BootForm::staticfield('code', 'Codice', $institute ? $institute->code : ($code = Illuminate\Support\Str::random(10)), ['help_text' => 'Questo è il codice che gli operatori devono usare nell\'apposito pannello di registrazione per essere accreditati a questo ente', 'disabled' => 'disabled']) !!}
                             @if($institute == null)
                                 <input type="hidden" name="code" value="{{ $code }}">
                             @endif

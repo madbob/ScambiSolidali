@@ -27,7 +27,13 @@ function t($string)
     static $texts = null;
 
     if (is_null($texts)) {
-        $texts = json_decode(App\Config::getConf('strings'));
+        $config = App\Config::getConf('strings');
+        if (is_null($config)) {
+            $texts = [];
+        }
+        else {
+            $texts = json_decode($config);
+        }
     }
 
     foreach($texts as $text) {

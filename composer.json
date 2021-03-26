@@ -6,7 +6,7 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
-        "laravel/framework": "5.7.*",
+        "laravel/framework": "5.8.*",
         "watson/bootstrap-form": "^1.1",
         "webpatser/laravel-uuid": "2.*",
         "jenssegers/date": "^3.4",
@@ -14,8 +14,7 @@
         "diversen/image-auto-rotate": "^1.0",
         "barryvdh/laravel-debugbar": "^3.1",
         "madbob/laravel-log2rss": "^0.1",
-        "madbob/laravel-notification-mobyt": "^0.1",
-        "devfactory/minify": "^1.0"
+        "madbob/laravel-notification-mobyt": "^0.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

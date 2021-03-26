@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 use Log;
 use DB;
@@ -91,7 +92,7 @@ class Recurring extends Model
                     notifica (che ovviamente hanno caratteri limitati)
                 */
                 do {
-                    $recurring->identifier = str_random(20);
+                    $recurring->identifier = Str::random(20);
                 } while(Recurring::where('identifier', $recurring->identifier)->count() != 0);
 
                 $recurring->contents = '';

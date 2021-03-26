@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 use Auth;
 use Session;
@@ -89,7 +90,7 @@ class UserController extends Controller
         $user->birthdate = $request->input('birthdate', null);
         $user->role = $request->input('role');
 
-        $password = str_random(10);
+        $password = Str::random(10);
         $user->password = bcrypt($password);
 
         $user->save();
@@ -122,7 +123,7 @@ class UserController extends Controller
             'name' => 'required|max:255',
             'surname' => 'required|max:255',
             'phone' => 'required|max:255',
-            'email' => 'required|max:255'
+            'email' => 'required|max:255',
         ]);
 
         $test = User::where('email', $request->input('email'))->where('id', '!=', $id)->first();
@@ -142,8 +143,13 @@ class UserController extends Controller
         $user->role = $request->input('role');
 
         $password = $request->input('password');
-        if ($password != '')
+        if ($password != '') {
+            $this->validate($request, [
+                'password' => 'min:8',
+            ]);
+
             $user->password = bcrypt($password);
+        }
 
         $user->save();
 
