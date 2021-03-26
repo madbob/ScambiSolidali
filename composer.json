@@ -6,14 +6,13 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
-        "laravel/framework": "5.8.*",
+        "laravel/framework": "^6.0",
         "watson/bootstrap-form": "^1.1",
         "webpatser/laravel-uuid": "2.*",
         "jenssegers/date": "^3.4",
         "aws/aws-sdk-php": "^3.20",
         "diversen/image-auto-rotate": "^1.0",
         "barryvdh/laravel-debugbar": "^3.1",
-        "madbob/laravel-log2rss": "^0.1",
         "madbob/laravel-notification-mobyt": "^0.1"
     },
     "require-dev": {
