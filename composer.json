@@ -1,21 +1,21 @@
 {
-    "name": "madbob/ScambiSolidali",
+    "name": "madbob/scambisolidali",
     "description": "CeloCelo",
     "keywords": ["economia solidale", "donazioni"],
     "license": "AGPL-3.0-or-later",
     "type": "project",
     "require": {
         "php": ">=7.0.0",
-        "laravel/framework": "5.5.*",
+        "laravel/framework": "5.6.*",
         "watson/bootstrap-form": "^1.1",
         "webpatser/laravel-uuid": "2.*",
         "jenssegers/date": "^3.4",
         "aws/aws-sdk-php": "^3.20",
-        "nickdekruijk/minify": "1.1.*",
         "diversen/image-auto-rotate": "^1.0",
-        "barryvdh/laravel-debugbar": "^2.4",
-        "madbob/laravel-log2rss": "^0.1.0",
-        "madbob/laravel-notification-mobyt": "^0.1.0"
+        "barryvdh/laravel-debugbar": "^3.1",
+        "madbob/laravel-log2rss": "^0.1",
+        "madbob/laravel-notification-mobyt": "^0.1",
+        "devfactory/minify": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -50,12 +50,10 @@
             "php artisan key:generate"
         ],
         "post-install-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postInstall",
-            "php artisan optimize"
+            "Illuminate\\Foundation\\ComposerScripts::postInstall"
         ],
         "post-update-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "php artisan optimize"
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate"
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",

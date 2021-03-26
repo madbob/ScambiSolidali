@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\Paginator;
 
 use Auth;
 
@@ -21,6 +22,8 @@ class AppServiceProvider extends ServiceProvider
                 $view->with('currentuser', Auth::user());
             }
         });
+
+        Paginator::useBootstrapThree();
     }
 
     public function register()
