@@ -10,7 +10,7 @@ class TrentinoTableSeeder extends Seeder
     {
         if (Config::where('name', 'strings')->first() == null) {
             $strings = [
-                'Cosa è successo' => 'Lieto fine',
+                'Cosa è successo' => 'Storie',
                 'Giocatori' => 'Accreditati',
                 'Vincitori' => 'Storie',
                 'Celo!' => 'Dono!',
@@ -19,7 +19,8 @@ class TrentinoTableSeeder extends Seeder
                 'Manca' => 'Cerco',
                 'Storie a lieto fine' => 'Lieto fine',
                 'Qui puoi inserire il tuo annuncio!<br/>Dicci cosa vuoi regalare e attendi la nostra risposta!' => 'Qui puoi inserire il tuo annuncio.<br/>Pubblica cosa vuoi donare e attendi di essere contattato.',
-                "Guarda cosa ci manca!<br/>Ce l'hai?<br/>Rispondi alle nostre call, ti contatteremo appena possibile!" => "Controlla le necessità dei Soggetti accreditati.<br/>Rispondi pubblicando il tuo dono oppure scrivi a donotrentino@gmail.it e ti contatteremo al più presto.",
+                "Guarda cosa ci manca!<br/>Ce l'hai?<br/>Rispondi alle nostre call, ti contatteremo appena possibile!" => "Controlla le necessità! Se ce l'hai, rispondi agli appelli e ti contatteremo presto!",
+                'IL PROGETTO' => 'IL PROGETTO DONOTRENTINO',
             ];
 
             $obj = [];
@@ -54,7 +55,7 @@ class TrentinoTableSeeder extends Seeder
         if (Config::where('name', 'facebook_link')->first() == null) {
             $c = new Config();
             $c->name = 'facebook_link';
-            $c->value = 'https://www.facebook.com/celocelo-190331531485606/';
+            $c->value = 'https://www.facebook.com/DonoTrentino';
             $c->save();
         }
 
@@ -68,7 +69,7 @@ class TrentinoTableSeeder extends Seeder
         if (Config::where('name', 'other_instance_cities')->first() == null) {
             $c = new Config();
             $c->name = 'other_instance_cities';
-            $c->value = '[{"name":"Milano", "url":"https://milano.celocelo.it/"}, {"name":"Val Susa", "url":"https://valsusa.celocelo.it/"}]';
+            $c->value = '[]';
             $c->save();
         }
 
@@ -96,7 +97,7 @@ class TrentinoTableSeeder extends Seeder
         if (Config::where('name', 'full_credits')->first() == null) {
             $c = new Config();
             $c->name = 'full_credits';
-            $c->value = '<p class="intro">Progetto promosso da</p><p>TRENTINO SOLIDALE ODV, CS 4 ONLUS, CARITAS DIOCESANA, ROTTE INVERSE ARS, GRUPPO DI CITTADINI ATTIVI</p><p class="intro">Il progetto è sostenuto da</p><p>Ufficio sVOLta (spazio di progettazione creato da Fondazione Caritro, Fondazione Trentina per il Volontariato Sociale e Non Profit network - CSV Trentino) nell’ambito del bando Intrecci Possibili - Nuove forme di Volontariato.</p>';
+            $c->value = '<p class="intro">Progetto promosso da</p><p>TRENTINO SOLIDALE ODV, CS 4 ONLUS, CARITAS DIOCESANA, ROTTE INVERSE APS, GRUPPO DI CITTADINI ATTIVI</p><p class="intro">Il progetto è sostenuto da</p><p>Ufficio sVOLta (spazio di progettazione creato da Fondazione Caritro, Fondazione Trentina per il Volontariato Sociale e Non Profit network - CSV Trentino) nell’ambito del bando Intrecci Possibili - Nuove forme di Volontariato.</p>';
             $c->save();
         }
 
@@ -107,9 +108,9 @@ class TrentinoTableSeeder extends Seeder
             $c->save();
         }
 
-        if (Config::where('name', 'project_description')->first() == null) {
+        if (Config::where('name', 'project_page')->first() == null) {
             $c = new Config();
-            $c->name = 'project_description';
+            $c->name = 'project_page';
             $c->value = '<div class="col-md-12">
                 <p>
                     DONOTRENTINO si rivolge innanzitutto a cittadini, imprese e organizzazioni affinché facciano la scelta consapevole
@@ -166,19 +167,6 @@ class TrentinoTableSeeder extends Seeder
 
             <div class="row primary-2">
                 <div class="col-md-3">
-                    <div class="button screaming-border"><span>VUOI DIVENTARE UN PARTNER DELLA RETE SOLIDALE DI DONOTRENTINO?</span></div>
-                </div>
-
-                <div class="col-md-8 col-md-offset-1">
-                    <p>Presenta domanda inviando una e-mail all\'indirizzo <a href="mailto:donotrentino@gmail.it">donotrentino@gmail.it</a>.</p>
-                    <p>Possono candidarsi tutti i soggetti previsti dal Regolamento per l’accreditamento alla Piattaforma DONOTRENTINO.</p>
-                </div>
-            </div>
-
-            <hr class="black">
-
-            <div class="row primary-1">
-                <div class="col-md-3">
                     <div class="button screaming-border"><span>COME SI DONA?</span></div>
                 </div>
 
@@ -190,6 +178,19 @@ class TrentinoTableSeeder extends Seeder
                     </ol>
 
                     <p>I beni e il tempo donati andranno a favore di persone in difficoltà, potrai conoscere il LIETO FINE della tua donazione <a href="/numeri">tramite il Soggetto che l\'ha gestita</a>.</p>
+                </div>
+            </div>
+
+            <hr class="black">
+
+            <div class="row primary-1">
+                <div class="col-md-3">
+                    <div class="button screaming-border"><span>VUOI DIVENTARE UN PARTNER DELLA RETE SOLIDALE DI DONOTRENTINO?</span></div>
+                </div>
+
+                <div class="col-md-8 col-md-offset-1">
+                    <p>Presenta domanda inviando una e-mail all\'indirizzo <a href="mailto:donotrentino@gmail.it">donotrentino@gmail.it</a>.</p>
+                    <p>Possono candidarsi tutti i soggetti previsti dal Regolamento per l’accreditamento alla Piattaforma DONOTRENTINO.</p>
                 </div>
             </div>
 
@@ -225,7 +226,7 @@ class TrentinoTableSeeder extends Seeder
         if (Config::where('name', 'players_map_coordinates')->first() == null) {
             $c = new Config();
             $c->name = 'players_map_coordinates';
-            $c->value = '7.67824, 45.05408';
+            $c->value = '11.1255, 46.0651';
             $c->save();
         }
 
@@ -239,24 +240,23 @@ class TrentinoTableSeeder extends Seeder
         if (Config::where('name', 'contact_main')->first() == null) {
             $c = new Config();
             $c->name = 'contact_main';
-            $c->value = 'Ass. Agenzia per lo sviluppo di San Salvario onlus
-c/o Casa del Quartiere San Salvario';
+            $c->value = 'TRENTINOSOLIDALE';
             $c->save();
         }
 
         if (Config::where('name', 'contact_contents')->first() == null) {
             $c = new Config();
             $c->name = 'contact_contents';
-            $c->value = 'via Morgari 14 - 10125 Torino
-segreteria@agenzia.sansalvario.org
-T 011 6686772';
+            $c->value = 'Viale Bolognini 98 - Trento
+donotrentino@gmail.it
+T 011 3312717656';
             $c->save();
         }
 
         if (Config::where('name', 'contact_map_coordinates')->first() == null) {
             $c = new Config();
             $c->name = 'contact_map_coordinates';
-            $c->value = '7.67824, 45.05408';
+            $c->value = '11.13669, 46.06510';
             $c->save();
         }
 

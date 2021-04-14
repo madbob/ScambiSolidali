@@ -101,7 +101,7 @@
                 <div class="visible-md-block visible-lg-block">
                     <div class="double-side">
                         <div class="col-md-4 text-right">
-                            donare un oggetto<br/>in buono stato ma<br/>che non utilizzi più
+                            donare un oggetto<br/>in buono stato<br/>che non utilizzi più
                         </div>
                         <div class="col-md-4 text-center">
                             <div class="col-md-6 right-border">
@@ -112,7 +112,7 @@
                             </div>
                         </div>
                         <div class="col-md-4 text-left">
-                            offrire un po’ del tuo tempo<br/>o una tua competenza professionale
+                            offrire un po’ del tuo tempo<br/>o una tua competenza
                         </div>
                     </div>
                 </div>
@@ -120,7 +120,7 @@
                     <div class="row spaced-below">
                         <div class="col-xs-6 vert-align">
                             <p class="text-right">
-                                donare un oggetto<br/>in buono stato ma<br/>che non utilizzi più
+                                donare un oggetto<br/>in buono stato<br/>che non utilizzi più
                             </p>
                         </div>
                         <div class="col-xs-5">
@@ -133,7 +133,7 @@
                         </div>
                         <div class="col-xs-6 vert-align">
                             <p class="text-left">
-                                offrire un po’ del tuo tempo<br/>o una tua competenza professionale
+                                offrire un po’ del tuo tempo<br/>o una tua competenza
                             </p>
                         </div>
                     </div>
