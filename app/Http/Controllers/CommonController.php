@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use View;
 
 use App\Config;
 use App\Donation;
@@ -12,17 +13,21 @@ use App\Company;
 
 class CommonController extends Controller
 {
-    public function logo()
+    private function currentInstance()
     {
         $city = Config::getConf('instance_city');
-        $city = flatString($city);
+        return flatString($city);
+    }
+
+    public function logo()
+    {
+        $city = $this->currentInstance();
         return response()->download(public_path('images/logo_' . $city . '.png'));
     }
 
     public function css()
     {
-        $city = Config::getConf('instance_city');
-        $city = flatString($city);
+        $city = $this->currentInstance();
         return response()->download(public_path('css/' . $city . '.css'), $city . '.css', ['Content-Type' => 'text/css']);
     }
 
@@ -43,7 +48,14 @@ class CommonController extends Controller
 
     public function privacy()
     {
-        return view('pages.privacy');
+        $city = $this->currentInstance();
+
+        if (View::exists('pages.privacy_' . $city)) {
+            return view('pages.privacy_' . $city);
+        }
+        else {
+            return view('pages.privacy');
+        }
     }
 
     public function numbers()

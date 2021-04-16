@@ -18,6 +18,7 @@ class TrentinoTableSeeder extends Seeder
                 'Celo' => 'Dono',
                 'Manca' => 'Cerco',
                 'Storie a lieto fine' => 'Lieto fine',
+                'Lieto fine' => '',
                 'Qui puoi inserire il tuo annuncio!<br/>Dicci cosa vuoi regalare e attendi la nostra risposta!' => 'Qui puoi inserire il tuo annuncio.<br/>Pubblica cosa vuoi donare e attendi di essere contattato.',
                 "Guarda cosa ci manca!<br/>Ce l'hai?<br/>Rispondi alle nostre call, ti contatteremo appena possibile!" => "Controlla le necessità! Se ce l'hai, rispondi agli appelli e ti contatteremo presto!",
                 'IL PROGETTO' => 'IL PROGETTO DONOTRENTINO',
@@ -90,14 +91,10 @@ class TrentinoTableSeeder extends Seeder
         if (Config::where('name', 'credits')->first() == null) {
             $c = new Config();
             $c->name = 'credits';
-            $c->value = sprintf('<p>Un progetto di<br/><img src="%s" alt="Agenzia per lo Sviluppo Locale di San Salvario"></p><p>Con il sostegno di<br/><img src="%s" alt="Compagnia di San Paolo">&nbsp;&nbsp;&nbsp;<img src="%s" alt="Iren"></p>', url('images/agenziasansalvario.jpg'), url('images/csp.png'), url('images/iren.jpg'));
-            $c->save();
-        }
-
-        if (Config::where('name', 'full_credits')->first() == null) {
-            $c = new Config();
-            $c->name = 'full_credits';
-            $c->value = '<p class="intro">Progetto promosso da</p><p>TRENTINO SOLIDALE ODV, CS 4 ONLUS, CARITAS DIOCESANA, ROTTE INVERSE APS, GRUPPO DI CITTADINI ATTIVI</p><p class="intro">Il progetto è sostenuto da</p><p>Ufficio sVOLta (spazio di progettazione creato da Fondazione Caritro, Fondazione Trentina per il Volontariato Sociale e Non Profit network - CSV Trentino) nell’ambito del bando Intrecci Possibili - Nuove forme di Volontariato.</p>';
+            $c->value = sprintf('<p>Un progetto di<br/><img src="%s"><img src="%s"><img src="%s"><img src="%s"></p>
+            <p>Con il sostegno di<br/><img src="%s"><img src="%s"><img src="%s"><img src="%s"></p>',
+            url('images/trentinosolidale.png'), url('images/caritas_trento.png'), url('images/cs4.png'), url('images/rotteinverse.png'),
+            url('images/svolta.png'), url('images/fondazione_volontariato_sociale.png'), url('images/csv_trento.png'), url('images/caritro.png'));
             $c->save();
         }
 
@@ -114,8 +111,8 @@ class TrentinoTableSeeder extends Seeder
             $c->value = '<div class="col-md-12">
                 <p>
                     DONOTRENTINO si rivolge innanzitutto a cittadini, imprese e organizzazioni affinché facciano la scelta consapevole
-                    di donare beni in disuso che possono essere invece ben riutilizzati da altri. Obiettivi: evitare lo spreco, facilitare il
-                    riuso e diffondere la solidarietà verso chi è in condizioni di bisogno.
+                    di donare beni in disuso che possono essere invece ben riutilizzati da altri. Obiettivi: evitare lo spreco, promuovere e facilitare il
+                    riuso, diffondere la solidarietà verso chi è in condizioni di bisogno.
                 </p>
                 <p>
                     I beneficiari finali di queste donazioni sono, infatti, persone e famiglie svantaggiate, in condizione di marginalità
@@ -132,14 +129,29 @@ class TrentinoTableSeeder extends Seeder
                     L\'assegnazione mirata di quanto offerto a chi effettivamente ne ha bisogno è curata da associazioni ed enti,
                     appositamente accreditati da DONOTRENTINO, che operano da tempo a diretto contatto con persone e famiglie in
                     difficoltà e che, grazie alla loro ramificazione territoriale, possono altresì ridurre al minimo l\'impegno operativo
-                    necessario e gli eventuali costi di distribuzione.
+                    necessario e gli eventuali costi di smontaggio/montaggio e distribuzione.
                 </p>
                 <p>
-                    La rete solidale è inizialmente costituita dai promotori di DONOTRENTINO, ma è aperta a tutti i soggetti –
+                    La rete solidale è inizialmente costituita dai promotori di DONOTRENTINO, ma è aperta a tutti i soggetti accreditati –
                     associazioni, imprese, enti – che operano specificatamente in ambito socio assistenziale o che, pur svolgendo altre
                     attività, entrano spesso in contatto con persone e famiglie in difficoltà.
                     Per maggiori dettagli sul funzionamento visita <a href="/come-funziona">questa pagina</a>.
                 </p>
+            </div>
+            <div class="col-md-6 right-p">
+                <p class="border-bottom">
+                    &nbsp;
+                </p>
+            </div>
+            <div class="col-md-6 left-p">
+                <p class="border-bottom">
+                    &nbsp;
+                </p>
+            </div>
+            <div class="col-md-12 credits">
+                <p class="intro">Progetto promosso da</p><p>TRENTINO SOLIDALE ODV, CS 4 ONLUS, CARITAS DIOCESANA, ROTTE INVERSE APS, GRUPPO DI CITTADINI ATTIVI</p>
+                <p class="intro">In partnership con</p><p><img style="height:50px" src="/images/logo_torino.png">&nbsp;&nbsp;<img style="height:90px" src="/images/agenziasansalvario.jpg"></p>
+                <p class="intro">Il progetto è sostenuto da</p><p>Ufficio sVOLta (spazio di progettazione creato da Fondazione Caritro, Fondazione Trentina per il Volontariato Sociale e Non Profit network - CSV Trentino) nell’ambito del bando Intrecci Possibili - Nuove forme di Volontariato.</p>
             </div>';
             $c->save();
         }
@@ -189,8 +201,8 @@ class TrentinoTableSeeder extends Seeder
                 </div>
 
                 <div class="col-md-8 col-md-offset-1">
-                    <p>Presenta domanda inviando una e-mail all\'indirizzo <a href="mailto:donotrentino@gmail.it">donotrentino@gmail.it</a>.</p>
-                    <p>Possono candidarsi tutti i soggetti previsti dal Regolamento per l’accreditamento alla Piattaforma DONOTRENTINO.</p>
+                    <p>Presenta domanda <a href="https://forms.gle/KTy2aQ3tLPE3wRYj8">compilando questo form</a>.</p>
+                    <p>Possono candidarsi tutti i soggetti previsti <a href="/files/regolamento_donotrentino.pdf">dal Regolamento</a> per l’accreditamento alla Piattaforma DONOTRENTINO.</p>
                 </div>
             </div>
 
@@ -263,7 +275,7 @@ T 011 3312717656';
         if (Config::where('name', 'contact_map_title')->first() == null) {
             $c = new Config();
             $c->name = 'contact_map_title';
-            $c->value = 'Casa del Quartiere';
+            $c->value = 'TRENTINOSOLIDALE';
             $c->save();
         }
 

@@ -158,7 +158,7 @@
 
         <div class="row primary-3">
             <div class="col-md-12 bg-color header-claim">
-                <h2>Lieto fine</h2>
+                <h2>{{ t('Lieto fine') }}</h2>
 
                 <p>
                     Vuoi scoprire che fine ha fatto il tuo frigo? Qui ti raccontiamo le storie di successo di {{ env('APP_NAME') }}.
