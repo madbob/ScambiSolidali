@@ -92,8 +92,10 @@ class TrentinoTableSeeder extends Seeder
             $c = new Config();
             $c->name = 'credits';
             $c->value = sprintf('<p>Un progetto di<br/><img src="%s"><img src="%s"><img src="%s"><img src="%s"></p>
+            <p>In partnership con<br/><img src="%s"><img src="%s"></p>
             <p>Con il sostegno di<br/><img src="%s"><img src="%s"><img src="%s"><img src="%s"></p>',
             url('images/trentinosolidale.png'), url('images/caritas_trento.png'), url('images/cs4.png'), url('images/rotteinverse.png'),
+            url('images/logo_torino.png'), url('images/agenziasansalvario.jpg'),
             url('images/svolta.png'), url('images/fondazione_volontariato_sociale.png'), url('images/csv_trento.png'), url('images/caritro.png'));
             $c->save();
         }

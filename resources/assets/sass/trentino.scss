@@ -3,3 +3,15 @@ $primary-color-2: #BD3153;
 $secondary-color-1: #921831;
 
 @import "app";
+
+.navbar-right {
+    .top-main-buttons {
+        height: 80px;
+
+        .city-title {
+            .city-name {
+                display: none;
+            }
+        }
+    }
+}

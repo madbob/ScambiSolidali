@@ -7183,17 +7183,19 @@ textarea.form-control {
     margin-left: 0; }
   .navbar-right span {
     text-transform: none; }
-  .navbar-right .city-title {
-    padding-right: 10px;
-    font-size: 20px; }
-    .navbar-right .city-title a {
-      color: #FF9D00 !important;
-      display: block; }
-    .navbar-right .city-title .city-name {
-      font-size: 30px;
-      font-weight: bold;
-      color: #FF9D00;
-      text-transform: uppercase; }
+  .navbar-right .top-main-buttons {
+    min-width: 300px; }
+    .navbar-right .top-main-buttons .city-title {
+      padding-right: 10px;
+      font-size: 20px; }
+      .navbar-right .top-main-buttons .city-title a {
+        color: #FF9D00 !important;
+        display: block; }
+      .navbar-right .top-main-buttons .city-title .city-name {
+        font-size: 30px;
+        font-weight: bold;
+        color: #FF9D00;
+        text-transform: uppercase; }
 
 .navbar-nav > li a {
   padding: 3px 0;

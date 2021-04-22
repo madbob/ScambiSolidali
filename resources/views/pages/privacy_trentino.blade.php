@@ -181,8 +181,33 @@
             <ol>
                 <li>Ai sensi dell’art. 24 del Reg. 27.4.2016, n. 2016/679/UE, TRENTINOSOLIDALE opera quale titolare del trattamento dei dati inerenti alla piattaforma e si impegna a garantire la corretta esecuzione di tutti gli adempimenti prescritti a carico del titolare.</li>
                 <li>L’informativa all’utente sul trattamento dei dati personali, nonché sugli altri dati raccolti (attività svolte sulla piattaforma, dati tecnici, dati raccolti utilizzando i cookie) costituisce l’allegato A) delle presenti Condizioni Generali.</li>
-                <li>La cookie policy costituisce l’allegato B) delle presenti Condizioni Generali.</li>
             </ol>
+
+            <h3>Cookie</h3>
+            <p>
+                I cookie sono piccoli file di testo che vengono depositati sul computer dell’utente dai siti che visita. Essi sono principalmente utilizzati al fine di far funzionare i siti web e farli operare in modo più efficiente, nonché di fornire informazioni ai proprietari del sito stesso.
+            </p>
+            <p>
+                DonoTrentino utilizza cookie tecnici, nella misura strettamente necessaria alla fruizione e navigazione del proprio sito web. L’uso di cookie tecnici di sessione in particolare è limitato alla trasmissione di identificativi di sessione (costituiti da numeri casuali generati dal server) necessari per consentire l’esplorazione sicura ed efficiente del sito. Tali cookie evitano il ricorso ad altre tecniche informatiche potenzialmente pregiudizievoli per la riservatezza della navigazione degli utenti e non consentono l’acquisizione di dati personali identificativi dell’utente. Nessun dato personale degli utenti viene in proposito acquisito dal sito.
+            </p>
+            <p>
+                Vengono inoltre utilizzati anche dei cookie persistenti per compilare statistiche anonime che permettano di comprendere, come gli utenti usufruiscono del Sito e di migliorare la struttura e di servizi offerti dallo stesso.
+            </p>
+            <p>
+                Qualora l’utente non desideri ricevere alcun tipo di cookie sul proprio elaboratore, né da questo sito né da altri, può elevare il livello di protezione privacy del proprio browser mediante l’apposita funzione.
+            </p>
+            <p>
+                Si comunica inoltre che Dono Trentino. si avvale delle funzionalità offerte dal servizio Google Analytics, che utilizza i cookie per raccogliere e analizzare in forma anonima le informazioni sui comportamenti di utilizzo dei siti web (ad esempio l’ora e il giorno in cui si è verificata la visita, eventuali precedenti visite al sito da parte dello stesso visitatore, il sito di provenienza, etc.). Tali informazioni (compreso l’indirizzo IP dell’utente) vengono raccolte da Google Analytics, che le elabora allo scopo di redigere report per DonoTrentino riguardanti le attività sul proprio sito web e utilizzate da questa al fine di migliorare il sito stesso. Google non associa l’indirizzo IP a nessun altro dato in proprio possesso né cerca di collegare un indirizzo IP con l’identità di un utente. Google può anche comunicare queste informazioni a terzi ove ciò sia imposto dalla legge o laddove tali terzi trattino le suddette informazioni per conto di Google.
+            </p>
+            <p>
+                Per maggiori informazioni in merito alle modalità di raccolta e utilizzo dei dati da parte di Google si raccomanda la consultazione del sito: www.google.it/policies/privacy/partners/ (o ad altra URL che Google potrà fornire di volta in volta).
+            </p>
+            <p>
+                Qualora l’utente non desideri ricevere alcun tipo di cookie sul proprio elaboratore, né da questo sito né da altri, può elevare il livello di protezione privacy del proprio browser mediante l’apposita funzione
+            </p>
+            <p>
+                DonoTrentino ricorda che la disabilitazione totale o parziale dei cookie c.d. tecnici può compromettere l’utilizzo delle funzionalità del sito. Ad ogni modo l’utente può decidere se accettare o meno i cookie modificando le impostazioni di sicurezza del suo browser.
+            </p>
 
             <h3>Disposizioni finali e foro competente</h3>
             <ol>

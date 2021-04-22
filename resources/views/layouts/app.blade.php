@@ -71,7 +71,7 @@
                         <ul class="nav navbar-nav navbar-right primary-2">
                             <li>
                                 @if (Auth::guest())
-                                    <div class="row">
+                                    <div class="row top-main-buttons">
                                         <div class="col-md-6 text-right city-title">
                                             <span class="city-name">{{ App\Config::getConf('instance_city') }}</span><br>
                                             <small>
@@ -173,6 +173,15 @@
 
         	@yield('content')
 		</div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 primary-2">
+                    <br>
+                    <a href="{{ url('privacy') }}">Privacy Policy</a> | <a href="{{ url('contatti') }}">Contatti</a>
+                </div>
+            </div>
+        </div>
 
         <br/>
     </div>

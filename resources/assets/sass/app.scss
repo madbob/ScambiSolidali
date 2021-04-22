@@ -622,20 +622,24 @@ textarea.form-control {
         text-transform: none;
     }
 
-    .city-title {
-        padding-right: 10px;
-        font-size: 20px;
+    .top-main-buttons {
+        min-width: 300px;
 
-        a {
-            color: $primary-color-2 !important;
-            display: block;
-        }
+        .city-title {
+            padding-right: 10px;
+            font-size: 20px;
 
-        .city-name {
-            font-size: 30px;
-            font-weight: bold;
-            color: $primary-color-2;
-            text-transform: uppercase;
+            a {
+                color: $primary-color-2 !important;
+                display: block;
+            }
+
+            .city-name {
+                font-size: 30px;
+                font-weight: bold;
+                color: $primary-color-2;
+                text-transform: uppercase;
+            }
         }
     }
 }
