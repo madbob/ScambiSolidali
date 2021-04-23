@@ -77,6 +77,11 @@
                 <li>Con la dichiarazione di accettazione l’utente dichiara espressamente, ai sensi e per gli effetti di cui agli artt. 1341, secondo comma, e 1342 c.c., di aver letto attentamente e di approvare specificamente le clausole di cui agli artt. 4 (Responsabilità dell’utente), 5 (Esonero da responsabilità e clausola di manleva), 8 (Disposizioni finali e foro competente), 9 (Accettazione delle Condizioni Generali).</li>
             </ol>
 
+            <hr>
+
+            <p>
+                Allegato A
+            </p>
             <h1>INFORMATIVA SUL TRATTAMENTO DEI DATI PERSONALI E COOKIE</h1>
             <p>
                 Ai sensi dell’art. 13 del Regolamento U.E. n. 679/2016 (“GDPR” o “Regolamento”) e, in generale, in osservanza del principio di trasparenza previsto dallo stesso Regolamento, forniamo le seguenti informazioni sul trattamento dei dati personali.
