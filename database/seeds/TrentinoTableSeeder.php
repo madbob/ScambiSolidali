@@ -19,6 +19,7 @@ class TrentinoTableSeeder extends Seeder
                 'Manca' => 'Cerco',
                 'Storie a lieto fine' => 'Lieto fine',
                 'Lieto fine' => '',
+                'Vuoi scoprire che fine ha fatto il tuo frigo? Qui ti raccontiamo le storie di successo di' => 'Vuoi scoprire che fine ha fatto il tuo dono? Qui ti raccontiamo le storie di successo di',
                 'Qui puoi inserire il tuo annuncio!<br/>Dicci cosa vuoi regalare e attendi la nostra risposta!' => 'Qui puoi inserire il tuo annuncio.<br/>Pubblica cosa vuoi donare e attendi di essere contattato.',
                 "Guarda cosa ci manca!<br/>Ce l'hai?<br/>Rispondi alle nostre call, ti contatteremo appena possibile!" => "Controlla le necessità! Se ce l'hai, rispondi agli appelli e ti contatteremo presto!",
                 'IL PROGETTO' => 'IL PROGETTO DONOTRENTINO',
@@ -60,6 +61,20 @@ class TrentinoTableSeeder extends Seeder
             $c->save();
         }
 
+        if (Config::where('name', 'instagram_link')->first() == null) {
+            $c = new Config();
+            $c->name = 'instagram_link';
+            $c->value = 'https://www.instagram.com/donotrentino/';
+            $c->save();
+        }
+
+        if (Config::where('name', 'youtube_link')->first() == null) {
+            $c = new Config();
+            $c->name = 'youtube_link';
+            $c->value = 'https://www.youtube.com/channel/UCBW6U2L6YJ6U47Cv5nF5DdQ';
+            $c->save();
+        }
+
         if (Config::where('name', 'instance_city')->first() == null) {
             $c = new Config();
             $c->name = 'instance_city';
@@ -92,7 +107,7 @@ class TrentinoTableSeeder extends Seeder
             $c = new Config();
             $c->name = 'credits';
             $c->value = sprintf('<p>Un progetto di<br/><img src="%s"><img src="%s"><img src="%s"><img src="%s"></p>
-            <p>In partnership con<br/><img src="%s"><img src="%s"></p>
+            <p>In partnership con<br/><img style="max-width:160px" src="%s"><img src="%s"></p>
             <p>Con il sostegno di<br/><img src="%s"><img src="%s"><img src="%s"><img src="%s"></p>',
             url('images/trentinosolidale.png'), url('images/caritas_trento.png'), url('images/cs4.png'), url('images/rotteinverse.png'),
             url('images/logo_torino.png'), url('images/agenziasansalvario.jpg'),
@@ -153,7 +168,7 @@ class TrentinoTableSeeder extends Seeder
             <div class="col-md-12 credits">
                 <p class="intro">Progetto promosso da</p><p>TRENTINO SOLIDALE ODV, CS 4 ONLUS, CARITAS DIOCESANA, ROTTE INVERSE APS, GRUPPO DI CITTADINI ATTIVI</p>
                 <p class="intro">In partnership con</p><p><img style="height:50px" src="/images/logo_torino.png">&nbsp;&nbsp;<img style="height:90px" src="/images/agenziasansalvario.jpg"></p>
-                <p class="intro">Il progetto è sostenuto da</p><p>Ufficio sVOLta (spazio di progettazione creato da Fondazione Caritro, Fondazione Trentina per il Volontariato Sociale e Non Profit network - CSV Trentino) nell’ambito del bando Intrecci Possibili - Nuove forme di Volontariato.</p>
+                <p class="intro">Il progetto è sostenuto da</p><p>Ufficio sVOLta (spazio di progettazione creato da Fondazione Caritro, Fondazione Trentina per il Volontariato Sociale e Non Profit Network - CSV Trentino) nell’ambito del bando Intrecci Possibili - Volontariato che riparte.</p>
             </div>';
             $c->save();
         }
@@ -263,7 +278,7 @@ class TrentinoTableSeeder extends Seeder
             $c->name = 'contact_contents';
             $c->value = 'Viale Bolognini 98 - Trento
 donotrentino@gmail.it
-T 011 3312717656';
+T 3312717656';
             $c->save();
         }
 

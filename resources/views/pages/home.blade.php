@@ -51,7 +51,7 @@
             <div class="col-md-6 primary-1">
                 <div class="col-md-4 tb-border vert-align hidden-xs hidden-sm">
                     <p class="txt-color">
-                        quante cose hai, che non ti servono più?
+                        quante cose hai che non ti servono più?
                     </p>
                 </div>
                 <div class="col-md-offset-1 col-md-7 both-p spaced-below">
@@ -161,7 +161,7 @@
                 <h2>{{ t('Lieto fine') }}</h2>
 
                 <p>
-                    Vuoi scoprire che fine ha fatto il tuo frigo? Qui ti raccontiamo le storie di successo di {{ env('APP_NAME') }}.
+                    {{ t("Vuoi scoprire che fine ha fatto il tuo frigo? Qui ti raccontiamo le storie di successo di") }} {{ env('APP_NAME') }}.
                 </p>
 
                 <p class="small-link">

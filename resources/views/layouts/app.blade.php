@@ -125,7 +125,17 @@
                             <li><a href="{{ url('numeri') }}">{{ t('Vincitori') }}</a></li>
                             <li><a href="{{ url('parlano-di-noi') }}">Parlano di Noi</a></li>
                             <li><a href="{{ url('contatti') }}">Contatti</a></li>
-                            <li><a href="{{ App\Config::getConf('facebook_link') }}">Seguici su <img src="{{ url('images/facebook_icon.png') }}" alt="Facebook"></a></li>
+                            <li>Seguici su
+                                @if(!empty($social_link = App\Config::getConf('facebook_link')))
+                                    <a href="{{ $social_link }}"><img src="{{ url('images/facebook_icon.png') }}" alt="Facebook"></a>
+                                @endif
+                                @if(!empty($social_link = App\Config::getConf('instagram_link')))
+                                    <a href="{{ $social_link }}"><img src="{{ url('images/instagram_icon.png') }}" alt="Instagram"></a>
+                                @endif
+                                @if(!empty($social_link = App\Config::getConf('youtube_link')))
+                                    <a href="{{ $social_link }}"><img src="{{ url('images/youtube_icon.png') }}" alt="Youtube"></a>
+                                @endif
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -137,7 +147,18 @@
                 <div class="col-md-12 primary-2">
                     <span class="tagline">
                         {{ App\Config::getConf('main_tagline') }}
-                        <span class="pull-right"><a href="{{ App\Config::getConf('facebook_link') }}">seguici su <img src="{{ url('images/facebook_icon.png') }}" alt="Facebook"></a></span>
+                        <span class="pull-right">
+                            seguici su
+                            @if(!empty($social_link = App\Config::getConf('facebook_link')))
+                                <a href="{{ $social_link }}"><img src="{{ url('images/facebook_icon.png') }}" alt="Facebook"></a>
+                            @endif
+                            @if(!empty($social_link = App\Config::getConf('instagram_link')))
+                                <a href="{{ $social_link }}"><img src="{{ url('images/instagram_icon.png') }}" alt="Instagram"></a>
+                            @endif
+                            @if(!empty($social_link = App\Config::getConf('youtube_link')))
+                                <a href="{{ $social_link }}"><img src="{{ url('images/youtube_icon.png') }}" alt="Youtube"></a>
+                            @endif
+                        </span>
                     </span>
                 </div>
             </div>
