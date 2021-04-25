@@ -28,11 +28,9 @@ function t($string)
 
     if (is_null($texts)) {
         $config = App\Config::getConf('strings');
-        if (is_null($config)) {
+        $texts = json_decode($config);
+        if (is_null($texts)) {
             $texts = [];
-        }
-        else {
-            $texts = json_decode($config);
         }
     }
 
