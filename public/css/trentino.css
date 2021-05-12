@@ -7837,5 +7837,6 @@ textarea.form-control {
 
 .navbar-right .top-main-buttons {
   height: 80px; }
-  .navbar-right .top-main-buttons .city-title .city-name {
-    display: none; }
+
+.navbar-right .city-title .city-name {
+  display: none; }
