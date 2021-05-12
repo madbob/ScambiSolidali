@@ -7839,4 +7839,4 @@ textarea.form-control {
   height: 80px; }
 
 .navbar-right .city-title .city-name {
-  display: none; }
+  visibility: hidden; }
