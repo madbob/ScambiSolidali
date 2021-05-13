@@ -168,7 +168,7 @@ class TrentinoTableSeeder extends Seeder
             <div class="col-md-12 credits">
                 <p class="intro">Progetto promosso da</p><p>TRENTINO SOLIDALE ODV, CS 4 ONLUS, CARITAS DIOCESANA, ROTTE INVERSE APS, GRUPPO DI CITTADINI ATTIVI</p>
                 <p class="intro">In partnership con</p><p><img style="height:50px" src="/images/logo_torino.png">&nbsp;&nbsp;<img style="height:90px" src="/images/agenziasansalvario.jpg"></p>
-                <p class="intro">Il progetto è sostenuto da</p><p>Ufficio sVOLta (spazio di progettazione creato da Fondazione Caritro, Fondazione Trentina per il Volontariato Sociale e Non Profit Network - CSV Trentino) nell’ambito del bando Intrecci Possibili - Volontariato che riparte.</p>
+                <p class="intro">Il progetto è sostenuto da</p><p>Ufficio sVOLta (spazio di progettazione creato da Fondazione Caritro, Fondazione Trentina per il Volontariato Sociale e Non Profit Network - CSV Trentino) nell’ambito del bando Intrecci Possibili 2020 - Volontariato che riparte.</p>
             </div>';
             $c->save();
         }
@@ -241,7 +241,7 @@ class TrentinoTableSeeder extends Seeder
                         Il Soggetto accreditato può concordare con le parti, o con altri Soggetti accreditati, modalità diverse per la ripartizione degli oneri.
                     </p>
                     <p>
-                        DONO TRENTINO segnala imprese sociali che offrono servizi di smontaggio, di trasporto, e di montaggio di beni a prezzi concordati:
+                        DONOTRENTINO segnala imprese sociali che offrono servizi di smontaggio, di trasporto, e di montaggio di beni a prezzi concordati:
                     </p>
                     <ul>
                         <li></li>
