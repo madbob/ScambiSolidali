@@ -13,21 +13,15 @@ use App\Company;
 
 class CommonController extends Controller
 {
-    private function currentInstance()
-    {
-        $city = Config::getConf('instance_city');
-        return flatString($city);
-    }
-
     public function logo()
     {
-        $city = $this->currentInstance();
+        $city = currentInstance();
         return response()->download(public_path('images/logo_' . $city . '.png'));
     }
 
     public function css()
     {
-        $city = $this->currentInstance();
+        $city = currentInstance();
         return response()->download(public_path('css/' . $city . '.css'), $city . '.css', ['Content-Type' => 'text/css']);
     }
 
@@ -48,7 +42,7 @@ class CommonController extends Controller
 
     public function privacy()
     {
-        $city = $this->currentInstance();
+        $city = currentInstance();
 
         if (View::exists('pages.privacy_' . $city)) {
             return view('pages.privacy_' . $city);

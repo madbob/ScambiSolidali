@@ -32,7 +32,8 @@
         },
         "files": [
             "app/Helpers/dates.php",
-            "app/Helpers/formats.php"
+            "app/Helpers/formats.php",
+            "app/Helpers/custom.php"
         ]
     },
     "autoload-dev": {

@@ -25,7 +25,14 @@
 
     <meta property="og:site_name" content="{{ env('APP_NAME') }}" />
     <meta property="og:title" content="{{ $pagetitle }}" />
-    <meta property="og:image" content="{{ env('APP_URL') }}/images/fb.png" />
+
+    <?php $cityname = currentInstance() ?>
+    @if(file_exists(public_path('/images/fb_' . $cityname . '.png')))
+        <meta property="og:image" content="{{ env('APP_URL') }}/images/fb_{{ $cityname }}.png" />
+    @else
+        <meta property="og:image" content="{{ env('APP_URL') }}/images/fb.png" />
+    @endif
+
     <meta property="og:type" content="website" />
     <meta property="og:country-name" content="Italy" />
     <meta property="og:email" content="{{ env('MAIL_FROM_ADDRESS') }}" />
