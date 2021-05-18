@@ -277,7 +277,7 @@ class TrentinoTableSeeder extends Seeder
             $c = new Config();
             $c->name = 'contact_contents';
             $c->value = 'Viale Bolognini 98 - Trento
-donotrentino@gmail.it
+segreteria@donotrentino.it
 T 3312717656';
             $c->save();
         }
