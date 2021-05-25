@@ -118,7 +118,7 @@ class TrentinoTableSeeder extends Seeder
         if (Config::where('name', 'video_link')->first() == null) {
             $c = new Config();
             $c->name = 'video_link';
-            $c->value = 'https://www.youtube-nocookie.com/embed/pGZURLZQZ7w?rel=0&amp;controls=0&amp;showinfo=0';
+            $c->value = 'https://www.youtube-nocookie.com/embed/rAn71sY2Il0?rel=0&amp;controls=0&amp;showinfo=0';
             $c->save();
         }
 
@@ -244,7 +244,8 @@ class TrentinoTableSeeder extends Seeder
                         DONOTRENTINO segnala imprese sociali che offrono servizi di smontaggio, di trasporto, e di montaggio di beni a prezzi concordati:
                     </p>
                     <ul>
-                        <li></li>
+                        <li><a href="https://www.siwego.com/">www.siwego.com/</a></li>
+                        <li>lista in fase di aggiornamento</li>
                     </ul>
                 </div>
             </div>';
