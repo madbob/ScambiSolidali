@@ -27,6 +27,7 @@
     <meta property="og:title" content="{{ $pagetitle }}" />
 
     <?php $cityname = currentInstance() ?>
+
     @if(file_exists(public_path('/images/fb_' . $cityname . '.png')))
         <meta property="og:image" content="{{ env('APP_URL') }}/images/fb_{{ $cityname }}.png" />
     @else
@@ -42,7 +43,12 @@
     <meta name="twitter:title" content="{{ env('APP_NAME') }}" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:url" content="{{ env('APP_URL') }}" />
-    <meta name="twitter:image" content="{{ env('APP_URL') }}/images/tw.png" />
+
+    @if(file_exists(public_path('/images/tw_' . $cityname . '.png')))
+        <meta property="og:image" content="{{ env('APP_URL') }}/images/tw_{{ $cityname }}.png" />
+    @else
+        <meta property="og:image" content="{{ env('APP_URL') }}/images/tw.png" />
+    @endif
 
     <script>
         window.Laravel = <?php echo json_encode([
