@@ -245,11 +245,12 @@ class TrentinoTableSeeder extends Seeder
                     <p>
                         DONOTRENTINO segnala imprese sociali che offrono servizi di smontaggio, di trasporto, e di montaggio di beni a prezzi concordati:
                     </p>
-                    <ul>
-                        <li><a href="https://www.siwego.com/">www.siwego.com</a></li>
-                        <li><a href="https://www.dicasaincosa.it/">www.dicasaincosa.it</a> (Dalla Viva Voce APS)</li>
-                        <li>lista in fase di aggiornamento</li>
-                    </ul>
+                    <p>
+                        <a href="https://www.siwego.com/"><img src="/images/siwego.png" alt="Siwego"></a>
+                    </p>
+                    <p>
+                        <a href="https://www.dicasaincosa.it/"><img src="/images/dicosaincosa.png" alt="Di Casa in Cosa"></a> (Dalla Viva Voce APS)
+                    </p>
                 </div>
             </div>';
 
