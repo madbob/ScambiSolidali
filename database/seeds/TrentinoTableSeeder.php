@@ -23,6 +23,8 @@ class TrentinoTableSeeder extends Seeder
                 'Qui puoi inserire il tuo annuncio!<br/>Dicci cosa vuoi regalare e attendi la nostra risposta!' => 'Qui puoi inserire il tuo annuncio.<br/>Pubblica cosa vuoi donare e attendi di essere contattato.',
                 "Guarda cosa ci manca!<br/>Ce l'hai?<br/>Rispondi alle nostre call, ti contatteremo appena possibile!" => "Controlla le necessità! Se ce l'hai, rispondi agli appelli e ti contatteremo presto!",
                 'IL PROGETTO' => 'IL PROGETTO DONOTRENTINO',
+                'Inserisci il tuo annuncio' => 'Vedi o inserisci un dono',
+                'Ci puoi aiutare?' => 'Vedi o inserisci un appello',
             ];
 
             $obj = [];

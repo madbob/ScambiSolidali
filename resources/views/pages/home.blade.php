@@ -63,7 +63,7 @@
                         </div>
                         <div class="card-footer vert-align">
                             <p>
-                                <a href="{{ url('celo') }}">Inserisci il tuo annuncio</a>
+                                <a href="{{ url('celo') }}">{{ t('Inserisci il tuo annuncio') }}</a>
                             </p>
                         </div>
                     </div>
@@ -79,7 +79,7 @@
                         </div>
                         <div class="card-footer vert-align">
                             <p>
-                                <a href="{{ url('manca') }}">Ci puoi aiutare?</a>
+                                <a href="{{ url('manca') }}">{{ t('Ci puoi aiutare?') }}</a>
                             </p>
                         </div>
                     </div>
