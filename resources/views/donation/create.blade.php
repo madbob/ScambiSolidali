@@ -30,13 +30,16 @@ else
                     </p>
                     <div>
                         <button class="button" type="submit">
-                            <span>Clicca qui per eliminare la tua donazione</span>
+                            <span>Clicca qui per eliminare questa donazione</span>
                         </button>
                     </div>
                 </div>
             </div>
         </form>
     </div>
+    <br/>
+    <br/>
+    <br/>
     <br/>
     <br/>
 @endif
@@ -139,5 +142,30 @@ else
         </div>
     {!! BootForm::close() !!}
 </div>
+
+@if($donation)
+    <div class="row new-donation-form primary-1">
+        <div class="col-md-8 col-md-offset-4">
+            <form method="POST" action="{{ url('celo/' . $donation->id) }}">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="reason" value="user-deleted">
+                {!! csrf_field() !!}
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <p class="text-center">
+                            OPPURE
+                        </p>
+                        <div>
+                            <button class="button" type="submit">
+                                <span>Clicca qui per eliminare questa donazione</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+@endif
 
 @endsection

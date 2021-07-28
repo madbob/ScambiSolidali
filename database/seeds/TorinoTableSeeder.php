@@ -217,10 +217,8 @@ class TorinoTableSeeder extends Seeder
                     <p>Il progetto non sostiene le spese di smontaggio e montaggio.</p>
                     <p>Chiediamo al donatore di far trovare i mobili smontati e a chi riceve di provvedere al montaggio.</p>
                     <p>Nel caso di impossibilità a provvedere allo smontaggio e al montaggio di seguito trovate i contatti e le tariffe dei nostri fornitori di fiducia (in caso di gravi difficoltà il progetto celocelo può contribuire a sostenerne le spese).</p>
-                    <p>La Fonte Solidale Cooperativa Sociale<br>corso Vinzaglio 2, Torino
-                    </p>
-                    <p>Per informazioni  e preventivi : lafonte.solidale@gmail.com<br>Tel. 351 2276924, Enzo Covito
-                    </p>
+                    <p>La Fonte Solidale Cooperativa Sociale<br>corso Vinzaglio 2, Torino</p>
+                    <p>Per informazioni  e preventivi : lafonte.solidale@gmail.com<br>Tel. 351 2276924, Enzo Covito</p>
                     <p>Tariffe:<br>17 euro all\'ora a persona per la manodopera<br>80 centesimi al km per il trasporto</p>
                 </div>
             </div>';
