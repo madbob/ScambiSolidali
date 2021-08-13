@@ -11,7 +11,7 @@ $(document).ready(function() {
 
             var geocoder = new MapboxGeocoder({
                 proximity: {latitude: coords[1], longitude: coords[0]},
-                bbox: [coords[0] - 0.5, coords[1] - 0.5, coords[0] + 0.5, coords[1] + 0.5],
+                bbox: [coords[0] - 1, coords[1] - 1, coords[0] + 1, coords[1] + 1],
                 placeholder: 'Scrivi qui l\'indirizzo',
                 accessToken: mapboxgl.accessToken
             });
