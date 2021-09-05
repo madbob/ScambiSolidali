@@ -7145,6 +7145,7 @@ textarea.form-control {
     position: relative; }
     .navbar-default .container .row .navbar-brand {
       height: 80%;
+      width: 30%;
       position: absolute;
       bottom: 0;
       right: 45%;
