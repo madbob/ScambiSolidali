@@ -539,7 +539,7 @@ class DonationController extends Controller
                     Log::error('Impossibile inviare notifica assegnazione donazione ' . $donation->id . ': ' . $e->getMessage());
                 }
 
-                Session::flash('message', 'Donazione assegnata. È stata inviata una mail al donatore per avere informazioni sul ritiro.');
+                Session::flash('message', 'Donazione assegnata. È stata inviata una mail al donatore di conferma, contattalo per concordare il ritiro del bene. Grazie!');
 
                 if ($request->has('shipping')) {
                     $carriers = User::where('role', 'admin')->get();
