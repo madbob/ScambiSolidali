@@ -422,6 +422,30 @@ textarea.form-control {
     margin: 20px 0;
 }
 
+.danger-button {
+    background: repeating-linear-gradient(-45deg, #F00, #F00 2px, #FFF 2px, #FFF 12px);
+    animation: blink-animation 0.5s steps(5, start) infinite;
+    text-align: center;
+    border: 0;
+    padding: 10px;
+    width: 100%;
+    display: block;
+
+    span {
+        background-color: #F00;
+        color: #FFF;
+        padding: 10px;
+        display: block;
+        text-transform: uppercase;
+    }
+}
+
+@keyframes blink-animation {
+    to {
+        background: repeating-linear-gradient(-45deg, #FFF, #FFF 2px, #F00 2px, #F00 12px);
+    }
+}
+
 .square-block {
     color: #000;
     height: 300px;

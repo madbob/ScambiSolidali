@@ -29,7 +29,7 @@ else
                         (HAI CAMBIATO IDEA?)
                     </p>
                     <div>
-                        <button class="button" type="submit">
+                        <button class="danger-button" type="submit">
                             <span>Clicca qui per eliminare questa donazione</span>
                         </button>
                     </div>
@@ -157,7 +157,7 @@ else
                             OPPURE
                         </p>
                         <div>
-                            <button class="button" type="submit">
+                            <button class="danger-button" type="submit">
                                 <span>Clicca qui per eliminare questa donazione</span>
                             </button>
                         </div>
