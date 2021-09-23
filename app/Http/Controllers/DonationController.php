@@ -85,7 +85,7 @@ class DonationController extends Controller
                 della tabella pivot
             */
             $data['assigned'] = Donation::whereHas('receivers', function($query) use ($user) {
-                $query->where('operator_id', $user->id)->where('donation_receiver.status', 'assigned');
+                $query->where('operator_id', $user->id);
             })->orderBy('updated_at', 'desc')->get();
         }
         else {
