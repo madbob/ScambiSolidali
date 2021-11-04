@@ -109,6 +109,19 @@ else
 
             {!! BootForm::text('name', 'Nome', $last ? $last->name : $currentuser->name, ['required' => 'required']) !!}
             {!! BootForm::text('surname', 'Cognome', $last ? $last->surname : $currentuser->surname, ['required' => 'required']) !!}
+
+            @if(App\Config::getConf('explicit_zones') == 'true')
+                <div class="form-group">
+                    <label class="col-sm-2 col-md-3 control-label">Zona</label>
+                    <div class="col-sm-10 col-md-9">
+                        @include('donation.areaselect', [
+                            'selected' => $donation ? $donation->area : null,
+                            'field_name' => 'area',
+                        ])
+                    </div>
+                </div>
+            @endif
+
             {!! BootForm::text('address', 'Indirizzo (via, numero civico, CAP, città)', $last ? $last->address : '', ['required' => 'required']) !!}
             {!! BootForm::text('phone', 'Telefono', $last ? $last->phone : $currentuser->phone, ['required' => 'required']) !!}
             {!! BootForm::email('email', 'E-Mail', $last ? $last->email : $currentuser->email, ['required' => 'required']) !!}

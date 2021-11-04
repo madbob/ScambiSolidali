@@ -74,7 +74,9 @@
 
     <div class="form-group">
         <label for="receiver-area" class="col-sm-4 control-label">Residenza</label>
-        @include('donation.areaselect')
+        <div class="col-sm-8">
+            @include('donation.areaselect', ['selected' => null, 'field_name' => 'receiver-area'])
+        </div>
     </div>
 
     <div class="form-group">

@@ -15,6 +15,10 @@
     <p class="form-control-static">{{ $donation->phone }}</p>
     <p class="form-control-static">{{ $donation->email }}</p>
     <p class="form-control-static">{{ $donation->address }}</p>
+
+    @if(App\Config::getConf('explicit_zones') == 'true')
+        <p class="form-control-static">{{ $donation->human_area }}</p>
+    @endif
 @endif
 
 <p class="form-control-static">{!! nl2br($donation->description) !!}</p>

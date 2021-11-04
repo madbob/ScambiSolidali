@@ -59,6 +59,14 @@ class DonationController extends Controller
         }
 
         $data['filter'] = $filter;
+
+        $areafilter = $request->input('areafilter', null);
+        if (!empty($areafilter)) {
+            $query->where('area', $areafilter);
+        }
+
+        $data['areafilter'] = $areafilter;
+
         $data['donations'] = $query->paginate(60);
 
         if ($request->has('show'))
@@ -149,6 +157,7 @@ class DonationController extends Controller
         $donation->since = $request->input('since', null);
         $donation->name = $request->input('name');
         $donation->surname = $request->input('surname');
+        $donation->area = $request->input('area');
         $donation->address = $request->input('address', '');
         $donation->call_id = $request->input('call_id', -1);
         $donation->phone = $request->input('phone');

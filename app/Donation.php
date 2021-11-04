@@ -41,6 +41,12 @@ class Donation extends Model
         return count($files);
     }
 
+    public function getHumanAreaAttribute()
+    {
+        $areas = self::areas();
+        return $areas[$this->area] ?? 'Zona non definita';
+    }
+
     static public function photosPath()
     {
         return storage_path() . '/app/';
@@ -132,5 +138,58 @@ class Donation extends Model
     {
         $this->status = 'pending';
         $this->save();
+    }
+
+    public static function areas()
+    {
+        $current_instance = Config::getConf('instance_city');
+        $ret = [];
+
+        switch($current_instance) {
+            case 'Torino':
+                for ($i = 1; $i < 9; $i++) {
+                    $key = sprintf('circ%d', $i);
+                    $ret[$key] = sprintf('Torino / Circoscrizione %d', $i);
+                }
+
+                $ret['other'] = 'Altro';
+                break;
+
+            case 'Milano':
+                for ($i = 1; $i < 9; $i++) {
+                    $key = sprintf('municipio%d', $i);
+                    $ret[$key] = sprintf('Milano / Municipio %d', $i);
+                }
+
+                $ret['other'] = 'Altro';
+                break;
+
+            case 'Trentino':
+                $ret["COMUNITA' TERRITORIALE DELLA VAL DI FIEMME"] = "COMUNITA' TERRITORIALE DELLA VAL DI FIEMME";
+                $ret["COMUNITA' DI PRIMIERO"] = "COMUNITA' DI PRIMIERO";
+                $ret["COMUNITA' VALSUGANA E TESINO"] = "COMUNITA' VALSUGANA E TESINO";
+                $ret["COMUNITA' ALTA VALSUGANA E BERSNTOL"] = "COMUNITA' ALTA VALSUGANA E BERSNTOL";
+                $ret["COMUNITA' DELLA VALLE DI CEMBRA"] = "COMUNITA' DELLA VALLE DI CEMBRA";
+                $ret["COMUNITA' DELLA VAL DI NON"] = "COMUNITA' DELLA VAL DI NON";
+                $ret["COMUNITA' DELLA VALLE DI SOLE"] = "COMUNITA' DELLA VALLE DI SOLE";
+                $ret["COMUNITA' DELLE GIUDICARIE"] = "COMUNITA' DELLE GIUDICARIE";
+                $ret["COMUNITA' ALTO GARDA E LEDRO"] = "COMUNITA' ALTO GARDA E LEDRO";
+                $ret["COMUNITA' DELLA VALLAGARINA"] = "COMUNITA' DELLA VALLAGARINA";
+                $ret["COMUN GENERAL DE FASCIA"] = "COMUN GENERAL DE FASCIA";
+                $ret["MAGNIFICA COMUNITA' DEGLI ALTIPIANI CIMBRI"] = "MAGNIFICA COMUNITA' DEGLI ALTIPIANI CIMBRI";
+                $ret["COMUNITA' ROTALIANA - KONIGSBERG"] = "COMUNITA' ROTALIANA - KONIGSBERG";
+                $ret["COMUNITA' DELLA PAGANELLA"] = "COMUNITA' DELLA PAGANELLA";
+                $ret["COMUNITA' DELLA VALLE DEI LAGHI"] = "COMUNITA' DELLA VALLE DEI LAGHI";
+                $ret["TRENTO"] = "TRENTO";
+                $ret["ROVERETO"] = "ROVERETO";
+                $ret['other'] = 'Altro';
+                break;
+
+            default:
+                $ret['other'] = 'Altro';
+                break;
+        }
+
+        return $ret;
     }
 }

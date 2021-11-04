@@ -84,6 +84,13 @@ class TrentinoTableSeeder extends Seeder
             $c->save();
         }
 
+        if (Config::where('name', 'explicit_zones')->first() == null) {
+            $c = new Config();
+            $c->name = 'explicit_zones';
+            $c->value = 'true';
+            $c->save();
+        }
+
         if (Config::where('name', 'other_instance_cities')->first() == null) {
             $c = new Config();
             $c->name = 'other_instance_cities';
