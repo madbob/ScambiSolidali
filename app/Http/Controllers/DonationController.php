@@ -264,11 +264,13 @@ class DonationController extends Controller
 
         $original_call = $donation->call_id;
 
-        if ($donation->user_id != $user->id)
+        if ($donation->user_id != $user->id && $user->role != 'admin') {
             return redirect(url('/'));
+        }
 
-        if ($donation->status != 'pending')
+        if ($donation->status != 'pending') {
             return redirect(url('/'));
+        }
 
         $this->requestInDonation($donation, $request);
         $donation->save();
@@ -280,10 +282,12 @@ class DonationController extends Controller
         for($i = 1, $index = 1; $i <= $tot; $i++) {
             $path = sprintf("%s%s", Donation::photosPath(), $donation->id . '_' . $i);
 
-            if (array_search($i, $keep) === false)
+            if (array_search($i, $keep) === false) {
                 unlink($path);
-            else
+            }
+            else {
                 $kept_photos[$index++] = $path;
+            }
         }
 
         foreach($kept_photos as $index => $path) {
@@ -300,7 +304,7 @@ class DonationController extends Controller
             $call = Call::find($donation->call_id);
             if ($call) {
                 try {
-                    Mail::to($call->user->email)->send(new CallResponded($donation, $call, $user, ''));
+                    Mail::to($call->user->email)->send(new CallResponded($donation, $call, $donation->user, ''));
                 }
                 catch(\Exception $e) {
                     Log::error('Impossibile inviare notifica di appello risposto per donazione ' . $donation->id . ': ' . $e->getMessage());
@@ -308,7 +312,12 @@ class DonationController extends Controller
             }
         }
 
-        return redirect(url('donazione/mie'));
+        if ($donation->user_id != $user->id && $user->role == 'admin') {
+            return redirect(url('celo/archivio'));
+        }
+        else {
+            return redirect(url('donazione/mie'));
+        }
     }
 
     public function show($id)
@@ -609,13 +618,16 @@ class DonationController extends Controller
         $user = Auth::user();
 
         $donation = Donation::find($id);
-        if ($donation->user_id != $user->id)
+        if ($donation->user_id != $user->id && $user->role != 'admin') {
             return redirect(url('/'));
+        }
 
-        if ($donation->type == 'service')
+        if ($donation->type == 'service') {
             return view('donation.service', ['donation' => $donation]);
-        else
+        }
+        else {
             return view('donation.create', ['donation' => $donation]);
+        }
     }
 
     public function getReport()

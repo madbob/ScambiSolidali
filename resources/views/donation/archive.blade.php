@@ -65,7 +65,12 @@
                                     <td>{{ $donation->user->printableName() }}</td>
                                     <td>{{ printableDate($donation->created_at) }}</td>
                                     <td>{{ $donation->printableStatus() }}</td>
-                                    <td><button class="btn btn-default show-details" data-endpoint="celo" data-item-id="{{ $donation->id }}"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button></td>
+                                    <td>
+                                        <button class="btn btn-default show-details" data-endpoint="celo" data-item-id="{{ $donation->id }}"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                        @if($donation->status == 'pending')
+                                            <a class="btn btn-default" href="{{ url('donazione/mio/' . $donation->id) }}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                                        @endif
+                                    </td>
                                 </tr>
             				@endforeach
                         </tbody>
