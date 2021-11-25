@@ -117,10 +117,10 @@ class TrentinoTableSeeder extends Seeder
             $c->name = 'credits';
             $c->value = sprintf('<p>Un progetto di<br/><img src="%s"><img src="%s"><img src="%s"><img src="%s"></p>
             <p>In partnership con<br/><img style="max-width:220px" src="%s"><img src="%s"></p>
-            <p>Con il sostegno di<br/><img src="%s"><img src="%s"><img src="%s"><img src="%s"></p>',
+            <p>Con il sostegno di<br/><img src="%s"><img src="%s"><img src="%s"><img src="%s"><img src="%s"><img src="%s"></p>',
             url('images/trentinosolidale.png'), url('images/caritas_trento.png'), url('images/cs4.png'), url('images/rotteinverse.png'),
             url('images/celocelo_trentino.png'), url('images/agenziasansalvario.jpg'),
-            url('images/svolta.png'), url('images/fondazione_volontariato_sociale.png'), url('images/csv_trento.png'), url('images/caritro.png'));
+            url('images/ministero_lavoro.png'), url('images/provincia_trento.png'), url('images/svolta.png'), url('images/fondazione_volontariato_sociale.png'), url('images/csv_trento.png'), url('images/caritro.png'));
             $c->save();
         }
 
@@ -177,7 +177,8 @@ class TrentinoTableSeeder extends Seeder
             <div class="col-md-12 credits">
                 <p class="intro">Progetto promosso da</p><p>TRENTINO SOLIDALE ODV, CS 4 ONLUS, CARITAS DIOCESANA, ROTTE INVERSE APS, GRUPPO DI CITTADINI ATTIVI</p>
                 <p class="intro">In partnership con</p><p><img style="height:50px" src="/images/celocelo_trentino.png">&nbsp;&nbsp;<img style="height:90px" src="/images/agenziasansalvario.jpg"></p>
-                <p class="intro">Il progetto è sostenuto da</p><p>Ufficio sVOLta (spazio di progettazione creato da Fondazione Caritro, Fondazione Trentina per il Volontariato Sociale e Non Profit Network - CSV Trentino) nell’ambito del bando Intrecci Possibili 2020 - Volontariato che riparte.</p>
+                <p class="intro">Il progetto è stato sostenuto da</p><p>Ufficio sVOLta (spazio di progettazione creato da Fondazione Caritro, Fondazione Trentina per il Volontariato Sociale e Non Profit Network - CSV Trentino) nell’ambito del bando Intrecci Possibili 2020 - Volontariato che riparte.</p>
+                <p class="intro">e da</p><p>Ministero del Lavoro e delle Politiche Sociali</p>
             </div>';
             $c->save();
         }
