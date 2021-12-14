@@ -158,7 +158,7 @@
         <br/>
     </div>
 
-    <script src="{{ url('js/jquery-3.1.0.min.js') }}"></script>
+    <script src="{{ url('js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ url('js/bootstrap.min.js') }}"></script>
     <script src="{{ url('js/chosen.jquery.min.js') }}"></script>
     <script src="{{ url('js/bootstrap-datepicker.min.js') }}"></script>

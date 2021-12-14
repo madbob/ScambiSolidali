@@ -9,6 +9,7 @@ use Auth;
 use Session;
 use Mail;
 use Log;
+use Hash;
 
 use App\Mail\NewUserCreated;
 use App\Mail\RoleUpdated;
@@ -195,6 +196,37 @@ class UserController extends Controller
 
         Session::flash('message', 'Utente eliminato');
         return redirect(url('giocatori'));
+    }
+
+    public function destroyMyself()
+    {
+        $user = Auth::user();
+
+        $assigned = $user->donations()->where('status', 'assigned')->get();
+
+        if ($assigned->count() == 0) {
+            $user->donations()->delete();
+            $user->delete();
+        }
+        else {
+            foreach($assigned as $a) {
+                $a->name = 'Account Rimosso';
+                $a->surname = 'Account Rimosso';
+                $a->address = '';
+                $a->phone = '';
+                $a->email = '';
+                $a->floor = '';
+                $a->save();
+            }
+
+            $user->donations()->where('status', '!=', 'assigned')->delete();
+            $user->email = Str::random(10) . '@deleteduser.it';
+            $user->password = Hash::make(Str::random(20));
+            $user->save();
+        }
+
+        Auth::logout();
+        return redirect()->route('home');
     }
 
     public function massiveMail(Request $request)

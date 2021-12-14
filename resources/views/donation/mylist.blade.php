@@ -135,4 +135,48 @@
             </div>
         @endif
     </div>
+
+    <div class="primary-5">
+        <div class="row">
+            <div class="pagetitle">
+                <span>IL MIO ACCOUNT</span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <a href="#" class="button" data-toggle="modal" data-target="#deleteAccount"><span>Elimina il mio Account</span></a>
+
+                <div class="modal fade" id="deleteAccount" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">Elimina Account</h4>
+                            </div>
+
+                            <form method="POST" action="{{ route('user.delete') }}">
+                                @csrf
+                                @method('DELETE')
+
+                                <div class="modal-body">
+                                    <p>
+                                        Eliminando il tuo account elimini anche tutte le donazioni ancora in sospeso.
+                                    </p>
+                                    <p>
+                                        Le tue donazioni già assegnate resteranno comunque accessibili agli operatori (anche se non ci saranno più i tuoi dati personali).
+                                    </p>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Annulla</button>
+                                    <button type="submit" class="btn btn-danger">Elimina Account</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
