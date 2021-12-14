@@ -12,6 +12,7 @@ use Session;
 use App\User;
 use App\Institute;
 use App\Mail\OperatorRequired;
+use App\Rules\Captcha;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -37,6 +38,7 @@ class RegisterController extends Controller
             'phone' => 'required|max:255',
             'password' => 'required|min:8|confirmed',
             'privacy' => 'required',
+            'check' => ['required', new Captcha()],
         ]);
     }
 

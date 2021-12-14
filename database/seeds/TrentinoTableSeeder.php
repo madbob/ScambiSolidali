@@ -120,7 +120,7 @@ class TrentinoTableSeeder extends Seeder
             <p>Con il sostegno di<br/><img src="%s"><img src="%s"><img src="%s"><img src="%s"><img src="%s"><img src="%s"></p>',
             url('images/trentinosolidale.png'), url('images/caritas_trento.png'), url('images/cs4.png'), url('images/rotteinverse.png'),
             url('images/celocelo_trentino.png'), url('images/agenziasansalvario.jpg'),
-            url('images/ministero_lavoro.png'), url('images/provincia_trento.png'), url('images/svolta.png'), url('images/fondazione_volontariato_sociale.png'), url('images/csv_trento.png'), url('images/caritro.png'));
+            url('images/ministero_lavoro.jpg'), url('images/provincia_trento.png'), url('images/svolta.png'), url('images/fondazione_volontariato_sociale.png'), url('images/csv_trento.png'), url('images/caritro.png'));
             $c->save();
         }
 
