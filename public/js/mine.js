@@ -356,5 +356,9 @@ $(document).ready(function() {
         button.siblings('.btn').removeClass('btn-success').addClass('btn-light');
     });
 
+    $('body').on('change', 'input[name=shipping]', function() {
+        $(this).closest('form').find('.shipping_details').prop('hidden', ($(this).prop('checked') == false));
+    });
+
     commonInit();
 });

@@ -11,5 +11,10 @@
     Ascensore: {{ $donation->elevator ? 'si' : 'no' }}
 </p>
 <p>
+    Destinazione:<br>
+    {{ $receiver->shipping_name }}<br>
+    {{ $receiver->shipping_address }}
+</p>
+<p>
     Contatta il richiedente ({{ $user->email }} - {{ $user->phone }}) per ulteriori informazioni.
 </p>

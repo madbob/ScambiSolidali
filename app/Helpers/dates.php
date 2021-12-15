@@ -29,10 +29,10 @@ function decodeDate($date)
 
 function printableDate($date)
 {
-    return ucwords(Date::parse($date)->format('l d F Y'));
+    return ucwords((new DateTime($date))->format('l d F Y'));
 }
 
 function canonicalDate($date)
 {
-    return Date::parse($date)->format('Y-m-d');
+    return (new DateTime($date))->format('Y-m-d');
 }

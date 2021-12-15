@@ -478,49 +478,35 @@ class DonationController extends Controller
             $receiver->type = $receiver_type;
 
             if ($user->role == 'admin' || $user->role == 'operator') {
+                $receiver->shipping_name = $request->input('shipping_name') ?: '';
+                $receiver->shipping_address = $request->input('shipping_address') ?: '';
+                $receiver->area = $this->readReceiverArea($request);
+
                 if ($receiver_type == 'individual') {
-                    $receiver->age = $request->input('receiver-age', 0);
-                    if (empty($receiver->age))
-                        $receiver->age = null;
+                    $receiver->age = $request->input('receiver-age') ?: null;
                     $receiver->gender = $request->input('receiver-gender');
                     $receiver->status = $request->input('receiver-status');
                     $receiver->children = $request->input('receiver-children');
                     $receiver->country = $request->input('receiver-country');
-                    $receiver->area = $this->readReceiverArea($request);
-
-                    $receiver->past = $request->input('receiver-past', 0);
-                    if (empty($receiver->past))
-                        $receiver->past = 0;
-
+                    $receiver->past = $request->input('receiver-past') ?: 0;
                     $done = true;
                 }
                 else if ($receiver_type == 'organization') {
                     $receiver->organization = $request->input('receiver-organization');
                     $receiver->receivers = $request->input('receiver-receivers');
-                    $receiver->area = $this->readReceiverArea($request);
-
-                    $receiver->past = $request->input('receiver-past', 0);
-                    if (empty($receiver->past))
-                        $receiver->past = 0;
-
+                    $receiver->past = $request->input('receiver-past') ?: 0;
                     $done = true;
                 }
             }
             else if ($user->role == 'student') {
                 if ($receiver_type == 'self') {
-                    $receiver->age = $request->input('receiver-age', 0);
-                    if (empty($receiver->age))
-                        $receiver->age = null;
+                    $receiver->age = $request->input('receiver-age') ?: null;
                     $receiver->gender = $request->input('receiver-gender');
                     $receiver->status = $request->input('receiver-status');
                     $receiver->children = $request->input('receiver-children');
                     $receiver->country = $request->input('receiver-country');
                     $receiver->area = $this->readReceiverArea($request);
-
-                    $receiver->past = $request->input('receiver-past', 0);
-                    if (empty($receiver->past))
-                        $receiver->past = 0;
-
+                    $receiver->past = $request->input('receiver-past') ?: 0;
                     $done = true;
                 }
             }
@@ -563,7 +549,7 @@ class DonationController extends Controller
                     $carriers = User::where('role', 'admin')->get();
                     foreach($carriers as $carrier) {
                         try {
-                            Mail::to($carrier->email)->send(new DonationTransport($donation, $user));
+                            Mail::to($carrier->email)->send(new DonationTransport($donation, $receiver, $user));
                         }
                         catch(\Exception $e) {
                             Log::error('Impossibile inviare notifica richiesta trasporto per donazione ' . $donation->id . ': ' . $e->getMessage());

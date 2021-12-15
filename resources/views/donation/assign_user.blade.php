@@ -100,20 +100,7 @@
         </div>
     </div>
 
-    @if ($donation->type == 'object')
-        <div class="form-group">
-            <label for="shipping" class="col-sm-4 control-label">Richiedi Trasporto</label>
-            <div class="col-sm-8">
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" name="shipping" value="1">
-                    </label>
-                </div>
-
-                <span class="help-block">Selezionando questa opzione, l'amministrazione di {{ env('APP_NAME') }} riceverà una mail di richiesta e sarai ricontattato per maggiori accordi.</span>
-            </div>
-        </div>
-    @endif
+    @include('donation.shipping_options', ['donation' => $donation])
 
     <div class="form-group">
         <button type="submit" class="btn btn-default">Salva</button>
