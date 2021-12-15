@@ -28,6 +28,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $user = Auth::user();
+        $counters = [];
 
         $institutes = Institute::orderBy('name', 'asc')->get();
         $companies = Company::orderBy('name', 'asc')->get();

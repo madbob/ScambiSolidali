@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use DB;
 use Auth;
 use Session;
+use Log;
 
 use App\Call;
 use App\Category;
