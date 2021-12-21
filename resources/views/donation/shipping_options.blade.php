@@ -17,6 +17,7 @@
         <div class="col-sm-8">
             <input type="text" name="shipping_name" class="form-control" placeholder="Nome destinatario"><br>
             <input type="text" name="shipping_address" class="form-control" placeholder="Indirizzo di Consegna (via, numero civico, città...)">
+            <input type="text" name="shipping_phone" class="form-control" placeholder="Telefono destinatario"><br>
         </div>
     </div>
 @endif

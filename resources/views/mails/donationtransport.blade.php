@@ -13,7 +13,8 @@
 <p>
     Destinazione:<br>
     {{ $receiver->shipping_name }}<br>
-    {{ $receiver->shipping_address }}
+    {{ $receiver->shipping_address }}<br>
+    {{ $receiver->shipping_phone }}
 </p>
 <p>
     Contatta il richiedente ({{ $user->email }} - {{ $user->phone }}) per ulteriori informazioni.

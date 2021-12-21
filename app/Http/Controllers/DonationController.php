@@ -480,6 +480,7 @@ class DonationController extends Controller
             if ($user->role == 'admin' || $user->role == 'operator') {
                 $receiver->shipping_name = $request->input('shipping_name') ?: '';
                 $receiver->shipping_address = $request->input('shipping_address') ?: '';
+                $receiver->shipping_phone = $request->input('shipping_phone') ?: '';
                 $receiver->area = $this->readReceiverArea($request);
 
                 if ($receiver_type == 'individual') {

@@ -11,6 +11,7 @@ class ShippingOptions extends Migration
         Schema::table('receivers', function (Blueprint $table) {
             $table->string('shipping_name')->default('');
             $table->string('shipping_address')->default('');
+            $table->string('shipping_phone')->default('');
         });
     }
 
@@ -19,6 +20,7 @@ class ShippingOptions extends Migration
         Schema::table('receivers', function (Blueprint $table) {
             $table->dropColumn(['shipping_name']);
             $table->dropColumn(['shipping_address']);
+            $table->dropColumn(['shipping_phone']);
         });
     }
 }
