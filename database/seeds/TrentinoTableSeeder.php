@@ -127,7 +127,7 @@ class TrentinoTableSeeder extends Seeder
         if (Config::where('name', 'video_link')->first() == null) {
             $c = new Config();
             $c->name = 'video_link';
-            $c->value = 'https://www.youtube-nocookie.com/embed/rAn71sY2Il0?rel=0&amp;controls=0&amp;showinfo=0';
+            $c->value = 'https://www.youtube-nocookie.com/embed/39SihdTfEQc?rel=0&amp;controls=0&amp;showinfo=0';
             $c->save();
         }
 
