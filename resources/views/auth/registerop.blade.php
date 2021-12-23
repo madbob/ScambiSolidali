@@ -12,6 +12,7 @@
             {!! BootForm::password('password', 'Password', ['required' => 'required']) !!}
             {!! BootForm::password('password_confirmation', 'Conferma Password', ['required' => 'required']) !!}
             {!! BootForm::text('code', 'Codice', '', ['required' => 'required', 'help_text' => 'Qui devi immettere il codice identificativo fornito dagli amministratori della piattaforma']) !!}
+            {!! BootForm::text('check', genCaptcha(), '', ['required' => 'required']) !!}
 
             <div class="form-group">
                 <label for="" class="control-label"></label>

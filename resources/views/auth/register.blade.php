@@ -2,16 +2,6 @@
 
 @section('content')
 
-<?php
-
-$captcha_1 = rand(1, 10);
-$captcha_2 = rand(1, 10);
-$captcha_final = $captcha_1 + $captcha_2;
-\Session::put('captcha_response', $captcha_final);
-$captcha_string = sprintf('%s + %s', $captcha_1, $captcha_2);
-
-?>
-
 <div class="row">
     <div class="register-form col-md-6 col-md-offset-3 primary-1">
         {!! BootForm::open(['left_column_class' => 'col-md-4', 'left_column_offset_class' => 'col-md-offset-4', 'right_column_class' => 'col-md-8', 'action' => 'Auth\RegisterController@register']) !!}
@@ -27,7 +17,7 @@ $captcha_string = sprintf('%s + %s', $captcha_1, $captcha_2);
             {!! BootForm::password('password', 'Password', ['required' => 'required']) !!}
             {!! BootForm::password('password_confirmation', 'Conferma Password', ['required' => 'required']) !!}
 
-            {!! BootForm::text('check', $captcha_string, '', ['required' => 'required']) !!}
+            {!! BootForm::text('check', genCaptcha(), '', ['required' => 'required']) !!}
 
             @if(env('HAS_PUBLIC_OP', false))
                 <div class="form-group">

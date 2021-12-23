@@ -42,3 +42,12 @@ function t($string)
 
     return $string;
 }
+
+function genCaptcha()
+{
+    $captcha_1 = rand(1, 10);
+    $captcha_2 = rand(1, 10);
+    $captcha_final = $captcha_1 + $captcha_2;
+    \Session::put('captcha_response', $captcha_final);
+    return sprintf('%s + %s', $captcha_1, $captcha_2);
+}
