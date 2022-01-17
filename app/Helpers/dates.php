@@ -29,7 +29,9 @@ function decodeDate($date)
 
 function printableDate($date)
 {
-    return ucwords((new DateTime($date))->format('l d F Y'));
+    $fmt = new \IntlDateFormatter('it_IT', NULL, NULL);
+    $fmt->setPattern('EEEE dd MMMM yyyy');
+    return ucwords($fmt->format(new DateTime($date)));
 }
 
 function canonicalDate($date)
