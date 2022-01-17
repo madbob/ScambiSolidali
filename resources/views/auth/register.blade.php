@@ -17,7 +17,7 @@
             {!! BootForm::password('password', 'Password', ['required' => 'required']) !!}
             {!! BootForm::password('password_confirmation', 'Conferma Password', ['required' => 'required']) !!}
 
-            {!! BootForm::text('check', genCaptcha(), '', ['required' => 'required']) !!}
+            {!! BootForm::text('check', 'Quanto fa ' . genCaptcha(), '', ['required' => 'required']) !!}
 
             @if(env('HAS_PUBLIC_OP', false))
                 <div class="form-group">
