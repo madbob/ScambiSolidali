@@ -33,7 +33,7 @@ class MediaController extends Controller
         $media->context = $request->input('context', 'media');
 
         if ($request->has('date')) {
-            $media->date = decodeDate($request->input('date'));
+            $media->date = $request->input('date');
         }
         else {
             $media->date = date('Y-m-d');

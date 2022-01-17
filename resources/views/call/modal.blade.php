@@ -27,7 +27,7 @@ $has_donations = ($call && $call->donations()->count() != 0);
                             {!! BootForm::textarea('who', 'Chi siamo?', null, ['required' => 'required']) !!}
                             {!! BootForm::textarea('what', 'Cosa vogliamo?', null, ['required' => 'required']) !!}
                             {!! BootForm::textarea('whom', 'Per chi?', null, ['required' => 'required']) !!}
-                            {!! BootForm::text('when', 'Per quando?', $call ? printableDate($call->when) : '', ['class' => 'date', 'required' => 'required']) !!}
+                            {!! BootForm::date('when', 'Per quando?', $call ? $call->when : '', ['required' => 'required']) !!}
 
                             @include('category.selector', [
                                 'orientation' => 'horizontal',

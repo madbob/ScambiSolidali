@@ -25,7 +25,7 @@ if (!isset($context)) {
                         {!! BootForm::vertical(['model' => $media, 'store' => 'parlano-di-noi.store', 'update' => 'parlano-di-noi.update', 'enctype' => 'multipart/form-data']) !!}
                             @if($context == 'media')
                                 {!! BootForm::text('channel', 'Testata') !!}
-                                {!! BootForm::text('date', 'Data', $media ? printableDate($media->date) : '', ['class' => 'date']) !!}
+                                {!! BootForm::date('date', 'Data', $media ? $media->date : '') !!}
                                 {!! BootForm::text('link', 'Link') !!}
                             @else
                                 {!! BootForm::text('text', 'Testo') !!}
