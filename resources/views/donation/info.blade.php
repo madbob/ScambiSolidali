@@ -44,7 +44,9 @@
         <p class="form-control-static">Ascensore: {{ $donation->elevator ? 'Si' : 'No' }}</p>
 
         @if(!empty($donation->size))
-            <p class="form-control-static">Dimensioni: {{ $donation->size }}</p>
+            <p class="form-control-static">Altezza: {{ $donation->size_height }}</p>
+            <p class="form-control-static">Larghezza: {{ $donation->size_width }}</p>
+            <p class="form-control-static">Profondità: {{ $donation->size_deep }}</p>
         @endif
     @endif
 @endif

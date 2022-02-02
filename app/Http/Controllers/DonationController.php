@@ -153,7 +153,12 @@ class DonationController extends Controller
         $donation->title = strip_tags($request->input('title'));
         $donation->category_id = $request->input('category_id', -1);
         $donation->description = strip_tags($request->input('description'));
-        $donation->size = $request->input('size', '');
+
+        $height = $request->input('size_height', '');
+        $width = $request->input('size_width', '');
+        $deep = $request->input('size_deep', '');
+        $donation->size = json_encode(['x' => $height, 'y' => $width, 'z' => $deep]);
+
         $donation->since = $request->input('since', null);
         $donation->name = $request->input('name');
         $donation->surname = $request->input('surname');

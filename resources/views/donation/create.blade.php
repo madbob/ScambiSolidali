@@ -100,7 +100,9 @@ else
             ])
 
             {!! BootForm::textarea('description', 'Descrizione', null, ['required' => 'required']) !!}
-            {!! BootForm::text('size', 'Dimensioni', null) !!}
+            {!! BootForm::text('size_height', 'Altezza', null) !!}
+            {!! BootForm::text('size_width', 'Larghezza', null) !!}
+            {!! BootForm::text('size_deep', 'Profondità', null) !!}
             {!! BootForm::date('since', 'Disponibile da', date('Y-m-d')) !!}
 
             <br><br><br>

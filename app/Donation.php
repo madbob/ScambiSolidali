@@ -47,6 +47,39 @@ class Donation extends Model
         return $areas[$this->area] ?? 'Zona non definita';
     }
 
+    public function getSizeHeightAttribute()
+    {
+        $size = json_decode($this->size);
+        if (is_null($size)) {
+            return $this->size;
+        }
+        else {
+            return $size->x;
+        }
+    }
+
+    public function getSizeWidthAttribute()
+    {
+        $size = json_decode($this->size);
+        if (is_null($size)) {
+            return '';
+        }
+        else {
+            return $size->y;
+        }
+    }
+
+    public function getSizeDeepAttribute()
+    {
+        $size = json_decode($this->size);
+        if (is_null($size)) {
+            return '';
+        }
+        else {
+            return $size->z;
+        }
+    }
+
     static public function photosPath()
     {
         return storage_path() . '/app/';
