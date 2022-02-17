@@ -32,6 +32,8 @@
                                 <input type="hidden" name="code" value="{{ $code }}">
                             @endif
 
+                            {!! BootForm::text('transport_mail', 'Indirizzo EMail per Trasporto', null, ['help_text' => "Se specificato, quando un operatore di questo Ente chiede il trasporto di una donazione l'email di notifica viene inviata qui anziché agli amministratori"]) !!}
+
                             <br/>
 
                             <div class="form-group">

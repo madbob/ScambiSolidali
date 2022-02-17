@@ -21,6 +21,7 @@ class InstituteController extends Controller
         $institute->name = $request->input('name');
         $institute->food = $request->has('food');
         $institute->website = normalizeUrl($request->input('website'));
+        $institute->transport_mail = trim($request->input('transport_mail'));
         $institute->address = $request->input('address');
         $coordinates = explode(',', $request->input('coordinates'));
         $institute->lat = $coordinates[0];

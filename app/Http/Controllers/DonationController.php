@@ -554,10 +554,26 @@ class DonationController extends Controller
                 Session::flash('message', 'Donazione assegnata. È stata inviata una mail al donatore di conferma, contattalo per concordare il ritiro del bene. Grazie!');
 
                 if ($request->has('shipping')) {
-                    $carriers = User::where('role', 'admin')->get();
-                    foreach($carriers as $carrier) {
+                    $transport_notification_mails = [];
+
+                    foreach($user->institutes as $institute) {
+                        if (!empty($institute->transport_mail)) {
+                            $transport_notification_mails[] = $institute->transport_mail;
+                        }
+                    }
+
+                    if (empty($institute->transport_mail)) {
+                        $carriers = User::where('role', 'admin')->get();
+                        foreach($carriers as $carrier) {
+                            if (!empty($carrier->email)) {
+                                $transport_notification_mails[] = $carrier->email;
+                            }
+                        }
+                    }
+
+                    foreach($transport_notification_mails as $mail) {
                         try {
-                            Mail::to($carrier->email)->send(new DonationTransport($donation, $receiver, $user));
+                            Mail::to($mail)->send(new DonationTransport($donation, $receiver, $user));
                         }
                         catch(\Exception $e) {
                             Log::error('Impossibile inviare notifica richiesta trasporto per donazione ' . $donation->id . ': ' . $e->getMessage());
