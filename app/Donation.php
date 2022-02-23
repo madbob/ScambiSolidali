@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 use Auth;
+use Storage;
+
 use App\User;
 
 class Donation extends Model
@@ -29,6 +31,11 @@ class Donation extends Model
         return $this->belongsTo('App\Call');
     }
 
+    public function baseImagePath()
+    {
+        return currentInstance() . '/' . $this->id . '_';
+    }
+
     /*
         Il numero di immagini relative alla donazioni.
         Possono essere accedute all'URL /donazione/image/$id_donazione/$indice
@@ -36,9 +43,25 @@ class Donation extends Model
     */
     public function imagesNum()
     {
-        $path = Donation::photosPath();
-        $files = glob($path . $this->id . '_*');
-        return count($files);
+        $index = 1;
+        $base_path = $this->baseImagePath();
+
+        while(Storage::disk('images')->exists($base_path . $index)) {
+            $index++;
+        }
+
+        return $index - 1;
+    }
+
+    public function imageUrl($index)
+    {
+        if ($this->type == 'service') {
+            return url('images/tempo.svg');
+        }
+        else {
+            $base_path = $this->baseImagePath();
+            return Storage::disk('images')->url($base_path . $index);
+        }
     }
 
     public function getHumanAreaAttribute()
@@ -80,11 +103,6 @@ class Donation extends Model
         }
     }
 
-    static public function photosPath()
-    {
-        return storage_path() . '/app/';
-    }
-
     public function userCanView($user)
     {
         if (!is_null($user)) {
@@ -104,14 +122,6 @@ class Donation extends Model
         }
 
         return false;
-    }
-
-    public function imageUrl($index)
-    {
-        if ($this->type == 'service')
-            return url('images/tempo.svg');
-        else
-            return url('donazione/image/' . $this->id . '/' . $index . '?d=' . $this->updated_at);
     }
 
 	public function printableAddress()

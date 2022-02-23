@@ -29,7 +29,7 @@ class Call extends Model
                 return null;
 
             $donation = $donations->first();
-            return $donation->imageUrl(0);
+            return $donation->imageUrl(1);
         }
         else {
             if ($this->category && file_exists(public_path($this->category->icon_path))) {

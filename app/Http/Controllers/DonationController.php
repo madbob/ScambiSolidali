@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use Auth;
 use DB;
 use Session;
+use Storage;
 use Mail;
 use Log;
+
 use diversen\imageRotate;
 
 use App\Mail\CallResponded;
@@ -27,7 +30,7 @@ class DonationController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['index', 'getImage']);
+        $this->middleware('auth')->except(['index']);
     }
 
     public function index(Request $request)
@@ -177,10 +180,12 @@ class DonationController extends Controller
     {
         ini_set('gd.jpeg_ignore_warning', 1);
         $rotate = new imageRotate();
+        $basefolder = currentInstance();
 
         foreach ($request->file('photo') as $op) {
-            $op->move(Donation::photosPath(), $donation->id . '_' . $index);
-            $path = sprintf('%s/%d_%d', Donation::photosPath(), $donation->id, $index);
+            $basename = $donation->id . '_' . $index;
+            $op->move(sys_get_temp_dir(), $basename);
+            $path = sprintf('%s/%d_%d', sys_get_temp_dir(), $donation->id, $index);
 
             try {
                 $rotate->fixOrientation($path);
@@ -188,6 +193,9 @@ class DonationController extends Controller
             catch(\Exception $e) {
                 Log::error('Impossibile ruotare immagine in ' . $path . ': ' . $e->getMessage());
             }
+
+            Storage::disk('images')->put($basefolder . '/' . $basename, file_get_contents($path), 'public');
+            @unlink($path);
 
             $index++;
         }
@@ -285,10 +293,10 @@ class DonationController extends Controller
         $tot = $donation->imagesNum();
 
         for($i = 1, $index = 1; $i <= $tot; $i++) {
-            $path = sprintf("%s%s", Donation::photosPath(), $donation->id . '_' . $i);
+            $path = $donation->baseImagePath() . $i;
 
             if (array_search($i, $keep) === false) {
-                unlink($path);
+                Storage::disk('images')->delete($path);
             }
             else {
                 $kept_photos[$index++] = $path;
@@ -296,8 +304,8 @@ class DonationController extends Controller
         }
 
         foreach($kept_photos as $index => $path) {
-            $new_path = sprintf("%s%s", Donation::photosPath(), $donation->id . '_' . $index);
-            rename($path, $new_path);
+            $new_path = $donation->baseImagePath() . $index;
+            Storage::disk('images')->move($path, $new_path);
         }
 
         if (!empty($request->file('photo', null))) {
@@ -421,13 +429,6 @@ class DonationController extends Controller
         $donation = Donation::find($id);
         $donation->renew();
         return redirect(url('celo/archivio'));
-    }
-
-    public function getImage(Request $request, $id, $index)
-    {
-        $path = Donation::photosPath() . '/' . $id . '_' . $index;
-        if (file_exists($path))
-            return response()->download($path);
     }
 
     public function getArchive(Request $request)

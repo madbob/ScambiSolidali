@@ -62,6 +62,15 @@ return [
             'bucket' => 'your-bucket',
         ],
 
+        'images' => [
+            'driver' => 's3',
+            'endpoint' => env('STORAGE_ENDPOINT'),
+            'key' => env('STORAGE_KEY'),
+            'secret' => env('STORAGE_SECRET'),
+            'region' => env('STORAGE_REGION'),
+            'bucket' => env('STORAGE_BUCKET'),
+        ],
+
     ],
 
 ];

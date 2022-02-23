@@ -9,7 +9,8 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-5">
-                        @for($i = 1; $i <= $donation->imagesNum(); $i++)
+                        <?php $images_number = $donation->imagesNum() ?>
+                        @for($i = 1; $i <= $images_number; $i++)
                             <img src="{{ $donation->imageUrl($i) }}" class="img-responsive">
                         @endfor
                     </div>

@@ -34,7 +34,8 @@ if (isset($donation) == false)
         <label for="photo" class="control-label col-sm-2 col-md-3">Foto</label>
         <div class="col-sm-10 col-md-9 many-rows">
             @if($donation)
-                @for($i = 1; $i <= $donation->imagesNum(); $i++)
+                <?php $images_number = $donation->imagesNum() ?>
+                @for($i = 1; $i <= $images_number; $i++)
                     <div class="single-row static-row">
                         <div class="col-sm-8">
                             <input name="keep_photo[]" type="hidden" value="{{ $i }}">

@@ -17,7 +17,7 @@ git clone https://github.com/madbob/ScambiSolidali.git
 cd ScambiSolidali
 composer install
 cp .env.example .env
-(editare .env con i propri parametri di accesso al database)
+(editare .env con i propri parametri di accesso al database e allo storage)
 php artisan migrate
 php artisan db:seed
 php artisan key:generate
