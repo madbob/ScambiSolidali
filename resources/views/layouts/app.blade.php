@@ -137,7 +137,7 @@
                             <li><a href="{{ url('giocatori') }}">{{ t('Giocatori') }}</a></li>
                             <li><a href="{{ url('numeri') }}">{{ t('Vincitori') }}</a></li>
                             <li><a href="{{ url('parlano-di-noi') }}">Parlano di Noi</a></li>
-                            <li><a href="{{ url('contatti') }}">Contatti</a></li>
+                            <li><a href="{{ url('contatti') }}">{{ t('Contatti') }}</a></li>
                             <li>Seguici su
                                 @if(!empty($social_link = App\Config::getConf('facebook_link')))
                                     <a href="{{ $social_link }}"><img src="{{ url('images/facebook_icon.png') }}" alt="Facebook"></a>
@@ -186,7 +186,7 @@
                         <li><a href="{{ url('giocatori') }}">{{ t('Giocatori') }}</a></li>
                         <li><a href="{{ url('numeri') }}">{{ t('Vincitori') }}</a></li>
                         <li><a href="{{ url('parlano-di-noi') }}">Parlano di Noi</a></li>
-                        <li><a href="{{ url('contatti') }}">Contatti</a></li>
+                        <li><a href="{{ url('contatti') }}">{{ t('Contatti') }}</a></li>
                     </ul>
                 </div>
             </div>
@@ -212,7 +212,7 @@
             <div class="row">
                 <div class="col-md-12 primary-2">
                     <br>
-                    <a href="{{ url('privacy') }}">Privacy Policy</a> | <a href="{{ url('contatti') }}">Contatti</a>
+                    <a href="{{ url('privacy') }}">Condizioni generali e Privacy Policy</a> | <a href="{{ url('contatti') }}">Contatti</a>
                 </div>
             </div>
         </div>

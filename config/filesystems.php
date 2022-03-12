@@ -62,6 +62,13 @@ return [
             'bucket' => 'your-bucket',
         ],
 
+        /*
+        'images' => [
+            'driver' => 'local',
+            'root' => storage_path('app'),
+        ],
+        */
+
         'images' => [
             'driver' => 's3',
             'endpoint' => env('STORAGE_ENDPOINT'),
@@ -70,7 +77,6 @@ return [
             'region' => env('STORAGE_REGION'),
             'bucket' => env('STORAGE_BUCKET'),
         ],
-
     ],
 
 ];

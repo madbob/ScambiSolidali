@@ -1,8 +1,10 @@
 <?php
 
-$categories = App\Category::where('parent_id', 0)->orderBy('name', 'asc');
-if ($direct_response == false)
+$categories = App\Category::where('parent_id', 0)->orderBy('sorting', 'asc')->orderBy('name', 'asc');
+if ($direct_response == false) {
     $categories->where('direct_response', false);
+}
+
 $categories = $categories->get();
 
 ?>

@@ -81,7 +81,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="pagetitle">
-                        <span>STORIE DI SUCCESSO</span>
+                        <span>{{ t('STORIE DI SUCCESSO') }}</span>
                     </div>
                 </div>
             </div>

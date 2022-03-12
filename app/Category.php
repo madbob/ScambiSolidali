@@ -8,7 +8,7 @@ class Category extends Model
 {
     public function children()
     {
-        return $this->hasMany('App\Category', 'parent_id')->orderBy('name', 'asc');
+        return $this->hasMany('App\Category', 'parent_id')->orderBy('sorting', 'asc')->orderBy('name', 'asc');
     }
 
     public function parent()

@@ -3,12 +3,14 @@
 @section('title', 'Contatti')
 
 @section('content')
-    <div class="contacts primary-2">
+    <div class="container contacts primary-2">
         <div class="row">
             <div class="pagetitle">
-                <span>PER INFORMAZIONI</span>
+                <span>{{ t('PER INFORMAZIONI') }}</span>
             </div>
         </div>
+
+        {!! App\Config::getConf('contacts_page') !!}
 
         <div class="row">
             <div class="col-md-6 right-p">
