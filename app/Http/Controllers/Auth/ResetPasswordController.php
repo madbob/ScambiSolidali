@@ -29,7 +29,7 @@ class ResetPasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -39,23 +39,5 @@ class ResetPasswordController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
-    }
-
-    public function reset(Request $request)
-    {
-        /*
-            Quando un utente resetta la password, assumo che il suo indirizzo
-            mail sia valido (avendo ricevuto il token di reset)
-        */
-        $broker = $this->broker();
-        $user = $broker->getUser(['email' => $request->input('email')]);
-        if ($user != null) {
-            if ($broker->getRepository()->exists($user, $request->input('token'))) {
-                $user->verification_code = '';
-                $user->save();
-            }
-        }
-
-        return $this->true_reset($request);
     }
 }

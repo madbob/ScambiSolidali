@@ -4,6 +4,12 @@
 
 <div class="row">
     <div class="col-md-6 col-md-offset-3 primary-1">
+        @if (session('status'))
+            <div class="alert alert-success" role="alert">
+                {{ session('status') }}
+            </div>
+        @endif
+
         {!! BootForm::open(['url' => url('/password/email'), 'left_column_class' => 'col-md-4', 'right_column_class' => 'col-md-8']) !!}
             {!! BootForm::email('email', 'E-Mail', '', ['required' => 'required']) !!}
 
