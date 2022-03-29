@@ -166,6 +166,11 @@ class TrentinoTableSeeder extends Seeder
                     delle politiche abitative di Comunità di Valle e Comuni – che operano specificatamente in ambito socio assistenziale o che,
                     grazie alle loro attività, entrano spesso in contatto con persone e famiglie in difficoltà. <a href="/come-funziona">Clicca qui per vedere COME FUNZIONA DONOTRENTINO</a>.
                 </p>
+            </div>
+            <div class="col-md-12 credits">
+                <p class="intro">In partnership con</p><p><img style="height:50px" src="/images/celocelo_trentino.png">&nbsp;&nbsp;<img style="height:90px" src="/images/agenziasansalvario.jpg"></p>
+                <p class="intro">Il progetto è stato sostenuto da</p><p>Ufficio sVOLta (spazio di progettazione creato da Fondazione Caritro, Fondazione Trentina per il Volontariato Sociale e Non Profit Network - CSV Trentino) nell’ambito del bando Intrecci Possibili 2020 - Volontariato che riparte.</p>
+                <p class="intro">e da</p><p>Ministero del Lavoro e delle Politiche Sociali</p>
             </div>';
             $c->save();
         }
