@@ -25,6 +25,7 @@ class DonationTransport extends Mailable
     public function build()
     {
         $subject = sprintf('%s: trasporto richiesto per donazione - %s', env('APP_NAME'), $this->donation->title);
+
         return $this->subject($subject)->view('mails.donationtransport')->with([
             'donation' => $this->donation,
             'receiver' => $this->receiver,
