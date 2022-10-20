@@ -112,7 +112,7 @@ class RegisterController extends Controller
         if (env('HAS_PUBLIC_OP', false)) {
             if (isset($data['public_op']) && $data['public_op'] == 1) {
                 try {
-                    Mail::to(env('MAIL_FROM_ADDRESS'))->send(new OperatorRequired($user));
+                    Mail::to(env('MAIL_ADMIN'))->send(new OperatorRequired($user));
                 }
                 catch(\Exception $e) {
                     Log::error('Impossibile notificare richiesta di accesso come operatore: ' . $user->id);

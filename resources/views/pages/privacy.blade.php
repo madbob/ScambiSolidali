@@ -12,7 +12,7 @@
                 Il titolare del trattamento dei tuoi dati è {{ App\Config::getConf('powered_by') }}.
             </p>
             <p>
-                Per ogni necessità puoi contattare il titolare all’indirizzo {{ App\Config::getConf('owner_address') }} o all'email {{ env('MAIL_FROM_ADDRESS') }}.
+                Per ogni necessità puoi contattare il titolare all’indirizzo {{ App\Config::getConf('owner_address') }} o all'email {{ env('MAIL_ADMIN') }}.
             </p>
             <p>
                 Il titolare tratterà i tuoi dati con liceità e correttezza nel rispetto dei tuoi diritti ed in particolare della tua riservatezza ai sensi del Regolamento (UE) 2016/679 (di seguito “Regolamento”) e delle altre norme applicabili.

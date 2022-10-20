@@ -28,7 +28,7 @@
     <meta property="og:image" content="{{ env('APP_URL') }}/images/fb.png" />
     <meta property="og:type" content="website" />
     <meta property="og:country-name" content="Italy" />
-    <meta property="og:email" content="{{ env('MAIL_FROM_ADDRESS') }}" />
+    <meta property="og:email" content="{{ env('MAIL_ADMIN') }}" />
     <meta property="og:locale" content="it_IT" />
     <meta property="og:description" content="{{ $pagedescription }}" />
 

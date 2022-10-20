@@ -174,7 +174,7 @@ class TorinoTableSeeder extends Seeder
                 <div class="col-md-8 col-md-offset-1">
                     <h4>Vuoi aderire al progetto?</h4>
 
-                    <p>Se vuoi aderire al progetto ed essere accreditato all’uso della piattaforma scrivi a <a href="mailto:' . env('MAIL_FROM_ADDRESS') . '">'. env('MAIL_FROM_ADDRESS') . '</a>.</p>
+                    <p>Se vuoi aderire al progetto ed essere accreditato all’uso della piattaforma scrivi a <a href="mailto:' . env('MAIL_ADMIN') . '">'. env('MAIL_ADMIN') . '</a>.</p>
                     <p>Possono aderire enti no profit che operano a favore di persone in difficoltà.</p>
                 </div>
             </div>
