@@ -56,9 +56,9 @@
             ?>
 
             @if($max_absolute != 0)
-                <div class="col-md-12">
+                <div class="col-md-12" style="display: flex; flex-direction: row; justify-content: center">
                     @foreach($categories as $name => $count)
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <div class="item progress-{{ round(($count * 100) / $max_relative, 0) }}">
                                 <div class="radial-inner-bg">
                                     <div>

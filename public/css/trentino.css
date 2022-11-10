@@ -7407,7 +7407,8 @@ textarea.form-control {
       text-align: left;
       font-size: 30px !important;
       font-weight: bold !important;
-      min-height: 280px; }
+      min-height: 280px;
+      overflow: hidden; }
       .stories .cells li .story-cell span {
         padding: 20px !important;
         background-color: transparent !important; }
@@ -7448,7 +7449,7 @@ textarea.form-control {
     .item .radial-inner-bg div {
       text-align: center;
       position: absolute;
-      top: 35%;
+      top: 25%;
       left: 0;
       width: 100%;
       margin: auto;
