@@ -79,9 +79,9 @@ class MilanoTableSeeder extends Seeder
             $c->save();
         }
 
-        if (Config::where('name', 'project_description')->first() == null) {
+        if (Config::where('name', 'project_page')->first() == null) {
             $c = new Config();
-            $c->name = 'project_description';
+            $c->name = 'project_page';
             $c->value = sprintf('<div class="col-md-3">
                 <div class="common-card">
                     <div class="card-main image-frame" style="background-image: url(%s)">

@@ -45,10 +45,10 @@ class CheckExpired extends Command
         }
 
         $final_limit_date = date('Y-m-d', strtotime('-7 days'));
-        Call::where('status', 'open')->where(DB::raw('DATE(when)'), '<', $final_limit_date)->update(['status' => 'archived']);
+        Call::where('status', 'open')->where(DB::raw('DATE(`when`)'), '<', $final_limit_date)->update(['status' => 'archived']);
 
         $today = date('Y-m-d');
-        $pending = Call::where('status', 'open')->where(DB::raw('DATE(when)'), $today)->get();
+        $pending = Call::where('status', 'open')->where(DB::raw('DATE(`when`)'), $today)->get();
         foreach($pending as $pen) {
             Mail::to($pen->user->email)->send(new ExpirationCallNotify($pen));
             Log::info('Sent expiration notice for call ' . $pen->id);
