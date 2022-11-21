@@ -120,10 +120,10 @@ class TrentinoTableSeeder extends Seeder
             $c->name = 'credits';
             $c->value = sprintf('<p>Un progetto di<br/><img src="%s"><img src="%s"><img src="%s"><img src="%s"></p>
             <p>In partnership con<br/><img style="max-width:220px" src="%s"><img src="%s"></p>
-            <p>Con il sostegno di<br/><img src="%s"><img src="%s"><img src="%s"><img src="%s"><img src="%s"><img src="%s"></p>',
+            <p>Con il sostegno di<br/><img src="%s"><img src="%s"><img src="%s"><img src="%s"><img src="%s"><img src="%s"><img src="%s"></p>',
             url('images/trentinosolidale.png'), url('images/caritas_trento.png'), url('images/cs4.png'), url('images/rotteinverse.png'),
             url('images/celocelo_trentino.png'), url('images/agenziasansalvario.jpg'),
-            url('images/ministero_lavoro.jpg'), url('images/provincia_trento.png'), url('images/svolta.png'), url('images/fondazione_volontariato_sociale.png'), url('images/csv_trento.png'), url('images/caritro.png'));
+            url('images/itasolidale.png'), url('images/ministero_lavoro.jpg'), url('images/provincia_trento.png'), url('images/svolta.png'), url('images/fondazione_volontariato_sociale.png'), url('images/csv_trento.png'), url('images/caritro.png'));
             $c->save();
         }
 
