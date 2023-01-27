@@ -21,6 +21,14 @@ class ExpirationNotify extends Mailable
     public function build()
     {
         $subject = sprintf('%s: donazione in scadenza', env('APP_NAME'));
-        return $this->subject($subject)->view('mails.donationexpiring')->with(['donation' => $this->donation]);
+
+		if ($this->donation->type == 'service') {
+			$template = 'mails.serviceexpiring';
+		}
+		else {
+			$template = 'mails.donationexpiring';
+		}
+
+        return $this->subject($subject)->view($template)->with(['donation' => $this->donation]);
     }
 }
