@@ -14,6 +14,8 @@ use Hash;
 use App\Mail\NewUserCreated;
 use App\Mail\RoleUpdated;
 use App\User;
+use App\Config;
+use App\Donation;
 use App\Institute;
 use App\Company;
 use App\Receiver;
@@ -70,6 +72,25 @@ class UserController extends Controller
         ]);
     }
 
+	private function commonSave($user, $request)
+	{
+		$user->name = $request->input('name');
+        $user->surname = $request->input('surname');
+        $user->phone = $request->input('phone');
+        $user->email = $request->input('email');
+
+        $user->birthdate = $request->input('birthdate', null);
+		if (blank($user->birthdate)) {
+			$user->birthdate = null;
+		}
+
+		if ($request->has('area')) {
+			$user->area = $request->input('area', null);
+		}
+
+		return $user;
+	}
+
     public function store(Request $request)
     {
         $user = Auth::user();
@@ -85,11 +106,7 @@ class UserController extends Controller
         ]);
 
         $user = new User();
-        $user->name = $request->input('name');
-        $user->surname = $request->input('surname');
-        $user->phone = $request->input('phone');
-        $user->email = $request->input('email');
-        $user->birthdate = $request->input('birthdate', null);
+        $user = $this->commonSave($user, $request);
         $user->role = $request->input('role');
 
         $password = Str::random(10);
@@ -135,11 +152,7 @@ class UserController extends Controller
         }
 
         $user = User::find($id);
-        $user->name = $request->input('name');
-        $user->surname = $request->input('surname');
-        $user->phone = $request->input('phone');
-        $user->email = $request->input('email');
-        $user->birthdate = $request->input('birthdate', null);
+        $user = $this->commonSave($user, $request);
 
         $ex_role = $user->role;
         $user->role = $request->input('role');
@@ -238,10 +251,17 @@ class UserController extends Controller
         }
 
         $recipients = $request->input('recipients');
+		$area = $request->input('area', []);
         $subject = $request->input('subject');
         $body = $request->input('body');
 
-        $users = User::where('role', $recipients)->get();
+		$query = User::where('role', $recipients);
+
+		if (empty($area) == false) {
+			$query->whereIn('area', $area);
+		}
+
+        $users = $query->get();
         $count = 0;
 
         foreach($users as $user) {
@@ -273,7 +293,16 @@ class UserController extends Controller
         header("Content-type: text/csv");
         header('Content-Disposition: attachment; filename="utenti_celocelo.csv";');
 
-        echo sprintf('"NOME";"COGNOME";"TELEFONO";"EMAIL";"TIPO"' . "\n");
+		$has_area = Config::getConf('explicit_zones');
+		$areas = Donation::areas();
+
+		if ($has_area) {
+			echo sprintf('"NOME";"COGNOME";"TELEFONO";"EMAIL";"TIPO";"AREA"' . "\n");
+		}
+		else {
+        	echo sprintf('"NOME";"COGNOME";"TELEFONO";"EMAIL";"TIPO"' . "\n");
+		}
+
         $users = User::orderBy('surname', 'asc')->get();
         foreach($users as $user) {
             $row = [];
@@ -282,6 +311,11 @@ class UserController extends Controller
             $row[] = $user->phone;
             $row[] = $user->email;
             $row[] = $user->role;
+
+			if ($has_area) {
+				$row[] = $areas[$user->area] ?? '';
+			}
+
             echo sprintf("%s\n", join(';', $row));
         }
     }

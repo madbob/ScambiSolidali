@@ -17,6 +17,10 @@
             {!! BootForm::password('password', 'Password', ['required' => 'required']) !!}
             {!! BootForm::password('password_confirmation', 'Conferma Password', ['required' => 'required']) !!}
 
+			@if(App\Config::getConf('explicit_zones') == 'true')
+				{!! BootForm::radios('area', 'Area', App\Donation::areas()) !!}
+			@endif
+
             {!! BootForm::text('check', 'Quanto fa ' . genCaptcha(), '', ['required' => 'required']) !!}
 
             @if(env('HAS_PUBLIC_OP', false))

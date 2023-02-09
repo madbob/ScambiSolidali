@@ -1,5 +1,5 @@
 <div class="modal fade primary-1" id="user-{{ $user ? $user->id : 'new' }}" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -31,6 +31,10 @@
                             ?>
 
                             {!! BootForm::radios('role', 'Ruolo', $selector) !!}
+
+							@if(App\Config::getConf('explicit_zones') == 'true')
+								{!! BootForm::radios('area', 'Area', App\Donation::areas(), $user ? $user->area : null) !!}
+							@endif
 
                             <?php
 

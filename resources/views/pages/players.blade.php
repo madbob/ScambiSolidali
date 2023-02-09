@@ -124,7 +124,7 @@
                                 <span>Invia Mail</span>
                             </button>
                             <div class="modal fade primary-1" id="massive-mail" tabindex="-1" role="dialog">
-                                <div class="modal-dialog mnodal-lg" role="document">
+                                <div class="modal-dialog modal-lg" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -145,6 +145,10 @@
                                                         ?>
 
                                                         {!! BootForm::radios('recipients', 'Destinatari', $selector) !!}
+
+														@if(App\Config::getConf('explicit_zones') == 'true')
+															{!! BootForm::checkboxes('area[]', 'Area', App\Donation::areas()) !!}
+														@endif
 
                                                         {!! BootForm::text('subject', 'Oggetto') !!}
                                                         {!! BootForm::textarea('body', 'Testo') !!}

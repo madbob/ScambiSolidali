@@ -109,6 +109,11 @@ class RegisterController extends Controller
             $user->save();
         }
 
+		if (isset($data['area'])) {
+            $user->area = $data['area'];
+            $user->save();
+        }
+
         if (env('HAS_PUBLIC_OP', false)) {
             if (isset($data['public_op']) && $data['public_op'] == 1) {
                 try {
