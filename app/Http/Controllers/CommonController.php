@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Auth;
 use View;
 
-use App\Config;
 use App\Donation;
 use App\Category;
 use App\Story;

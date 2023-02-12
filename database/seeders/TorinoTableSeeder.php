@@ -45,6 +45,13 @@ class TorinoTableSeeder extends Seeder
             $c->save();
         }
 
+		if (Config::where('name', 'operator_manual')->first() == null) {
+            $c = new Config();
+            $c->name = 'operator_manual';
+            $c->value = resource_path('docs/manuale_operatori_celocelo.pdf');
+            $c->save();
+        }
+
         if (Config::where('name', 'other_instance_cities')->first() == null) {
             $c = new Config();
             $c->name = 'other_instance_cities';

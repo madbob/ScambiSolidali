@@ -10,8 +10,10 @@ use Log;
 use Session;
 
 use App\User;
+use App\Config;
 use App\Institute;
 use App\Mail\OperatorRequired;
+use App\Mail\OperatorInstructions;
 use App\Rules\Captcha;
 
 use App\Http\Controllers\Controller;
@@ -138,6 +140,18 @@ class RegisterController extends Controller
 
         $user->verification_code = '';
         $user->save();
+
+		if ($user->role == 'operator') {
+			$manual_path = Config::getConf('operator_manual');
+			if (filled($manual_path)) {
+				try {
+					Mail::to($user->email)->send(new OperatorInstructions($user));
+				}
+				catch(\Exception $e) {
+					Log::error('Impossibile inviare email col manuale operatore: ' . $user->id);
+				}
+			}
+		}
 
         Session::flash('message', 'Account validato, benvenuto su ' . env('APP_NAME'));
         return redirect()->to('login');
