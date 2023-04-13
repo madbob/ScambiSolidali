@@ -103,7 +103,7 @@ else
             {!! BootForm::text('size_height', 'Altezza', null) !!}
             {!! BootForm::text('size_width', 'Larghezza', null) !!}
             {!! BootForm::text('size_deep', 'Profondità', null) !!}
-            {!! BootForm::date('since', 'Disponibile da', date('Y-m-d')) !!}
+            {!! BootForm::date('since', 'Disponibile da', $donation ? $donation->since : date('Y-m-d')) !!}
 
             <br><br><br>
 

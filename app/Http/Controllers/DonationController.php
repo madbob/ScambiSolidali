@@ -305,6 +305,14 @@ class DonationController extends Controller
 
         foreach($kept_photos as $index => $path) {
             $new_path = $donation->baseImagePath() . $index;
+            if ($new_path == $path) {
+                continue;
+            }
+
+            if (Storage::disk('images')->exists($new_path)) {
+                Storage::disk('images')->delete($new_path);
+            }
+
             Storage::disk('images')->move($path, $new_path);
         }
 
