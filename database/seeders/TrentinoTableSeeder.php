@@ -172,7 +172,7 @@ class TrentinoTableSeeder extends Seeder
             <div class="col-md-12 credits">
                 <p class="intro">In partnership con</p><p><img style="height:50px" src="/images/celocelo_trentino.png">&nbsp;&nbsp;<img style="height:90px" src="/images/agenziasansalvario.jpg"></p>
                 <p class="intro">Il progetto è stato sostenuto da</p><p>Ufficio sVOLta (spazio di progettazione creato da Fondazione Caritro, Fondazione Trentina per il Volontariato Sociale e Non Profit Network - CSV Trentino) nell’ambito del bando Intrecci Possibili 2020 - Volontariato che riparte.</p>
-                <p class="intro">e da</p><p>Ministero del Lavoro e delle Politiche Sociali</p>
+                <p class="intro">e da</p><p>ITASolidale e Ministero del Lavoro e delle Politiche Sociali</p>
             </div>';
             $c->save();
         }
@@ -312,7 +312,7 @@ class TrentinoTableSeeder extends Seeder
 
                 <div class="col-md-8 col-md-offset-1">
                     <ol>
-                        <li>Registrati sul sito e inserisci l\'annuncio. Clicca <a href="/files/istruzione_donatore_donotrentino.pdf">qui</a> per le istruzioni dettagliate.</li>
+                        <li>Registrati sul sito e inserisci l\'annuncio. Clicca <a href="/files/istruzione_donatore_donotrentino.pdf" class="txt-color">qui</a> per le istruzioni dettagliate.</li>
                         <li>Aspetta di essere contattato</li>
                         <li>Concorda direttamente con il Soggetto accreditato i tempi e le modalità di ritiro e di consegna del bene.</li>
                     </ol>
@@ -331,7 +331,7 @@ class TrentinoTableSeeder extends Seeder
                 <div class="col-md-8 col-md-offset-1">
                     <p>Possono candidarsi tutti i soggetti previsti <a href="/files/regolamento_donotrentino.pdf">dal Regolamento</a> per l’accreditamento alla Piattaforma DONOTRENTINO.</p>
                     <p>Presenta domanda <a href="https://forms.gle/KTy2aQ3tLPE3wRYj8" target="_blank">compilando questo form</a>.</p>
-                    <p><a href="/files/istruzione_operatore_donotrentino.pdf">Qui</a> le istruzione dettagliate per gli operatori dei partner</p>
+                    <p><a href="/files/istruzione_operatore_donotrentino.pdf" class="txt-color">Qui</a> le istruzione dettagliate per gli operatori dei partner</p>
                 </div>
             </div>
 
@@ -392,8 +392,7 @@ class TrentinoTableSeeder extends Seeder
             $c = new Config();
             $c->name = 'contact_contents';
             $c->value = 'Viale Bolognini 98 - Trento
-segreteria@donotrentino.it
-T 3312717656';
+segreteria@donotrentino.it';
             $c->save();
         }
 
