@@ -72,7 +72,7 @@ class DonationController extends Controller
 
         $data['donations'] = $query->paginate(60);
 
-        if ($request->has('show'))
+        if ($request->has('show') && $user)
             $data['current_show'] = $request->input('show');
         else
             $data['current_show'] = -1;
