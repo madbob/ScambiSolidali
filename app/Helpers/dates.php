@@ -2,9 +2,14 @@
 
 function printableDate($date)
 {
-    $fmt = new \IntlDateFormatter('it_IT', NULL, NULL);
-    $fmt->setPattern('EEEE dd MMMM yyyy');
-    return ucwords($fmt->format(new DateTime($date)));
+    if ($date) {
+        $fmt = new \IntlDateFormatter('it_IT', NULL, NULL);
+        $fmt->setPattern('dd MMMM yyyy');
+        return ucwords($fmt->format(new DateTime($date)));
+    }
+    else {
+        return '-';
+    }
 }
 
 function canonicalDate($date)

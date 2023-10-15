@@ -1,4 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.app', [
+    'custom_js' => [
+        url('js/exif.js'),
+    ]
+])
 
 @section('title', 'Celo')
 

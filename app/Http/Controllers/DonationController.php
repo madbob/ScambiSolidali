@@ -449,7 +449,7 @@ class DonationController extends Controller
         $data['search'] = '';
         $data['status'] = '';
 
-        $query = Donation::orderBy('created_at', 'desc');
+        $query = Donation::with(['receivers'])->orderBy('created_at', 'desc');
 
         $search = $request->input('search');
         if (!empty($search)) {
@@ -465,7 +465,7 @@ class DonationController extends Controller
             $data['status'] = $status;
         }
 
-        $data['donations'] = $query->paginate(50);
+        $data['donations'] = $query->get();
 
         return view('donation.archive', $data);
     }

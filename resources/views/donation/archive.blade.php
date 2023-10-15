@@ -1,4 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.app', [
+    'custom_js' => [
+        "//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js",
+        "//cdn.datatables.net/1.13.6/js/dataTables.bootstrap.min.js",
+    ],
+    'custom_css' => [
+        "//cdn.datatables.net/1.13.6/css/dataTables.bootstrap.min.css",
+    ],
+])
 
 @section('title', 'Archivio')
 
@@ -57,13 +65,24 @@
                         </p>
                     </div>
                 @else
-                    <table class="table">
+                    <table class="table datatable">
+                        <thead>
+                            <tr>
+                                <th width="30%">Titolo</th>
+                                <th width="15%">Utente</th>
+                                <th width="15%">Data Creazione</th>
+                                <th width="15%">Data Assegnazione</th>
+                                <th width="15%">Stato</th>
+                                <th width="10%">&nbsp;</th>
+                            </tr>
+                        </thead>
                         <tbody>
             				@foreach($donations as $donation)
                                 <tr>
                                     <td>{{ $donation->title }}</td>
                                     <td>{{ $donation->user->printableName() }}</td>
-                                    <td>{{ printableDate($donation->created_at) }}</td>
+                                    <td data-sort="{{ $donation->created_at }}">{{ printableDate($donation->created_at) }}</td>
+                                    <td data-sort="{{ $donation->assignation_date }}">{{ printableDate($donation->assignation_date) }}</td>
                                     <td>{{ $donation->printableStatus() }}</td>
                                     <td>
                                         <button class="btn btn-default show-details" data-endpoint="celo" data-item-id="{{ $donation->id }}"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
@@ -75,8 +94,6 @@
             				@endforeach
                         </tbody>
                     </table>
-
-        			{{ $donations->links() }}
                 @endif
     		</div>
     	</div>

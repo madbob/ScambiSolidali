@@ -154,6 +154,17 @@ class Donation extends Model
         return '???';
     }
 
+    public function getAssignationDateAttribute()
+    {
+        $rec = $this->receivers->first();
+        if ($rec) {
+            return $rec->pivot->updated_at;
+        }
+        else {
+            return null;
+        }
+    }
+
 	public function printableContacts()
 	{
 		return sprintf('%s %s', $this->phone, $this->email);

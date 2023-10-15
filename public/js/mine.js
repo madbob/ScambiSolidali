@@ -360,5 +360,12 @@ $(document).ready(function() {
         $(this).closest('form').find('.shipping_details').prop('hidden', ($(this).prop('checked') == false));
     });
 
+    $('.datatable').DataTable({
+        searching: false,
+        pageLength: 50,
+        lengthChange: false,
+        order: [[2, 'desc']]
+    });
+
     commonInit();
 });

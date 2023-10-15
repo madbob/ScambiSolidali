@@ -40,7 +40,7 @@
 
                 <?php $video_link = App\Config::getConf('video_link') ?>
                 @if(!empty($video_link))
-                    <iframe width="100%" height="315" src="{{ $video_link }}" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="100%" height="315" src="{{ $video_link }}" frameborder="0" allowfullscreen title="Video di presentazione"></iframe>
                 @else
                     <img class="home-cover img-responsive" src="{{ App\Config::getConf('cover_link') }}">
                 @endif
@@ -105,10 +105,10 @@
                         </div>
                         <div class="col-md-4 text-center">
                             <div class="col-md-6 right-border">
-                                <img src="{{ url('images/oggetti.svg') }}">
+                                <img src="{{ url('images/oggetti.svg') }}" alt="Dona oggetti">
                             </div>
                             <div class="col-md-6">
-                                <img src="{{ url('images/tempo.svg') }}">
+                                <img src="{{ url('images/tempo.svg') }}" alt="Dona tempo">
                             </div>
                         </div>
                         <div class="col-md-4 text-left">

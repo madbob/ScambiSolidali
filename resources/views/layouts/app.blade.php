@@ -10,7 +10,23 @@
     <title>{{ $pagetitle }}</title>
     <meta name="Description" content="{{ App\Config::getConf('main_tagline') }}">
 
-    <?php $append = time() ?>
+    <?php
+
+    $append = time();
+
+    if (isset($custom_js) == false) {
+        $custom_js = [];
+    }
+
+    if (isset($custom_css) == false) {
+        $custom_css = [];
+    }
+
+    ?>
+
+    @foreach($custom_css as $ccss)
+        <link rel="stylesheet" href="{{ $ccss }}" type="text/css" />
+    @endforeach
 
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
     <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css' type='text/css' />
@@ -69,7 +85,7 @@
                             <span class="icon-bar"></span>
                         </button>
 
-                        <a class="navbar-brand" href="{{ url('/') }}"></a>
+                        <a class="navbar-brand" href="{{ url('/') }}" title="Homepage {{ config('app.name') }}"></a>
 
                         @if(env('HAS_FOOD'))
                             <a class="navbar-brand-food" href="{{ route('food') }}"></a>
@@ -222,10 +238,14 @@
 
     <script src="{{ url('js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ url('js/bootstrap.min.js') }}"></script>
+
+    @foreach($custom_js as $cjs)
+        <script src="{{ $cjs }}"></script>
+    @endforeach
+
     <script src="{{ url('js/chosen.jquery.min.js') }}"></script>
     <script src="{{ url('js/bootstrap-datepicker.min.js') }}"></script>
     <script src="{{ url('js/bootstrap-datepicker.it.min.js') }}"></script>
-    <script src="{{ url('js/exif.js') }}"></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js'></script>
     <script src="{{ url('js/mine.js') }}?a={{ $append }}"></script>
