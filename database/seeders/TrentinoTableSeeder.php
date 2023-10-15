@@ -170,7 +170,7 @@ class TrentinoTableSeeder extends Seeder
                 </p>
             </div>
             <div class="col-md-12 credits">
-                <p>Aderiamo all\'Economia Solidale Trentina come Welfare di Comunità</p><img style="height:50px" src="/images/economia_solidale_trentina.jpeg">
+                <p>Aderiamo all\'Economia Solidale Trentina come Welfare di Comunità</p><p><img style="height:70px" src="/images/economia_solidale_trentina.jpeg"></p>
                 <p class="intro">In partnership con</p><p><img style="height:50px" src="/images/celocelo_trentino.png">&nbsp;&nbsp;<img style="height:90px" src="/images/agenziasansalvario.jpg"></p>
                 <p class="intro">Il progetto è stato sostenuto da</p><p>Ufficio sVOLta (spazio di progettazione creato da Fondazione Caritro, Fondazione Trentina per il Volontariato Sociale e Non Profit Network - CSV Trentino) nell’ambito del bando Intrecci Possibili 2020 - Volontariato che riparte.</p>
                 <p class="intro">e da</p><p>ITASolidale e Ministero del Lavoro e delle Politiche Sociali</p>
