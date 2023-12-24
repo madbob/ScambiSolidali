@@ -22,11 +22,7 @@
         <div class="row primary-4">
             @foreach($media as $m)
                 <a href="{{ $m->link }}" target="_blank">
-                    @if($m->picture == null)
-                        <div class="col-md-3 dense-fancy-bg square-block">
-                    @else
-                        <div class="col-md-3" style="background-image: url('{{ $m->picture }}'); background-size: cover">
-                    @endif
+                    <div class="col-md-3 dense-fancy-bg square-block">
                         <div class="content">
                             <span class="top">{{ $m->channel }}</span>
                             <span class="bottom">{{ date('d.m.Y', strtotime($m->date)) }}</span>

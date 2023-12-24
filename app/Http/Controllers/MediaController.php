@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-use Auth;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 use App\Media;
 
@@ -40,9 +40,12 @@ class MediaController extends Controller
         }
 
         if ($request->hasFile('file')) {
+            $basefolder = currentInstance();
             $filename = $request->file->getClientOriginalName();
-            $request->file->move(public_path() . '/media/', $filename);
-            $media->link = url('/media/' . $filename);
+            $request->file->move(sys_get_temp_dir(), $filename);
+            $path = sprintf('%s/%s', sys_get_temp_dir(), $filename);
+            Storage::disk('media')->put($basefolder . '/' . $filename, file_get_contents($path), 'public');
+            $media->link = Storage::disk('media')->url($basefolder . '/' . $filename);
         }
 
         return $media;

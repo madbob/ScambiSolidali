@@ -49,13 +49,6 @@ return [
             'bucket' => 'your-bucket',
         ],
 
-        /*
-        'images' => [
-            'driver' => 'local',
-            'root' => storage_path('app'),
-        ],
-        */
-
         'images' => [
             'driver' => 's3',
             'endpoint' => env('STORAGE_ENDPOINT'),
@@ -63,6 +56,15 @@ return [
             'secret' => env('STORAGE_SECRET'),
             'region' => env('STORAGE_REGION'),
             'bucket' => env('STORAGE_BUCKET'),
+        ],
+
+        'media' => [
+            'driver' => 's3',
+            'endpoint' => env('STORAGE_ENDPOINT'),
+            'key' => env('STORAGE_KEY'),
+            'secret' => env('STORAGE_SECRET'),
+            'region' => env('STORAGE_REGION'),
+            'bucket' => env('MEDIA_BUCKET'),
         ],
     ],
 
