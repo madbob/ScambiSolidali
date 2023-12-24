@@ -49,8 +49,8 @@ return [
             'transport' => 'ses',
         ],
 
-        'sendinblue' => [
-            'transport' => 'sendinblue',
+        'brevo' => [
+            'transport' => 'brevo',
         ],
 
         'mailgun' => [

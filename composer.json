@@ -5,19 +5,19 @@
     "license": "AGPL-3.0-or-later",
     "type": "project",
     "require": {
-        "php": ">=7.0.0",
-        "laravel/framework": "^8.0",
+        "php": ">=8.0.0",
+        "laravel/framework": "^9.0",
         "watson/bootstrap-form": "^2.4",
         "aws/aws-sdk-php": "^3.20",
         "diversen/image-auto-rotate": "^1.0",
-        "barryvdh/laravel-debugbar": "^3.1",
-        "madbob/laravel-notification-mobyt": "^0.1",
-        "nunomaduro/collision": "^5.0",
+        "barryvdh/laravel-debugbar": "^3.7",
+        "madbob/laravel-notification-mobyt": "^0.2",
+        "nunomaduro/collision": "^6.1",
         "laravel/tinker": "^2.0",
-        "facade/ignition": "^2.3.6",
+        "spatie/laravel-ignition": "^1.0",
         "laravel/ui": "^3.0",
-        "league/flysystem-aws-s3-v3": "^1.0",
-        "webup/laravel-sendinblue": "^3.5"
+        "league/flysystem-aws-s3-v3": "^3.0",
+        "symfony/brevo-mailer": "^7.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

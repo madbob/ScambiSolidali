@@ -4,13 +4,22 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Auth;
 
-use Auth;
+use Symfony\Component\Mailer\Bridge\Brevo\Transport\BrevoTransportFactory;
 
 class AppServiceProvider extends ServiceProvider
 {
     public function boot()
     {
+        if (env('MAIL_MAILER') == 'brevo') {
+			Mail::extend('brevo', function () {
+	            return (new BrevoTransportFactory)->create(
+	                new Dsn('brevo+api', 'default', config('services.brevo.key'))
+	            );
+	        });
+		}
+
         view()->composer('*', function ($view) {
             if ($view->offsetExists('pagetitle') == false) {
                 $view->with('pagetitle', env('APP_NAME'));
