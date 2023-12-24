@@ -13,11 +13,6 @@ class ResetPassword extends Command
     protected $signature = 'reset:password {user_email} {password}';
     protected $description = 'Per modificare la password di un utente, data la sua email';
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     public function handle()
     {
         $user_mail = $this->argument('user_email');

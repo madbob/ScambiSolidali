@@ -12,11 +12,6 @@ class RemoveOldImages extends Command
     protected $signature = 'remove:images';
     protected $description = 'Elimina gli assets S3 relativi a contenuti eliminati';
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     public function handle()
     {
         $basefolder = currentInstance();

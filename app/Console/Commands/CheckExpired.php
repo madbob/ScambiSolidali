@@ -19,11 +19,6 @@ class CheckExpired extends Command
     protected $signature = 'check:expired';
     protected $description = 'Verifica la scadenza degli annunci e degli appelli pubblicati';
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     public function handle()
     {
         $limit_notification = strtotime('-2 months');

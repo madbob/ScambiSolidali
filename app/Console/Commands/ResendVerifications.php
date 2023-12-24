@@ -14,11 +14,6 @@ class ResendVerifications extends Command
     protected $signature = 'resend:verifications {since_day}';
     protected $description = 'Rimanda le mail di verifica account';
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     public function handle()
     {
         $since = $this->argument('since_day');

@@ -12,11 +12,6 @@ class MonthlyRecurring extends Command
     protected $signature = 'recurring:monthly';
     protected $description = 'Genera le schede per le donazioni mensili';
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     public function handle()
     {
         if(env('HAS_FOOD', false)) {
