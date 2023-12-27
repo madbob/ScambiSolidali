@@ -1,4 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.app', [
+    'custom_js' => [
+        "//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js",
+        "//cdn.datatables.net/1.13.6/js/dataTables.bootstrap.min.js",
+    ],
+    'custom_css' => [
+        "//cdn.datatables.net/1.13.6/css/dataTables.bootstrap.min.css",
+    ],
+])
 
 @section('title', t('Giocatori'))
 
