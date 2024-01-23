@@ -53,6 +53,12 @@ return [
             'transport' => 'brevo',
         ],
 
+        'scaleway' => [
+            'transport' => 'scaleway',
+            'username' => env('MAIL_USERNAME'),
+            'password' => env('MAIL_PASSWORD'),
+        ],
+
         'mailgun' => [
             'transport' => 'mailgun',
         ],

@@ -8,16 +8,26 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
 use Symfony\Component\Mailer\Bridge\Brevo\Transport\BrevoTransportFactory;
+use Symfony\Component\Mailer\Bridge\Scaleway\Transport\ScalewayTransportFactory;
 use Symfony\Component\Mailer\Transport\Dsn;
 
 class AppServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        if (env('MAIL_MAILER') == 'brevo') {
+        $mailer = env('MAIL_MAILER');
+
+        if ($mailer == 'brevo') {
 			Mail::extend('brevo', function () {
 	            return (new BrevoTransportFactory)->create(
 	                new Dsn('brevo+api', 'default', config('services.brevo.key'))
+	            );
+	        });
+		}
+        else if ($mailer == 'scaleway') {
+			Mail::extend('scaleway', function () {
+	            return (new ScalewayTransportFactory)->create(
+	                new Dsn('scaleway+api', 'default', config('mail.mailers.scaleway.username'), config('mail.mailers.scaleway.password'))
 	            );
 	        });
 		}
