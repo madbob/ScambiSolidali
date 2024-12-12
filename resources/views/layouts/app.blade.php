@@ -73,7 +73,7 @@
             <div class="row justify-content-between align-items-center py-2">
                 <div class="col">
                     <a class="navbar-brand" href="{{ route('home') }}" title="Homepage {{ config('app.name') }}">
-                        <img class="img-fluid" src="{{ Vite::asset('resources/images/logo_' . $cityname . '.png') }}">
+                        <img class="img-fluid" src="{{ Vite::asset('resources/images/logo_' . $cityname . '.png') }}" alt="{{ env('APP_NAME') }}">
                     </a>
 
                     @if(env('HAS_FOOD'))
