@@ -136,7 +136,7 @@ class Donation extends Model
             'assigned' => 'Assegnato',
             'expiring' => 'In Scadenza',
             'expired' => 'Scaduto',
-            'dropped' => 'Abbondonato',
+            'dropped' => 'Abbandonato',
         ];
     }
 

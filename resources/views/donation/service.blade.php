@@ -60,12 +60,11 @@ else {
                 <x-larastrap::text name="surname" label="Cognome" required />
 
                 @if(App\Config::getConf('explicit_zones') == 'true')
-                    <x-larastrap::field label="Zona">
-                        @include('donation.areaselect', [
-                            'selected' => $donation ? $donation->area : null,
-                            'field_name' => 'area',
-                        ])
-                    </x-larastrap::field>
+                    @include('donation.areaselect', [
+                        'label' => 'Zona',
+                        'selected' => $donation ? $donation->area : null,
+                        'field_name' => 'area',
+                    ])
                 @endif
 
                 <x-larastrap::text name="address" label="Indirizzo" />

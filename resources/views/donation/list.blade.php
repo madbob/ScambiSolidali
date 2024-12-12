@@ -21,9 +21,7 @@
                 </p>
 
                 @if($user && $user->role == 'admin')
-                    <a href="{{ route('celo.archive') }}" class="btn btn-default">
-                        <span>Vedi Archivio Completo</span>
-                    </a>
+                    <a href="{{ route('celo.archive') }}" class="btn btn-light">Vedi Archivio Completo</a>
 
                     @if(env('HAS_FOOD', false))
                         <a href="{{ url('/periodico') }}" class="btn btn-default">
@@ -100,7 +98,7 @@
                             </div>
                         </div>
 
-                        <p class="btn btn-primary visible-xs visible-sm btn btn-default btn-flow">
+                        <p class="d-block d-md-none btn btn-light btn-flow">
                             Clicca qui per donare un oggetto
                         </p>
                     </a>
@@ -119,7 +117,7 @@
                             </div>
                         </div>
 
-                        <p class="btn btn-primary visible-xs visible-sm btn btn-default btn-flow">
+                        <p class="d-block d-md-none btn btn-light btn-flow">
                             Clicca qui per donare una competenza
                         </p>
                     </a>

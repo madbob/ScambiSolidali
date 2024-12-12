@@ -93,22 +93,6 @@ $colors: $primary-color-1 $primary-color-2 $secondary-color-1 $gray-color-1 $bla
             }
         }
 
-        .nav-tabs {
-            display: flex;
-            align-items: stretch;
-            justify-content: space-between;
-            margin-bottom: 10px;
-
-            > li {
-                @extend .pagetitle;
-                text-align: center;
-
-                a {
-                    color: #FFF;
-                }
-            }
-        }
-
         .top-border {
             border-top: 2px solid $color;
         }

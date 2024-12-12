@@ -2,11 +2,7 @@
     <x-larastrap::hidden name="assignation_type" value="organization" />
     <x-larastrap::text name="receiver-organization" label="Nome" required />
     <x-larastrap::number name="receiver-receivers" label="Numero Beneficiari Potenziali" min="0" max="1000000" step="1" required />
-
-    <x-larastrap::field label="Area">
-        @include('donation.areaselect', ['selected' => null, 'field_name' => 'receiver-area'])
-    </x-larastrap::field>
-
+    @include('donation.areaselect', ['label' => 'Zona', 'selected' => null, 'field_name' => 'receiver-area'])
     <x-larastrap::number name="receiver-past" :label="sprintf('Quante volte ha fruito di %s', env('APP_NAME'))" required min="0" max="200" step="1" />
     <x-larastrap::textarea name="notes" label="Note private" help="Quanto scritto qui sarà accessibile solo agli operatori della piattaforma e non sarà pubblicato." />
 

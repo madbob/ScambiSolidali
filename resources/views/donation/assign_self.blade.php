@@ -4,11 +4,7 @@
     <x-larastrap::radiolist name="receiver-gender" label="Sesso" :options="['M' => 'Maschile', 'F' => 'Femminile']" />
     <x-larastrap::radiolist name="receiver-status" label="Stato" :options="['student' => 'Studente', 'employed' => 'Occupato', 'unemployed' => 'Non occupato']" />
     <x-larastrap::radiolist name="receiver-children" label="Con chi abiti" :options="'alone' => 'Solo', 'roommate' => 'Coinquilini', 'couple' => 'In coppia', 'family' => 'In famiglia'" required />
-
-    <x-larastrap::field label="Residenza">
-        @include('donation.areaselect', ['selected' => null, 'field_name' => 'receiver-area'])
-    </x-larastrap::field>
-
+    @include('donation.areaselect', ['selected' => null, 'field_name' => 'receiver-area'])
     <x-larastrap::radiolist name="receiver-country" label="Cittadinanza" :options="['italian' => 'Italiana', 'nonitalian' => 'Straniera']" required />
     <x-larastrap::number name="receiver-past" :label="sprintf('Quante volte ha fruito di %s', env('APP_NAME'))" min="0" max="200" step="1" required />
 

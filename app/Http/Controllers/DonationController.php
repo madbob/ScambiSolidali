@@ -647,7 +647,7 @@ class DonationController extends Controller
             header("Content-type: text/csv");
             header('Content-Disposition: attachment; filename="report_celocelo.csv";');
 
-            echo sprintf('"OGGETTO DONATO";"STATUS";"NOTE";"APPELLO";"TIPO";"NOME";"ETÀ";"SESSO";"LAVORO";"FAMIGLIA";"AREA";"NAZIONALITÀ";"OCCORRENZE";"BENEFICIARI"' . "\n");
+            echo sprintf('"OGGETTO DONATO";"STATUS";"NOTE";"APPELLO";"TIPO";"DATA ASSEGNAZIONE";"NOME";"ETÀ";"SESSO";"LAVORO";"FAMIGLIA";"AREA";"NAZIONALITÀ";"OCCORRENZE";"BENEFICIARI"' . "\n");
             $donations = Donation::orderBy('id', 'desc')->get();
             foreach($donations as $donation) {
                 if ($donation->status == 'assigned') {
@@ -663,6 +663,7 @@ class DonationController extends Controller
                         switch($receiver->type) {
                             case 'individual':
                                 $row[] = 'Persona';
+                                $row[] = printableDate($receiver->created_at);
                                 $row[] = '';
                                 $row[] = $receiver->age;
                                 $row[] = $receiver->gender;
@@ -675,6 +676,7 @@ class DonationController extends Controller
                                 break;
                             case 'organization':
                                 $row[] = 'Ente';
+                                $row[] = printableDate($receiver->created_at);
                                 $row[] = $receiver->organization;
                                 $row[] = '';
                                 $row[] = '';
