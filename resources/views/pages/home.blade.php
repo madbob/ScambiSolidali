@@ -29,13 +29,13 @@
 
     <div class="home">
         <div class="row primary-3">
-            <div class="col-md-12 bg-color header-claim">
+            <div class="col bg-color header-claim">
                 <p>
                     Non si butta via niente:<br/>quello che non serve a te puoi darlo a {{ env('APP_NAME') }}
                 </p>
 
                 <p class="small-link">
-                    <a class="other-arrowlink" href="{{ url('come-funziona') }}">Come funziona</a>
+                    <a class="other-arrowlink" href="{{ route('pages.working') }}">Come funziona</a>
                 </p>
 
                 <?php $video_link = App\Config::getConf('video_link') ?>
@@ -49,66 +49,72 @@
 
         <div class="row spaced-below">
             <div class="col-md-6 primary-1">
-                <div class="col-md-4 tb-border vert-align hidden-xs hidden-sm">
-                    <p class="txt-color">
-                        quante cose hai che non ti servono più?
-                    </p>
-                </div>
-                <div class="col-md-offset-1 col-md-7 both-p spaced-below">
-                    <div class="common-card">
-                        <div class="card-main vert-align bg-color">
-                            <p class="text-uppercase">
-                                {{ t('Celo!') }}
-                            </p>
-                        </div>
-                        <div class="card-footer vert-align">
-                            <p>
-                                <a href="{{ url('celo') }}">{{ t('Inserisci il tuo annuncio') }}</a>
-                            </p>
+                <div class="row mb-4">
+                    <div class="d-none d-md-flex align-items-center col-5 tb-border">
+                        <p class="txt-color">
+                            quante cose hai che non ti servono più?
+                        </p>
+                    </div>
+                    <div class="col-md-7 px-4">
+                        <div class="common-card">
+                            <div class="card-main vert-align bg-color">
+                                <p class="text-uppercase">
+                                    {{ t('Celo!') }}
+                                </p>
+                            </div>
+                            <div class="card-footer vert-align">
+                                <p>
+                                    <a href="{{ route('celo.index') }}">{{ t('Inserisci il tuo annuncio') }}</a>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 primary-2">
-                <div class="col-md-7 both-p">
-                    <div class="common-card">
-                        <div class="card-main vert-align bg-color">
-                            <p class="text-uppercase">
-                                {{ t('Manca!') }}
-                            </p>
-                        </div>
-                        <div class="card-footer vert-align">
-                            <p>
-                                <a href="{{ url('manca') }}">{{ t('Ci puoi aiutare?') }}</a>
-                            </p>
+                <div class="row mb-4">
+                    <div class="col-md-7 px-4">
+                        <div class="common-card">
+                            <div class="card-main vert-align bg-color">
+                                <p class="text-uppercase">
+                                    {{ t('Manca!') }}
+                                </p>
+                            </div>
+                            <div class="card-footer vert-align">
+                                <p>
+                                    <a href="{{ route('manca.index') }}">{{ t('Ci puoi aiutare?') }}</a>
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-offset-1 col-md-4 tb-border vert-align text-right hidden-xs hidden-sm">
-                    <p class="txt-color">
-                        ci servono delle cose, magari le hai tu?
-                    </p>
+                    <div class="d-none d-md-flex col-5 tb-border align-items-center text-end">
+                        <p class="txt-color">
+                            ci servono delle cose, magari le hai tu?
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="row primary-2">
-            <div class="col-md-12 bg-color header-claim">
+            <div class="col bg-color header-claim">
                 <p>
                     {!! App\Config::getConf('homebox_title') !!}
                 </p>
 
-                <div class="visible-md-block visible-lg-block">
+                <div class="d-none d-md-block">
                     <div class="double-side">
                         <div class="col-md-4 text-right">
                             donare un oggetto<br/>in buono stato<br/>che non utilizzi più
                         </div>
                         <div class="col-md-4 text-center">
-                            <div class="col-md-6 right-border">
-                                <img src="{{ url('images/oggetti.svg') }}" alt="Dona oggetti">
-                            </div>
-                            <div class="col-md-6">
-                                <img src="{{ url('images/tempo.svg') }}" alt="Dona tempo">
+                            <div class="row">
+                                <div class="col-md-6 right-border">
+                                    <img src="{{ Vite::asset('resources/images/oggetti.svg') }}" alt="Dona oggetti">
+                                </div>
+                                <div class="col-md-6">
+                                    <img src="{{ Vite::asset('resources/images/tempo.svg') }}" alt="Dona tempo">
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-4 text-left">
@@ -116,23 +122,23 @@
                         </div>
                     </div>
                 </div>
-                <div class="visible-xs-block visible-sm-block">
+                <div class="d-block d-md-none">
                     <div class="row spaced-below">
-                        <div class="col-xs-6 vert-align">
-                            <p class="text-right">
+                        <div class="col">
+                            <img class="img-responsive" src="{{ Vite::asset('resources/images/oggetti.svg') }}">
+                        </div>
+                        <div class="col">
+                            <p>
                                 donare un oggetto<br/>in buono stato<br/>che non utilizzi più
                             </p>
                         </div>
-                        <div class="col-xs-5">
-                            <img class="img-responsive" src="{{ url('images/oggetti.svg') }}">
-                        </div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-5">
-                            <img class="img-responsive" src="{{ url('images/tempo.svg') }}">
+                        <div class="col">
+                            <img class="img-responsive" src="{{ Vite::asset('resources/images/tempo.svg') }}">
                         </div>
-                        <div class="col-xs-6 vert-align">
-                            <p class="text-left">
+                        <div class="col">
+                            <p>
                                 offrire un po’ del tuo tempo<br/>o una tua competenza
                             </p>
                         </div>
@@ -141,23 +147,17 @@
             </div>
         </div>
 
-        <div class="row spaced-below">
-            <div class="col-md-6 primary-1">
-                <div class="col-md-4 top-border">
-                </div>
-                <div class="col-md-offset-1 col-md-7 left-p">
-                </div>
+        <div class="d-none d-md-flex row spaced-below justify-content-between">
+            <div class="col-2 primary-1 p-0">
+                <p class="top-border"></p>
             </div>
-            <div class="col-md-6 primary-2">
-                <div class="col-md-7 right-p">
-                </div>
-                <div class="col-md-offset-1 col-md-4 top-border">
-                </div>
+            <div class="col-2 primary-2 p-0">
+                <p class="top-border"></p>
             </div>
         </div>
 
         <div class="row primary-3">
-            <div class="col-md-12 bg-color header-claim">
+            <div class="col bg-color header-claim">
                 <h2>{{ t('Lieto fine') }}</h2>
 
                 <p>
@@ -165,13 +165,13 @@
                 </p>
 
                 <p class="small-link">
-                    <a class="other-arrowlink" href="{{ url('numeri') }}">{{ t('Cosa è successo') }}</a>
+                    <a class="other-arrowlink" href="{{ route('pages.numbers') }}">{{ t('Cosa è successo') }}</a>
                 </p>
             </div>
         </div>
 
         <div class="row footer-credits">
-            <div class="col-md-12">
+            <div class="col">
                 <div class="text-center">
                     {!! App\Config::getConf('credits') !!}
                 </div>

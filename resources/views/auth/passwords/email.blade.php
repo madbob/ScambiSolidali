@@ -2,28 +2,20 @@
 
 @section('content')
 
-<div class="row">
-    <div class="col-md-6 col-md-offset-3 primary-1">
+<div class="row justify-content-center my-5">
+    <div class="col-md-6 primary-1">
         @if (session('status'))
             <div class="alert alert-success" role="alert">
                 {{ session('status') }}
             </div>
         @endif
 
-        {!! BootForm::open(['url' => url('/password/email'), 'left_column_class' => 'col-md-4', 'right_column_class' => 'col-md-8']) !!}
-            {!! BootForm::email('email', 'E-Mail', '', ['required' => 'required']) !!}
+        <x-larastrap::form route="password.email" :buttons="[['element' => 'larastrap::sbtn', 'label' => 'Chiedi Reset Password', 'attributes' => ['type' => 'submit']]]">
+            <x-larastrap::email name="email" label="E-Mail" required />
 
-            <div class="form-group">
-                <div>
-                    <button class="button" type="submit">
-                        <span>Chiedi Reset Password</span>
-                    </button>
-                </div>
-            </div>
-
-            <a class="btn btn-link pull-right" href="{{ url('/register') }}">Registrati Qui!</a>
-            <a class="btn btn-link" href="{{ url('/login') }}">Login</a>
-        {!! BootForm::close() !!}
+            <a class="btn btn-link float-end" href="{{ route('register') }}">Registrati Qui!</a>
+            <a class="btn btn-link" href="{{ route('login') }}">Login</a>
+        </x-larastrap::form>
     </div>
 </div>
 

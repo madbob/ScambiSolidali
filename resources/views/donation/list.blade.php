@@ -7,21 +7,21 @@
 
     <div class="celo primary-1">
     	<div class="row">
-    		<div class="col-md-3 col-lg-2">
-                <button data-toggle="modal" data-target="#celo-select" class="dense-button">
+            <div class="col-12 col-md-3">
+                <button data-bs-toggle="modal" data-bs-target="#celo-select" class="dense-button">
                     <span>{{ t('Celo!') }}</span>
                 </button>
 
                 <br/>
 
                 <p>
-                    <a href="#" class="black" data-toggle="modal" data-target="#celo-select">
+                    <a href="#" class="black" data-bs-toggle="modal" data-bs-target="#celo-select">
                         {!! t('Qui puoi inserire il tuo annuncio!<br/>Dicci cosa vuoi regalare e attendi la nostra risposta!') !!}
                     </a>
                 </p>
 
                 @if($user && $user->role == 'admin')
-                    <a href="{{ url('/celo/archivio') }}" class="btn btn-default">
+                    <a href="{{ route('celo.archive') }}" class="btn btn-default">
                         <span>Vedi Archivio Completo</span>
                     </a>
 
@@ -39,7 +39,7 @@
                 @endif
             </div>
 
-            <div class="col-md-8 col-md-offset-1 col-lg-9 col-lg-offset-1">
+            <div class="col-12 col-md-9">
                 @if($donations->isEmpty())
                     <div class="alert alert-info">
                         <p>
@@ -47,36 +47,36 @@
                         </p>
                     </div>
                 @else
-    				@foreach($donations as $donation)
-                        <div class="col-md-6 col-lg-4 right-p">
-                            <div class="common-card">
-                                <div class="card-main image-frame" style="background-image: url('{{ $donation->imageUrl(1) }}')">
-                                    &nbsp;
-                                </div>
-                                @if($donation->status == 'assigned')
-                                    <div class="card-main-filter">
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 m-0">
+        				@foreach($donations as $donation)
+                            <div class="col p-1">
+                                <div class="common-card">
+                                    <div class="card-main image-frame" style="background-image: url('{{ $donation->imageUrl(1) }}')">
+                                        &nbsp;
                                     </div>
-                                    <div class="card-main-overlay">
-                                        <span>
-                                            <p>Assegnato!</p>
-                                            <img src="{{ url('images/trofeo.svg') }}">
-                                        </span>
+                                    @if($donation->status == 'assigned')
+                                        <div class="card-main-filter">
+                                        </div>
+                                        <div class="card-main-overlay">
+                                            <span>
+                                                <p>Assegnato!</p>
+                                                <img src="{{ Vite::asset('resources/images/trofeo.svg') }}">
+                                            </span>
+                                        </div>
+                                    @endif
+                                    <div class="card-footer vert-align">
+                                        <p>
+                                            @if($edit_enabled || $donation->userCanView($currentuser))
+                                                <a href="#" class="show-details" data-endpoint="celo" data-item-id="{{ $donation->id }}">{{ $donation->title }}</a>
+                                            @else
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#require-registration">{{ $donation->title }}</a>
+                                            @endif
+                                        </p>
                                     </div>
-                                @endif
-                                <div class="card-footer vert-align">
-                                    <p>
-                                        @if($edit_enabled || $donation->userCanView($currentuser))
-                                            <a href="#" class="show-details" data-endpoint="celo" data-item-id="{{ $donation->id }}">{{ $donation->title }}</a>
-                                        @else
-                                            <a href="#" data-toggle="modal" data-target="#require-registration">{{ $donation->title }}</a>
-                                        @endif
-                                    </p>
                                 </div>
                             </div>
-                        </div>
-    				@endforeach
-
-                    <p class="clearfix">&nbsp;</p>
+        				@endforeach
+                    </div>
 
                     <div class="text-center">
                         {{ $donations->links() }}
@@ -85,86 +85,62 @@
     		</div>
     	</div>
 
-        <div class="modal fade" id="celo-select" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    </div>
-
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-xs-6 col-md-5">
-                                <a href="{{ url('celo/nuovo/oggetto') }}">
-                                    <div class="common-card visible-md visible-lg">
-                                        <div class="card-main image-frame" style="background-image: url('{{ url('images/oggetti.svg') }}')">
-                                            &nbsp;
-                                        </div>
-                                        <div class="card-footer vert-align filled">
-                                            <p>
-                                                Dona un oggetto
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <p class="visible-xs visible-sm btn btn-default btn-flow">
-                                        Clicca qui per donare un oggetto
-                                    </p>
-                                </a>
+        <x-larastrap::modal id="celo-select" size="lg">
+            <div class="row justify-content-around g-5">
+                <div class="col">
+                    <a href="{{ route('celo.create', ['type' => 'oggetto']) }}">
+                        <div class="common-card d-none d-md-block">
+                            <div class="card-main image-frame" style="background-image: url('{{ Vite::asset('resources/images/oggetti.svg') }}')">
+                                &nbsp;
                             </div>
-
-                            <div class="col-xs-6 col-md-5 col-md-offset-2">
-                                <a href="{{ url('celo/nuovo/servizio') }}">
-                                    <div class="common-card visible-md visible-lg">
-                                        <div class="card-main image-frame" style="background-image: url('{{ url('images/tempo.svg') }}')">
-                                            &nbsp;
-                                        </div>
-                                        <div class="card-footer vert-align filled">
-                                            <p>
-                                                Dona una competenza
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <p class="visible-xs visible-sm btn btn-default btn-flow">
-                                        Clicca qui per donare una competenza
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="modal fade" id="require-registration" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    </div>
-
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-xs-12">
+                            <div class="card-footer vert-align filled">
                                 <p>
-                                    Per accedere ai dettagli degli oggetti donati devi essere un utente registrato e accreditato dagli amministratori.
+                                    Dona un oggetto
                                 </p>
-
-                                @if(env('HAS_PUBLIC_OP', false))
-                                    <p>
-                                        <a href="{{ route('register') }}">Clicca qui per registrarti e chiedere l'abilitazione.</a>
-                                    </p>
-                                @else
-                                    <p>
-                                        <a href="{{ route('contacts') }}">Contattaci per maggiori informazioni.</a>
-                                    </p>
-                                @endif
                             </div>
                         </div>
-                    </div>
+
+                        <p class="btn btn-primary visible-xs visible-sm btn btn-default btn-flow">
+                            Clicca qui per donare un oggetto
+                        </p>
+                    </a>
+                </div>
+
+                <div class="col">
+                    <a href="{{ route('celo.create', ['type' => 'servizio']) }}">
+                        <div class="common-card d-none d-md-block">
+                            <div class="card-main image-frame" style="background-image: url('{{ Vite::asset('resources/images/tempo.svg') }}')">
+                                &nbsp;
+                            </div>
+                            <div class="card-footer vert-align filled">
+                                <p>
+                                    Dona una competenza
+                                </p>
+                            </div>
+                        </div>
+
+                        <p class="btn btn-primary visible-xs visible-sm btn btn-default btn-flow">
+                            Clicca qui per donare una competenza
+                        </p>
+                    </a>
                 </div>
             </div>
-        </div>
+        </x-larastrap::modal>
+
+        <x-larastrap::modal id="require-registration">
+            <p>
+                Per accedere ai dettagli degli oggetti donati devi essere un utente registrato e accreditato dagli amministratori.
+            </p>
+
+            @if(env('HAS_PUBLIC_OP', false))
+                <p>
+                    <a href="{{ route('register') }}">Clicca qui per registrarti e chiedere l'abilitazione.</a>
+                </p>
+            @else
+                <p>
+                    <a href="{{ route('contacts') }}">Contattaci per maggiori informazioni.</a>
+                </p>
+            @endif
+        </x-larastrap::modal>
     </div>
 @endsection

@@ -3,19 +3,18 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 
-use Log;
-use DB;
-
-use App\RecurringPick;
 use App\Notifications\RecurringNotification;
 
 class Recurring extends Model
 {
     private $obj_contents = null;
 
-    public function company()
+    public function company(): BelongsTo
     {
         return $this->belongsTo('App\Company');
     }
@@ -116,7 +115,7 @@ class Recurring extends Model
     public static function generateWeekly()
     {
         $today = date('Y-m-d');
-        Recurring::weekly()->where(DB::raw('DATE(created_at)'), '!=', $today)->where('closed', false)->update(['closed' => true]);
+        Recurring::weekly()->whereRaw('DATE(created_at) != ?', [$today])->where('closed', false)->update(['closed' => true]);
 
         $companies = Company::where('donation_frequency', 'weekly')->get();
         self::generateAll($companies);
@@ -125,7 +124,7 @@ class Recurring extends Model
     public static function generateMonthly()
     {
         $today = date('Y-m-d');
-        Recurring::monthly()->where(DB::raw('DATE(created_at)'), '!=', $today)->where('closed', false)->update(['closed' => true]);
+        Recurring::monthly()->whereRaw('DATE(created_at) != ?', [$today])->where('closed', false)->update(['closed' => true]);
         RecurringPick::where('closed', false)->update(['closed' => true]);
 
         $companies = Company::where('donation_frequency', 'monthly')->get();

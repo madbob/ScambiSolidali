@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="row primary-1">
-        <div class="col-md-12">
+        <div class="col">
             <h2>
                 Grazie per aver inserito il tuo annuncio!<br/>
                 Verrai contattato nel momento in cui qualcuno sarà interessato al tuo oggetto o alla tua competenza.
@@ -14,7 +14,7 @@
 
             @if($donation->type == 'object')
                 <p class="lead">
-                    Se nel frattempo trovi un altro destinatario, ricorda di annullare l'annuncio <a href="{{ url('donazione/mie') }}">dal pannello delle tue donazioni</a>!
+                    Se nel frattempo trovi un altro destinatario, ricorda di annullare l'annuncio <a href="{{ route('donation.mine') }}">dal pannello delle tue donazioni</a>!
                 </p>
             @endif
 
@@ -23,7 +23,7 @@
                     <span>Torna alla homepage</span>
                 </a>
                 <br/>
-                <a class="dense-button" href="{{ url('donazione/mie') }}">
+                <a class="dense-button" href="{{ route('donation.mine') }}">
                     <span>Consulta le tue Donazioni</span>
                 </a>
             </p>

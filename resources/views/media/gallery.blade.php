@@ -21,7 +21,7 @@
 
         <div class="row primary-6">
             @foreach($media as $m)
-                <div class="col-md-4 both-p">
+                <div class="col-md-4 px-4">
                     <img class="img-responsive" src="{{ $m->link }}">
                     <hr>
                     <p>{{ $m->text }}</p>

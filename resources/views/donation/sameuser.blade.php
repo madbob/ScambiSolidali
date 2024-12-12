@@ -1,9 +1,7 @@
-<?php
-
+@php
 $user = $donation->user;
 $others = $user->donations()->where('status', 'pending')->where('donations.id', '!=', $donation->id)->get();
-
-?>
+@endphp
 
 @if($others->isEmpty() == false)
     <hr/>
@@ -21,7 +19,11 @@ $others = $user->donations()->where('status', 'pending')->where('donations.id', 
                 <tr>
                     <td>{{ ucwords(strftime('%d/%m/%G', strtotime($item->updated_at))) }}</td>
                     <td>{{ $item->title }}</td>
-                    <td><button class="btn btn-default show-details" data-endpoint="celo" data-item-id="{{ $item->id }}"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button></td>
+                    <td class="text-end">
+                        <button class="btn btn-default show-details" data-endpoint="celo" data-item-id="{{ $item->id }}">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </td>
                 </tr>
             @endforeach
         </tbody>

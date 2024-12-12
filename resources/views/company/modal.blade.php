@@ -1,94 +1,53 @@
-<div class="modal fade primary-1" id="company-{{ $company ? $company->id : 'new' }}" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Azienda</h4>
-            </div>
+<x-larastrap::modal :id="sprintf('company-%s', $company ? $company->id : 'new')" classes="primary-1">
+    <div class="row">
+        <div class="col">
+            <x-larastrap::form baseaction="azienda" :obj="$company">
+                <x-larastrap::text name="name" label="Nome" required />
+                <x-larastrap::text name="phone" label="Telefono" required />
+                <x-larastrap::email name="email" label="E-Mail" required />
+                <x-larastrap::text name="website" label="Sito Web" />
 
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        {!! BootForm::vertical(['model' => $company, 'store' => 'azienda.store', 'update' => 'azienda.update']) !!}
-                            {!! BootForm::text('name', 'Nome') !!}
-                            {!! BootForm::text('phone', 'Telefono') !!}
-                            {!! BootForm::email() !!}
-                            {!! BootForm::text('website', 'Sito Web') !!}
+                <x-larastrap::field label="Indirizzo">
+                    <x-larastrap::hidden name="address" />
+                    <x-larastrap::hidden name="coordinates" value="{{ $company ? ($company->lat . ',' . $company->lng) : '' }}" />
+                    <div class="map-select" id="company-address-selection-{{ $company ? $company->id : 'new' }}"></div>
+                    <div class="form-text">Attenzione: digita un indirizzo e selezionalo dal menu di autocompletamento. Se l'indirizzo non viene completato in questo modo, non sarà possibile risalire alle coordinate desiderate</div>
+                </x-larastrap::field>
 
-                            <div class="form-group">
-                                <label for="address" class="control-label">Indirizzo</label>
-                                <div>
-                                    <input type="hidden" name="address" value="{{ $company ? $company->address : '' }}">
-                                    <input type="hidden" name="coordinates" value="{{ $company ? ($company->lat . ',' . $company->lng) : '' }}">
-                                    <div class="map-select" id="company-address-selection-{{ $company ? $company->id : 'new' }}"></div>
-                                    <span class="help-block">Attenzione: digita un indirizzo e selezionalo dal menu di autocompletamento. Se l'indirizzo non viene completato in questo modo, non sarà possibile risalire alle coordinate desiderate</span>
-                                </div>
-                            </div>
+                <x-larastrap::text name="opening_hours" label="Orari Apertura" />
+                <x-larastrap::text name="preferred_hours" label="Orario Ritiro" />
+                <x-larastrap::textarea name="notes" label="Note" />
 
-                            {!! BootForm::text('opening_hours', 'Orari Apertura') !!}
-                            {!! BootForm::text('preferred_hours', 'Orario Ritiro') !!}
-                            {!! BootForm::textarea('notes', 'Note') !!}
+                <x-larastrap::radios name="donation_frequency" label="Donazione" :options="['none' => 'Nessuna', 'weekly' => 'Settimanale', 'monthly' => 'Mensile']" />
+            </x-larastrap::form>
 
-                            {!! BootForm::radios('donation_frequency', 'Donazione', [
-                                'none' => 'Nessuna',
-                                'weekly' => 'Settimanale',
-                                'monthly' => 'Mensile',
-                            ]) !!}
-
-                            <div class="form-group">
-                                <div>
-                                    <button class="button" type="submit">
-                                        <span>Salva</span>
-                                    </button>
-                                </div>
-                            </div>
-                        {!! BootForm::close() !!}
-
-                        @if($company)
-                            <div class="form-group">
-                                <label class="control-label">Operatori</label>
-                                @if($company->users->isEmpty())
-                                    <div class="alert alert-info">
-                                        Non ci sono operatori registrati per questa azienda.
-                                    </div>
-                                @else
-                                    <table class="table">
-                                        <tbody>
-                                            @foreach($company->users as $u)
-                                                <tr>
-                                                    <td>{{ $u->printableName() }}</td>
-                                                    <td>{{ $u->email }}</td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                @endif
-                            </div>
-
-                            <div class="form-group">
-                                <button class="btn btn-danger" role="button" data-toggle="collapse" href="#destroyCompany-{{ $company->id }}" aria-expanded="false" aria-controls="#destroyCompany-{{ $company->id }}">Elimina</button>
-
-                                <div class="collapse" id="destroyCompany-{{ $company->id }}">
-                                    <div class="well">
-                                        <form class="form-vertical" method="POST" action="{{ url('azienda/' . $company->id) }}">
-                                            <input type="hidden" name="_method" value="delete">
-                                            {{ csrf_field() }}
-
-                                            <div class="alert alert-danger">
-                                                Sei sicuro di voler eliminare questo azienda? Tutte le sue donazioni saranno eliminate.
-                                            </div>
-
-                                            <div class="form-group">
-                                                <button type="submit" class="btn btn-default">Si, elimina</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        @endif
+            @if($company)
+                @if($company->users->isEmpty())
+                    <div class="alert alert-info">
+                        Non ci sono operatori registrati per questa azienda.
                     </div>
+                @else
+                    <table class="table">
+                        <tbody>
+                            @foreach($company->users as $u)
+                                <tr>
+                                    <td>{{ $u->printableName() }}</td>
+                                    <td>{{ $u->email }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                @endif
+
+                <button class="btn btn-danger" role="button" data-bs-toggle="collapse" href="#destroyCompany-{{ $company->id }}">Elimina</button>
+                <div class="collapse py-3" id="destroyCompany-{{ $company->id }}">
+                    <x-larastrap::form method="DELETE" :action="route('azienda.destroy', $company->id)" :buttons="[['element' => 'larastrap::sbtn', 'label' => 'Si, elimina', 'attributes' => ['type' => 'submit']]]" keep_buttons>
+                        <div class="alert alert-danger">
+                            Sei sicuro di voler eliminare questo azienda? Tutte le sue donazioni saranno eliminate.
+                        </div>
+                    </x-larastrap::form>
                 </div>
-            </div>
+            @endif
         </div>
     </div>
-</div>
+</x-larastrap::modal>

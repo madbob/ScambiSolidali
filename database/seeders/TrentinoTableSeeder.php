@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Vite;
 
 use App\Config;
 
@@ -123,9 +124,9 @@ class TrentinoTableSeeder extends Seeder
             $c->value = sprintf('<p>Un progetto di<br/><img src="%s"><img src="%s"><img src="%s"><img src="%s"><img src="%s"></p>
             <p>In partnership con<br/><img style="max-width:220px" src="%s"><img src="%s"></p>
             <p>Con il sostegno di<br/><img src="%s"><img src="%s"><img src="%s"><img src="%s"><img src="%s"><img src="%s"><img src="%s"></p>',
-            url('images/trentinosolidale.png'), url('images/caritas_trento.png'), url('images/cs4.png'), url('images/rotteinverse.png'), url('images/cittadini_attivi.png'),
-            url('images/celocelo_trentino.png'), url('images/agenziasansalvario.jpg'),
-            url('images/itasolidale.png'), url('images/ministero_lavoro.jpg'), url('images/provincia_trento.png'), url('images/svolta.png'), url('images/fondazione_volontariato_sociale.png'), url('images/csv_trento.png'), url('images/caritro.png'));
+            Vite::asset('resources/images/trentinosolidale.png'), Vite::asset('resources/images/caritas_trento.png'), Vite::asset('resources/images/cs4.png'), Vite::asset('resources/images/rotteinverse.png'), Vite::asset('resources/images/cittadini_attivi.png'),
+            Vite::asset('resources/images/celocelo_trentino.png'), Vite::asset('resources/images/agenziasansalvario.jpg'),
+            Vite::asset('resources/images/itasolidale.png'), Vite::asset('resources/images/ministero_lavoro.jpg'), Vite::asset('resources/images/provincia_trento.png'), Vite::asset('resources/images/svolta.png'), Vite::asset('resources/images/fondazione_volontariato_sociale.png'), Vite::asset('resources/images/csv_trento.png'), Vite::asset('resources/images/caritro.png'));
             $c->save();
         }
 
@@ -170,8 +171,8 @@ class TrentinoTableSeeder extends Seeder
                 </p>
             </div>
             <div class="col-md-12 credits">
-                <p>Aderiamo all\'Economia Solidale Trentina come Welfare di Comunità</p><p><img style="height:70px" src="/images/economia_solidale_trentina.jpeg"></p>
-                <p class="intro">In partnership con</p><p><img style="height:50px" src="/images/celocelo_trentino.png">&nbsp;&nbsp;<img style="height:90px" src="/images/agenziasansalvario.jpg"></p>
+                <p>Aderiamo all\'Economia Solidale Trentina come Welfare di Comunità</p><p><img style="height:70px" src="' . Vite::asset('resources/images/economia_solidale_trentina.jpeg') . '"></p>
+                <p class="intro">In partnership con</p><p><img style="height:50px" src="' . Vite::asset('resources/images/celocelo_trentino.png') . '">&nbsp;&nbsp;<img style="height:90px" src="' . Vite::asset('resources/images/agenziasansalvario.jpg') . '"></p>
                 <p class="intro">Il progetto è stato sostenuto da</p><p>Ufficio sVOLta (spazio di progettazione creato da Fondazione Caritro, Fondazione Trentina per il Volontariato Sociale e Non Profit Network - CSV Trentino) nell’ambito del bando Intrecci Possibili 2020 - Volontariato che riparte.</p>
                 <p class="intro">e da</p><p>ITASolidale e Ministero del Lavoro e delle Politiche Sociali</p>
             </div>';
@@ -183,7 +184,7 @@ class TrentinoTableSeeder extends Seeder
             $c->name = 'contacts_page';
             $c->value = '<div class="row">
                 <div class="col-md-2">
-                    <img src="' . url('images/trentinosolidale.png') . '">
+                    <img src="' . Vite::asset('resources/images/trentinosolidale.png') . '">
                 </div>
 
                 <div class="col-md-10">
@@ -199,7 +200,7 @@ class TrentinoTableSeeder extends Seeder
 
             <div class="row">
                 <div class="col-md-2">
-                    <img src="' . url('images/cs4.png') . '">
+                    <img src="' . Vite::asset('resources/images/cs4.png') . '">
                 </div>
 
                 <div class="col-md-10">
@@ -216,7 +217,7 @@ class TrentinoTableSeeder extends Seeder
 
             <div class="row">
                 <div class="col-md-2">
-                    <img src="' . url('images/caritas_trento.png') . '">
+                    <img src="' . Vite::asset('resources/images/caritas_trento.png') . '">
                 </div>
 
                 <div class="col-md-10">
@@ -233,7 +234,7 @@ class TrentinoTableSeeder extends Seeder
 
             <div class="row">
                 <div class="col-md-2">
-                    <img src="' . url('images/rotteinverse.png') . '">
+                    <img src="' . Vite::asset('resources/images/rotteinverse.png') . '">
                 </div>
 
                 <div class="col-md-10">
@@ -250,7 +251,7 @@ class TrentinoTableSeeder extends Seeder
 
             <div class="row">
                 <div class="col-md-2">
-					<img src="' . url('images/cittadini_attivi.png') . '">
+					<img src="' . Vite::asset('resources/images/cittadini_attivi.png') . '">
                 </div>
 
                 <div class="col-md-10">
@@ -413,7 +414,7 @@ segreteria@donotrentino.it';
 
         if (Config::where('name', 'food_full_credits')->first() == null) {
             $c = new Config();
-            $c->value = sprintf('<p class="intro">Un progetto di</p><p>Ass. Agenzia per lo sviluppo locale di San Salvario ONLUS, Equoevento ONLUS</p><p class="intro"><br>In collaborazione con</p><p>Stranaidea Impresa Sociale ONLUS</p><img src="%s" alt="Agenzia per lo Sviluppo Locale di San Salvario ONLUS"><img src="%s" alt="Equoevento ONLUS"><img src="%s" alt="Stradaidea Impresa Sociale ONLUS"><p class="intro"><br><br>Con il sostegno di</p><img src="%s" alt="Compagnia di San Paolo"><img src="%s" alt="Iren"><p class="details"><br>nell\'ambito del bando "Fatto per Bene 2018"</p>', url('images/agenziasansalvario.jpg'), url('images/equoevento.jpg'), url('images/stranaidea.jpg'), url('images/csp.png'), url('images/iren.jpg'));
+            $c->value = sprintf('<p class="intro">Un progetto di</p><p>Ass. Agenzia per lo sviluppo locale di San Salvario ONLUS, Equoevento ONLUS</p><p class="intro"><br>In collaborazione con</p><p>Stranaidea Impresa Sociale ONLUS</p><img src="%s" alt="Agenzia per lo Sviluppo Locale di San Salvario ONLUS"><img src="%s" alt="Equoevento ONLUS"><img src="%s" alt="Stradaidea Impresa Sociale ONLUS"><p class="intro"><br><br>Con il sostegno di</p><img src="%s" alt="Compagnia di San Paolo"><img src="%s" alt="Iren"><p class="details"><br>nell\'ambito del bando "Fatto per Bene 2018"</p>', Vite::asset('resources/images/agenziasansalvario.jpg'), Vite::asset('resources/images/equoevento.jpg'), Vite::asset('resources/images/stranaidea.jpg'), Vite::asset('resources/images/csp.png'), Vite::asset('resources/images/iren.jpg'));
             $c->name = 'food_full_credits';
             $c->save();
         }

@@ -21,10 +21,10 @@ class CallController extends Controller
 
     public function index(Request $request)
     {
-        $user = Auth::user();
+        $user = $request->user();
         $data['edit_enabled'] = ($user != null && ($user->role == 'admin' || $user->role == 'operator'));
 
-        $query = Call::orderByRaw(DB::raw("FIELD(status, 'draft', 'open', 'closed', 'archived')"))->orderBy('updated_at', 'desc');
+        $query = Call::orderByRaw("FIELD(status, 'draft', 'open', 'closed', 'archived')")->with('category')->orderBy('updated_at', 'desc');
 
         $filter = $request->input('filter', null);
         if (!is_null($filter)) {
@@ -48,8 +48,9 @@ class CallController extends Controller
         }
         $data['filter'] = $filter;
 
-        if ($data['edit_enabled'] == false)
+        if ($data['edit_enabled'] == false) {
             $query->whereIn('status', ['open', 'closed']);
+        }
 
         $data['calls'] = $query->paginate(60);
 
@@ -84,7 +85,7 @@ class CallController extends Controller
 
     public function store(Request $request)
     {
-        $user = Auth::user();
+        $user = $request->user();
         if ($user->role != 'admin' && $user->role != 'operator') {
             return redirect(url('/'));
         }
@@ -106,11 +107,11 @@ class CallController extends Controller
         return redirect(url('manca'));
     }
 
-    public function show($id)
+    public function show(Request $request, $id)
     {
         $call = Call::find($id);
 
-        $user = Auth::user();
+        $user = $request->user();
         if ($user && ($user->role == 'admin' || ($user->role == 'operator' && $call->user_id == $user->id)))
             return view('call.modal', ['call' => $call]);
         else
@@ -119,7 +120,7 @@ class CallController extends Controller
 
     public function update(Request $request, $id)
     {
-        $user = Auth::user();
+        $user = $request->user();
         $call = Call::find($id);
 
         if ($user && ($user->role == 'admin' || ($user->role == 'operator' && $call->user_id == $user->id))) {

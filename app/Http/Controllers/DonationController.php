@@ -35,7 +35,7 @@ class DonationController extends Controller
     public function index(Request $request)
     {
         $user = Auth::user();
-        $query = Donation::orderByRaw(DB::raw("FIELD(status, 'pending', 'assigned')"))->orderBy('created_at', 'desc')->whereIn('status', ['pending', 'assigned']);
+        $query = Donation::orderByRaw("FIELD(status, 'pending', 'assigned')")->orderBy('created_at', 'desc')->whereIn('status', ['pending', 'assigned']);
         $data['user'] = $user;
 
         $filter = $request->input('filter', null);
@@ -111,9 +111,11 @@ class DonationController extends Controller
         return view('donation.mylist', $data);
     }
 
-    public function create(Request $request, $type)
+    public function create(Request $request)
     {
-        if($request->has('call')) {
+        $type = $request->input('type');
+
+        if ($request->has('call')) {
             $call = Call::find($request->input('call'));
             if ($call && $call->category->direct_response) {
                 return redirect()->route('manca.index', ['show' => $call->id]);
@@ -123,10 +125,12 @@ class DonationController extends Controller
             $call = null;
         }
 
-        if ($type == 'servizio')
+        if ($type == 'servizio') {
             return view('donation.service', ['call' => $call]);
-        else
+        }
+        else {
             return view('donation.create', ['call' => $call]);
+        }
     }
 
     public function directResponse(Request $request, $call_id)
@@ -253,20 +257,6 @@ class DonationController extends Controller
         }
 
         return view('donation.thanks', ['donation' => $donation]);
-    }
-
-    public function edit(Request $request, $id)
-    {
-        $user = Auth::user();
-        $donation = Donation::find($id);
-
-        if ($donation->user_id != $user->id)
-            return redirect(url('/'));
-
-        if ($donation->status != 'pending')
-            return redirect(url('/'));
-
-        return view('donation.editmodal', ['donation' => $donation]);
     }
 
     public function update(Request $request, $id)
@@ -448,13 +438,14 @@ class DonationController extends Controller
         $data['search'] = '';
         $data['status'] = '';
 
-        $query = Donation::with(['receivers'])->orderBy('created_at', 'desc');
+        $query = Donation::with(['receivers', 'user'])->orderBy('created_at', 'desc');
 
         $search = $request->input('search');
         if (!empty($search)) {
             $query->where('title', 'like', '%' . $search . '%')->orWhereHas('user', function($query) use ($search) {
                 $query->where('email', 'like', '%' . $search . '%')->orWhere('name', 'like', '%' . $search . '%')->orWhere('surname', 'like', '%' . $search . '%');
             });
+
             $data['search'] = $search;
         }
 
@@ -464,7 +455,7 @@ class DonationController extends Controller
             $data['status'] = $status;
         }
 
-        $data['donations'] = $query->get();
+        $data['donations'] = $query->paginate(50);
 
         return view('donation.archive', $data);
     }

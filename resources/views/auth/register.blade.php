@@ -2,66 +2,39 @@
 
 @section('content')
 
-<div class="row">
-    <div class="register-form col-md-6 col-md-offset-3 primary-1">
-        {!! BootForm::open(['left_column_class' => 'col-md-4', 'left_column_offset_class' => 'col-md-offset-4', 'right_column_class' => 'col-md-8', 'action' => 'Auth\RegisterController@register']) !!}
-            {!! BootForm::text('name', 'Nome', '', ['required' => 'required']) !!}
-            {!! BootForm::text('surname', 'Cognome', '', ['required' => 'required']) !!}
-            {!! BootForm::email('email', 'E-Mail', '', ['required' => 'required']) !!}
-            {!! BootForm::text('phone', 'Telefono', '', ['required' => 'required']) !!}
+<div class="row justify-content-center">
+    <div class="register-form col-md-6 primary-1">
+        <x-larastrap::form route="register" :buttons="['element' => 'larastrap::sbtn', 'label' => 'Registrati', 'attributes' => ['type' => 'submit']]">
+            <x-larastrap::text name="name" label="Nome" required />
+            <x-larastrap::text name="surname" label="Cognome" required />
+            <x-larastrap::email name="email" label="E-Mail" required />
+            <x-larastrap::text name="phone" label="Telefono" required />
 
             @if(env('HAS_BIRTHDATE', false))
-                {!! BootForm::date('birthdate', 'Data di Nascita', '') !!}
+                <x-larastrap::date name="birthdate" label="Data di Nascita" />
             @endif
 
-            {!! BootForm::password('password', 'Password', ['required' => 'required']) !!}
-            {!! BootForm::password('password_confirmation', 'Conferma Password', ['required' => 'required']) !!}
+            <x-larastrap::password name="password" label="Password" required />
+            <x-larastrap::password name="password_confirmation" label="Conferma Password" required />
 
 			@if(App\Config::getConf('explicit_zones') == 'true')
-				{!! BootForm::radios('area', 'Area', App\Donation::areas()) !!}
+                <-larastrap::radios name="area" label="Area" :options="App\Donation::areas()" />
 			@endif
 
-            {!! BootForm::text('check', 'Quanto fa ' . genCaptcha(), '', ['required' => 'required']) !!}
+            <x-larastrap::text name="check" :label="sprintf('Quanto fa %s', genCaptcha())" required />
 
             @if(env('HAS_PUBLIC_OP', false))
-                <div class="form-group">
-                    <label for="" class="control-label"></label>
-                    <div>
-                        <div class="checkbox">
-                            <label>
-                                <input name="public_op" value="1" type="checkbox">Richiedo l'accesso per ottenere i beni donati su CeloCelo. Le richieste saranno vagliate dagli amministratori.
-                            </label>
-                        </div>
-                    </div>
-                </div>
+                <x-larastrap::check inline name="public_op" value="1" label="Richiedo l'accesso per ottenere i beni donati su CeloCelo. Le richieste saranno vagliate dagli amministratori." />
             @endif
 
-            <div class="form-group">
-                <label for="" class="control-label"></label>
-                <div>
-                    <div class="checkbox">
-                        <label>
-                            <input name="privacy" value="privacy" type="checkbox">Ho letto ed accetto <a href="/privacy">l'informativa sulla privacy e le condizioni d'uso del servizio</a>
-                        </label>
-                    </div>
-                </div>
-            </div>
-
-            <br/>
-
-            <div class="form-group">
-                <div>
-                    <button class="button" type="submit">
-                        <span>Registrati</span>
-                    </button>
-                </div>
-            </div>
-        {!! BootForm::close() !!}
+            <x-larastrap::check inline name="privacy" value="privacy" :label_html="sprintf('Ho letto ed accetto <a href=\'%s\'>l\'informativa sulla privacy e le condizioni d\'uso del servizio</a>', route('pages.privacy'))" required />
+        </x-larastrap::form>
 
         <br/>
 
         <p>
-            Hai un codice identificativo per accreditarti come {{ App\User::existingRoles()['operator']->label }}?<br/><a href="{{ url('register/operator') }}">Visita questa pagina</a>.
+            Hai un codice identificativo per accreditarti come {{ App\User::existingRoles()['operator']->label }}?<br/>
+            <a href="{{ route('register.operator') }}">Visita questa pagina</a>.
         </p>
     </div>
 </div>

@@ -1,113 +1,71 @@
-<div class="modal fade primary-1" id="user-{{ $user ? $user->id : 'new' }}" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Utente</h4>
-            </div>
+<x-larastrap::modal :id="sprintf('user-%s', $user ? $user->id : 'new')" size="xl" classes="primary-2">
+    <div class="row">
+        <div class="col">
+            <x-larastrap::form :obj="$user" baseaction="utenti">
+                <x-larastrap::text name="name" label="Nome" required />
+                <x-larastrap::text name="surname" label="Cognome" required />
+                <x-larastrap::text name="phone" label="Telefono" required />
 
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        {!! BootForm::vertical(['model' => $user, 'store' => 'giocatori.store', 'update' => 'giocatori.update']) !!}
-                            {!! BootForm::text('name', 'Nome') !!}
-                            {!! BootForm::text('surname', 'Cognome') !!}
-                            {!! BootForm::text('phone', 'Telefono') !!}
+                @if(env('HAS_BIRTHDATE', false))
+                    <x-larastrap::date name="birthdate" label="Data di Nascita" />
+                @endif
 
-                            @if(env('HAS_BIRTHDATE', false))
-                                {!! BootForm::date('birthdate', 'Data di Nascita') !!}
-                            @endif
+                <x-larastrap::email name="email" label="E-Mail" required />
+                <x-larastrap::password name="password" label="Password" help="Lascia vuoto per non modificare la password esistente" />
 
-                            {!! BootForm::email() !!}
-                            {!! BootForm::password('password', 'Password', ['help_text' => 'Lascia vuoto per non modificare la password']) !!}
+                <?php
 
-                            <?php
+                $selector = [];
+                foreach(App\User::existingRoles() as $identifier => $metadata) {
+                    $selector[$identifier] = $metadata->label;
+                }
 
-                            $selector = [];
-                            foreach(App\User::existingRoles() as $identifier => $metadata) {
-                                $selector[$identifier] = $metadata->label;
-                            }
+                ?>
 
-                            ?>
+                <x-larastrap::radiolist name="role" label="Ruolo" :options="$selector" />
 
-                            {!! BootForm::radios('role', 'Ruolo', $selector) !!}
+				@if(App\Config::getConf('explicit_zones') == 'true')
+                    <x-larastrap::radiolist name="area" label="Area" :options="App\Donation::areas()" />
+				@endif
 
-							@if(App\Config::getConf('explicit_zones') == 'true')
-								{!! BootForm::radios('area', 'Area', App\Donation::areas(), $user ? $user->area : null) !!}
-							@endif
+                <?php
 
-                            <?php
+                $institutes = [];
+                foreach(App\Institute::orderBy('name', 'asc')->get() as $institute) {
+                    $institutes[$institute->id] = $institute->name;
+                }
 
-                                $institutes = [];
-                                foreach(App\Institute::orderBy('name', 'asc')->get() as $institute)
-                                    $institutes[$institute->id] = $institute->name;
+                $companies = [];
+                foreach(App\Company::orderBy('name', 'asc')->get() as $company) {
+                    $companies[$company->id] = $company->name;
+                }
 
-                                $companies = [];
-                                foreach(App\Company::orderBy('name', 'asc')->get() as $company)
-                                    $companies[$company->id] = $company->name;
+                ?>
 
-                            ?>
+                @if(!empty($institutes))
+                    <x-larastrap::checklist-model name="institutes" label="Affiliazioni" :options="$institutes" />
+                @endif
 
-                            @if(!empty($institutes))
-                                {!! BootForm::checkboxes('institutes[]', 'Affiliazioni', $institutes, $user ? $user->institutes->reduce(function($carry, $item) {
-                                    $carry[] = $item->id;
-                                    return $carry;
-                                }, []) : []) !!}
-                            @endif
+                @if(!empty($companies))
+                    <x-larastrap::checklist-model name="companies" label="Aziende" :options="$companies" />
+                @endif
+            </x-larastrap::form>
 
-                            @if(!empty($companies))
-                                {!! BootForm::checkboxes('companies[]', 'Aziende', $companies, $user ? $user->companies->reduce(function($carry, $item) {
-                                    $carry[] = $item->id;
-                                    return $carry;
-                                }, []) : []) !!}
-                            @endif
-
-                            <div class="form-group">
-                                <div>
-                                    <button class="button" type="submit">
-                                        <span>Salva</span>
-                                    </button>
-                                </div>
-                            </div>
-                        {!! BootForm::close() !!}
-
-                        @if($user)
-                            <div class="form-group">
-                                <button class="btn btn-danger" role="button" data-toggle="collapse" href="#destroyUser-{{ $user->id }}" aria-expanded="false" aria-controls="#destroyUser-{{ $user->id }}">Elimina</button>
-
-                                <div class="collapse" id="destroyUser-{{ $user->id }}">
-                                    <div class="well">
-                                        <form class="form-vertical" method="POST" action="{{ url('giocatori/' . $user->id) }}">
-                                            <input type="hidden" name="_method" value="delete">
-                                            {{ csrf_field() }}
-
-                                            <div class="alert alert-danger">
-                                                Sei sicuro di voler eliminare questo utente? Tutte le sue donazioni saranno eliminate.
-                                            </div>
-
-                                            <div class="form-group">
-                                                <button type="submit" class="btn btn-default">Si, elimina</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-
-                            @if(!empty($user->verification_code))
-                                <div class="form-group">
-                                    <form class="form-vertical" method="POST" action="{{ route('giocatori.reverify', $user->id) }}">
-                                        {{ csrf_field() }}
-
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-default">Rimanda mail verifica</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            @endif
-                        @endif
-                    </div>
+            @if($user)
+                <button class="btn btn-danger" role="button" data-bs-toggle="collapse" href="#destroyUser-{{ $user->id }}">Elimina</button>
+                <div class="collapse py-3" id="destroyUser-{{ $user->id }}">
+                    <x-larastrap::form method="DELETE" :action="route('utenti.destroy', $user->id)" :buttons="[['element' => 'larastrap::sbtn', 'label' => 'Si, elimina', 'attributes' => ['type' => 'submit']]]" keep_buttons>
+                        <div class="alert alert-danger">
+                            Sei sicuro di voler eliminare questo utente? Tutte le sue donazioni saranno eliminate.
+                        </div>
+                    </x-larastrap::form>
                 </div>
-            </div>
+
+                @if(!empty($user->verification_code))
+                    <x-larastrap::form classes="mt-2" :action="route('giocatori.reverify', $user->id)" :buttons="[['label' => 'Rimanda mail verifica', 'attributes' => ['type' => 'submit']]]" keep_buttons buttons_align="start">
+                    </x-larastrap::form>
+                @endif
+            @endif
         </div>
     </div>
-</div>
+</x-larastrap::modal>

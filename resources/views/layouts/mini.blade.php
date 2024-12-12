@@ -9,7 +9,10 @@
 
     <title>{{ $pagetitle }}</title>
 
-    <link rel='stylesheet' href='{{ route('css') }}?a={{ time() }}' type='text/css' />
+    @vite([
+        'resources/sass/' . currentInstance() . '.scss',
+        'resources/js/app.js'
+    ])
 
     <script>
         window.Laravel = <?php echo json_encode([
@@ -27,10 +30,5 @@
 
         <br/>
     </div>
-
-    <script src="{{ url('js/jquery-3.6.0.min.js') }}"></script>
-    <script src="{{ url('js/bootstrap-datepicker.min.js') }}"></script>
-    <script src="{{ url('js/bootstrap-datepicker.it.min.js') }}"></script>
-    <script src="{{ url('/js/mine.js') }}"></script>
 </body>
 </html>

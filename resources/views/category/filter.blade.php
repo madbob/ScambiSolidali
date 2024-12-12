@@ -9,7 +9,7 @@ $categories = $categories->get();
 
 ?>
 
-<ul class="categories-select visible-md visible-lg">
+<ul class="d-none d-md-block categories-select">
     @if($filter != null)
         <li class="border-top">
             <span><a href="{{ url($endpoint) }}">Elimina Filtro</a></span>

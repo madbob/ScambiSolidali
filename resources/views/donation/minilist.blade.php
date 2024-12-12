@@ -54,7 +54,7 @@
 
                     <td>
                         @if($currentuser->role == 'admin' || $item->pivot->operator_id == $currentuser->id)
-                            <button class="btn btn-default btn-sm async-delete-interaction assignation" data-donation-id="{{ $donation->id }}" data-item-id="{{ $item->id }}">
+                            <button class="btn btn-danger btn-sm async-delete-interaction assignation" data-donation-id="{{ $donation->id }}" data-item-id="{{ $item->id }}">
                                 <small>Rimuovi</small>
                             </button>
                         @endif

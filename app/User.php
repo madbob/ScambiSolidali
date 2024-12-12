@@ -4,9 +4,10 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
-use Log;
-use Mail;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class User extends Authenticatable
 {
@@ -20,17 +21,17 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function donations()
+    public function donations(): HasMany
     {
         return $this->hasMany('App\Donation');
     }
 
-    public function institutes()
+    public function institutes(): BelongsToMany
     {
         return $this->belongsToMany('App\Institute');
     }
 
-    public function companies()
+    public function companies(): BelongsToMany
     {
         return $this->belongsToMany('App\Company');
     }
@@ -109,6 +110,7 @@ class User extends Authenticatable
         }
         else {
             Log::error('Utente con ruolo non assegnato: ' . $this->id . ' ' . $this->role);
+
             if ($this->institutes->count() != 0) {
                 $this->role = 'operator';
             }
@@ -120,7 +122,7 @@ class User extends Authenticatable
             }
 
             $this->save();
-            return $this->role_name;
+            return $this->getRoleNameAttribute();
         }
     }
 

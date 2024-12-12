@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Vite;
 
 use App\Config;
 
@@ -76,7 +77,7 @@ class TorinoTableSeeder extends Seeder
         if (Config::where('name', 'credits')->first() == null) {
             $c = new Config();
             $c->name = 'credits';
-            $c->value = sprintf('<p>Un progetto di<br/><img src="%s" alt="Agenzia per lo Sviluppo Locale di San Salvario"></p><p>Con il sostegno di<br/><img src="%s" alt="Compagnia di San Paolo">&nbsp;&nbsp;&nbsp;<img src="%s" alt="Iren"></p>', url('images/agenziasansalvario.jpg'), url('images/csp.png'), url('images/iren.jpg'));
+            $c->value = sprintf('<p>Un progetto di<br/><img src="%s" alt="Agenzia per lo Sviluppo Locale di San Salvario"></p><p>Con il sostegno di<br/><img src="%s" alt="Compagnia di San Paolo">&nbsp;&nbsp;&nbsp;<img src="%s" alt="Iren"></p>', Vite::asset('resources/images/agenziasansalvario.jpg'), Vite::asset('resources/images/csp.png'), Vite::asset('resources/images/iren.jpg'));
             $c->save();
         }
 
@@ -102,54 +103,56 @@ class TorinoTableSeeder extends Seeder
                     </div>
                 </div>
             </div>
-            <div class="col-md-8 col-md-offset-1">
-                <div class="col-md-6 right-p">
-                    <p>
-                        Il progetto prevede un sistema di reperimento e distribuzione di beni di prossimità di varia
-                        natura, basato su una rete locale di enti no profit e su una piattaforma informatica che renda
-                        possibile l\'incrocio della domanda/offerta di beni e servizi di prima necessità, riducendo al
-                        minimo l\'impegno e i costi di natura logistica, in particolare per quanto concerne lo stoccaggio,
-                        l\'immagazzinamento e la distribuzione centralizzata.
-                    </p>
-                    <p>
-                        I beneficiari diretti delle donazioni sono persone e famiglie svantaggiate, sia in condizione di
-                        marginalità cronica, sia in condizione di povertà grigia derivante da eventi traumatici anche
-                        recenti, come la perdita di lavoro, la separazione, la malattia.
-                    </p>
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-6 right-p">
+                        <p>
+                            Il progetto prevede un sistema di reperimento e distribuzione di beni di prossimità di varia
+                            natura, basato su una rete locale di enti no profit e su una piattaforma informatica che renda
+                            possibile l\'incrocio della domanda/offerta di beni e servizi di prima necessità, riducendo al
+                            minimo l\'impegno e i costi di natura logistica, in particolare per quanto concerne lo stoccaggio,
+                            l\'immagazzinamento e la distribuzione centralizzata.
+                        </p>
+                        <p>
+                            I beneficiari diretti delle donazioni sono persone e famiglie svantaggiate, sia in condizione di
+                            marginalità cronica, sia in condizione di povertà grigia derivante da eventi traumatici anche
+                            recenti, come la perdita di lavoro, la separazione, la malattia.
+                        </p>
+                    </div>
+                    <div class="col-md-6 left-p">
+                        <p>
+                            Sulla piattaforma tutti possono donare beni materiali, i commercianti possono donare fondi di
+                            magazzino o altri beni in eccesso, i professionisti possono offrire gratuitamente servizi nei
+                            settori della salute e dell\'abitare, le associazioni culturali possono offrire accessi gratuiti a
+                            corsi, spettacoli e laboratori.
+                        </p>
+                        <p>
+                            Gli operatori accreditati ad accedere alla piattaforma fanno parte di una rete di organizzazioni
+                            che operano a contatto con persone e famiglie in difficoltà. Si tratta sia di organizzazioni che
+                            gestiscono servizi e progetti in ambito socio assistenziale, sia organizzazioni che, pur non
+                            avendo una mission esplicitamente sociale, entrano spesso in contatto con persone e famiglie in
+                            difficoltà. Sono accreditati all’uso della piattaforma anche operatori dei servizi sociali
+                            pubblici.
+                        </p>
+                        <p>
+                            Per maggiori dettagli sul funzionamento visita <a href="/come-funziona">questa pagina</a>.
+                        </p>
+                    </div>
+                    <div class="col-md-6 right-p">
+                        <p class="border-bottom">
+                            &nbsp;
+                        </p>
+                    </div>
+                    <div class="col-md-6 left-p">
+                        <p class="border-bottom">
+                            &nbsp;
+                        </p>
+                    </div>
+                    <div class="col-md-12 credits">
+                        <p class="intro">Un progetto di</p><p>Ass. Agenzia per lo sviluppo locale di San Salvario ONLUS</p><p class="intro">Partner</p><p>Ufficio Pio della Compagnia di San Paolo, Città di Torino - Circoscrizione 8, Città di Torino- Assessorato alle Politiche Sociali, Ass. Asai, Oratorio San Luigi, Ass. Opportunanda, Ass. Mondo di Joele, Ass. Manzoni People, Parrocchia SS.Pietro e Paolo, Coop. Soc. Accomazzi, Ass. Manamanà, Ass. Officina Informatica Libera, Coop. Soc. Triciclo, SPI CGIL Lega 8, Società Cooperativa Sociale Lancillotto, Centro di Ascolto della Parrocchia Patrocinio di San Giuseppe, Centro di Ascolto della Parrocchia Assunzione di Maria Vergine - Lingotto Torino, Commissione Carità del Consiglio Pastorale della Parrocchia Immacolata Concezione e San Giovanni Battista, Istituto Comprensivo "Sandro Pertini", Associazione Articolo 47.<br><br>Il progetto è sostenuto dalla Compagnia di San Paolo nell’ambito del Bando Fatto per Bene e dal Comitato Territoriale di Torino di Iren.</p><p class="intro">Con il patrocinio di</p><p><img src="%s"></p>
+                    </div>
                 </div>
-                <div class="col-md-6 left-p">
-                    <p>
-                        Sulla piattaforma tutti possono donare beni materiali, i commercianti possono donare fondi di
-                        magazzino o altri beni in eccesso, i professionisti possono offrire gratuitamente servizi nei
-                        settori della salute e dell\'abitare, le associazioni culturali possono offrire accessi gratuiti a
-                        corsi, spettacoli e laboratori.
-                    </p>
-                    <p>
-                        Gli operatori accreditati ad accedere alla piattaforma fanno parte di una rete di organizzazioni
-                        che operano a contatto con persone e famiglie in difficoltà. Si tratta sia di organizzazioni che
-                        gestiscono servizi e progetti in ambito socio assistenziale, sia organizzazioni che, pur non
-                        avendo una mission esplicitamente sociale, entrano spesso in contatto con persone e famiglie in
-                        difficoltà. Sono accreditati all’uso della piattaforma anche operatori dei servizi sociali
-                        pubblici.
-                    </p>
-                    <p>
-                        Per maggiori dettagli sul funzionamento visita <a href="/come-funziona">questa pagina</a>.
-                    </p>
-                </div>
-                <div class="col-md-6 right-p">
-                    <p class="border-bottom">
-                        &nbsp;
-                    </p>
-                </div>
-                <div class="col-md-6 left-p">
-                    <p class="border-bottom">
-                        &nbsp;
-                    </p>
-                </div>
-                <div class="col-md-12 credits">
-                    <p class="intro">Un progetto di</p><p>Ass. Agenzia per lo sviluppo locale di San Salvario ONLUS</p><p class="intro">Partner</p><p>Ufficio Pio della Compagnia di San Paolo, Città di Torino - Circoscrizione 8, Città di Torino- Assessorato alle Politiche Sociali, Ass. Asai, Oratorio San Luigi, Ass. Opportunanda, Ass. Mondo di Joele, Ass. Manzoni People, Parrocchia SS.Pietro e Paolo, Coop. Soc. Accomazzi, Ass. Manamanà, Ass. Officina Informatica Libera, Coop. Soc. Triciclo, SPI CGIL Lega 8, Società Cooperativa Sociale Lancillotto, Centro di Ascolto della Parrocchia Patrocinio di San Giuseppe, Centro di Ascolto della Parrocchia Assunzione di Maria Vergine - Lingotto Torino, Commissione Carità del Consiglio Pastorale della Parrocchia Immacolata Concezione e San Giovanni Battista, Istituto Comprensivo "Sandro Pertini", Associazione Articolo 47.<br><br>Il progetto è sostenuto dalla Compagnia di San Paolo nell’ambito del Bando Fatto per Bene e dal Comitato Territoriale di Torino di Iren.</p><p class="intro">Con il patrocinio di</p><p><img src="/images/circ2.jpg"></p>
-                </div>
-            </div>', url('images/categories/casa_elettrodomestici.svg'), env('APP_NAME'));
+            </div>', Vite::asset('resources/images/categories/casa_elettrodomestici.svg'), env('APP_NAME'), Vite::asset('resources/images/circ2.jpg'));
 
             $c->save();
         }
@@ -286,7 +289,7 @@ T 011 6686772';
 
         if (Config::where('name', 'food_full_credits')->first() == null) {
             $c = new Config();
-            $c->value = sprintf('<p class="intro">Un progetto di</p><p>Ass. Agenzia per lo sviluppo locale di San Salvario ONLUS, Equoevento ONLUS</p><p class="intro"><br>In collaborazione con</p><p>Stranaidea Impresa Sociale ONLUS</p><img src="%s" alt="Agenzia per lo Sviluppo Locale di San Salvario ONLUS"><img src="%s" alt="Equoevento ONLUS"><img src="%s" alt="Stradaidea Impresa Sociale ONLUS"><p class="intro"><br><br>Con il sostegno di</p><img src="%s" alt="Compagnia di San Paolo"><img src="%s" alt="Iren"><p class="details"><br>nell\'ambito del bando "Fatto per Bene 2018"</p>', url('images/agenziasansalvario.jpg'), url('images/equoevento.jpg'), url('images/stranaidea.jpg'), url('images/csp.png'), url('images/iren.jpg'));
+            $c->value = sprintf('<p class="intro">Un progetto di</p><p>Ass. Agenzia per lo sviluppo locale di San Salvario ONLUS, Equoevento ONLUS</p><p class="intro"><br>In collaborazione con</p><p>Stranaidea Impresa Sociale ONLUS</p><img src="%s" alt="Agenzia per lo Sviluppo Locale di San Salvario ONLUS"><img src="%s" alt="Equoevento ONLUS"><img src="%s" alt="Stradaidea Impresa Sociale ONLUS"><p class="intro"><br><br>Con il sostegno di</p><img src="%s" alt="Compagnia di San Paolo"><img src="%s" alt="Iren"><p class="details"><br>nell\'ambito del bando "Fatto per Bene 2018"</p>', Vite::asset('resources/images/agenziasansalvario.jpg'), Vite::asset('resources/images/equoevento.jpg'), Vite::asset('resources/images/stranaidea.jpg'), Vite::asset('resources/images/csp.png'), Vite::asset('resources/images/iren.jpg'));
             $c->name = 'food_full_credits';
             $c->save();
         }

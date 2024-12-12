@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-12">
+        <div class="col">
             <h1>CONDIZIONI GENERALI, PRIVACY POLICY E COOKIE<h1>
 
 			<h2>Condizioni generali per l’utilizzo della piattaforma  www.donotrentino.it</h2>

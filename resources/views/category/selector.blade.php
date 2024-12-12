@@ -33,36 +33,25 @@ $categories = $query->get();
 
 	?>
 
-	<div class="form-group">
-        <label for="category_id" class="col-sm-2 col-md-3 control-label">Categoria</label>
-        <div class="col-sm-10 col-md-9">
-			@foreach($categories as $cat)
-				@if ($orientation == 'horizontal')
-					<div class="col-md-{{ $col_size }} black">
-				@else
-					<div class="row black">
-				@endif
+    <x-larastrap::field label="Categoria">
+    	@foreach($categories as $cat)
+    		@if ($orientation == 'horizontal')
+    			<div class="col-md-{{ $col_size }} black">
+    		@else
+    			<div class="row black">
+    		@endif
 
-				<h5>{{ $cat->name }}</h5>
+    		<h5>{{ $cat->name }}</h5>
 
-				@if($cat->children->count() == 0)
-					<div class="radio radio-custom">
-						<input id="category_{{ $cat->id }}" type="radio" name="category_id" value="{{ $cat->id }}" {{ $selected == $cat->id ? 'checked' : '' }} required>
-						<label for="category_{{ $cat->id }}">{{ $cat->name }}</label>
-					</div>
-				@else
-					@foreach($cat->children as $sub)
-						<div class="radio radio-custom">
-							<input id="category_{{ $sub->id }}" type="radio" name="category_id" value="{{ $sub->id }}" {{ $selected == $sub->id ? 'checked' : '' }} required>
-							<label for="category_{{ $sub->id }}">{{ $sub->name }}</label>
-						</div>
-					@endforeach
-				@endif
+    		@if($cat->children->count() == 0)
+                <x-larastrap::radiolist-model name="category_id" squeeze :options="[$cat]" />
+    		@else
+                <x-larastrap::radiolist-model name="category_id" squeeze :options="$cat->children" />
+    		@endif
 
-				</div>
-			@endforeach
-		</div>
-	</div>
+    		</div>
+    	@endforeach
+    </x-larastrap::field>
 
 	<p class="clearfix"></p>
 @endif

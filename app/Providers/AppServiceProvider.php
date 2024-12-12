@@ -44,7 +44,7 @@ class AppServiceProvider extends ServiceProvider
             }
         });
 
-        Paginator::useBootstrapThree();
+        Paginator::useBootstrapFive();
     }
 
     public function register()

@@ -1,46 +1,35 @@
 <?php
 
-$call_query = App\Call::where('status', 'open')->where('type', $call_type)->where('when', '>=', date('Y-m-d'))->whereHas('category', function($query) {
+$calls = App\Call::where('status', 'open')->where('type', $call_type)->where('when', '>=', date('Y-m-d'))->whereHas('category', function($query) {
     $query->where('direct_response', false);
-});
+})->get();
 
 ?>
 
-@if($call_query->count() > 0)
-    <br/>
-    <p>Seleziona, eventualmente, l'appello a cui stai rispondendo con questa donazione:</p>
+@if($calls->count() > 0)
+    @php
 
-    <div class="radio">
-        <div class="radio radio-custom">
-            <input id="no_call" type="radio" name="call_id" value="-1" {{ $call == null ? 'checked' : '' }}>
-            <label for="no_call">Nessun appello specifico</label>
-        </div>
-    </div>
+    $options = [
+        '-1' => 'Nessun appello specifico',
+    ];
 
-    <?php $call_found = false ?>
+    foreach ($calls as $iter_call) {
+        $options[$iter_call->id] = (object) [
+            'label_html' => sprintf('%s <a class="show-details" data-endpoint="manca" data-item-id="%s"><br>(dettagli)</a>', $iter_call->title, $iter_call->id),
+        ];
+    }
 
-    @foreach($call_query->get() as $iter_call)
-        <?php $call_found = ($call && $call->id == $iter_call->id) ?>
-        <div class="radio radio-custom">
-            <input id="call_{{ $iter_call->id }}" type="radio" name="call_id" value="{{ $iter_call->id }}" {{ $call && $call->id == $iter_call->id ? 'checked' : '' }}>
-            <label for="call_{{ $iter_call->id }}">{{ $iter_call->title }} <a class="show-details" data-endpoint="manca" data-item-id="{{ $iter_call->id }}">(dettagli)</a></label>
-        </div>
-    @endforeach
+    if ($call && isset($options[$call->id]) == false) {
+        $options[$call->id] = $call->title;
+    }
 
-    @if(!$call_found && $call)
-        <div class="radio radio-custom">
-            <input id="call_{{ $call->id }}" type="radio" name="call_id" value="{{ $call->id }}" checked>
-            <label for="call_{{ $call->id }}">{{ $call->title }} <a class="show-details" data-endpoint="manca" data-item-id="{{ $call->id }}">(dettagli)</a></label>
-        </div>
-    @endif
+    @endphp
 
-    <p>
-        Puoi consultare l'elenco completo degli appelli, con i relativi dettagli, su <a href="{{ url('manca') }}">questa pagina</a>.
+    <x-larastrap::radiolist name="call_id" label="Seleziona, eventualmente, l'appello a cui stai rispondendo con questa donazione" :options="$options" />
+
+    <p class="mt-3">
+        Puoi consultare l'elenco completo degli appelli, con i relativi dettagli, su <a href="{{ route('manca.index') }}">questa pagina</a>.
     </p>
-
-    <br/>
-    <br/>
-    <br/>
 @else
-    <input type="hidden" name="call_id" value="{{ $call ? $call->id : -1 }}">
+    <x-larastrap::hidden name="call_id" :value="$call ? $call->id : -1" />
 @endif

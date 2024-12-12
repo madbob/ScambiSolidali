@@ -5,14 +5,16 @@
 @section('content')
     <div class="mydonations primary-3">
         <div class="row">
-            <div class="pagetitle">
-                <span>LE MIE DONAZIONI</span>
+            <div class="col">
+                <div class="pagetitle">
+                    <span>LE MIE DONAZIONI</span>
+                </div>
             </div>
         </div>
 
         <div class="row">
             @if($donations->isEmpty())
-                <div class="col-md-12">
+                <div class="col">
                     <div class="alert alert-info">
                         <p>
                             Non hai ancora effettuato donazioni.
@@ -20,14 +22,8 @@
                     </div>
                 </div>
             @else
-                <div>
                 @foreach($donations as $index => $donation)
-                    @if($index % 2 == 0)
-                        </div>
-                        <div class="col-md-12">
-                    @endif
-
-                    <div class="col-md-6 mydonation">
+                    <div class="col-12 col-md-6 mydonation">
                         <p>{{ date('d.m.Y', strtotime($donation->created_at)) }}</p>
                         <h2>{{ $donation->title }}</h2>
                         <p>
@@ -50,21 +46,21 @@
                         @endif
                     </div>
 				@endforeach
-
-                </div>
             @endif
         </div>
 
         @if(!empty($calls))
             <div class="row">
-                <div class="pagetitle">
-                    <span>I MIEI APPELLI</span>
+                <div class="col">
+                    <div class="pagetitle">
+                        <span>I MIEI APPELLI</span>
+                    </div>
                 </div>
             </div>
 
             <div class="row">
                 @if($calls->isEmpty())
-                    <div class="col-md-12">
+                    <div class="col">
                         <div class="alert alert-info">
                             <p>
                                 Non hai ancora effettuato appelli.
@@ -72,39 +68,34 @@
                         </div>
                     </div>
                 @else
-                    <div>
-                        @foreach($calls as $index => $call)
-                            @if($index % 2 == 0)
-                                </div>
-                                <div class="col-md-12">
-                            @endif
+                    @foreach($calls as $index => $call)
+                        <div class="col-12 col-md-6 mydonation">
+                            <p>{{ date('d.m.Y', strtotime($call->created_at)) }}</p>
+                            <h2>{{ $call->title }}</h2>
 
-                            <div class="col-md-6 mydonation">
-                                <p>{{ date('d.m.Y', strtotime($call->created_at)) }}</p>
-                                <h2>{{ $call->title }}</h2>
-
-                                <p>
-                                    <a class="button" href="{{ url('manca/?show=' . $call->id) }}">
-                                        <span>Modifica</span>
-                                    </a>
-                                </p>
-                            </div>
-    					@endforeach
-                    </div>
+                            <p>
+                                <a class="button" href="{{ url('manca/?show=' . $call->id) }}">
+                                    <span>Modifica</span>
+                                </a>
+                            </p>
+                        </div>
+					@endforeach
                 @endif
             </div>
         @endif
 
         @if(!empty($assigned))
             <div class="row">
-                <div class="pagetitle">
-                    <span>DONAZIONI ASSEGNATE</span>
+                <div class="col">
+                    <div class="pagetitle">
+                        <span>DONAZIONI ASSEGNATE</span>
+                    </div>
                 </div>
             </div>
 
             <div class="row">
                 @if($assigned->isEmpty())
-                    <div class="col-md-12">
+                    <div class="col">
                         <div class="alert alert-info">
                             <p>
                                 Non hai ancora effettuato assegnazioni.
@@ -112,25 +103,18 @@
                         </div>
                     </div>
                 @else
-                    <div>
-                        @foreach($assigned as $index => $ass)
-                            @if($index % 2 == 0)
-                                </div>
-                                <div class="col-md-12">
-                            @endif
+                    @foreach($assigned as $index => $ass)
+                        <div class="col-12 col-md-6 mydonation">
+                            <p>{{ date('d.m.Y', strtotime($ass->created_at)) }}</p>
+                            <h2>{{ $ass->title }}</h2>
 
-                            <div class="col-md-6 mydonation">
-                                <p>{{ date('d.m.Y', strtotime($ass->created_at)) }}</p>
-                                <h2>{{ $ass->title }}</h2>
-
-                                <p>
-                                    <a class="button show-details" data-endpoint="celo" data-item-id="{{ $ass->id }}">
-                                        <span>Visualizza</span>
-                                    </a>
-                                </p>
-                            </div>
-                        @endforeach
-                    </div>
+                            <p>
+                                <a class="button show-details" data-endpoint="celo" data-item-id="{{ $ass->id }}">
+                                    <span>Visualizza</span>
+                                </a>
+                            </p>
+                        </div>
+                    @endforeach
                 @endif
             </div>
         @endif
@@ -138,44 +122,19 @@
 
     <div class="primary-5">
         <div class="row">
-            <div class="pagetitle">
-                <span>IL MIO ACCOUNT</span>
-            </div>
-        </div>
+            <div class="col">
+                <a href="#" class="button" data-bs-toggle="modal" data-bs-target="#deleteAccount"><span>Elimina il mio Account</span></a>
 
-        <div class="row">
-            <div class="col-md-12">
-                <a href="#" class="button" data-toggle="modal" data-target="#deleteAccount"><span>Elimina il mio Account</span></a>
-
-                <div class="modal fade" id="deleteAccount" tabindex="-1" role="dialog">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title">Elimina Account</h4>
-                            </div>
-
-                            <form method="POST" action="{{ route('user.delete') }}">
-                                @csrf
-                                @method('DELETE')
-
-                                <div class="modal-body">
-                                    <p>
-                                        Eliminando il tuo account elimini anche tutte le donazioni ancora in sospeso.
-                                    </p>
-                                    <p>
-                                        Le tue donazioni già assegnate resteranno comunque accessibili agli operatori (anche se non ci saranno più i tuoi dati personali).
-                                    </p>
-                                </div>
-
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Annulla</button>
-                                    <button type="submit" class="btn btn-danger">Elimina Account</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+                <x-larastrap::modal id="deleteAccount">
+                    <x-larastrap::form method="DELETE" route="user.delete" :buttons="[['element' => 'larastrap::sbtn', 'label' => 'Elimina Account', 'attributes' => ['type' => 'submit']]]">
+                        <p>
+                            Eliminando il tuo account elimini anche tutte le donazioni ancora in sospeso.
+                        </p>
+                        <p>
+                            Le tue donazioni già assegnate resteranno comunque accessibili agli operatori (anche se non ci saranno più i tuoi dati personali).
+                        </p>
+                    </x-larastrap::form>
+                </x-larastrap::modal>
             </div>
         </div>
     </div>

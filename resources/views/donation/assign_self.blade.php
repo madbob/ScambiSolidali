@@ -1,119 +1,20 @@
-<form class="form-horizontal" method="POST" action="{{ url('donazione/assegna/' . $donation->id) }}">
-    {{ csrf_field() }}
-    <input type="hidden" name="assignation_type" value="self">
+<x-larastrap::form formview="horizontal" :action="route('donation.assign', $donation->id)" keep_buttons>
+    <x-larastrap::hidden name="assignation_type" value="self" />
+    <x-larastrap::number name="receiver-age" label="Età" min="0" max="200" step="1" />
+    <x-larastrap::radiolist name="receiver-gender" label="Sesso" :options="['M' => 'Maschile', 'F' => 'Femminile']" />
+    <x-larastrap::radiolist name="receiver-status" label="Stato" :options="['student' => 'Studente', 'employed' => 'Occupato', 'unemployed' => 'Non occupato']" />
+    <x-larastrap::radiolist name="receiver-children" label="Con chi abiti" :options="'alone' => 'Solo', 'roommate' => 'Coinquilini', 'couple' => 'In coppia', 'family' => 'In famiglia'" required />
 
-    <div class="form-group">
-        <label for="receiver-age" class="col-sm-4 control-label">Età</label>
-        <div class="col-sm-8">
-            <input type="number" name="receiver-age" class="form-control" required>
-        </div>
-    </div>
+    <x-larastrap::field label="Residenza">
+        @include('donation.areaselect', ['selected' => null, 'field_name' => 'receiver-area'])
+    </x-larastrap::field>
 
-    <div class="form-group">
-        <label for="receiver-gender" class="col-sm-4 control-label">Sesso</label>
-        <div class="col-sm-8">
-            <div class="checkbox">
-                <label>
-                    <input type="radio" name="receiver-gender" value="M" required> Maschile
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="radio" name="receiver-gender" value="F" required> Femminile
-                </label>
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="receiver-status" class="col-sm-4 control-label">Stato</label>
-        <div class="col-sm-8">
-            <div class="checkbox">
-                <label>
-                    <input type="radio" name="receiver-status" value="student" required> Studente
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="radio" name="receiver-status" value="employed" required> Occupato
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="radio" name="receiver-status" value="unemployed" required> Non occupato
-                </label>
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="receiver-children" class="col-sm-4 control-label">Con chi abiti</label>
-        <div class="col-sm-8">
-            <div class="checkbox">
-                <label>
-                    <input type="radio" name="receiver-children" value="alone" required> Solo
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="radio" name="receiver-children" value="roommate" required> Coinquilini
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="radio" name="receiver-children" value="couple" required> In coppia
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="radio" name="receiver-children" value="family" required> In famiglia
-                </label>
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="receiver-area" class="col-sm-4 control-label">Residenza</label>
-        <div class="col-sm-8">
-            @include('donation.areaselect', ['selected' => null, 'field_name' => 'receiver-area'])
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="receiver-country" class="col-sm-4 control-label">Cittadinanza</label>
-        <div class="col-sm-8">
-            <div class="checkbox">
-                <label>
-                    <input type="radio" name="receiver-country" value="italian" required> Italiana
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="radio" name="receiver-country" value="nonitalian" required> Straniera
-                </label>
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="receiver-past" class="col-sm-4 control-label">Quante volte ha fruito di {{ env('APP_NAME') }}?</label>
-        <div class="col-sm-8">
-            <input type="number" name="receiver-past" class="form-control" value="0" required>
-        </div>
-    </div>
+    <x-larastrap::radiolist name="receiver-country" label="Cittadinanza" :options="['italian' => 'Italiana', 'nonitalian' => 'Straniera']" required />
+    <x-larastrap::number name="receiver-past" :label="sprintf('Quante volte ha fruito di %s', env('APP_NAME'))" min="0" max="200" step="1" required />
 
     <div class="alert alert-info">
         Scrivi qui un messaggio destinato al donatore, per accordarvi sulla consegna. Il donatore riceverà i tuoi dati di contatto (ma non le informazioni riportate qui sopra, che restano agli amministratori della piattaforma a scopo statistico). Inviando questo form la donazione sarà marcata come "Assegnata".
     </div>
 
-    <div class="form-group">
-        <label for="message" class="col-md-4 control-label">Messaggio</label>
-        <div class="col-sm-8">
-            <textarea name="message" class="form-control"></textarea>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <button type="submit" class="btn btn-default">Salva</button>
-    </div>
-</form>
+    <x-larastrap::textarea name="message" label="Messaggio" required />
+</x-larastrap::form>

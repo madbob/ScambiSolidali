@@ -10,18 +10,8 @@ use App\Story;
 
 class StoryController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function store(Request $request)
     {
-        $user = Auth::user();
-        if ($user->role != 'admin') {
-            return redirect(url('/'));
-        }
-
         $story = new Story();
         $story->title = $request->input('title');
         $story->contents = $request->input('contents');
@@ -36,11 +26,6 @@ class StoryController extends Controller
 
     public function update(Request $request, $id)
     {
-        $user = Auth::user();
-        if ($user->role != 'admin') {
-            return redirect(url('/'));
-        }
-
         $story = Story::find($id);
         $story->title = $request->input('title');
         $story->contents = $request->input('contents');
@@ -54,13 +39,8 @@ class StoryController extends Controller
         return redirect(url('numeri'));
     }
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        $user = Auth::user();
-        if ($user->role != 'admin') {
-            return redirect(url('/'));
-        }
-
         $story = Story::find($id);
         $story->delete();
         return redirect(url('numeri'));

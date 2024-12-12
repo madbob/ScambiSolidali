@@ -2,24 +2,16 @@
 
 @section('content')
 
-<div class="row">
-    <div class="col-md-6 col-md-offset-3 primary-1">
-        {!! BootForm::open(['left_column_class' => 'col-md-4', 'right_column_class' => 'col-md-8']) !!}
-            {!! BootForm::hidden('remember', 1) !!}
-            {!! BootForm::email('email', 'E-Mail', '', ['required' => 'required']) !!}
-            {!! BootForm::password('password', 'Password', ['required' => 'required']) !!}
+<div class="row justify-content-center my-5">
+    <div class="col-md-6 primary-1">
+        <x-larastrap::form route="login" :buttons="['element' => 'larastrap::sbtn', 'label' => 'Login', 'attributes' => ['type' => 'submit']]">
+            <x-larastrap::hidden name="remember" value="1" />
+            <x-larastrap::email name="email" label="E-Mail" required />
+            <x-larastrap::password name="password" label="Password" required />
 
-            <div class="form-group">
-                <div>
-                    <button class="button" type="submit">
-                        <span>Login</span>
-                    </button>
-                </div>
-            </div>
-
-            <a class="btn btn-link pull-right" href="{{ url('/register') }}">Registrati Qui!</a>
-            <a class="btn btn-link" href="{{ url('/password/reset') }}">Password Dimenticata?</a>
-        {!! BootForm::close() !!}
+            <a class="btn btn-link px-0 float-end" href="{{ route('register') }}">Registrati Qui!</a>
+            <a class="btn btn-link px-0" href="{{ route('password.request') }}">Password Dimenticata?</a>
+        </x-larastrap::form>
     </div>
 </div>
 

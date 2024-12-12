@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
-use View;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 
 use App\Donation;
 use App\Category;
@@ -15,13 +16,7 @@ class CommonController extends Controller
     public function logo()
     {
         $city = currentInstance();
-        return response()->download(public_path('images/logo_' . $city . '.png'));
-    }
-
-    public function css()
-    {
-        $city = currentInstance();
-        return response()->download(public_path('css/' . $city . '.css'), $city . '.css', ['Content-Type' => 'text/css']);
+        return response()->download(resource_path('images/logo_' . $city . '.png'));
     }
 
     public function home()
@@ -51,7 +46,7 @@ class CommonController extends Controller
         }
     }
 
-    public function numbers()
+    public function numbers(Request $request)
     {
         $categories = [];
         $parents = Category::with('children')->where('parent_id', 0)->where('type', 'object')->get();
@@ -67,7 +62,7 @@ class CommonController extends Controller
 
         $stories = Story::orderBy('created_at', 'desc')->get();
 
-        $user = Auth::user();
+        $user = $request->user();
         $edit_enabled = ($user && $user->role == 'admin');
 
         return view('pages.numbers', [

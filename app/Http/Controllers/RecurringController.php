@@ -14,13 +14,13 @@ use App\Institute;
 
 class RecurringController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         if (env('HAS_FOOD', false) == false) {
             return redirect(url('/'));
         }
 
-        $user = Auth::user();
+        $user = $request->user();
         if (empty($user) || $user->role != 'admin') {
             return redirect(url('/'));
         }
@@ -120,11 +120,11 @@ class RecurringController extends Controller
         return view('recurring.thanks', ['call' => $call]);
     }
 
-    private function testUserInstitute()
+    private function testUserInstitute(Request $request)
     {
         $valid = false;
 
-        $user = Auth::user();
+        $user = $request->user();
         if (empty($user)) {
             return redirect(url('/'));
         }
@@ -139,13 +139,13 @@ class RecurringController extends Controller
         return $valid;
     }
 
-    public function booking()
+    public function booking(Request $request)
     {
         if (env('HAS_FOOD', false) == false) {
             return redirect(url('/'));
         }
 
-        $valid = self::testUserInstitute();
+        $valid = self::testUserInstitute($request);
         if ($valid == false) {
             return redirect(url('/'));
         }
@@ -160,7 +160,7 @@ class RecurringController extends Controller
             return redirect(url('/'));
         }
 
-        $valid = self::testUserInstitute();
+        $valid = self::testUserInstitute($request);
         if ($valid == false) {
             return redirect(url('/'));
         }
@@ -223,7 +223,7 @@ class RecurringController extends Controller
             return redirect(url('/'));
         }
 
-        $dates = Recurring::weekly()->select(DB::raw('DATE(created_at) as created_at'))->distinct()->orderBy('created_at', 'desc')->get();
+        $dates = Recurring::weekly()->selectRaw('DATE(created_at) as created_at')->distinct()->orderBy('created_at', 'desc')->get();
 
         if ($request->has('date')) {
             $date = $request->input('date');
@@ -235,7 +235,7 @@ class RecurringController extends Controller
                 $date = null;
         }
 
-        $recurrings = Recurring::weekly()->where(DB::raw('DATE(created_at)'), $date)->get();
+        $recurrings = Recurring::weekly()->whereRaw('DATE(created_at) = ?', [$date])->get();
 
         return view('recurring.archive', [
             'dates' => $dates,

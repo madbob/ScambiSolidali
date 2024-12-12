@@ -11,7 +11,7 @@ class ExpirationCallNotify extends Mailable
 {
     use Queueable, SerializesModels;
 
-    private $donation;
+    private $call;
 
     public function __construct($call)
     {

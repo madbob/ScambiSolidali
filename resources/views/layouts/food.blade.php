@@ -10,15 +10,10 @@
     <title>{{ $pagetitle }}</title>
     <meta name="Description" content="Recuperiamo eccedenze alimentari come se ci fosse un domani.">
 
-    <?php $append = time() ?>
-
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.css' rel='stylesheet' />
-    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.0.1/mapbox-gl-geocoder.css' type='text/css' />
-
-    <link rel='stylesheet' href='/css/chosen.min.css?a={{ $append }}' type='text/css' />
-    <link rel='stylesheet' href='/css/bootstrap-chosen.css?a={{ $append }}' type='text/css' />
-    <link rel='stylesheet' href='/css/bootstrap-datepicker3.min.css?a={{ $append }}' type='text/css' />
-    <link rel='stylesheet' href='{{ route('css') }}?a={{ $append }}' type='text/css' />
+    @vite([
+        'resources/sass/' . currentInstance() . '.scss',
+        'resources/js/app.js'
+    ])
 
     <meta name="theme-color" content="#FFF"/>
     <link rel="manifest" href="{{ asset('manifest.json') }}">
@@ -68,8 +63,8 @@
                                             <span class="city-name">{{ App\Config::getConf('instance_city') }}</span><br>
                                         </div>
                                         <div class="col-md-6 left-border hidden-sm hidden-xs">
-                                            <a href="{{ url('/register') }}">Registrati</a>
-                                            <a href="{{ url('/login') }}">Login</a>
+                                            <a href="{{ route('register') }}">Registrati</a>
+                                            <a href="{{ route('login') }}">Login</a>
                                         </div>
                                     </div>
                                 @else
@@ -80,7 +75,7 @@
                                         <div class="col-md-6 left-border hidden-sm hidden-xs">
                                             <span>Ciao, {{ $currentuser->name }}<br></span>
 
-                                            <a href="{{ url('/donazione/mie') }}">Il Mio Profilo</a>
+                                            <a href="{{ route('donation.mine') }}">Il Mio Profilo</a>
                                             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
 
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -96,7 +91,7 @@
                                 <li><a href="{{ route('register') }}">Registrati</a></li>
                                 <li><a href="{{ route('login') }}">Login</a></li>
                             @else
-                                <li><a href="{{ url('/donazione/mie') }}">Il Mio Profilo</a></li>
+                                <li><a href="{{ route('donation.mine') }}">Il Mio Profilo</a></li>
 
                                 <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -109,7 +104,7 @@
                             <li><a href="{{ route('food.giocatori') }}">Giocatori</a></li>
                             <li><a href="{{ route('media.gallery', 'food') }}">Galleria</a></li>
                             <li><a href="{{ route('food.contacts') }}">Contatti</a></li>
-                            <li><a href="https://www.facebook.com/celocelofood/">Seguici su <img src="{{ url('images/facebook_icon.png') }}" alt="Facebook"></a></li>
+                            <li><a href="https://www.facebook.com/celocelofood/">Seguici su <img src="{{ Vite::asset('resources/images/facebook_icon.png') }}" alt="Facebook"></a></li>
                         </ul>
                     </div>
                 </div>
@@ -121,7 +116,7 @@
                 <div class="col-md-12 primary-6">
                     <span class="tagline">
                         recuperiamo eccedenze alimentari come se ci fosse un domani
-                        <span class="pull-right"><a href="https://www.facebook.com/celocelofood/">seguici su <img src="{{ url('images/facebook_icon.png') }}" alt="Facebook"></a></span>
+                        <span class="pull-right"><a href="https://www.facebook.com/celocelofood/">seguici su <img src="{{ Vite::asset('resources/images/facebook_icon.png') }}" alt="Facebook"></a></span>
                     </span>
                 </div>
             </div>
@@ -157,16 +152,6 @@
 
         <br/>
     </div>
-
-    <script src="{{ url('js/jquery-3.6.0.min.js') }}"></script>
-    <script src="{{ url('js/bootstrap.min.js') }}"></script>
-    <script src="{{ url('js/chosen.jquery.min.js') }}"></script>
-    <script src="{{ url('js/bootstrap-datepicker.min.js') }}"></script>
-    <script src="{{ url('js/bootstrap-datepicker.it.min.js') }}"></script>
-    <script src="{{ url('js/exif.js') }}"></script>
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.js'></script>
-    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.0.1/mapbox-gl-geocoder.js'></script>
-    <script src="{{ url('js/mine.js') }}?a={{ $append }}"></script>
 
     @include('generic.tracking')
 </body>

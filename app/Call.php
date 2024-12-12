@@ -3,22 +3,25 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Vite;
 
 class Call extends Model
 {
-    public function user()
+    public function user(): BelongsTo
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo(User::class);
     }
 
-    public function category()
+    public function category(): BelongsTo
     {
-        return $this->belongsTo('App\Category');
+        return $this->belongsTo(Category::class);
     }
 
-    public function donations()
+    public function donations(): HasMany
     {
-        return $this->hasMany('App\Donation');
+        return $this->hasMany(Donation::class);
     }
 
     public function getImageAttribute()
@@ -32,12 +35,12 @@ class Call extends Model
             return $donation->imageUrl(1);
         }
         else {
-            if ($this->category && file_exists(public_path($this->category->icon_path))) {
+            if ($this->category && file_exists(resource_path($this->category->icon_path))) {
                 return $this->category->icon;
             }
             else {
                 if ($this->type == 'service') {
-                    return url('images/tempo.svg');
+                    return Vite::asset('resources/images/tempo.svg');
                 }
                 else {
                     return null;

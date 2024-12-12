@@ -9,9 +9,12 @@ class Config extends Model
     public static function getConf($name)
     {
         $c = Config::where('name', $name)->first();
-        if ($c == null)
+
+        if ($c == null) {
             return '';
-        else
+        }
+        else {
             return $c->value;
+        }
     }
 }

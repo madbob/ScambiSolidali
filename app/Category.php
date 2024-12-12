@@ -3,17 +3,20 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Vite;
 
 class Category extends Model
 {
-    public function children()
+    public function children(): HasMany
     {
-        return $this->hasMany('App\Category', 'parent_id')->orderBy('sorting', 'asc')->orderBy('name', 'asc');
+        return $this->hasMany(Category::class, 'parent_id')->orderBy('sorting', 'asc')->orderBy('name', 'asc');
     }
 
-    public function parent()
+    public function parent(): BelongsTo
     {
-        return $this->belongsTo('App\Category', 'parent_id');
+        return $this->belongsTo(Category::class, 'parent_id');
     }
 
     public function getIconPathAttribute()
@@ -28,6 +31,6 @@ class Category extends Model
 
     public function getIconAttribute()
     {
-        return url($this->icon_path);
+        return Vite::asset('resources/' . $this->icon_path);
     }
 }

@@ -5,34 +5,40 @@
 @section('content')
     <div class="journal">
         <div class="row primary-1">
-            <div class="pagetitle">
-                <span>PARLANO DI NOI</span>
+            <div class="col">
+                <div class="pagetitle">
+                    <span>PARLANO DI NOI</span>
+                </div>
             </div>
         </div>
 
         @if($edit_enabled)
             <div class="row">
-                <div class="col-md-12">
-                    <button class="btn btn-default" data-toggle="modal" data-target="#media-new">Crea Nuovo Riferimento</button>
+                <div class="col">
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#media-new">Crea Nuovo Riferimento</button>
                     @include('media.modal', ['media' => null, 'context' => 'media'])
                 </div>
             </div>
         @endif
 
-        <div class="row primary-4">
+        <div class="row primary-4 row-cols-1 row-cols-md-4 g-4">
             @foreach($media as $m)
-                <a href="{{ $m->link }}" target="_blank">
-                    <div class="col-md-3 dense-fancy-bg square-block">
+                <div class="col">
+                    <div class="card dense-fancy-bg square-block w-100">
                         <div class="content">
-                            <span class="top">{{ $m->channel }}</span>
+                            <span class="top">
+                                <a href="{{ $m->link }}" class="text-black" target="_blank">
+                                    {{ $m->channel }}
+                                </a>
+                            </span>
                             <span class="bottom">{{ date('d.m.Y', strtotime($m->date)) }}</span>
 
                             @if($edit_enabled)
-                                <button class="btn btn-default" data-toggle="modal" data-target="#media-{{ $m->id }}">Modifica</button>
+                                <button class="btn btn-default" data-bs-toggle="modal" data-bs-target="#media-{{ $m->id }}">Modifica</button>
                             @endif
                         </div>
                     </div>
-                </a>
+                </div>
             @endforeach
         </div>
     </div>

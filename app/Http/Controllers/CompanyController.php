@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use Auth;
-use Session;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 use App\Company;
 
@@ -13,7 +13,16 @@ class CompanyController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['index']);
+    }
+
+    public function index(Request $request)
+    {
+        $companies = Company::orderBy('name', 'asc')->get();
+
+        return view('company.list', [
+            'companies' => $companies,
+        ]);
     }
 
     private function fromRequest($company, $request)

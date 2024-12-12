@@ -3,30 +3,29 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
-use Auth;
-use Storage;
-
-use App\User;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class Donation extends Model
 {
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo('App\User');
     }
 
-	public function category()
+    public function category(): BelongsTo
     {
         return $this->belongsTo('App\Category');
     }
 
-    public function receivers()
+    public function receivers(): BelongsToMany
     {
         return $this->belongsToMany('App\Receiver')->orderBy('donation_receiver.updated_at', 'desc')->withPivot(['id', 'receiver_id', 'donation_id', 'operator_id', 'updated_at', 'notes', 'status']);
     }
 
-    public function call()
+    public function call(): BelongsTo
     {
         return $this->belongsTo('App\Call');
     }
@@ -129,29 +128,22 @@ class Donation extends Model
 		return sprintf('%s %s, %s', $this->name, $this->surname, $this->address);
 	}
 
+    public static function statuses()
+    {
+        return [
+            'pending' => 'In attesa',
+            'voided' => 'Annullato',
+            'assigned' => 'Assegnato',
+            'expiring' => 'In Scadenza',
+            'expired' => 'Scaduto',
+            'dropped' => 'Abbondonato',
+        ];
+    }
+
     public function printableStatus()
     {
-        switch($this->status) {
-            case 'pending':
-                return 'In attesa';
-
-            case 'voided':
-                return 'Annullato';
-
-            case 'assigned':
-                return 'Assegnato';
-
-            case 'expiring':
-                return 'In Scadenza';
-
-            case 'expired':
-                return 'Scaduto';
-
-            case 'dropped':
-                return 'Abbondonato';
-        }
-
-        return '???';
+        $statuses = self::statuses();
+        return $statuses[$this->status] ?? '???';
     }
 
     public function getAssignationDateAttribute()

@@ -6,48 +6,31 @@
 
 <?php
 
-if (isset($call) == false)
+if (isset($call) == false) {
     $call = null;
+}
 
-if (isset($donation) == false)
+if (isset($donation) == false) {
     $donation = null;
-else
+}
+else {
     $call = $donation->call;
+}
 
 ?>
 
 @if($donation)
-    <div class="row new-donation-form primary-1">
-        <form method="POST" action="{{ url('celo/' . $donation->id) }}">
-            <input type="hidden" name="_method" value="DELETE">
-            <input type="hidden" name="reason" value="user-deleted">
-            {!! csrf_field() !!}
-
-            <div class="col-md-12">
-                <div class="form-group">
-                    <p class="text-center">
-                        (HAI CAMBIATO IDEA?)
-                    </p>
-                    <div>
-                        <button class="button" type="submit">
-                            <span>Clicca qui per eliminare la tua donazione</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-    <br/>
+    @include('donation.partials.delete', ['donation' => $donation])
     <br/>
 @endif
 
-<div class="row new-donation-form primary-1">
-    {!! BootForm::vertical(['model' => $donation, 'store' => 'DonationController@store', 'update' => 'DonationController@update', 'enctype' => 'multipart/form-data']) !!}
-        <div class="alert alert-danger">
-            Attenzione! Se intendi donare un oggetto, non compilare questo form ma <a href="{{ route('celo.create') }}">clicca qui</a>! Le donazioni di oggetti compilate tramite questo form saranno rimosse dagli amministratori.
-        </div>
+<x-larastrap::form classes="primary-1" :obj="$donation" baseaction="celo" :buttons="['element' => 'sbtn', 'label' => 'Allora clicca qui!', 'attributes' => ['type' => 'submit']]">
+    <div class="alert alert-danger">
+        Attenzione! Se intendi donare un oggetto, non compilare questo form ma <a href="{{ route('celo.create') }}">clicca qui</a>! Le donazioni di oggetti compilate tramite questo form saranno rimosse dagli amministratori.
+    </div>
 
-        <div class="col-md-12">
+    <div class="row">
+        <div class="col">
             @include('call.selector', [
                 'call' => $call,
                 'donation' => $donation,
@@ -64,43 +47,41 @@ else
                 'direct_response' => false
             ])
 
-            {!! BootForm::text('title', 'Cosa offro', null, ['required' => 'required']) !!}
-            {!! BootForm::textarea('description', 'Descrizione', null, ['required' => 'required']) !!}
-            {!! BootForm::date('since', 'Disponibile da', date('Y-m-d')) !!}
+            <x-larastrap::text name="title" label="Cosa offro" required />
+            <x-larastrap::textarea name="description" label="Descrizione" required />
+            <x-larastrap::date name="since" label="Disponibile da" :value="date('Y-m-d')" />
 
             <br><br><br>
 
-            {!! BootForm::text('name', 'Nome', $currentuser->name, ['required' => 'required']) !!}
-            {!! BootForm::text('surname', 'Cognome', $currentuser->surname, ['required' => 'required']) !!}
+            <?php $last = $donation ? $donation : $currentuser->lastDonation() ?>
 
-            @if(App\Config::getConf('explicit_zones') == 'true')
-                <div class="form-group">
-                    <label class="col-sm-2 col-md-3 control-label">Zona</label>
-                    <div class="col-sm-10 col-md-9">
+            <x-larastrap::enclose :obj="$last">
+                <x-larastrap::text name="name" label="Nome" required />
+                <x-larastrap::text name="surname" label="Cognome" required />
+
+                @if(App\Config::getConf('explicit_zones') == 'true')
+                    <x-larastrap::field label="Zona">
                         @include('donation.areaselect', [
                             'selected' => $donation ? $donation->area : null,
                             'field_name' => 'area',
                         ])
-                    </div>
-                </div>
-            @endif
+                    </x-larastrap::field>
+                @endif
 
-            {!! BootForm::text('address', 'Indirizzo') !!}
-            {!! BootForm::text('phone', 'Telefono', $currentuser->phone, ['required' => 'required']) !!}
-            {!! BootForm::email('email', 'E-Mail', $currentuser->email, ['required' => 'required']) !!}
-
-            <div class="form-group">
-                <p class="text-center">
-                    (HAI SCRITTO TUTTO TUTTO?)
-                </p>
-                <div>
-                    <button class="button" type="submit">
-                        <span>Allora clicca qui!</span>
-                    </button>
-                </div>
-            </div>
+                <x-larastrap::text name="address" label="Indirizzo" />
+                <x-larastrap::text name="phone" label="Telefono" required />
+                <x-larastrap::email name="email" label="E-Mail" required />
+            </x-larastrap::enclose>
         </div>
-    {!! BootForm::close() !!}
-</div>
+    </div>
+
+    <p class="text-center mt-5">
+        (HAI SCRITTO TUTTO TUTTO?)
+    </p>
+</x-larastrap::form>
+
+@if($donation)
+    @include('donation.partials.delete', ['donation' => $donation])
+@endif
 
 @endsection

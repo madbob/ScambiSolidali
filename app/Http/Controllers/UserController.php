@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-use Auth;
-use Session;
-use Mail;
-use Log;
-use Hash;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Hash;
 
 use App\Mail\NewUserCreated;
 use App\Mail\RoleUpdated;
@@ -22,53 +22,38 @@ use App\Receiver;
 
 class UserController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth')->except(['index']);
-    }
-
     public function index(Request $request)
     {
-        $user = Auth::user();
-        $counters = [];
-
-        $institutes = Institute::orderBy('name', 'asc')->get();
-        $companies = Company::orderBy('name', 'asc')->get();
-
-        if ($user && $user->role == 'admin') {
-            $users = User::orderBy('surname', 'asc')->get();
-
-            foreach(User::existingRoles() as $identifier => $metadata) {
-                $count = User::where('role', $identifier)->count();
-                $counters[$identifier] = sprintf('%d %s', $count, $metadata->multiple);
-            }
-        }
-        else {
-            $users = [];
-
-            foreach(User::existingRoles() as $identifier => $metadata) {
-                $counters[$identifier] = sprintf('0 %s', $metadata->multiple);
-            }
-        }
-
-        $current_tab = 'entities';
         $current_show = -1;
+
         if ($request->has('show')) {
             $show = $request->input('show');
             $showing = User::find($show);
-            if ($showing != null && $showing->status != 'archived') {
-                $current_tab = 'users';
+            if ($showing) {
                 $current_show = $show;
             }
         }
 
-        return view('pages.players', [
-            'institutes' => $institutes,
-            'companies' => $companies,
+        $query = User::orderBy('surname', 'asc');
+
+        $filter = $request->input('filter', 'all');
+        if ($filter != 'all') {
+            $query->where('role', $filter);
+        }
+
+        $users = $query->paginate(200);
+
+        $counters = [];
+        foreach(User::existingRoles() as $identifier => $metadata) {
+            $count = User::where('role', $identifier)->count();
+            $counters[$identifier] = sprintf('%d %s', $count, $metadata->multiple);
+        }
+
+        return view('user.list', [
             'users' => $users,
             'counters' => $counters,
+            'filter' => $filter,
             'current_show' => $current_show,
-            'current_tab' => $current_tab,
         ]);
     }
 
@@ -93,11 +78,6 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        $user = Auth::user();
-        if ($user->role != 'admin') {
-            return redirect(url('/'));
-        }
-
         $this->validate($request, [
             'name' => 'required|max:255',
             'surname' => 'required|max:255',
@@ -117,27 +97,17 @@ class UserController extends Controller
         Mail::to($user)->send(new NewUserCreated($user, $password));
 
         Session::flash('message', 'Nuovo utente salvato. Gli è stata inviata una mail con la password');
-        return redirect(url('giocatori'));
+        return redirect()->route('utenti.index');
     }
 
     public function show($id)
     {
-        $user = Auth::user();
-        if ($user->role != 'admin') {
-            return redirect(url('/'));
-        }
-
         $user = User::find($id);
         return view('user.modal', ['user' => $user]);
     }
 
     public function update(Request $request, $id)
     {
-        $user = Auth::user();
-        if ($user->role != 'admin') {
-            return redirect(url('/'));
-        }
-
         $this->validate($request, [
             'name' => 'required|max:255',
             'surname' => 'required|max:255',
@@ -148,7 +118,7 @@ class UserController extends Controller
         $test = User::where('email', $request->input('email'))->where('id', '!=', $id)->first();
         if ($test) {
             Session::flash('message', 'Un utente con questo indirizzo email esiste già');
-            return redirect(url('giocatori'));
+            return redirect()->route('utenti.index');
         }
 
         $user = User::find($id);
@@ -181,35 +151,25 @@ class UserController extends Controller
         }
 
         Session::flash('message', 'Utente salvato');
-        return redirect(url('giocatori'));
+        return redirect()->route('utenti.index');
     }
 
     public function reverify(Request $request, $id)
     {
-        $user = Auth::user();
-        if ($user->role != 'admin') {
-            return redirect(url('/'));
-        }
-
         $user = User::find($id);
         $user->sendActivationNotification();
         Session::flash('message', 'Email di verifica mandata');
-        return redirect(url('giocatori'));
+        return redirect()->route('utenti.index');
     }
 
     public function destroy($id)
     {
-        $user = Auth::user();
-        if ($user->role != 'admin') {
-            return redirect(url('/'));
-        }
-
         $user = User::find($id);
         $user->donations()->delete();
         $user->delete();
 
         Session::flash('message', 'Utente eliminato');
-        return redirect(url('giocatori'));
+        return redirect()->route('utenti.index');
     }
 
     public function destroyMyself()
@@ -245,11 +205,6 @@ class UserController extends Controller
 
     public function massiveMail(Request $request)
     {
-        $user = Auth::user();
-        if ($user->role != 'admin') {
-            return redirect(url('/'));
-        }
-
         $recipients = $request->input('recipients');
 		$area = $request->input('area', []);
         $subject = $request->input('subject');
@@ -280,14 +235,14 @@ class UserController extends Controller
         }
 
         Session::flash('message', sprintf('Mail inviata a %d destinatari', $count));
-        return redirect(url('giocatori'));
+        return redirect()->route('utenti.index');
     }
 
     public function export()
     {
         $user = Auth::user();
         if ($user->role != 'admin') {
-            return redirect(url('/'));
+            return redirect()->route('home');
         }
 
         header("Content-type: text/csv");
@@ -322,11 +277,7 @@ class UserController extends Controller
 
     public function bypass($id)
     {
-        $user = Auth::user();
-        if ($user->role == 'admin') {
-            Auth::loginUsingId($id);
-        }
-
-        return redirect(url('/'));
+        Auth::loginUsingId($id);
+        return redirect()->route('home');
     }
 }
