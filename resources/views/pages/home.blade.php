@@ -42,7 +42,7 @@
                 @if(!empty($video_link))
                     <iframe width="100%" height="315" src="{{ $video_link }}" frameborder="0" allowfullscreen title="Video di presentazione"></iframe>
                 @else
-                    <img class="home-cover img-responsive" src="{{ App\Config::getConf('cover_link') }}">
+                    <img class="home-cover img-fluid" src="{{ App\Config::getConf('cover_link') }}" alt="{{ env('APP_NAME') }}">
                 @endif
             </div>
         </div>
@@ -125,7 +125,7 @@
                 <div class="d-block d-md-none">
                     <div class="row spaced-below">
                         <div class="col">
-                            <img class="img-responsive" src="{{ Vite::asset('resources/images/oggetti.svg') }}">
+                            <img class="img-fluid" src="{{ Vite::asset('resources/images/oggetti.svg') }}" alt="Dona oggetti">
                         </div>
                         <div class="col">
                             <p>
@@ -135,7 +135,7 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <img class="img-responsive" src="{{ Vite::asset('resources/images/tempo.svg') }}">
+                            <img class="img-fluid" src="{{ Vite::asset('resources/images/tempo.svg') }}" alt="Dona tempo">
                         </div>
                         <div class="col">
                             <p>
