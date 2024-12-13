@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="row justify-content-center">
+<div class="row justify-content-center my-5">
     <div class="register-form col-md-6 primary-1">
         <x-larastrap::form route="register" :buttons="['element' => 'larastrap::sbtn', 'label' => 'Registrati', 'attributes' => ['type' => 'submit']]">
             <x-larastrap::text name="name" label="Nome" required />

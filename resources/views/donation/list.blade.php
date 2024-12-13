@@ -39,10 +39,8 @@
 
             <div class="col-12 col-md-9">
                 @if($donations->isEmpty())
-                    <div class="alert alert-info">
-                        <p>
-                            Non ci sono oggetti.
-                        </p>
+                    <div class="alert alert-info text-center">
+                        Non ci sono donazioni.
                     </div>
                 @else
                     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 m-0">
@@ -98,7 +96,7 @@
                             </div>
                         </div>
 
-                        <p class="d-block d-md-none btn btn-light btn-flow">
+                        <p class="d-flex d-md-none btn btn-light btn-flow h-100 align-items-center">
                             Clicca qui per donare un oggetto
                         </p>
                     </a>
@@ -117,7 +115,7 @@
                             </div>
                         </div>
 
-                        <p class="d-block d-md-none btn btn-light btn-flow">
+                        <p class="d-flex d-md-none btn btn-light btn-flow h-100 align-items-center">
                             Clicca qui per donare una competenza
                         </p>
                     </a>

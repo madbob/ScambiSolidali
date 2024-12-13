@@ -12,10 +12,10 @@
             </div>
         </div>
 
-        {!! App\Config::getConf('contacts_page') !!}
+        @includeIf('customs.' . currentInstance() . '.contacts')
 
         <div class="row">
-            <div class="col">
+            <div class="col-12 col-md-6">
                 <div class="map contact-map" id="mapid"></div>
 
                 <script>
@@ -57,7 +57,7 @@
                 </script>
             </div>
 
-            <div class="col">
+            <div class="col-12 col-md-6">
                 <div class="bordered-spaced">
                     {!! nl2br(App\Config::getConf('contact_main')) !!}
                 </div>

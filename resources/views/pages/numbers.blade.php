@@ -14,37 +14,41 @@
             @php
 
             $donated = App\Donation::whereIn('status', ['pending', 'assigned'])->count();
-            $donated_width = 70;
+            $donated_width = 100;
             if ($donated != 0) {
                 $assigned = App\Donation::where('status', 'assigned')->count();
-                $assigned_width = (70 * $assigned) / $donated;
+                $assigned_width = (100 * $assigned) / $donated;
             }
 
             @endphp
 
             @if($donated != 0)
                 <div class="col-12">
-                    <div class="metric">
-                        <p class="name txt-color">
+                    <div class="row metric align-items-center">
+                        <div class="col txt-color">
                             Oggetti Inseriti
-                        </p>
-                        <div class="bar">
+                        </div>
+                        <div class="col d-none d-md-block">
                             <div class="indicator" style="width: {{ $donated_width }}%">&nbsp;</div>
-                            <span class="txt-color">{{ $donated }}</span>
+                        </div>
+                        <div class="col text-end">
+                            <span class="txt-color fs-2">{{ $donated }}</span>
                         </div>
                     </div>
-                    <div class="metric">
-                        <p class="name txt-color">
+
+                    <div class="row metric align-items-center">
+                        <div class="col txt-color">
                             Oggetti Assegnati
-                        </p>
-                        <div class="bar">
+                        </div>
+                        <div class="col d-none d-md-block">
                             <div class="indicator" style="width: {{ $assigned_width }}%">&nbsp;</div>
-                            <span class="txt-color">{{ $assigned }}</span>
+                        </div>
+                        <div class="col text-end">
+                            <span class="txt-color fs-2">{{ $assigned }}</span>
                         </div>
                     </div>
                 </div>
 
-                <p class="clearfix">&nbsp;</p>
                 <hr class="colored">
             @endif
         </div>
@@ -57,7 +61,27 @@
         @if($max_absolute != 0)
             <div class="row d-flex justify-content-center">
                 @foreach($categories as $name => $count)
+                    @php
+                    $percentage = round(($count * 100) / $max_absolute, 0);
+                    @endphp
+
                     <div class="col-12 col-md-2">
+                        <div class="circle-wrap">
+                            <div class="circle" style="--actual-rotation: {{ round(($percentage * 180) / 100, 2) }}deg">
+                                <div class="mask full">
+                                    <div class="fill"></div>
+                                </div>
+                                <div class="mask half">
+                                    <div class="fill"></div>
+                                </div>
+                                <div class="inside-circle">
+                                    <p class="percentage">{{ $percentage }}%</p>
+                                    <p>{{ $name }}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--
                         <div class="item progress-{{ round(($count * 100) / $max_relative, 0) }}">
                             <div class="radial-inner-bg">
                                 <div>
@@ -66,6 +90,7 @@
                                 </div>
                             </div>
                         </div>
+                        -->
                     </div>
                 @endforeach
             </div>

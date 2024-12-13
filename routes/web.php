@@ -28,7 +28,6 @@ Route::get('/celo/nuovo/{type}', 'DonationController@create')->name('celo.create
 Route::post('/celo/direct/{call_id}', 'DonationController@directResponse')->name('celo.direct');
 Route::get('/celo/renew/{token}', 'DonationController@renew')->name('celo.renew');
 Route::post('/celo/arenew/{id}', 'DonationController@adminRenew');
-Route::get('/celo/archivio', 'DonationController@getArchive')->name('celo.archive');
 
 Route::get('/donazione/mie', 'DonationController@myIndex')->name('donation.mine');
 Route::get('/donazione/mio/{id}', 'DonationController@getMyEdit')->name('donation.my');
@@ -36,7 +35,6 @@ Route::post('/donazione/assegna/{id}', 'DonationController@postAssign')->name('d
 Route::post('/donazione/prenota/{id}', 'DonationController@postBook');
 Route::post('/donazione/detach/{type}/{donation_id}/{interaction_id}', 'DonationController@postDetach');
 Route::post('/donazione/recuperato/{id}', 'DonationController@postRecovered');
-Route::get('/donazione/report', 'DonationController@getReport')->name('donation.report');
 Route::post('/donazione/contact/{id}', 'DonationController@postContact')->name('donation.contact');
 
 Route::get('/register/activate/{token}', 'Auth\RegisterController@activate');
@@ -75,6 +73,9 @@ Route::middleware(['auth', 'admin'])->group(function() {
     Route::post('/giocatori/mail', 'UserController@massiveMail')->name('giocatori.mail');
     Route::post('/giocatori/reverify/{id}', 'UserController@reverify')->name('giocatori.reverify');
     Route::get('/giocatori/bypass/{id}', 'UserController@bypass')->name('giocatori.bypass');
+
+    Route::get('/celo/archivio', 'DonationController@getArchive')->name('celo.archive');
+    Route::get('/donazione/report', 'DonationController@getReport')->name('donation.report');
 
     Route::resource('utenti', 'UserController');
     Route::resource('storie', 'StoryController');

@@ -173,7 +173,7 @@
         <div class="row footer-credits">
             <div class="col">
                 <div class="text-center">
-                    {!! App\Config::getConf('credits') !!}
+                    @include('customs.' . currentInstance() . '.credits')
                 </div>
             </div>
         </div>

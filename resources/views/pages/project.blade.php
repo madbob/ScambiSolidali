@@ -9,7 +9,7 @@
                 <span>{{ t('IL PROGETTO') }}</span>
             </div>
 
-            {!! App\Config::getConf('project_page') !!}
+            @include('customs.' . currentInstance() . '.project')
         </div>
     </div>
 @endsection

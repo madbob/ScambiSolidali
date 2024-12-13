@@ -267,11 +267,11 @@ class DonationController extends Controller
         $original_call = $donation->call_id;
 
         if ($donation->user_id != $user->id && $user->role != 'admin') {
-            return redirect(url('/'));
+            return redirect()->route('home');
         }
 
         if ($donation->status != 'pending') {
-            return redirect(url('/'));
+            return redirect()->route('home');
         }
 
         $this->requestInDonation($donation, $request);
@@ -339,10 +339,12 @@ class DonationController extends Controller
             abort(404);
         }
 
-        if ($donation->type == 'object')
+        if ($donation->type == 'object') {
             return view('donation.modal', ['donation' => $donation]);
-        else
+        }
+        else {
             return view('donation.smodal', ['donation' => $donation]);
+        }
     }
 
     public function destroy(Request $request, $id)
@@ -353,7 +355,7 @@ class DonationController extends Controller
         $user = Auth::user();
         if ($user->role != 'admin' && $user->role != 'operator') {
             if ($donation->user_id != $user->id)
-                return redirect(url('/'));
+                return redirect()->route('home');
             else
                 $self_remove = true;
         }
@@ -382,7 +384,7 @@ class DonationController extends Controller
         $user = Auth::user();
 
         if ($donation->userCanView($user) == false) {
-            return redirect(url('/'));
+            return redirect()->route('home');
         }
 
         $message = new Message();
@@ -407,8 +409,9 @@ class DonationController extends Controller
         $token = base64_decode(urldecode($token));
         list($donation_id, $user_id) = explode('-', $token);
         $donation = Donation::find($donation_id);
-        if ($donation->user_id != $user_id)
+        if ($donation->user_id != $user_id) {
             abort(404);
+        }
 
         $donation->renew();
 
@@ -420,7 +423,7 @@ class DonationController extends Controller
     {
         $user = Auth::user();
         if ($user->role != 'admin' && $user->role != 'operator') {
-            return redirect(url('/'));
+            return redirect()->route('home');
         }
 
         $donation = Donation::find($id);
@@ -430,11 +433,6 @@ class DonationController extends Controller
 
     public function getArchive(Request $request)
     {
-        $user = Auth::user();
-        if ($user->role != 'admin') {
-            return redirect(url('/'));
-        }
-
         $data['search'] = '';
         $data['status'] = '';
 
@@ -519,7 +517,7 @@ class DonationController extends Controller
             }
 
             if ($done == false) {
-                return redirect(url('/'));
+                return redirect()->route('home');
             }
 
             $receiver->save();
@@ -591,7 +589,7 @@ class DonationController extends Controller
     {
         $user = Auth::user();
         if ($user->role != 'admin' && $user->role != 'operator') {
-            return redirect(url('/'));
+            return redirect()->route('home');
         }
 
         $donation = Donation::find($donation_id);
@@ -628,7 +626,7 @@ class DonationController extends Controller
 
         $donation = Donation::find($id);
         if ($donation->user_id != $user->id && $user->role != 'admin') {
-            return redirect(url('/'));
+            return redirect()->route('home');
         }
 
         if ($donation->type == 'service') {
@@ -641,67 +639,65 @@ class DonationController extends Controller
 
     public function getReport()
     {
-        $user = Auth::user();
+        header("Content-type: text/csv");
+        header('Content-Disposition: attachment; filename="report_celocelo.csv";');
 
-        if ($user && $user->role == 'admin') {
-            header("Content-type: text/csv");
-            header('Content-Disposition: attachment; filename="report_celocelo.csv";');
+        echo sprintf('"OGGETTO DONATO";"STATUS";"NOTE";"APPELLO";"TIPO";"DATA ASSEGNAZIONE";"NOME";"ETÀ";"SESSO";"LAVORO";"FAMIGLIA";"AREA";"NAZIONALITÀ";"OCCORRENZE";"BENEFICIARI";"RICHIESTO TRASPORTO"' . "\n");
+        $donations = Donation::orderBy('id', 'desc')->get();
+        foreach($donations as $donation) {
+            if ($donation->status == 'assigned') {
+                $receivers = $donation->receivers()->wherePivotIn('status', ['assigned', 'shipping_needed'])->get();
 
-            echo sprintf('"OGGETTO DONATO";"STATUS";"NOTE";"APPELLO";"TIPO";"DATA ASSEGNAZIONE";"NOME";"ETÀ";"SESSO";"LAVORO";"FAMIGLIA";"AREA";"NAZIONALITÀ";"OCCORRENZE";"BENEFICIARI"' . "\n");
-            $donations = Donation::orderBy('id', 'desc')->get();
-            foreach($donations as $donation) {
-                if ($donation->status == 'assigned') {
-                    $receivers = $donation->receivers()->wherePivot('status', 'assigned')->get();
-
-                    foreach($receivers as $receiver) {
-                        $row = [];
-                        $row[] = $donation->title;
-                        $row[] = $donation->printableStatus();
-                        $row[] = sprintf('"%s"', $receiver->pivot->notes);
-                        $row[] = $donation->call ? $donation->call->title : '';
-
-                        switch($receiver->type) {
-                            case 'individual':
-                                $row[] = 'Persona';
-                                $row[] = printableDate($receiver->created_at);
-                                $row[] = '';
-                                $row[] = $receiver->age;
-                                $row[] = $receiver->gender;
-                                $row[] = $receiver->status;
-                                $row[] = $receiver->children;
-                                $row[] = $receiver->area;
-                                $row[] = $receiver->country;
-                                $row[] = $receiver->past;
-                                $row[] = 1;
-                                break;
-                            case 'organization':
-                                $row[] = 'Ente';
-                                $row[] = printableDate($receiver->created_at);
-                                $row[] = $receiver->organization;
-                                $row[] = '';
-                                $row[] = '';
-                                $row[] = '';
-                                $row[] = '';
-                                $row[] = $receiver->area;
-                                $row[] = '';
-                                $row[] = $receiver->past;
-                                $row[] = $receiver->receivers;
-                                break;
-                            default:
-                                break;
-                        }
-
-                        echo sprintf("%s\n", join(';', $row));
-                    }
-                }
-                else {
+                foreach($receivers as $receiver) {
                     $row = [];
                     $row[] = $donation->title;
                     $row[] = $donation->printableStatus();
-                    $row[] = '';
+                    $row[] = sprintf('"%s"', $receiver->pivot->notes);
                     $row[] = $donation->call ? $donation->call->title : '';
+
+                    switch($receiver->type) {
+                        case 'individual':
+                            $row[] = 'Persona';
+                            $row[] = $receiver->created_at;
+                            $row[] = '';
+                            $row[] = $receiver->age;
+                            $row[] = $receiver->gender;
+                            $row[] = $receiver->status;
+                            $row[] = $receiver->children;
+                            $row[] = $receiver->area;
+                            $row[] = $receiver->country;
+                            $row[] = $receiver->past;
+                            $row[] = 1;
+                            $row[] = $receiver->pivot->status == 'shipping_needed' ? 'SÌ' : 'NO';
+                            break;
+                        case 'organization':
+                            $row[] = 'Ente';
+                            $row[] = $receiver->created_at;
+                            $row[] = $receiver->organization;
+                            $row[] = '';
+                            $row[] = '';
+                            $row[] = '';
+                            $row[] = '';
+                            $row[] = $receiver->area;
+                            $row[] = '';
+                            $row[] = $receiver->past;
+                            $row[] = $receiver->receivers;
+                            $row[] = $receiver->pivot->status == 'shipping_needed' ? 'SÌ' : 'NO';
+                            break;
+                        default:
+                            break;
+                    }
+
                     echo sprintf("%s\n", join(';', $row));
                 }
+            }
+            else {
+                $row = [];
+                $row[] = $donation->title;
+                $row[] = $donation->printableStatus();
+                $row[] = '';
+                $row[] = $donation->call ? $donation->call->title : '';
+                echo sprintf("%s\n", join(';', $row));
             }
         }
     }

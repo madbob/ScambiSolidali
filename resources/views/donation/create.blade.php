@@ -74,7 +74,7 @@ else {
 
             @include('category.selector', [
                 'orientation' => 'horizontal',
-                'selected' => $donation ? $donation->category_id : null,
+                'selected' => $donation ? $donation->category_id : ($call ? $call->category_id : null),
                 'type' => 'object',
                 'direct_response' => false
             ])

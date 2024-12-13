@@ -10,6 +10,6 @@
             </div>
         </div>
 
-        {!! App\Config::getConf('working_description') !!}
+        @include('customs.' . currentInstance() . '.working')
     </div>
 @endsection

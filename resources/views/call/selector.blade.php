@@ -23,9 +23,14 @@ $calls = App\Call::where('status', 'open')->where('type', $call_type)->where('wh
         $options[$call->id] = $call->title;
     }
 
+    $value = -1;
+    if ($call) {
+        $value = $call->id;
+    }
+
     @endphp
 
-    <x-larastrap::radiolist name="call_id" label="Seleziona, eventualmente, l'appello a cui stai rispondendo con questa donazione" :options="$options" />
+    <x-larastrap::radiolist name="call_id" label="Seleziona, eventualmente, l'appello a cui stai rispondendo con questa donazione" :options="$options" :value="$value" required />
 
     <p class="mt-3">
         Puoi consultare l'elenco completo degli appelli, con i relativi dettagli, su <a href="{{ route('manca.index') }}">questa pagina</a>.

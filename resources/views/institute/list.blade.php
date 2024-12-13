@@ -5,11 +5,11 @@
 @section('contents')
 
 <div class="row">
-    <div class="col-md-6 right-p">
+    <div class="col-12 col-md-6">
         <div class="map" id="mapid"></div>
         @include('generic.geojson', ['items' => $institutes])
     </div>
-    <div class="col-md-6 left-p">
+    <div class="col-12 col-md-6">
         @foreach($institutes as $institute)
             <div class="spaced-middle border-bottom">
                 @if($currentuser && $currentuser->role == 'admin')
