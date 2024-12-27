@@ -66,7 +66,7 @@ class RegisterController extends Controller
             return $this->finalizeRegister($input, null);
         }
 
-        return back()->with('errors', $validator->errors());
+        return redirect()->route('register')->withErrors($validator->errors());
     }
 
     public function registerOp(Request $request) {
@@ -89,7 +89,7 @@ class RegisterController extends Controller
             return $this->finalizeRegister($input, $institute);
         }
 
-        return back()->with('errors', $validator->errors());
+        return redirect()->route('register.operator')->withErrors($validator->errors());
     }
 
     protected function create(array $data)
