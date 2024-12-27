@@ -332,7 +332,7 @@ class DonationController extends Controller
 
     public function show($id)
     {
-        $donation = Donation::find($id);
+        $donation = Donation::findOrFail($id);
         $user = Auth::user();
 
         if ($donation->userCanView($user) == false && $donation->user_id != $user->id) {
@@ -379,7 +379,7 @@ class DonationController extends Controller
 
     public function postContact(Request $request, $id)
     {
-        $donation = Donation::find($id);
+        $donation = Donation::findOrFail($id);
 
         $user = Auth::user();
 
