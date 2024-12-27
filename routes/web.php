@@ -61,13 +61,6 @@ Route::get('/gallery/{context}', 'MediaController@gallery')->name('media.gallery
 
 Route::get('/casa', 'CommonController@house')->name('house');
 
-Route::resource('celo', 'DonationController');
-Route::resource('parlano-di-noi', 'MediaController');
-Route::resource('ente', 'InstituteController');
-Route::resource('azienda', 'CompanyController');
-Route::resource('manca', 'CallController');
-Route::resource('periodico', 'RecurringController');
-
 Route::middleware(['auth', 'admin'])->group(function() {
     Route::get('/giocatori/export', 'UserController@export')->name('giocatori.export');
     Route::post('/giocatori/mail', 'UserController@massiveMail')->name('giocatori.mail');
@@ -80,5 +73,12 @@ Route::middleware(['auth', 'admin'])->group(function() {
     Route::resource('utenti', 'UserController');
     Route::resource('storie', 'StoryController');
 });
+
+Route::resource('celo', 'DonationController');
+Route::resource('parlano-di-noi', 'MediaController');
+Route::resource('ente', 'InstituteController');
+Route::resource('azienda', 'CompanyController');
+Route::resource('manca', 'CallController');
+Route::resource('periodico', 'RecurringController');
 
 Auth::routes();
