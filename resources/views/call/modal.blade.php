@@ -17,7 +17,7 @@
 
                 @include('category.selector', [
                     'orientation' => 'horizontal',
-                    'selected' => $call ? $call->category_id : null,
+                    'selected' => $call ? $call->category : null,
                     'type' => 'all',
                     'direct_response' => true
                 ])
