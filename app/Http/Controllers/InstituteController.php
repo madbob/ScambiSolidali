@@ -28,7 +28,6 @@ class InstituteController extends Controller
     private function fromRequest($institute, $request)
     {
         $institute->name = $request->input('name');
-        $institute->food = $request->has('food');
         $institute->website = normalizeUrl($request->input('website'));
         $institute->transport_mail = trim($request->input('transport_mail'));
         $institute->address = $request->input('address');

@@ -5,10 +5,6 @@
                 <x-larastrap::text name="name" label="Nome" />
                 <x-larastrap::text name="website" label="Sito Web" />
 
-                @if(env('HAS_FOOD', false))
-                    <x-larastrap::check inline name="food" label="Abilitato per Food" />
-                @endif
-
                 <x-larastrap::field label="Indirizzo">
                     <x-larastrap::hidden name="address" />
                     <x-larastrap::hidden name="coordinates" value="{{ $institute ? ($institute->lat . ',' . $institute->lng) : '' }}" />
