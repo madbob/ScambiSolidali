@@ -75,14 +75,6 @@
                     <a class="navbar-brand" href="{{ route('home') }}" title="Homepage {{ config('app.name') }}">
                         <img class="img-fluid" src="{{ Vite::asset('resources/images/logo_' . $cityname . '.png') }}" alt="{{ env('APP_NAME') }}">
                     </a>
-
-                    @if(env('HAS_FOOD'))
-                        <a class="navbar-brand-food" href="{{ route('food') }}"></a>
-                    @endif
-
-                    @if(env('HAS_HOUSE'))
-                        <a class="navbar-brand-house" href="{{ route('house') }}"></a>
-                    @endif
                 </div>
 
                 <div class="col-auto navbar-right primary-2">

@@ -31,11 +31,6 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Institute');
     }
 
-    public function companies(): BelongsToMany
-    {
-        return $this->belongsToMany('App\Company');
-    }
-
     public function lastDonation()
     {
         return $this->donations()->orderBy('created_at', 'desc')->first();
@@ -85,13 +80,6 @@ class User extends Authenticatable
             ],
         ];
 
-        if (env('HAS_FOOD', false)) {
-            $ret['businness'] = (object) [
-                'label' => 'Esercente',
-                'multiple' => 'Esercenti',
-            ];
-        }
-
         if (env('HAS_PUBLIC_OP', false)) {
             $ret['student'] = (object) [
                 'label' => 'Studente',
@@ -113,9 +101,6 @@ class User extends Authenticatable
 
             if ($this->institutes->count() != 0) {
                 $this->role = 'operator';
-            }
-            else if (env('HAS_FOOD', false) && $this->companies->count() != 0) {
-                $this->role = 'businness';
             }
             else {
                 $this->role = 'user';

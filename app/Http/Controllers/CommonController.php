@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\View;
 use App\Donation;
 use App\Category;
 use App\Story;
-use App\Company;
 
 class CommonController extends Controller
 {
@@ -75,61 +74,5 @@ class CommonController extends Controller
     public function contacts()
     {
         return view('pages.contacts');
-    }
-
-    public function food()
-    {
-        if (env('HAS_FOOD', false)) {
-            return view('food.index');
-        }
-        else {
-            return redirect()->route('home');
-        }
-    }
-
-    public function foodProject()
-    {
-        if (env('HAS_FOOD', false)) {
-            return view('food.project');
-        }
-        else {
-            return redirect()->route('home');
-        }
-    }
-
-    public function foodWorking()
-    {
-        if (env('HAS_FOOD', false)) {
-            return view('food.working');
-        }
-        else {
-            return redirect()->route('home');
-        }
-    }
-
-    public function foodPlayers()
-    {
-        if (env('HAS_FOOD', false)) {
-            $companies = Company::orderBy('name', 'asc')->get();
-            return view('food.players', compact('companies'));
-        }
-        else {
-            return redirect()->route('home');
-        }
-    }
-
-    public function foodContacts()
-    {
-        return view('food.contacts');
-    }
-
-    public function house()
-    {
-        if (env('HAS_HOUSE', false)) {
-            return view('house.index');
-        }
-        else {
-            return redirect()->route('home');
-        }
     }
 }

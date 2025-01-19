@@ -17,7 +17,6 @@ use App\User;
 use App\Config;
 use App\Donation;
 use App\Institute;
-use App\Company;
 use App\Receiver;
 
 class UserController extends Controller

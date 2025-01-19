@@ -35,19 +35,10 @@
                     $institutes[$institute->id] = $institute->name;
                 }
 
-                $companies = [];
-                foreach(App\Company::orderBy('name', 'asc')->get() as $company) {
-                    $companies[$company->id] = $company->name;
-                }
-
                 ?>
 
                 @if(!empty($institutes))
                     <x-larastrap::checklist-model name="institutes" label="Affiliazioni" :options="$institutes" />
-                @endif
-
-                @if(!empty($companies))
-                    <x-larastrap::checklist-model name="companies" label="Aziende" :options="$companies" />
                 @endif
             </x-larastrap::form>
 

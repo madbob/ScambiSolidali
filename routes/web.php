@@ -44,22 +44,7 @@ Route::post('/register/operator', 'Auth\RegisterController@postRegisterOp');
 Route::get('/giocatori', 'InstituteController@index')->name('giocatori.index');
 Route::delete('/utente/elimina', 'UserController@destroyMyself')->name('user.delete');
 
-Route::get('/food', 'CommonController@food')->name('food');
-Route::get('/food/progetto', 'CommonController@foodProject')->name('food.progetto');
-Route::get('/food/come-funziona', 'CommonController@foodWorking')->name('food.come-funziona');
-Route::get('/food/giocatori', 'CommonController@foodPlayers')->name('food.giocatori');
-Route::get('/food/numeri', 'CommonController@foodNumbers')->name('food.numeri');
-Route::get('/food/contatti', 'CommonController@foodContacts')->name('food.contacts');
-
-Route::get('/periodico/prenota', 'RecurringController@booking')->name('periodico.prenota');
-Route::post('/periodico/prenota', 'RecurringController@saveBooking')->name('periodico.prenotazione');
-Route::post('/periodico/reset/weekly', 'RecurringController@resetWeekly')->name('periodico.reset_weekly');
-Route::post('/periodico/reset/monthly', 'RecurringController@resetMonthly')->name('periodico.reset_monthly');
-Route::get('/periodico/archivio', 'RecurringController@archive')->name('periodico.archivio');
-
 Route::get('/gallery/{context}', 'MediaController@gallery')->name('media.gallery');
-
-Route::get('/casa', 'CommonController@house')->name('house');
 
 Route::middleware(['auth', 'admin'])->group(function() {
     Route::get('/giocatori/export', 'UserController@export')->name('giocatori.export');
@@ -77,8 +62,6 @@ Route::middleware(['auth', 'admin'])->group(function() {
 Route::resource('celo', 'DonationController');
 Route::resource('parlano-di-noi', 'MediaController');
 Route::resource('ente', 'InstituteController');
-Route::resource('azienda', 'CompanyController');
 Route::resource('manca', 'CallController');
-Route::resource('periodico', 'RecurringController');
 
 Auth::routes();

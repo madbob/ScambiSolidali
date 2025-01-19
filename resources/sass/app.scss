@@ -10,7 +10,7 @@
 
 /********************************* COMMONS */
 
-$colors: $primary-color-1 $primary-color-2 $secondary-color-1 $gray-color-1 $black-1 $food-primary-1;
+$colors: $primary-color-1 $primary-color-2 $secondary-color-1 $gray-color-1 $black-1;
 
 @each $color in $colors {
     $i: index($colors, $color);
@@ -504,30 +504,6 @@ h1, .h1, h2, .h2, h3, .h3 {
                 left: 5px;
                 margin-left: 0;
             }
-
-            .navbar-brand-food {
-                height: 80%;
-                position: absolute;
-                bottom: 0;
-                right: 0;
-                left: 32%;
-                background-image: url('../images/food.svg');
-                background-repeat: no-repeat;
-                background-size: contain;
-                margin-left: 0;
-            }
-
-            .navbar-brand-house {
-                height: 80%;
-                position: absolute;
-                bottom: 0;
-                right: 0;
-                left: 42%;
-                background-image: url('../images/casa.png');
-                background-repeat: no-repeat;
-                background-size: contain;
-                margin-left: 0;
-            }
         }
     }
 }
@@ -919,114 +895,7 @@ h1, .h1, h2, .h2, h3, .h3 {
     }
 }
 
-/********************************* FOOD OVERWRITE */
-
-.food-page {
-    .navbar-default {
-        border: 0;
-
-        .container {
-            .row {
-                position: relative;
-
-                .navbar-brand {
-                    height: 105%;
-                    background-image: url('../images/logo-food.png');
-                }
-            }
-        }
-    }
-
-    .tagline {
-        border-top: 2px solid $food-primary-1;
-        color: $food-primary-1;
-    }
-
-    .main-menu {
-        border-top: 2px solid $food-primary-1;
-    }
-
-    .navbar-right .city-title {
-        a, .city-name {
-            color: $food-primary-1 !important;
-        }
-    }
-
-    .postcard {
-        text-align: left;
-        background-image: url('../images/food-bg.svg');
-        background-size: 33%;
-        background-repeat: no-repeat;
-        background-position: left bottom;
-        background-color: $food-primary-2;
-
-        h2 {
-            text-transform: uppercase;
-            font-size: 1.7em;
-            font-weight: bold;
-            color: $food-primary-1;
-        }
-
-        h3 {
-            color: $food-primary-1;
-        }
-
-        img {
-            width: 100%;
-        }
-
-        .row {
-            margin: 0;
-
-            .col-md-4 {
-                padding: 45px 25px;
-                font-size: 1.2em;
-            }
-        }
-
-        .hard-bg {
-            background-color: #8AB83B;
-            color: #F7E5C8;
-            padding: 10px;
-        }
-    }
-
-    .credits {
-        .intro {
-            color: $food-primary-1;
-        }
-
-        img {
-            margin-right: 60px;
-        }
-
-        p.details {
-            font-size: 10px;
-        }
-    }
-}
-
 /********************************* MEDIA QUERIES */
-
-@media (max-width: 992px) {
-    .navbar-default {
-        .container {
-            .row {
-                .navbar-brand-food {
-                    height: 45%;
-                    top: 10%;
-                    left: 40%;
-                }
-
-                .navbar-brand-house {
-                    height: 45%;
-                    top: 10%;
-                    left: 51%;
-                }
-            }
-        }
-    }
-}
 
 @media (max-width: 768px) {
     .navbar-default {
@@ -1034,18 +903,6 @@ h1, .h1, h2, .h2, h3, .h3 {
             .row {
                 .navbar-brand {
                     height: 80% !important;
-                }
-
-                .navbar-brand-food {
-                    height: 80%;
-                    width: 10%;
-                    top: auto;
-                }
-
-                .navbar-brand-house {
-                    height: 80%;
-                    width: 10%;
-                    top: auto;
                 }
             }
         }
@@ -1066,12 +923,5 @@ h1, .h1, h2, .h2, h3, .h3 {
 
     .left-p {
         padding-left: 0 !important;
-    }
-
-    .food-page {
-        .postcard {
-            background-size: 100%;
-            padding-bottom: 140px;
-        }
     }
 }

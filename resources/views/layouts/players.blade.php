@@ -14,14 +14,6 @@
                     </a>
                 </div>
 
-                @if(env('HAS_FOOD', false))
-                    <div class="col">
-                        <a href="{{ route('azienda.index') }}" class="pagetitle">
-                            <span>Aziende</span>
-                        </a>
-                    </div>
-                @endif
-
                 <div class="col">
                     <a href="{{ route('utenti.index') }}" class="pagetitle">
                         <span>Utenti</span>

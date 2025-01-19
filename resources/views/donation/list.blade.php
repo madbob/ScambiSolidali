@@ -22,12 +22,6 @@
 
                 @if($user && $user->role == 'admin')
                     <a href="{{ route('celo.archive') }}" class="btn btn-light">Vedi Archivio Completo</a>
-
-                    @if(env('HAS_FOOD', false))
-                        <a href="{{ url('/periodico') }}" class="btn btn-default">
-                            <span>Donazioni Periodiche</span>
-                        </a>
-                    @endif
                 @endif
 
                 @include('category.filter', ['filter' => $filter, 'direct_response' => false, 'endpoint' => 'celo'])

@@ -10,14 +10,4 @@ class Institute extends Model
     {
         return $this->belongsToMany('App\User');
     }
-
-    public function recurrings()
-    {
-        return $this->hasMany('App\RecurringPick');
-    }
-
-    public function currentRecurringPick()
-    {
-        return $this->recurrings()->where('closed', false)->first();
-    }
 }
