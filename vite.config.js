@@ -13,6 +13,7 @@ export default defineConfig({
                 'resources/sass/milano.scss',
                 'resources/sass/trentino.scss',
                 'resources/sass/valsusa.scss',
+                'resources/sass/novara.scss',
                 'resources/js/app.js',
             ],
             refresh: true,
