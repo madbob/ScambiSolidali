@@ -54,11 +54,9 @@ class User extends Authenticatable
 	{
         $all = [];
 
-        foreach($this->institutes as $i)
+        foreach($this->institutes as $i) {
             $all[] = $i->name;
-
-        foreach($this->companies as $i)
-            $all[] = $i->name;
+        }
 
 		return join(', ', $all);
 	}
