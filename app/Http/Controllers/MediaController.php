@@ -12,17 +12,7 @@ class MediaController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['index', 'gallery']);
-    }
-
-    private function redirectByContext($context)
-    {
-        if ($context == 'media') {
-            return redirect(url('parlano-di-noi'));
-        }
-        else {
-            return redirect()->route('media.gallery', $context);
-        }
+        $this->middleware('auth')->except(['index']);
     }
 
     private function populateMedia($media, $request)
@@ -70,7 +60,7 @@ class MediaController extends Controller
         $media = self::populateMedia($media, $request);
         $media->save();
 
-        return self::redirectByContext($media->context);
+        return redirect(url('parlano-di-noi'));
     }
 
     public function update(Request $request, $id)
@@ -84,7 +74,7 @@ class MediaController extends Controller
         $media = self::populateMedia($media, $request);
         $media->save();
 
-        return self::redirectByContext($media->context);
+        return redirect(url('parlano-di-noi'));
     }
 
     public function destroy($id)
@@ -98,15 +88,6 @@ class MediaController extends Controller
         $context = $media->context;
         $media->delete();
 
-        return self::redirectByContext($context);
-    }
-
-    public function gallery(Request $request, $context)
-    {
-        $user = Auth::user();
-        $media = Media::where('context', $context)->orderBy('date', 'desc')->get();
-        $edit_enabled = ($user && $user->role == 'admin');
-        $layout = 'layouts.' . $context;
-        return view('media.gallery', compact('media', 'context', 'edit_enabled', 'layout'));
+        return redirect(url('parlano-di-noi'));
     }
 }
