@@ -48,6 +48,10 @@ class UserController extends Controller
             $counters[$identifier] = sprintf('%d %s', $count, $metadata->multiple);
         }
 
+        $users->appends([
+            'filter' => $filter,
+        ]);
+
         return view('user.list', [
             'users' => $users,
             'counters' => $counters,
