@@ -16,7 +16,7 @@ $(document).ready(function() {
     j.init({
         initFunction: (container) => {
             $('.map-select', container).each(function() {
-                mapboxgl.accessToken = 'pk.eyJ1IjoibWFkYm9iIiwiYSI6ImNpdzE5MHN2ajAwMXYydG8xejBvbHdzOWwifQ.Lk5hnbjb720Z4C_jfqzBNg';
+                mapboxgl.accessToken = 'pk.eyJ1IjoibWFkYm9iIiwiYSI6ImNtNnFzdmprNzFyZWEya3M0bDVyemU4bG4ifQ.3gPEhCWVZgQG9RTihyZ6Ow';
                 var map = new mapboxgl.Map({
                     container: $(this).attr('id'),
                     style: 'mapbox://styles/mapbox/light-v9',
@@ -285,7 +285,7 @@ $(document).ready(function() {
             pagina, essendo letti dalle configurazioni sul DB
         */
 
-        mapboxgl.accessToken = 'pk.eyJ1IjoibWFkYm9iIiwiYSI6ImNpdzE5MHN2ajAwMXYydG8xejBvbHdzOWwifQ.Lk5hnbjb720Z4C_jfqzBNg';
+        mapboxgl.accessToken = 'pk.eyJ1IjoibWFkYm9iIiwiYSI6ImNtNnFzdmprNzFyZWEya3M0bDVyemU4bG4ifQ.3gPEhCWVZgQG9RTihyZ6Ow';
         var map = new mapboxgl.Map({
             container: 'mapid',
             style: 'mapbox://styles/mapbox/light-v9',
