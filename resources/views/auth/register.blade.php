@@ -33,7 +33,7 @@
         <br/>
 
         <p>
-            Hai un codice identificativo per accreditarti come {{ App\User::existingRoles()['operator']->label }}?<br/>
+            Hai un codice identificativo per accreditarti come {{ t(App\User::existingRoles()['operator']->label) }}?<br/>
             <a href="{{ route('register.operator') }}">Visita questa pagina</a>.
         </p>
     </div>

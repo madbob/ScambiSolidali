@@ -13,6 +13,26 @@ class MilanoTableSeeder extends Seeder
 
     public function run()
     {
+        if (Config::where('name', 'strings')->first() == null) {
+            $strings = [
+                'Operatore' => 'Giovane Milano2035',
+            ];
+
+            $obj = [];
+
+            foreach($strings as $original => $custom) {
+                $obj[] = (object) [
+                    'original' => $original,
+                    'custom' => $custom,
+                ];
+            }
+
+            $c = new Config();
+            $c->name = 'strings';
+            $c->value = json_encode($obj);
+            $c->save();
+        }
+
         $confs = [
             'main_tagline' => 'mettiamo in contatto i giovani abitanti del progetto Milano 2035 con chi vuole donare beni per la casa!',
             'homebox_title' => sprintf("<strong>%s</strong> è una piattaforma che supporta i giovani abitanti del progetto <a href=\"http://www.milano2035.it\">Milano 2035</a>. Ti permette di:", env('APP_NAME')),
