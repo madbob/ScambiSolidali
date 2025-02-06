@@ -19,7 +19,7 @@ class MilanoTableSeeder extends Seeder
             'facebook_link' => 'https://www.facebook.com/Milano2035/',
             'instance_city' => 'Milano',
             'explicit_zones' => 'false',
-            'other_instance_cities' => '[{"name":"Torino", "url":"https://celocelo.it/"}, {"name":"Novara", "url":"https://novara.celocelo.it/"}, {"name":"Val Susa", "url":"https://valsusa.celocelo.it/"}]',
+            'other_instance_cities' => '[{"name":"Torino", "url":"https://celocelo.it/"}, {"name":"Novarese", "url":"https://novarese.celocelo.it/"}, {"name":"Val Susa", "url":"https://valsusa.celocelo.it/"}]',
             'powered_by' => 'Milano 2035',
             'owner_address' => '',
             'cover_link' => Vite::asset('resources/images/cartolina_milano.png'),

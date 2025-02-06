@@ -18,7 +18,7 @@ class ValsusaTableSeeder extends Seeder
             'facebook_link' => 'https://www.facebook.com/celocelo-190331531485606/',
             'instance_city' => 'Val Susa',
             'explicit_zones' => 'false',
-            'other_instance_cities' => '[{"name":"Torino", "url":"https://celocelo.it/"}, {"name":"Novara", "url":"https://novara.celocelo.it/"}, {"name":"Milano", "url":"https://milano.celocelo.it/"}]',
+            'other_instance_cities' => '[{"name":"Torino", "url":"https://celocelo.it/"}, {"name":"Novarese", "url":"https://novarese.celocelo.it/"}, {"name":"Milano", "url":"https://milano.celocelo.it/"}]',
             'powered_by' => 'Consorzio Intercomunale Socio-Assistenziale Val Susa',
             'owner_address' => 'piazza San Francesco 4, 10059, Susa (TO)',
             'video_link' => 'https://www.youtube-nocookie.com/embed/pGZURLZQZ7w?rel=0&amp;controls=0&amp;showinfo=0',

@@ -81,7 +81,17 @@
                     @if (Auth::guest())
                         <div class="row top-main-buttons">
                             <div class="col text-end city-title">
-                                <span class="city-name">{{ App\Config::getConf('instance_city') }}</span><br>
+                                @php
+                                /*
+                                    Eccezione per Novara
+                                */
+                                $current_city = App\Config::getConf('instance_city');
+                                if ($current_city == 'Novara') {
+                                    $current_city = 'Novarese';
+                                }
+                                @endphp
+
+                                <span class="city-name">{{ $current_city }}</span><br>
                                 <small>
                                     @foreach(json_decode(App\Config::getConf('other_instance_cities')) as $city)
                                         <a href="{{ $city->url }}">{{ $city->name }}</a>

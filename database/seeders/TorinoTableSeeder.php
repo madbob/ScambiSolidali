@@ -20,7 +20,7 @@ class TorinoTableSeeder extends Seeder
             'instance_city' => 'Torino',
             'explicit_zones' => 'false',
             'operator_manual' => resource_path('docs/manuale_operatori_celocelo.pdf'),
-            'other_instance_cities' => '[{"name":"Milano", "url":"https://milano.celocelo.it/"}, {"name":"Novara", "url":"https://novara.celocelo.it/"}, {"name":"Val Susa", "url":"https://valsusa.celocelo.it/"}]',
+            'other_instance_cities' => '[{"name":"Milano", "url":"https://milano.celocelo.it/"}, {"name":"Novarese", "url":"https://novarese.celocelo.it/"}, {"name":"Val Susa", "url":"https://valsusa.celocelo.it/"}]',
             'powered_by' => 'Ass. Agenzia per lo sviluppo locale di San Salvario ETS',
             'owner_address' => 'via Morgari 14, 10125, Torino',
             'video_link' => 'https://www.youtube-nocookie.com/embed/pGZURLZQZ7w?rel=0&amp;controls=0&amp;showinfo=0',

@@ -26,7 +26,7 @@ class NovaraTableSeeder extends Seeder
             'players_map_coordinates' => '8.4967369, 45.6839817',
             'players_map_zoom' => '12',
             'contact_main' => 'Il Mestiere del Sole APS',
-            'contact_contents' => 'via Fascia Rossa, 35 - 28021 Borgomanero (NO)<br>celocelo@ilmestieredelsole.it<br>T 370 3093224 (preferibilmente Whatsapp)',
+            'contact_contents' => 'via Fascia Rossa, 35 - 28021 Borgomanero (NO)<br>celocelo@ilmestieredelsole.it<br><a href="http://www.ilmestieredelsole.it/">www.ilmestieredelsole.it</a><br>T 370 3093224 (preferibilmente Whatsapp)',
             'contact_map_coordinates' => '8.4967369, 45.6839817',
             'contact_map_title' => 'Il Mestiere del Sole',
         ];
