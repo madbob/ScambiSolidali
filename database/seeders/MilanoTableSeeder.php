@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Vite;
 
 use Database\Seeders\Concerns\CategoriesSeeder;
+use App\Config;
 
 class MilanoTableSeeder extends Seeder
 {
