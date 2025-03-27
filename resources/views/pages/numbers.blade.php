@@ -80,17 +80,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!--
-                        <div class="item progress-{{ round(($count * 100) / $max_relative, 0) }}">
-                            <div class="radial-inner-bg">
-                                <div>
-                                    <p class="percentage">{{ round(($count * 100) / $max_absolute, 0) }}%</p>
-                                    <p>{{ $name }}</p>
-                                </div>
-                            </div>
-                        </div>
-                        -->
                     </div>
                 @endforeach
             </div>
@@ -121,12 +110,10 @@
             <div class="row row-cols-1 row-cols-md-3 g-4">
                 @foreach(App\Story::orderBy('created_at', 'desc')->get() as $index => $story)
                     <div class="col">
-                        <button data-bs-toggle="modal" data-bs-target="#story-{{ $story->id }}" class="button">
-                            <div class="story-cell" style="background-image: url('{{ $story->cover_url }}')">
-                                <span class="index">{{ $index + 1 }}.</span>
-                                <span class="title">{{ $story->title }}<br><br></span>
-                            </div>
-                        </button>
+                        <div class="story-cell" style="background-image: url('{{ $story->cover_url }}')">
+                            <span class="index">{{ $index + 1 }}.</span>
+                            <span class="title">{{ $story->title }}<br><br></span>
+                        </div>
                     </div>
                 @endforeach
             </div>

@@ -791,6 +791,7 @@ h1, .h1, h2, .h2, h3, .h3 {
         font-weight: bold !important;
         min-height: 280px;
         overflow: hidden;
+        text-transform: uppercase;
 
         span {
             padding: 20px !important;
@@ -799,12 +800,14 @@ h1, .h1, h2, .h2, h3, .h3 {
 
         .index {
             color: $secondary-color-1 !important;
+            display: block;
         }
 
         .title {
             color: #FFF !important;
             text-shadow: 0 0 10px black;
             position: relative;
+            display: block;
 
             &:after {
                 text-align: right;
