@@ -69,6 +69,12 @@
 </head>
 <body>
     <div id="app">
+        @php
+
+        $other_cities = json_decode(App\Config::getConf('other_instance_cities'));
+
+        @endphp
+
         <div class="container d-none d-md-block">
             <div class="row justify-content-between align-items-center py-2">
                 <div class="col">
@@ -78,22 +84,22 @@
                 </div>
 
                 <div class="col-auto navbar-right primary-2">
+                    @php
+                    /*
+                        Eccezione per Novara
+                    */
+                    $current_city = App\Config::getConf('instance_city');
+                    if ($current_city == 'Novara') {
+                        $current_city = 'Novarese';
+                    }
+                    @endphp
+
                     @if (Auth::guest())
                         <div class="row top-main-buttons">
                             <div class="col text-end city-title">
-                                @php
-                                /*
-                                    Eccezione per Novara
-                                */
-                                $current_city = App\Config::getConf('instance_city');
-                                if ($current_city == 'Novara') {
-                                    $current_city = 'Novarese';
-                                }
-                                @endphp
-
                                 <span class="city-name">{{ $current_city }}</span><br>
                                 <small>
-                                    @foreach(json_decode(App\Config::getConf('other_instance_cities')) as $city)
+                                    @foreach($other_cities as $city)
                                         <a href="{{ $city->url }}">{{ $city->name }}</a>
                                     @endforeach
                                 </small>
@@ -106,7 +112,7 @@
                     @else
                         <div class="row top-main-buttons">
                             <div class="col text-end city-title">
-                                <span class="city-name">{{ App\Config::getConf('instance_city') }}</span>
+                                <span class="city-name">{{ $current_city }}</span>
                             </div>
                             <div class="col left-border">
                                 <span>Ciao, {{ $currentuser->name }}<br></span>
@@ -195,6 +201,12 @@
                     <li><a href="{{ route('pages.numbers') }}">{{ t('Vincitori') }}</a></li>
                     <li><a href="{{ route('parlano-di-noi.index') }}">Parlano di Noi</a></li>
                     <li><a href="{{ route('contacts') }}">{{ t('Contatti') }}</a></li>
+                </ul>
+
+                <ul class="main-menu">
+                    @foreach($other_cities as $city)
+                        <li><a href="{{ $city->url }}">{{ $city->name }}</a></li>
+                    @endforeach
                 </ul>
             </div>
         </div>
