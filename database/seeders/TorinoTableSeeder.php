@@ -43,6 +43,6 @@ class TorinoTableSeeder extends Seeder
         ];
 
         $this->saveConfigs($confs);
-        $this->populateDefaultCategories();
+        // $this->populateDefaultCategories();
     }
 }

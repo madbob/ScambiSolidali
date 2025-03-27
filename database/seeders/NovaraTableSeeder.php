@@ -32,6 +32,6 @@ class NovaraTableSeeder extends Seeder
         ];
 
         $this->saveConfigs($confs);
-        $this->populateDefaultCategories();
+        // $this->populateDefaultCategories();
     }
 }

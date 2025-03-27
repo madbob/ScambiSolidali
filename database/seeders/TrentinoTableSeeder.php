@@ -71,6 +71,6 @@ class TrentinoTableSeeder extends Seeder
         ];
 
         $this->saveConfigs($confs);
-        $this->populateDefaultCategories();
+        // $this->populateDefaultCategories();
     }
 }

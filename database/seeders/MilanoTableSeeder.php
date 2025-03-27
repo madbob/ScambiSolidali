@@ -54,6 +54,7 @@ class MilanoTableSeeder extends Seeder
 
         $this->saveConfigs($confs);
 
+        /*
         $this->populateCategories([
             'object' => [
                 'Casa' => (object) [
@@ -86,5 +87,6 @@ class MilanoTableSeeder extends Seeder
                 ]
             ]
         ]);
+        */
     }
 }
