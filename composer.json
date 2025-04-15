@@ -19,7 +19,7 @@
         "symfony/brevo-mailer": "^7.0",
         "symfony/http-client": "^6.4",
         "symfony/scaleway-mailer": "^7.0",
-        "madbob/larastrap": "^0.9.6"
+        "madbob/larastrap": "^1.0.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^10.0",
