@@ -8,7 +8,6 @@
         "php": ">=8.0.0",
         "laravel/framework": "^10.0",
         "aws/aws-sdk-php": "^3.20",
-        "diversen/image-auto-rotate": "^1.0",
         "barryvdh/laravel-debugbar": "^3.7",
         "madbob/laravel-notification-mobyt": "^0.2",
         "nunomaduro/collision": "^7.0",
@@ -19,7 +18,8 @@
         "symfony/brevo-mailer": "^7.0",
         "symfony/http-client": "^6.4",
         "symfony/scaleway-mailer": "^7.0",
-        "madbob/larastrap": "^1.0.0"
+        "madbob/larastrap": "^1.0.0",
+        "intervention/image": "^3.11"
     },
     "require-dev": {
         "phpunit/phpunit": "^10.0",

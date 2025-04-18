@@ -110,10 +110,12 @@
             <div class="row row-cols-1 row-cols-md-3 g-4">
                 @foreach(App\Story::orderBy('created_at', 'desc')->get() as $index => $story)
                     <div class="col">
-                        <div class="story-cell" style="background-image: url('{{ $story->cover_url }}')">
-                            <span class="index">{{ $index + 1 }}.</span>
-                            <span class="title">{{ $story->title }}<br><br></span>
-                        </div>
+                        <button data-bs-toggle="modal" data-bs-target="#{{ sprintf('story-%s', $story->id) }}" class="button {{ blank($story->contents) && $edit_enabled === false ? 'unclickable' : '' }}">
+                            <div class="story-cell" style="background-image: url('{{ $story->cover_url }}')">
+                                <span class="index">{{ $index + 1 }}.</span>
+                                <span class="title">{{ $story->title }}<br><br></span>
+                            </div>
+                        </button>
                     </div>
                 @endforeach
             </div>
@@ -122,13 +124,15 @@
                 @if($edit_enabled)
                     @include('story.modal', ['story' => $story])
                 @else
-                    <x-larastrap::modal classes="primary-2" :id="sprintf('story-%s', $story->id)">
-                        <div class="row">
-                            <div class="col">
-                                {!! nl2br($story->contents) !!}
+                    @if(filled($story->contents))
+                        <x-larastrap::modal classes="primary-2" :id="sprintf('story-%s', $story->id)">
+                            <div class="row">
+                                <div class="col">
+                                    {!! nl2br($story->contents) !!}
+                                </div>
                             </div>
-                        </div>
-                    </x-larastrap::modal>
+                        </x-larastrap::modal>
+                    @endif
                 @endif
             @endforeach
         </div>

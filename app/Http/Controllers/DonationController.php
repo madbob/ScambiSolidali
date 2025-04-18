@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
 
-use diversen\imageRotate;
+use Intervention\Image\ImageManager;
 
 use App\Mail\CallResponded;
 use App\Mail\DonationAssigned;
@@ -182,23 +182,24 @@ class DonationController extends Controller
     private function savePhotos($request, $donation, $index)
     {
         ini_set('gd.jpeg_ignore_warning', 1);
-        $rotate = new imageRotate();
+        $manager = ImageManager::gd();
         $basefolder = currentInstance();
 
         foreach ($request->file('photo') as $op) {
             $basename = $donation->id . '_' . $index;
             $op->move(sys_get_temp_dir(), $basename);
-            $path = sprintf('%s/%d_%d', sys_get_temp_dir(), $donation->id, $index);
+            $path = sprintf('%s/%s', sys_get_temp_dir(), $basename);
 
             try {
-                $rotate->fixOrientation($path);
+                $image = $manager->read($path);
+                $image->scale(width: 350);
+                $encoded = (string) $image->toWebp(80);
+                Storage::disk('images')->put($basefolder . '/' . $basename, $encoded, 'public');
+                @unlink($path);
             }
             catch(\Exception $e) {
-                Log::error('Impossibile ruotare immagine in ' . $path . ': ' . $e->getMessage());
+                Log::error('Impossibile gestire immagine in ' . $path . ': ' . $e->getMessage());
             }
-
-            Storage::disk('images')->put($basefolder . '/' . $basename, file_get_contents($path), 'public');
-            @unlink($path);
 
             $index++;
         }

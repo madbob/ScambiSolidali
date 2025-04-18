@@ -52,6 +52,10 @@ $colors: $primary-color-1 $primary-color-2 $secondary-color-1 $gray-color-1 $bla
                 display: block;
                 text-transform: uppercase;
             }
+
+            &.unclickable {
+                cursor: default;
+            }
         }
 
         .pagetitle {

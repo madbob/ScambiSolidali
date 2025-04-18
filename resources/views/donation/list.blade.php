@@ -50,7 +50,7 @@
                                         <div class="card-main-overlay">
                                             <span>
                                                 <p>Assegnato!</p>
-                                                <img src="{{ Vite::asset('resources/images/trofeo.svg') }}">
+                                                <img src="{{ Vite::asset('resources/images/trofeo.svg') }}" alt="Assegnato">
                                             </span>
                                         </div>
                                     @endif

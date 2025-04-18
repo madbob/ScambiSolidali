@@ -173,7 +173,7 @@
                     </a>
                 </div>
                 <div class="col text-end">
-                    <a class="btn btn-light" data-bs-toggle="collapse" href="#mobileMenu" role="button">
+                    <a class="btn btn-light" data-bs-toggle="collapse" href="#mobileMenu" role="button" title="Menu">
                         <i class="bi bi-list"></i>
                     </a>
                 </div>
