@@ -129,18 +129,27 @@
                 <div class="col primary-2">
                     <span class="tagline">
                         {{ App\Config::getConf('main_tagline') }}
-                        <span class="float-end">
-                            seguici su
-                            @if(!empty($social_link = App\Config::getConf('facebook_link')))
-                                <a href="{{ $social_link }}"><img src="{{ Vite::asset('resources/images/facebook_icon.png') }}" alt="Facebook"></a>
-                            @endif
-                            @if(!empty($social_link = App\Config::getConf('instagram_link')))
-                                <a href="{{ $social_link }}"><img src="{{ Vite::asset('resources/images/instagram_icon.png') }}" alt="Instagram"></a>
-                            @endif
-                            @if(!empty($social_link = App\Config::getConf('youtube_link')))
-                                <a href="{{ $social_link }}"><img src="{{ Vite::asset('resources/images/youtube_icon.png') }}" alt="Youtube"></a>
-                            @endif
-                        </span>
+
+                        @php
+                        $facebook_link = App\Config::getConf('facebook_link');
+                        $instagram_link = App\Config::getConf('instagram_link');
+                        $youtube_link = App\Config::getConf('youtube_link');
+                        @endphp
+
+                        @if(!empty($facebook_link) || !empty($instagram_link) || !empty($youtube_link))
+                            <span class="float-end">
+                                seguici su
+                                @if(!empty($facebook_link))
+                                    <a href="{{ $facebook_link }}"><img src="{{ Vite::asset('resources/images/facebook_icon.png') }}" alt="Facebook"></a>
+                                @endif
+                                @if(!empty($instagram_link))
+                                    <a href="{{ $social_link }}"><img src="{{ Vite::asset('resources/images/instagram_icon.png') }}" alt="Instagram"></a>
+                                @endif
+                                @if(!empty($youtube_link))
+                                    <a href="{{ $social_link }}"><img src="{{ Vite::asset('resources/images/youtube_icon.png') }}" alt="Youtube"></a>
+                                @endif
+                            </span>
+                        @endif
                     </span>
                 </div>
             </div>
