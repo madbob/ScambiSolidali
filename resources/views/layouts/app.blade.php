@@ -143,10 +143,10 @@
                                     <a href="{{ $facebook_link }}"><img src="{{ Vite::asset('resources/images/facebook_icon.png') }}" alt="Facebook"></a>
                                 @endif
                                 @if(!empty($instagram_link))
-                                    <a href="{{ $social_link }}"><img src="{{ Vite::asset('resources/images/instagram_icon.png') }}" alt="Instagram"></a>
+                                    <a href="{{ $instagram_link }}"><img src="{{ Vite::asset('resources/images/instagram_icon.png') }}" alt="Instagram"></a>
                                 @endif
-                                @if(!empty($youtube_link))
-                                    <a href="{{ $social_link }}"><img src="{{ Vite::asset('resources/images/youtube_icon.png') }}" alt="Youtube"></a>
+                                @if(!empty($instagram_link))
+                                    <a href="{{ $instagram_link }}"><img src="{{ Vite::asset('resources/images/youtube_icon.png') }}" alt="Youtube"></a>
                                 @endif
                             </span>
                         @endif

@@ -23,7 +23,7 @@
 
     <div class="col-md-8 col-md-offset-1">
         <ol>
-            <li>Registrati sul sito e inserisci l'annuncio. Clicca <a href="/files/istruzione_donatore_donotrentino.pdf" class="txt-color">qui</a> per le istruzioni dettagliate.</li>
+            <li>Registrati sul sito e inserisci l'annuncio. Clicca <a href="/files/istruzione_donatore_donotrentino.pdf">qui</a> per le istruzioni dettagliate.</li>
             <li>Aspetta di essere contattato</li>
             <li>Concorda direttamente con il Soggetto accreditato i tempi e le modalità di ritiro e di consegna del bene.</li>
         </ol>
@@ -42,7 +42,7 @@
     <div class="col-md-8 col-md-offset-1">
         <p>Possono candidarsi tutti i soggetti previsti <a href="/files/regolamento_donotrentino.pdf">dal Regolamento</a> per l’accreditamento alla Piattaforma DONOTRENTINO.</p>
         <p>Presenta domanda <a href="https://forms.gle/KTy2aQ3tLPE3wRYj8" target="_blank">compilando questo form</a>.</p>
-        <p><a href="/files/istruzione_operatore_donotrentino.pdf" class="txt-color">Qui</a> le istruzione dettagliate per gli operatori dei partner</p>
+        <p><a href="/files/istruzione_operatore_donotrentino.pdf">Qui</a> le istruzione dettagliate per gli operatori dei partner</p>
     </div>
 </div>
 
