@@ -15,3 +15,9 @@ $secondary-color-1: #921831;
         }
     }
 }
+
+.working {
+    a {
+        color: $primary-color-2 !important;
+    }
+}
