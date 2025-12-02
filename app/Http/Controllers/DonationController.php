@@ -187,15 +187,18 @@ class DonationController extends Controller
 
         foreach ($request->file('photo') as $op) {
             $basename = $donation->id . '_' . $index;
+            $finalpath = $basefolder . '/' . $basename;
             $op->move(sys_get_temp_dir(), $basename);
             $path = sprintf('%s/%s', sys_get_temp_dir(), $basename);
 
             try {
-                $image = $manager->read($path);
-                $image->scale(width: 350);
-                $encoded = (string) $image->toWebp(80);
-                Storage::disk('images')->put($basefolder . '/' . $basename, $encoded, 'public');
-                @unlink($path);
+                retry(5, function() use ($manager, $path, $finalpath) {
+                    $image = $manager->read($path);
+                    $image->scale(width: 350);
+                    $encoded = (string) $image->toWebp(80);
+                    Storage::disk('images')->put($finalpath, $encoded, 'public');
+                    @unlink($path);
+                }, 1000);
             }
             catch(\Exception $e) {
                 Log::error('Impossibile gestire immagine in ' . $path . ': ' . $e->getMessage());

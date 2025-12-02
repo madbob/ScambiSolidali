@@ -56,6 +56,7 @@ return [
             'secret' => env('STORAGE_SECRET'),
             'region' => env('STORAGE_REGION'),
             'bucket' => env('STORAGE_BUCKET'),
+            'throw' => true,
         ],
 
         'media' => [
