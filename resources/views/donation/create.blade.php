@@ -24,7 +24,10 @@ else {
     <br/>
 @endif
 
-<x-larastrap::form classes="primary-1" :obj="$donation" baseaction="celo" :buttons="['element' => 'sbtn', 'label' => 'Allora clicca qui!', 'attributes' => ['type' => 'submit']]">
+<x-larastrap::form id="new-donation-form" classes="primary-1" :obj="$donation" baseaction="celo" :buttons="['element' => 'sbtn', 'label' => 'Allora clicca qui!', 'attributes' => ['type' => 'submit']]">
+    <x-larastrap::hidden name="maxFileNum" :value="ini_get('max_file_uploads')" />
+    <x-larastrap::hidden name="maxFileSize" :value="inBytes(ini_get('upload_max_filesize'))" />
+
     <div class="row">
         <div class="col-12 col-md-3">
             @if($donation)
@@ -56,7 +59,7 @@ else {
                     </p>
                 </div>
 
-                <x-larastrap::file name="photo[]" hidden />
+                <x-larastrap::file name="photo[]" accept="image/*" data-filesize="0" hidden />
             </div>
         </div>
 

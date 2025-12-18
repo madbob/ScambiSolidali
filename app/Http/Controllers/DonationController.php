@@ -184,6 +184,7 @@ class DonationController extends Controller
         ini_set('gd.jpeg_ignore_warning', 1);
         $manager = ImageManager::gd();
         $basefolder = currentInstance();
+        $loaded = 0;
 
         foreach ($request->file('photo') as $op) {
             $basename = $donation->id . '_' . $index;
@@ -198,6 +199,7 @@ class DonationController extends Controller
                     $encoded = (string) $image->toWebp(80);
                     Storage::disk('images')->put($finalpath, $encoded, 'public');
                     @unlink($path);
+                    $loaded++;
                 }, 1000);
             }
             catch(\Exception $e) {
@@ -205,6 +207,10 @@ class DonationController extends Controller
             }
 
             $index++;
+        }
+
+        if ($loaded == 0) {
+            Log::error('Non sono state caricate foto per la donazione ' . $donation->id);
         }
     }
 
@@ -221,7 +227,8 @@ class DonationController extends Controller
                 'surname' => 'required|max:255',
                 'address' => 'required|max:255',
                 'phone' => 'required|max:255',
-                'email' => 'required|max:255'
+                'email' => 'required|max:255',
+                'photo' => 'required',
             ]);
         }
         else {

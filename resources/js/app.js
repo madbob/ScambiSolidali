@@ -192,20 +192,21 @@ $(document).ready(function() {
             }
 
             reader.readAsDataURL(input.files[0]);
+            $(input).attr('data-filesize', input.files[0].size);
         }
 
     }).on('click', '.removefile', function() {
         $(this).closest('.common-card').remove();
     });
 
-    $('.new-donation-form form input').keydown(function(event) {
+    $('#new-donation-form form input').keydown(function(event) {
         if(event.keyCode == 13) {
             event.preventDefault();
             return false;
         }
     });
 
-    $('.new-donation-form').submit(function(e) {
+    $('#new-donation-form').submit(function(e) {
         e.preventDefault();
 
         if ($(this).find('input:hidden[name^=keep_photo]').length == 0) {
@@ -224,10 +225,32 @@ $(document).ready(function() {
             photo_set = true;
         }
 
-        if (photo_set == false)
+        if (photo_set == false) {
             alert('Devi caricare almeno una foto!');
-        else
-            $(this).unbind('submit').submit();
+            return
+        }
+
+        let maxFileNum = parseInt($('input:hidden[name=maxFileNum]').val());
+        let maxFileSize = parseInt($('input:hidden[name=maxFileSize]').val());
+        let inputs = $(this).find('input:file[name^=photo]').filter((index, node) => $(node).val() != '');
+
+        if (inputs.length > maxFileNum) {
+            alert('Hai caricato troppe foto! Togline qualcuna!');
+            return;
+        }
+
+        let size = 0;
+
+        inputs.each((index, node) => {
+            size += parseInt($(node).attr('data-filesize'));
+        });
+
+        if (size > maxFileSize) {
+            alert('Hai caricato foto troppo grandi! La dimensione massima è 20 MB.');
+            return;
+        }
+
+        $(this).unbind('submit').submit();
 
         /*
             Quando il pulsante di invio viene cliccato lo disabilito, salvo

@@ -43,6 +43,31 @@ function t($string)
     return $string;
 }
 
+function inBytes($val)
+{
+    if (empty($val)) {
+        $val = 0;
+    }
+
+    $val = trim($val);
+    $last = strtolower($val[strlen($val)-1]);
+    $val = floatval($val);
+
+    switch($last) {
+        case 'g':
+            $val *= (1024 * 1024 * 1024);
+            break;
+        case 'm':
+            $val *= (1024 * 1024);
+            break;
+        case 'k':
+            $val *= 1024;
+            break;
+    }
+
+    return $val;
+}
+
 function genCaptcha()
 {
     $captcha_1 = rand(1, 10);

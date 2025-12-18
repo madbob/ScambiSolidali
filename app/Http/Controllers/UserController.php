@@ -142,7 +142,6 @@ class UserController extends Controller
         $user->save();
 
         $user->institutes()->sync($request->input('institutes', []));
-        $user->companies()->sync($request->input('companies', []));
 
         if ($ex_role == 'user') {
             try {
