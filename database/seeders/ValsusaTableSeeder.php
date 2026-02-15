@@ -28,6 +28,7 @@ class ValsusaTableSeeder extends Seeder
             'contact_contents' => 'piazza San Francesco 4 - 10059 Susa (TO)<br>celocelo@conisa.it<br>T 011 9311392',
             'contact_map_coordinates' => '7.04585, 45.13409',
             'contact_map_title' => 'Con.I.S.A.',
+            'expiration' => 2,
         ];
 
         $this->saveConfigs($confs);

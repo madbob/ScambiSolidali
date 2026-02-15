@@ -50,6 +50,7 @@ class MilanoTableSeeder extends Seeder
             'contact_contents' => 'touchpoint@milano2035.it<br><br>Touch Point presso Off Campus San Siro,<br>Via Giacinto Gigante, di fronte al n. 5, Milano (MI)<br>tutti i lunedì dalle 14.30 alle 17.30<br><br>Touch Point presso Cofò<br>Via Carlo Martinelli, 23 Cinisello Balsamo (MI)<br>dalle 8.00 alle 20.00',
             'contact_map_coordinates' => '9.13835, 45.47117',
             'contact_map_title' => 'Milano 2035',
+            'expiration' => 2,
         ];
 
         $this->saveConfigs($confs);

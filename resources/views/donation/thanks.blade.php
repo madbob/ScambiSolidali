@@ -5,14 +5,16 @@
 @section('content')
     <div class="row primary-1">
         <div class="col">
-            <h2>
+            <h2 class="mb-5">
                 Grazie per aver inserito il tuo annuncio!<br/>
                 Verrai contattato nel momento in cui qualcuno sarà interessato al tuo oggetto o alla tua competenza.
             </h2>
 
-            <br><br><br>
+            <p class="mb-5">
+                Ricorda che l'annuncio ha validità di {{ App\Config::getConf('expiration') }} mesi, passati i quali riceverai una mail per rinnovarlo.
+            </p>
 
-            @if($donation->type == 'object')
+            @if(isset($donation) && $donation->type == 'object')
                 <p class="lead">
                     Se nel frattempo trovi un altro destinatario, ricorda di annullare l'annuncio <a href="{{ route('donation.mine') }}">dal pannello delle tue donazioni</a>!
                 </p>

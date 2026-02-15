@@ -30,6 +30,7 @@ class TorinoTableSeeder extends Seeder
             'contact_contents' => 'via Morgari 14 - 10125 Torino<br>segreteria@agenzia.sansalvario.org<br>T 011 6686772',
             'contact_map_coordinates' => '7.67824, 45.05408',
             'contact_map_title' => 'Casa del Quartiere',
+            'expiration' => 2,
 
             'food_full_credits' => sprintf('<p class="intro">Un progetto di</p>
                 <p>Ass. Agenzia per lo sviluppo locale di San Salvario ONLUS, Equoevento ONLUS</p>

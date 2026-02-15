@@ -68,6 +68,7 @@ class TrentinoTableSeeder extends Seeder
             'contact_contents' => 'Viale Bolognini 98 - Trento<br>segreteria@donotrentino.it',
             'contact_map_coordinates' => '11.13669, 46.06510',
             'contact_map_title' => 'TRENTINOSOLIDALE',
+            'expiration' => 2,
         ];
 
         $this->saveConfigs($confs);

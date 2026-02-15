@@ -84,6 +84,7 @@ class DonationController extends Controller
     public function myIndex(Request $request)
     {
         $user = Auth::user();
+        $data = [];
 
         $data['donations'] = Donation::where('user_id', $user->id)->where('status', '!=', 'voided')->orderBy('created_at', 'desc')->get();
 
@@ -103,10 +104,12 @@ class DonationController extends Controller
             $data['assigned'] = [];
         }
 
-        if ($request->has('show'))
+        if ($request->has('show')) {
             $data['current_show'] = $request->input('show');
-        else
+        }
+        else {
             $data['current_show'] = -1;
+        }
 
         return view('donation.mylist', $data);
     }
@@ -427,7 +430,7 @@ class DonationController extends Controller
         $donation->renew();
 
         Session::flash('message', 'La donazione è stata rinnovata per altri due mesi. Grazie!');
-        return redirect(url('celo'));
+        return redirect()->route('donation.mine');
     }
 
     public function adminRenew(Request $request, $id)

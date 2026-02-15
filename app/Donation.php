@@ -140,6 +140,32 @@ class Donation extends Model
         ];
     }
 
+    public function statusBadge()
+    {
+        switch($this->status) {
+            case 'pending':
+                $color = 'success';
+                break;
+            case 'voided':
+                $color = 'info';
+                break;
+            case 'assigned':
+                $color = 'info';
+                break;
+            case 'expiring':
+                $color = 'warning';
+                break;
+            case 'expired':
+                $color = 'danger';
+                break;
+            case 'dropped':
+                $color = 'danger';
+                break;
+        }
+
+        return sprintf('<span class="badge text-bg-%s">%s</span>', $color, $this->printableStatus());
+    }
+
     public function printableStatus()
     {
         $statuses = self::statuses();
@@ -180,10 +206,20 @@ class Donation extends Model
         ];
     }
 
+    public function renewable()
+    {
+        return in_array($this->status, ['expiring', 'expired', 'dropped']);
+    }
+
     public function renew()
     {
         $this->status = 'pending';
         $this->save();
+    }
+
+    public function renewToken()
+    {
+        return urlencode(base64_encode(sprintf('%d-%d', $this->id, $this->user->id)));
     }
 
     public static function areas()

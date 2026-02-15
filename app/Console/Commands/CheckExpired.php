@@ -4,12 +4,13 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 
-use Mail;
-use Log;
-use DB;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 
 use App\Mail\ExpirationNotify;
 use App\Mail\ExpirationCallNotify;
+use App\Config;
 use App\Donation;
 use App\Call;
 use App\User;
@@ -21,7 +22,8 @@ class CheckExpired extends Command
 
     public function handle()
     {
-        $limit_notification = strtotime('-2 months');
+        $months = Config::getConf('expiration');
+        $limit_notification = strtotime('-' . $months . ' months');
         $limit_date = date('Y-m-d H:i:s', $limit_notification);
 
         $limit_deletion = $limit_notification - (60 * 60 * 24 * 7);
