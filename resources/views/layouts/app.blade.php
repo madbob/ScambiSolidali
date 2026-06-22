@@ -31,6 +31,7 @@
         'resources/js/app.js'
     ])
 
+    <meta name="mapbox-token" content="{{ env('MAPBOX_TOKEN') }}" />
     <meta name="theme-color" content="#FFF"/>
     <link rel="manifest" href="{{ asset('manifest.json') }}">
 

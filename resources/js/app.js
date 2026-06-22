@@ -16,7 +16,7 @@ $(document).ready(function() {
     j.init({
         initFunction: (container) => {
             $('.map-select', container).each(function() {
-                mapboxgl.accessToken = 'pk.eyJ1IjoibWFkYm9iIiwiYSI6ImNtNnFzdmprNzFyZWEya3M0bDVyemU4bG4ifQ.3gPEhCWVZgQG9RTihyZ6Ow';
+                mapboxgl.accessToken = $('meta[name=mapbox-token]').attr('content');
                 var map = new mapboxgl.Map({
                     container: $(this).attr('id'),
                     style: 'mapbox://styles/mapbox/light-v9',
@@ -156,6 +156,14 @@ $(document).ready(function() {
         var input = this;
 
         if (input.files && input.files[0]) {
+            let file = input.files[0];
+
+            const allowedTypes = ['image/jpeg', 'image/png'];
+            if (!allowedTypes.includes(file.type)) {
+                alert('Sono ammesse solo immagini in formato JPG o PNG');
+                return;
+            }
+
             var reader = new FileReader();
             reader.onload = function (e) {
                 var img = new Image();
@@ -191,7 +199,7 @@ $(document).ready(function() {
                 img.src = e.target.result;
             }
 
-            reader.readAsDataURL(input.files[0]);
+            reader.readAsDataURL(file);
             $(input).attr('data-filesize', input.files[0].size);
         }
 
@@ -308,7 +316,7 @@ $(document).ready(function() {
             pagina, essendo letti dalle configurazioni sul DB
         */
 
-        mapboxgl.accessToken = 'pk.eyJ1IjoibWFkYm9iIiwiYSI6ImNtNnFzdmprNzFyZWEya3M0bDVyemU4bG4ifQ.3gPEhCWVZgQG9RTihyZ6Ow';
+        mapboxgl.accessToken = $('meta[name=mapbox-token]').attr('content');
         var map = new mapboxgl.Map({
             container: 'mapid',
             style: 'mapbox://styles/mapbox/light-v9',
