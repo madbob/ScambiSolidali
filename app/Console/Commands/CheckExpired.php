@@ -23,6 +23,10 @@ class CheckExpired extends Command
     public function handle()
     {
         $months = Config::getConf('expiration');
+        if (blank($months)) {
+            $months = 2;
+        }
+
         $limit_notification = strtotime('-' . $months . ' months');
         $limit_date = date('Y-m-d H:i:s', $limit_notification);
 

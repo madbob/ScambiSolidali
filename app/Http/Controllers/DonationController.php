@@ -202,11 +202,12 @@ class DonationController extends Controller
                 $image->scale(width: 350);
                 $encoded = (string) $image->toWebp(80);
 
-                retry(5, function() use ($manager, $path, $finalpath) {
+                retry(5, function() use ($finalpath, $encoded) {
                     Storage::disk('images')->put($finalpath, $encoded, 'public');
-                    @unlink($path);
-                    $loaded++;
                 }, 1000);
+
+                @unlink($path);
+                $loaded++;
             }
             catch(\Exception $e) {
                 Log::error('Impossibile gestire immagine in ' . $path . ': ' . $e->getMessage());
