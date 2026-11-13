@@ -10,7 +10,7 @@ Contrariamente a molte analoghe piattaforme, questa è pensata per collezionare 
 
 **CeloCelo** è distribuito in licenza AGPLv3.
 
-Copyright (C) 2016/2024 Roberto Guido <info@madbob.org>.
+Copyright (C) 2016/2026 Roberto Guido <info@madbob.org>.
 
 La traduzione in italiano dei messaggi di sistema è distribuita in licenza MIT.
 
