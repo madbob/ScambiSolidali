@@ -1,5 +1,7 @@
 @if ($donation->type == 'object')
-    <x-larastrap::check inline do_label="hide" input_width="12" name="shipping" label="Richiedi Trasporto" triggers_collapse="address_details" :help="sprintf('Selezionando questa opzione, l\'amministrazione di %s riceverà una mail di richiesta e sarai ricontattato per maggiori accordi.', env('APP_NAME'))" />
+    @if('HAS_TRANSPORT', true)
+        <x-larastrap::check inline do_label="hide" input_width="12" name="shipping" label="Richiedi Trasporto" triggers_collapse="address_details" :help="sprintf('Selezionando questa opzione, l\'amministrazione di %s riceverà una mail di richiesta e sarai ricontattato per maggiori accordi.', env('APP_NAME'))" />
+    @endif
 
     <x-larastrap::collapse id="address_details" label_width="5" input_width="7" classes="mb-3">
         <x-larastrap::text name="shipping_name" label="Nome e cognome destinatario" />
