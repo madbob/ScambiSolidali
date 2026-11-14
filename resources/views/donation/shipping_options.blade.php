@@ -1,5 +1,5 @@
 @if ($donation->type == 'object')
-    @if('HAS_TRANSPORT', true)
+    @if(env('HAS_TRANSPORT', true))
         <x-larastrap::check inline do_label="hide" input_width="12" name="shipping" label="Richiedi Trasporto" triggers_collapse="address_details" :help="sprintf('Selezionando questa opzione, l\'amministrazione di %s riceverà una mail di richiesta e sarai ricontattato per maggiori accordi.', env('APP_NAME'))" />
     @endif
 
